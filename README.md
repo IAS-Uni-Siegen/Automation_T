@@ -1,4 +1,4 @@
-# Power Electronics Devices (and Components)
+# Automation Technologies
 
 [![Build Status](https://github.com/IAS-Uni-Siegen/EMD_Course/actions/workflows/BuildPDFs.yml/badge.svg)](https://github.com/IAS-Uni-Siegen/EMD_Course/actions/workflows/BuildPDFs.yml)
 [![CC BY 4.0][cc-by-shield]][cc-by]
@@ -18,7 +18,7 @@ This work is licensed under a
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 ## Lecture slides (click on preview picture)
-<a href="https://ias-uni-siegen.github.io/PEDC_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
+<a href="https://ias-uni-siegen.github.io/Automation_T/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
 
 The covered topics are:
 - An initial overview of power electronics devices and components
@@ -31,10 +31,10 @@ The covered topics are:
 - Way forward in power semiconductors- packaging, thermal, reliability and faults. 
 
 ## Exercise tasks (click on preview picture)
-<a href="https://ias-uni-siegen.github.io/PEDC_course/exercise.pdf" target="_blank" class="image fit"><img src="misc/Exercise_preview.png" alt=""></a>
+<a href="https://ias-uni-siegen.github.io/Automation_T/exercise.pdf" target="_blank" class="image fit"><img src="misc/Exercise_preview.png" alt=""></a>
 
 ## Exercise tasks including solutions (click on preview picture)
-<a href="https://ias-uni-siegen.github.io/PEDC_course/exercise_with_solution.pdf" target="_blank" class="image fit"><img src="misc/Exercise_with_solution_preview.png" alt=""></a>
+<a href="https://ias-uni-siegen.github.io/Automation_T/exercise_with_solution.pdf" target="_blank" class="image fit"><img src="misc/Exercise_with_solution_preview.png" alt=""></a>
 
 <!--## Exam history
 
@@ -51,7 +51,7 @@ See "Cite this repository" info box on the top-right or use the following BibTeX
 @misc{Sah_PEDC_2025,
     author = {Sah, Bikash},
     title = {{Power Electronics Devices (and Components)}},
-    url = {https://github.com/IAS-Uni-Siegen/EMD_course},
+    url = {https://github.com/IAS-Uni-Siegen/Automation_T},
     year = {2025}
 }
 ```
