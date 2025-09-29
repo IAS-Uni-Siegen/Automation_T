@@ -55,5 +55,3 @@ See "Cite this repository" info box on the top-right or use the following BibTeX
     year = {2025}
 }
 ```
-
-# Automation_T
