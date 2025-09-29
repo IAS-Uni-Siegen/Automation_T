@@ -1,0 +1,218 @@
+\section{Conventional Power Semiconductor Devices}
+\title{Conventional Power Semiconductor Devices}  
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Homopolar / unipolar machines %%
+%% Planned topics: Power MOSFETs, IGBTs, Thyristors %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introduction to Power MOSFETs}
+\begin{itemize}
+    \item Power MOSFETs (Metal-Oxide-Semiconductor Field Effect Transistors) are widely used in power electronics since the early 1980s.
+    \item They offer high on-state current capability and off-state voltage blocking, making them suitable for high-speed switching applications.
+    \item Replacing BJTs in many applications, especially those requiring fast switching, due to their voltage-controlled nature.
+    \item Understanding the differences between BJTs and MOSFETs is crucial for effective circuit design.
+    \item This section introduces the physical structure, voltage and current limits, and failure mechanisms of MOSFETs.
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Figure Placeholder:} \textit{Power MOSFET application context diagram (optional).}
+\end{frame}
+
+
+\begin{frame}{Basic Structure of Power MOSFET}
+\begin{itemize}
+    \item The MOSFET is constructed with alternating p-type and n-type layers: \textbf{n$^+$-p-n$^-$-n$^+$}.
+    \item The n$^+$ (source and drain), p-body, and n$^-$ (drift region) form the core active structure.
+    \item Gate terminal is insulated from the body by silicon dioxide (SiO$_2$) forming the gate oxide.
+    \item Applying a positive voltage to the gate induces an n-channel in the p-body, allowing current flow.
+    \item The drift region (n$^-$) is lightly doped to handle high blocking voltages.
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Figure Placeholder:} \textit{MOSFET cross-section with labels for source, gate, drain, body, and drift region.}
+\end{frame}
+
+\begin{frame}{Perspective View of a Power MOSFET}
+\begin{itemize}
+    \item Power MOSFETs consist of thousands of small identical cells connected in parallel.
+    \item Each cell includes source diffusion, gate conductor, field oxide, and drain contact.
+    \item High current handling is achieved by maximizing the number of cells and gate width.
+    \item This configuration is often referred to as VDMOS (Vertical Diffused MOSFET).
+    \item Parasitic elements like a BJT and integral body diode are naturally formed.
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Figure Placeholder:} \textit{Figure 22-1(b): Perspective structure showing MOSFET cellular layout.}
+\end{frame}
+
+\begin{frame}{Channel Formation and Operation}
+\begin{itemize}
+    \item The p-body prevents current flow until a gate voltage is applied.
+    \item Applying V$_{GS} > V_{th}$ induces an n-channel in the p-body.
+    \item This connects the source to the drain allowing electron flow (n-channel enhancement).
+    \item No minority carrier injection occurs—enabling fast switching.
+    \item The MOSFET operates as a unidirectional voltage-controlled switch.
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Figure Placeholder:} \textit{Figure 22-2(a): Accumulation layer in ON-state.}
+\end{frame}
+
+\begin{frame}{Gate Metallization and Field Plate Action}
+\begin{itemize}
+    \item Gate metallization overlaps the n$^-$ drift region to serve two purposes:
+    \begin{enumerate}
+        \item Enhances conductivity during ON-state by forming accumulation layer.
+        \item Acts as a field plate to reduce electric field curvature in OFF-state.
+    \end{enumerate}
+    \item This helps to minimize on-resistance and improves breakdown voltage.
+    \item Design strategies include optimizing gate width-to-length ratio to maximize gain.
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Figure Placeholder:} \textit{Figure 22-2(b): Field plate action during OFF-state.}
+\end{frame}
+
+
+\begin{frame}{Inversion Layers and the Field Effect}
+\begin{itemize}
+    \item The gate region of the MOSFET is composed of:
+    \begin{itemize}
+        \item Gate metallization (e.g., Al or polysilicon)
+        \item Gate oxide ($SiO_2$)
+        \item Silicon substrate beneath the oxide
+    \end{itemize}
+    \item This gate stack acts as a high-quality MOS capacitor.
+    \item Applying a small positive $V_{\mathrm{GS}}$ causes:
+    \begin{itemize}
+        \item Positive charge on gate metal
+        \item Negative charge induced on silicon side
+        \item Formation of a depletion region by repelling holes
+    \end{itemize}
+    \item The structure acts as a capacitor inducing a field across the gate oxide.
+\end{itemize}
+\vspace{0.5em}
+\textbf{Note:} The inversion layer forms only after depletion is sufficient.
+\end{frame}
+
+
+\begin{frame}{Formation of Depletion and Inversion Layers}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{itemize}
+    \item As $V_{\mathrm{GS}}$ increases:
+    \begin{enumerate}
+        \item Depletion region widens (Fig. 22-5a)
+        \item Electrons begin to accumulate at oxide–silicon interface (Fig. 22-5b)
+        \item Inversion layer forms when electron density exceeds hole density (Fig. 22-5c)
+    \end{enumerate}
+    \item Inversion layer has \textbf{n-type} conductivity and enables conduction between source and drain.
+    \item This defines the MOSFET’s enhancement mode behavior.
+\end{itemize}
+\column{0.4\textwidth}
+%\includegraphics[width=\textwidth]{figures/inversion_layer_diagram.png} % Placeholder for Fig. 22-5
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Threshold Voltage and Oxide Capacitance}
+\begin{itemize}
+    \item Threshold voltage $V_{\mathrm{GS(th)}}$ is the point at which an inversion layer is just formed.
+    \item As $V_{\mathrm{GS}} > V_{\mathrm{GS(th)}}$, inversion layer:
+    \begin{itemize}
+        \item Becomes thicker
+        \item Becomes more conductive
+        \item Screens the underlying depletion region
+    \end{itemize}
+    \item Major factor: oxide capacitance per unit area:
+    \[
+        C_{\mathrm{ox}} = \frac{\varepsilon_{\mathrm{ox}}}{t_{\mathrm{ox}}}
+    \]
+    \item Other influencing factors:
+    \begin{itemize}
+        \item Work function difference (metal vs silicon)
+        \item Fixed/trapped charge
+        \item Body doping and oxide thickness
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gate Control of Drain Current Flow}
+\begin{itemize}
+    \item With $V_{\mathrm{GS}} > V_{\mathrm{GS(th)}}$ and small $V_{\mathrm{DS}}$:
+    \begin{itemize}
+        \item MOSFET operates in the ohmic (linear) region.
+        \item Inversion layer has nearly uniform thickness along the channel.
+        \item Drain current $I_D$ increases linearly with $V_{\mathrm{DS}}$.
+    \end{itemize}
+    \item Voltage drop along the channel varies:
+    \[
+        V_{\mathrm{ox}}(x) = V_{\mathrm{GS}} - V_{\mathrm{CS}}(x)
+    \]
+    \item As $V_{\mathrm{DS}}$ increases, $V_{\mathrm{CS}}(x)$ increases toward the drain end.
+    \item This leads to non-uniform channel thickness and begins shaping current characteristics.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Channel Pinch-Off and Saturation Region}
+\begin{itemize}
+    \item As $V_{\mathrm{DS}}$ increases such that:
+    \[
+        V_{\mathrm{GS}} - V_{\mathrm{DS}} = V_{\mathrm{GS(th)}}
+    \]
+    the channel is \textbf{pinched off} at the drain end.
+    \item No inversion layer exists at the drain end—carrier velocity becomes saturated.
+    \item Device enters saturation (active) region:
+    \begin{itemize}
+        \item $I_D$ becomes independent of $V_{\mathrm{DS}}$
+        \item Minimum inversion layer thickness is maintained by high electric field
+    \end{itemize}
+    \item Channel length modulation and velocity saturation effects begin.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Electric Field and Velocity Saturation}
+\begin{itemize}
+    \item At high electric fields, carrier velocity saturates:
+    \[
+        v_{\mathrm{drift}} \approx 8 \times 10^6~\text{cm/s at } E \approx 1.5 \times 10^4~\text{V/cm}
+    \]
+    \item This saturation leads to constant $I_D$ in the saturation region:
+    \[
+        I_D = K (V_{\mathrm{GS}} - V_{\mathrm{GS(th)}})^2
+    \]
+    with 
+    \[
+        K = \mu_n C_{\mathrm{ox}} \frac{W}{2L}
+    \]
+    \item $\mu_n$ is carrier mobility; $W/L$ is width-to-length ratio of the channel.
+    \item Design goal: maximize $W/L$ to minimize on-state losses and improve gain.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Deviation from Square-Law Model}
+\begin{itemize}
+    \item Square-law $I_D$–$V_{\mathrm{GS}}$ relationship:
+    \[
+        I_D \propto (V_{\mathrm{GS}} - V_{\mathrm{GS(th)}})^2
+    \]
+    \item Breaks down at high $I_D$ due to:
+    \begin{itemize}
+        \item Velocity saturation (as per $v_{\mathrm{drift}}$ curve)
+        \item Reduction in mobility $\mu_n$ due to:
+        \begin{itemize}
+            \item Increased electric field in inversion layer
+            \item Increased electron density near gate
+            \item Carrier–carrier scattering effects
+        \end{itemize}
+    \end{itemize}
+    \item At high currents, the relationship becomes approximately linear.
+\end{itemize}
+\end{frame}

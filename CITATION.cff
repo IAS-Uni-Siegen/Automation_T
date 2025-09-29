@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use or refer to this material, please cite it as below."
+authors:
+- family-names: "Sah"
+  given-names: "Bikash"
+  orcid: "https://orcid.org/0000-0002-0307-6727"
+title: "Power Electronic Devices and Components"
+date-released: 2024-09-27
+url: "https://github.com/IAS-Uni-Siegen/PEDC_course"
+license: CC-BY-4.0
+preferred-citation:
+  type: generic
+  authors:
+  - family-names: "Sah"
+    given-names: "Bikash"
+    orcid: "https://orcid.org/0000-0002-0307-6727"
+  title: "Power Electronic Devices and Components"
+  year: 2025
+  url: "https://github.com/IAS-Uni-Siegen/PEDC_course"
