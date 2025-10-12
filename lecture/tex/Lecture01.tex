@@ -79,30 +79,203 @@ Holidays: 23 Dec 2025, 30 Dec 2025, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is Electronics %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{What are "Electronic Devices"?}
+% \begin{frame}
+% 	\frametitle{What are "Electronic Devices"?}
+% 	\begin{columns}
+% 		\begin{column}{0.5\textwidth}
+% 			\begin{varblock}{Electronic Devices}
+% 				Electronic devices are hardware components which leverage the property of materials to control the flow of electrons or charge.
+% 			\end{varblock} \vspace{-0.5cm}		
+% 			\begin{itemize}
+% 				\item<2-> Have a long history of development- started with the invention of vaccum tube or Thermionic valve in 1904 by J.A. Fleming.
+% 				\item<3-> The first transistor was invented in 1947 by J.Bardeen, W.H. Brattain and W.S. Shockley in Bell Labs.
+% 				\item<4-> The first integrated circuit was invented in 1958 by J. Kilby and R. Noyce -- On and it goes
+% %				\item<5-> The first microprocessor was invented in 1971 by F. Faggin, T. Klein and H. Hoff in Intel.
+% %				\item<6-> The first microcontroller was invented in 1971 by F. Faggin, T. Klein and H. Hoff in Intel.
+% %				\item<7-> On and it goes- every day new devices are invented and developed.
+% 			\end{itemize}
+% 		\end{column}
+% 		\begin{column}{0.5\textwidth}
+% 			\begin{figure}
+% 				\centering
+% 				\includegraphics[scale= 0.05]{fig/lec01/Componentes.jpg}
+% 				\caption{Example of electronic components (source: \href{https://commons.wikimedia.org/wiki/File:Componentes.JPG}{Wikimedia Commons}, Kae, public domain)}
+% 			\end{figure}
+% 		\end{column}
+% 		\end{columns}
+% \end{frame}
+
+
+
+% --- Slide 1: What is Automation? ---
+\begin{frame}{What is \textit{Automation}?}
+\textbf{Working definition for this course}\\[2mm]
+\emph{Automation is the purposeful application of mechanical, electrical, and computer technologies to reduce human involvement in task performance—without necessarily removing humans from the loop.}
+
+\vspace{2mm}
+\textbf{Key nuances}
+\begin{itemize}
+  \item \textbf{Displace vs. replace:} automation often reallocates human effort to higher-value tasks rather than eliminating it.
+  \item \textbf{Hardware \& software co-design:} improvement may be purely software (e.g., CAD workflows) or mechatronic (robotic cells).
+  \item \textbf{Beyond factories:} retail checkout, medical devices, energy systems, mobility—all are automation domains.
+\end{itemize}
+
+%\vspace{2mm}
+\end{frame}
+
+\begin{frame}{Examples of Automation}
+%\textbf{Illustrative examples}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{varblock}{Electronic Devices}
-				Electronic devices are hardware components which leverage the property of materials to control the flow of electrons or charge.
-			\end{varblock} \vspace{-0.5cm}		
+		\begin{column}{0.25\textwidth}
 			\begin{itemize}
-				\item<2-> Have a long history of development- started with the invention of vaccum tube or Thermionic valve in 1904 by J.A. Fleming.
-				\item<3-> The first transistor was invented in 1947 by J.Bardeen, W.H. Brattain and W.S. Shockley in Bell Labs.
-				\item<4-> The first integrated circuit was invented in 1958 by J. Kilby and R. Noyce -- On and it goes
-%				\item<5-> The first microprocessor was invented in 1971 by F. Faggin, T. Klein and H. Hoff in Intel.
-%				\item<6-> The first microcontroller was invented in 1971 by F. Faggin, T. Klein and H. Hoff in Intel.
-%				\item<7-> On and it goes- every day new devices are invented and developed.
+  				\item \emph{Self-checkout:} barcode + payment automation reduces repetitive cashier tasks while keeping supervision.
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
+		\begin{column}{0.75\textwidth}
+				\begin{figure}
 				\centering
-				\includegraphics[scale= 0.05]{fig/lec01/Componentes.jpg}
-				\caption{Example of electronic components (source: \href{https://commons.wikimedia.org/wiki/File:Componentes.JPG}{Wikimedia Commons}, Kae, public domain)}
+				\includegraphics[width=0.7\linewidth]{fig/lec01/Self_checkout.jpg}
+				\caption*{Self checkout machines (Source: from \href{https://commons.wikimedia.org/wiki/File:Self_checkout_using_NCR_Fastlane_machines.jpg}{Self checkout using NCR Fastlane machines}, \href{https://creativecommons.org/licenses/by/2.0/deed.en}{CC BY 2.0})}
 			\end{figure}
 		\end{column}
-		\end{columns}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Examples of Automation}
+%\textbf{Illustrative examples}
+	\begin{columns}
+		\begin{column}{0.25\textwidth}
+			\begin{itemize}
+				\item \emph{Computer Aided Design (CAD) evolution:} from manual drafting to 3D solid modeling, numerical control code, and auto-documentation.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.75\textwidth}
+				\begin{figure}
+				\centering
+				\includegraphics[width=0.8\linewidth]{fig/lec01/CAD_development.jpg}
+				\caption*{Historical development of CAD (Source: Zou, Qiang, Yingcai Wu, Zhenyu Liu, Weiwei Xu, and Shuming Gao. "Intelligent CAD 2.0." Visual Informatics 8, no. 4 (2024): 1-12.)}
+			\end{figure}
+		\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+% --- Slide 2: Why Now? Value & Impact ---
+\begin{frame}{Why Now? Value, Impact, and Trends}
+\textbf{What automation accomplishes today}
+\begin{itemize}
+  \item Enables \textbf{flexible value networks}: rapid changeovers, mass customization, and supply-chain visibility.
+  \item Integrates \textbf{heterogeneous technologies} across disciplines; links physical assets to \textbf{digital representations}.
+  \item Improves \textbf{quality, safety, and energy efficiency}; turns data into decisions.
+\end{itemize}
+
+\textbf{Where it is going}
+\begin{itemize}
+  \item From real-time control of single machines to \textbf{orchestration} of whole cells/lines and ecosystems.
+  \item \textbf{Autonomous capabilities}: perception, context understanding, and bounded autonomy with human oversight.
+  \item \textbf{Sustainability and circularity}: traceability, footprint accounting, and lifecycle optimization.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Why Now? Value, Impact, and Trends}
+	\begin{columns}
+		\begin{column}{0.25\textwidth}
+			\textbf{Practical life example}\\
+				Battery cycler cell: recipe engine (e.g., CC-CV-rest), interlocks, data historian, remote diagnostics, and energy-aware scheduling.
+		\end{column}
+		\begin{column}{0.75\textwidth}
+				\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{fig/lec01/cell_test_automation.png}
+				\caption*{Automated cell test set-up (Source: \href{https://doi.org/10.1109/TIA.2025.3561705}{Mulpuri et. al.,IEEE Trans. on Industry Appl., vol. 61-5})}
+			\end{figure}
+		\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Nature and Scope of Automation}
+\textbf{Automation can occur anywhere humans perform structured tasks.}
+\begin{itemize}
+  \item Includes entertainment (remote controls), offices (data entry), transportation, and healthcare.
+  \item Combines mechanical, electrical, and computer elements-modern systems are hybrid and interlinked.
+  \item Machines themselves can contain smaller automated subsystems, leading to hierarchical automation.
+\end{itemize}
+
+\vspace{3mm}
+\textbf{Essence:}  
+Automation evolves continually, driven by technology that reduces human effort, improves precision, and enhances reliability across diverse applications.
+\end{frame}
+
+\begin{frame}{Automation Technology Today and Tomorrow}
+\textbf{Current accomplishments :} as per the Society for Measurement and Automation Technology within the Association of German Engineers (VDI/VDE) outlook:
+\begin{itemize}
+  \item Enables \textbf{flexible value networks} and digital connectivity.
+  \item Makes technology more accessible and user-friendly.
+  \item Integrates mechanical, electrical, and information technologies.
+  \item Connects \textbf{real-world physical elements} with their \textbf{digital representations}.
+\end{itemize}
+
+\vspace{3mm}
+\textbf{Emerging directions}
+\begin{itemize}
+  \item Intelligent, networked products capable of autonomous action.
+  \item Sustainability and circular economy supported by digital transparency.
+  \item Need for clear standards, security, and qualified human oversight.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Self-Perception of Automation Technology}
+\textbf{A multidisciplinary field:}
+\begin{itemize}
+  \item Integrates \textbf{mechanical, electrical, computer, and information engineering}.
+  \item Engineers act as \textbf{system integrators}—coordinating diverse components into a coherent whole.
+\end{itemize}
+
+\vspace{3mm}
+\textbf{Historical evolution:}
+\begin{itemize}
+  \item From mechanical aids to networked, software-defined systems.
+  \item Increased productivity and flexibility through information technology.
+\end{itemize}
+
+\vspace{3mm}
+\textbf{Future perspective:}
+\begin{itemize}
+  \item Toward \textbf{autonomous systems} that perceive, decide, and act.
+  \item Humans remain central—for supervision, creativity, and ethical responsibility.
+\end{itemize}
+\end{frame}
+
+
+
+
+% --- Slide 3: The Automation Stack (Mechatronics Lens) ---
+\begin{frame}{The Automation Stack (Mechatronics Lens)}
+\begin{columns}[T,onlytextwidth]
+\column{0.54\textwidth}
+\textbf{Layers}
+\begin{enumerate}
+  \item \textbf{Sensors} (electrical, mechanical, magnetic, optical) $\rightarrow$ scaling, filtering, calibration, shielding.
+  \item \textbf{Compute} (MCU/DSP, FPGA, PLC): timing, determinism, safety tasks, OS/RTOS.
+  \item \textbf{Control \& Sequencing}: PID/IMC, cascades, feedforward; SFC/state machines, interlocks, mode logic.
+  \item \textbf{Actuators \& Drives}: DC/BLDC/servo, VFD/FOC, motion profiles, STO.
+  \item \textbf{Comms \& Data}: OPC~UA, Modbus‐TCP, MQTT; time sync, historians, dashboards.
+  \item \textbf{Supervision \& Optimization}: HMI/SCADA, digital twins, KPIs (OEE), diagnostics, updates.
+\end{enumerate}
+
+\column{0.44\textwidth}
+\centering
+%\includegraphics[width=\linewidth]{stack_placeholder.png}\\[-1mm]
+\footnotesize{Block diagram placeholder: Sensor $\to$ Conditioning $\to$ Compute $\to$ Actuator, with data to SCADA/Cloud.}
+\end{columns}
+
+\vspace{1mm}
+\textbf{System integrator view} \\
+Automation engineers orchestrate multiple “couples” (machines/cells) to dance in unison: coordination, timing, safety, and lifecycle management.
 \end{frame}
 
 
