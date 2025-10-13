@@ -112,6 +112,8 @@ Holidays: 23 Dec 2025, 30 Dec 2025, and 6 Jan 2026. %As required classes will be
 \textbf{Working definition for this course}\\[2mm]
 \emph{Automation is the purposeful application of mechanical, electrical, and computer technologies to reduce human involvement in task performance-without necessarily removing humans from the loop.}
 
+Highly interdisciplinary, it encompasses: combine elements of sensor technology, actuator technology, control technology, communication technology, real-time software, and data science, among other things.
+
 \vspace{2mm}
 \textbf{Key nuances}
 \begin{itemize}
@@ -211,7 +213,7 @@ Automation evolves continually, driven by technology that reduces human effort, 
 \end{frame}
 
 \begin{frame}{Automation Technology Today and Tomorrow}
-\textbf{Current accomplishments :} as per the Society for Measurement and Automation Technology within the Association of German Engineers (VDI/VDE) outlook:
+\textbf{Current accomplishments :} as per the Society for Measurement and Automation Technology within the Association of German Engineers (VDI/VDE) outlook\footnotemark:
 \begin{itemize}
   \item Enables \textbf{flexible value networks} and digital connectivity.
   \item Makes technology more accessible and user-friendly.
@@ -226,6 +228,7 @@ Automation evolves continually, driven by technology that reduces human effort, 
   \item Sustainability and circular economy supported by digital transparency.
   \item Need for clear standards, security, and qualified human oversight.
 \end{itemize}
+\footnotetext[1]{Adamczyk et. al., Automation 2025—Hypotheses and fields of action. (in German) VDI/VDE Society for Measurement and Control, 2015}
 \end{frame}
 
 \begin{frame}{Self-Perception of Automation Technology}
@@ -252,21 +255,58 @@ Automation evolves continually, driven by technology that reduces human effort, 
 
 
 \begin{frame}
+	\frametitle{Examples of automation technologies (2)}
+	% Set up a 2x2 grid of figures
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+			\includegraphics[width=0.5\textwidth]{fig/lec01/ATM}
+			\caption{ATM (source: \href{https://www.paymeindia.in/blog/wp-content/uploads/2025/02/what-is-an-atm-1024x597.jpg}{PayMe}, public domain)}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+			\includegraphics[width=0.5\textwidth]{fig/lec01/Amazon.png}
+			\caption{Amazon Robotic Fulfillment Center (source: \href{https://www.waredock.com/wp-content/uploads/2019/08/Screenshot-2019-08-01-at-22.50.57-768x481.png}{Waredock eCommerce Fulfilment Network}, public domain)}
+		\end{subfigure}
+		\\
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+			\includegraphics[width=0.5\textwidth]{fig/lec01/PLC.jpg}
+			\caption{PLC Controller used in Mobile 
+Robots (source: \href{https://doi.org/10.1016/j.robot.2023.104526}{Ghodsian et. al.})}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+			\includegraphics[width=0.5\textwidth]{fig/lec01/CAN.jpg}
+			\caption{CAN Bus is used for ECU 
+communication in cars (source: \href{https://www.allaboutcircuits.com/uploads/articles/CAN.jpg}{Wikimedia Commons}, Stephen St. Michael, \href{https://www.allaboutcircuits.com/technical-articles/introduction-to-can-controller-area-network/}{ Introduction to CAN (Controller Area Network) })}
+		\end{subfigure}
+		\vspace{-0.5cm}
+		\caption*{Examples of automation technologies in various domains} 
+        \label{fig:examples_machine_drives_02}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Examples of automation technologies (1)}
 	\begin{figure}
 		\centering
 		\begin{subfigure}[b]{0.49\textwidth}
 			\centering
 			\includegraphics[width=0.5\textwidth]{fig/lec01/Tractor.png}
-			\caption{Electric cars (source: \href{https://commons.wikimedia.org/wiki/File:Electric_Car_recharging.jpg}{Wikimedia Commons}, M.~Movchin and F. Mueller, \href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{CC BY-SA 3.0})}
+			\caption{John Deere's autonomous tractor (source: \href{https://www.deere.ca/assets/images/common/autonomous-r4i016906-r1-tractor-876x630.jpg}{Why Do I Need Autonomy?},  Deere \& Company, public domain)}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}[b]{0.49\textwidth}
 			\centering
-			\includegraphics[width=0.5\textwidth]{fig/lec01/Airplane.png}
-			\caption{Wind turbine generators (source: \href{https://pxhere.com/en/photo/954757}{pxhere.com}, public domain)}
+			\includegraphics[width=0.5\textwidth]{fig/lec01/A340_FCU.jpg}
+			\caption{The modern flight control unit of an Airbus A340 (source: \href{https://pxhere.com/en/photo/954757}{pxhere.com}, K A Salom, \href{https://creativecommons.org/licenses/by/2.0}{CC BY 2.0})}
 		\end{subfigure}
-		\\
+		\\ 
+		\vspace{-0.25cm}
 		\begin{subfigure}[b]{0.49\textwidth}
 			\centering
 			\includegraphics[width=0.5\textwidth]{fig/lec01/Automatix_KukaRobot.jpg}
@@ -275,58 +315,23 @@ Automation evolves continually, driven by technology that reduces human effort, 
 		\hfill
 		\begin{subfigure}[b]{0.49\textwidth}
 			\centering
-			\includegraphics[width=0.5\textwidth]{fig/lec01/SpaceX.jpg}
-			\caption{Electric tools (source: \href{https://www.flickr.com/photos/30478819@N08/49940384798}{flickr.com},  M.~Verch, \href{https://creativecommons.org/licenses/by/2.0/}{CC BY 2.0})}
+			\includegraphics[width=0.5\textwidth]{fig/lec01/Falcon_Heavy_Demo_Mission_(40126461851).jpg}
+			\caption{SpaceX Automated Guidance System (source: \href{https://commons.wikimedia.org/wiki/File:Falcon_Heavy_Demo_Mission_(40126461851).jpg}{Wikimedia Commons},  \href{https://creativecommons.org/public-domain/cc0/}{CC0})}
 		\end{subfigure}
-		\caption*{Examples of electrical machine and drive applications} 
+		\vspace{-0.5cm}
+		\caption*{Examples of automation technologies in various domains} 
         \label{fig:examples_machine_drives_01}
 	\end{figure}
 \end{frame}
 
-
-\begin{frame}
-	\frametitle{Examples of automation technologies (2)}
-	% Set up a 2x2 grid of figures
-	\begin{figure}
-		\ContinuedFloat
-		\centering
-		\begin{subfigure}[b]{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.5\textwidth]{fig/lec01/ATM}
-			\caption{High-speed trains (source: \href{https://commons.wikimedia.org/wiki/File:Fast_Train_Spain_Class_103_AVE_Siemens_Bridge_Macanet-Massanes.JPG}{Wikimedia Commons}, P.~Elektro, \href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{CC BY-SA 3.0})}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.5\textwidth]{fig/lec01/Amazon.png}
-			\caption{Electric aircraft (source: \href{https://commons.wikimedia.org/wiki/File:Electric_Airbus_A320.jpg}{Wikimedia Commons}, M.~Weinold, \href{https://creativecommons.org/licenses/by-sa/4.0/deed.en}{CC BY-SA 4.0})}
-		\end{subfigure}
-		\\
-		\begin{subfigure}[b]{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.5\textwidth]{fig/lec01/PLC.jpg}
-			\caption{Pumps (source: \href{https://commons.wikimedia.org/wiki/File:Hammelmann_Stationary_unit_with_electric_motor.jpg}{Wikimedia Commons}, Hammelmann, \href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{CC BY-SA 3.0})}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.5\textwidth]{fig/lec01/CAN.jpg}
-			\caption{Cranes (source: \href{https://commons.wikimedia.org/wiki/File:Hammelmann_Stationary_unit_with_electric_motor.jpg}{Wikimedia Commons}, Belfast Dissenter, \href{https://creativecommons.org/licenses/by-sa/4.0/deed.en}{CC BY-SA 4.0})}
-		\end{subfigure}
-		\caption*{Examples of electrical machine and drive applications} 
-        \label{fig:examples_machine_drives_02}
-	\end{figure}
-\end{frame}
-
-
 \begin{frame}{Automation - example case of manufacturing systems}
 \textbf{Automation in manufacturing} can appear in:
 \begin{itemize}
-  \item \textbf{Manufacturing support systems} - e.g., CAD, CAM, CIM, and MRP.
+  \item \textbf{Manufacturing support systems} - e.g., Computer aided design (CAD), computer aided manufacturing (CAM), computer-integrated manufacturing (CIM) $^*$, and material requirement planning (MRP).
   \item \textbf{Manufacturing systems} - the actual production and material-handling equipment.
 \end{itemize}
 
-\textbf{Computer-integrated manufacturing (CIM)} links both levels by connecting support systems directly with factory automation for a fully integrated enterprise.
+$^*$\textbf{Computer-integrated manufacturing (CIM)} links both levels by connecting support systems directly with factory automation for a fully integrated enterprise.
 
 \vspace{3mm}
 \textbf{Focus of this section:}\\
@@ -452,37 +457,231 @@ Flexible     & Low      & Hard      & High       & Flow-line\\
   \item Programmable and flexible automation underpin \textbf{modern Industry 4.0} and \textbf{reconfigurable manufacturing}.
   \item Engineers must select the automation type based on economic trade-offs between productivity, product mix, and lifecycle adaptability.
 \end{itemize}
+\end{frame}
 
-Continue with What Is Automation Technology? Basic 2
-Terms and Concepts of Automation
-Technology
+\begin{frame}{Technical System — Definition \& Structure}
+\textbf{Definition}\\
+A \textbf{technical system} is characterized by its \textbf{inputs}, \textbf{outputs}, \textbf{function}, and \textbf{structure}. It comprises several \textbf{subsystems} arranged hierarchically and interacting with each other.
+
+\vspace{-1.5mm}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec01/tech_system.pdf}
+			\caption*{System and subsystem of a technical system (source: Weyrich, M., 2024. Industrial Automation and Information Technology. Berlin, Germany: Springer.)}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\textbf{Key points}
+		\begin{itemize}
+		\item Each subsystem has a specific function (mapping of input $\rightarrow$ output).
+		\item Abstraction helps describe and model complex installations independent of their concrete hardware.
+		\end{itemize}
+		\textbf{Reading the diagram}\\
+		\footnotesize
+		Inputs are processed through subsystems $S_1,\ldots,S_n$ within defined system boundaries to produce outputs. Subsystems can themselves contain elements and control logic.
+	\end{column}
+\end{columns}
 \end{frame}
 
 
-% --- Slide 3: The Automation Stack (Mechatronics Lens) ---
-\begin{frame}{The Automation Stack (Mechatronics Lens)}
+\begin{frame}{Technical Facility — Concrete Realization}
+\textbf{Definition}\\
+A \textbf{technical facility} is a concrete collection of equipment, devices, and machinery that work together to achieve a purpose. It is a physical implementation of one or more technical systems.
+
+\vspace{1.5mm}
+\begin{columns}
+	\begin{column}{0.55\textwidth}
+		\textbf{Example (process plant excerpt)}
+		\begin{itemize}
+		\item Raw materials A and B; valves, piping, reactor; sensors and actuators.
+		\item \textbf{Control signals} command actuators; \textbf{measurement signals} report states.
+		\item Output is a new substance/product C.
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec01/tech_facility.pdf}
+			\caption*{Example of a technical facility (adapted from \href{https://doi. org/10.1007/978-3-642-58446-6}{Lauber et. al.})}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+%----------------------------------------------------------
+\begin{frame}{Technical Process — Functional Abstraction}
+\textbf{Definition (DIN IEC 60050-351 / VDI Glossary)}\\
+A \textbf{technical process} is the complete set of interacting operations by which \textbf{matter, energy, or information} is transformed, transported, or stored.
+
+\vspace{1.5mm}
+\textbf{Why abstract?}
+\begin{itemize}
+  \item Real-time information processing and distributed integration require a \textbf{function-oriented} view.
+  \item Focus on \textbf{subprocesses}, their interrelations, and \textbf{command/state variables}.
+\end{itemize}
+
 \begin{columns}[T,onlytextwidth]
-\column{0.54\textwidth}
-\textbf{Layers}
+\column{0.58\textwidth}
+\includegraphics[width=\linewidth]{fig/lec01/example_tech_process.pdf}
+\column{0.38\textwidth}
+\footnotesize
+\textbf{Example sequence}\\
+P1: Filling \quad P2: Reaction \quad P3: Discharge\\[1mm]
+Inputs: inflow A \& B \quad Output: product C\\
+Measured/commanded: valve openings, flow rates, temperatures, levels.
+\end{columns}
+\end{frame}
+
+%----------------------------------------------------------
+\begin{frame}{Relating the Terms in Practice}
+\textbf{From concrete to abstract and back}
 \begin{enumerate}
-  \item \textbf{Sensors} (electrical, mechanical, magnetic, optical) $\rightarrow$ scaling, filtering, calibration, shielding.
-  \item \textbf{Compute} (MCU/DSP, FPGA, PLC): timing, determinism, safety tasks, OS/RTOS.
-  \item \textbf{Control \& Sequencing}: PID/IMC, cascades, feedforward; SFC/state machines, interlocks, mode logic.
-  \item \textbf{Actuators \& Drives}: DC/BLDC/servo, VFD/FOC, motion profiles, STO.
-  \item \textbf{Comms \& Data}: OPC~UA, Modbus‐TCP, MQTT; time sync, historians, dashboards.
-  \item \textbf{Supervision \& Optimization}: HMI/SCADA, digital twins, KPIs (OEE), diagnostics, updates.
+  \item \textbf{Technical system} — abstract structure of subsystems and functions (what maps to what).
+  \item \textbf{Technical facility} — physical realization (hardware: valves, pumps, reactors, sensors).
+  \item \textbf{Technical process} — functional chain of operations (filling $\rightarrow$ reaction $\rightarrow$ discharge) with \textbf{inputs/outputs} and \textbf{state \& command variables}.
 \end{enumerate}
 
-\column{0.44\textwidth}
-\centering
-%\includegraphics[width=\linewidth]{stack_placeholder.png}\\[-1mm]
-\footnotesize{Block diagram placeholder: Sensor $\to$ Conditioning $\to$ Compute $\to$ Actuator, with data to SCADA/Cloud.}
-\end{columns}
+\vspace{2mm}
+\textbf{Signal viewpoints}
+\begin{itemize}
+  \item \emph{Inputs/Outputs}: material/energy/information entering or leaving the process.
+  \item \emph{Command variables}: actuator setpoints (e.g., valve opening).
+  \item \emph{State variables}: measured quantities (e.g., flow rate, temperature, level).
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Takeaway}\\
+Use \emph{system} to reason about structure, \emph{facility} to reason about hardware, and \emph{process} to reason about operations and signals—then connect all three with software and communication to realize automation.
+\end{frame}
+
+%----------------------------------------------------------
+\begin{frame}{What is an \textit{Automaton}? (DIN IEC 60050-351)}
+\textbf{Definition (concise)}\\
+\emph{A self-acting artificial system whose behaviour is governed by given decision rules (discretely or continuously). Its output variables are generated from its input and state variables.}
+
+\vspace{2mm}
+\textbf{Implications}
+\begin{itemize}
+  \item Autonomy arises from \textbf{rules/relationships} linking inputs, states, and outputs.
+  \item Can operate in discrete-event fashion (sequencing) or continuous-time regulation.
+  \item An \textbf{automaton} is the basic building block of automation technology.
+\end{itemize}
 
 \vspace{1mm}
-\textbf{System integrator view} \\
-Automation engineers orchestrate multiple “couples” (machines/cells) to dance in unison: coordination, timing, safety, and lifecycle management.
+\textbf{From devices to systems}
+\begin{itemize}
+  \item Modern automation focuses on \textbf{orchestrating subsystems} that cooperate to perform tasks.
+  \item Interest shifts from isolated functions to \textbf{how functions are connected}.
+\end{itemize}
 \end{frame}
+
+%----------------------------------------------------------
+\begin{frame}{Automaton = Technical Process + Automation System + User}
+\begin{columns}[T,onlytextwidth]
+\column{0.58\textwidth}
+\textbf{Constituent parts}
+\begin{itemize}
+  \item \textbf{Technical process}: the physical/chemical/information transformation (process step $n$ and neighbours).
+  \item \textbf{Automation system}: sensors, controllers, actuators implementing the decision rules.
+  \item \textbf{User (human operator)}: activates/deactivates, monitors, and intervenes in exceptions.
+\end{itemize}
+
+\textbf{Signal view}
+\begin{itemize}
+  \item \emph{Signals from sensors} $\rightarrow$ internal state/measurement.
+  \item \emph{Signals to actuators} $\rightarrow$ commands to influence the process.
+\end{itemize}
+
+\column{0.40\textwidth}
+%\centering
+\includegraphics[width=\linewidth]{fig/lec01/automation_human_user.pdf}\\
+\footnotesize{Technical system with automation and human in the loop (source: Weyrich, M., 2024. Industrial Automation and Information Technology. Berlin, Germany: Springer.)}
+
+\textbf{Role of the human}\\
+A special \textbf{monitoring} function remains; the user decides \textbf{when/where} to employ the automaton within a defined context.
+\end{columns}
+\end{frame}
+
+%----------------------------------------------------------
+\begin{frame}{Degree of Automation \& Taylorian Background}
+\textbf{Degree of automation (DIN IEC 60050-351)}\\
+\emph{Proportion of automatic functions relative to the entire set of functions of a system or facility.}
+
+\vspace{2mm}
+\textbf{Taylorism and early industrial automation}
+\begin{itemize}
+  \item Production decomposed into \textbf{detailed tasks} via labour studies and management.
+  \item Enables direct comparison of human vs machine for \textbf{time, quality, and cost}.
+  \item Example: \textbf{welding robot} executes a specified seam; quality becomes more reproducible, but setup/programming costs arise.
+\end{itemize}
+
+\vspace{1mm}
+\textbf{Limits: Taylor's ``vicious circle''}
+\begin{itemize}
+  \item Increasingly specialized subprocesses $\Rightarrow$ complex dependencies and inflexibility.
+  \item Changing functions requires significant \textbf{engineering effort}.
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------
+\begin{frame}{Towards Flexible Automata}
+\textbf{Raising applicability without full reprogramming}
+\begin{itemize}
+  \item Add \textbf{sensing} to compensate disturbances (e.g., thermal distortion during welding).
+  \item Use feedback to adapt within the \textbf{dedicated function} while avoiding time-consuming reprogramming.
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Modern direction}
+\begin{itemize}
+  \item Combine \textbf{software} with \textbf{standardized \& modular systems} to increase \textbf{flexibility and applicability}.
+  \item Move from isolated automata to \textbf{integrated automated systems} with coordinated functions.
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Design takeaway}
+\begin{itemize}
+  \item Specify the \emph{context of use}, the \emph{degree of automation}, and the \emph{intervention rules} for the human.
+  \item Architect sensor-decision-actuation loops that allow \textbf{bounded autonomy} and graceful user override.
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------
+\begin{frame}{Summary for Practice}
+\begin{itemize}
+  \item An \textbf{automaton} = automation system + technical process, supervised by a \textbf{user}.
+  \item \textbf{Degree of automation} quantifies how much is automatic; it varies by task and context.
+  \item Historical Taylorism enabled productivity but also rigidity; modern systems target \textbf{flexibility} through sensing, software, and modularity.
+  \item Effective automation design balances \textbf{autonomy} with \textbf{human oversight} and clear exception handling.
+\end{itemize}
+\end{frame}
+
+% % --- Slide 3: The Automation Stack (Mechatronics Lens) ---
+% \begin{frame}{The Automation Stack (Mechatronics Lens)}
+% \begin{columns}[T,onlytextwidth]
+% \column{0.54\textwidth}
+% \textbf{Layers}
+% \begin{enumerate}
+%   \item \textbf{Sensors} (electrical, mechanical, magnetic, optical) $\rightarrow$ scaling, filtering, calibration, shielding.
+%   \item \textbf{Compute} (MCU/DSP, FPGA, PLC): timing, determinism, safety tasks, OS/RTOS.
+%   \item \textbf{Control \& Sequencing}: PID/IMC, cascades, feedforward; SFC/state machines, interlocks, mode logic.
+%   \item \textbf{Actuators \& Drives}: DC/BLDC/servo, VFD/FOC, motion profiles, STO.
+%   \item \textbf{Comms \& Data}: OPC~UA, Modbus‐TCP, MQTT; time sync, historians, dashboards.
+%   \item \textbf{Supervision \& Optimization}: HMI/SCADA, digital twins, KPIs (OEE), diagnostics, updates.
+% \end{enumerate}
+
+% \column{0.44\textwidth}
+% \centering
+% %\includegraphics[width=\linewidth]{stack_placeholder.png}\\[-1mm]
+% \footnotesize{Block diagram placeholder: Sensor $\to$ Conditioning $\to$ Compute $\to$ Actuator, with data to SCADA/Cloud.}
+% \end{columns}
+
+% \vspace{1mm}
+% \textbf{System integrator view} \\
+% Automation engineers orchestrate multiple “couples” (machines/cells) to dance in unison: coordination, timing, safety, and lifecycle management.
+% \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
