@@ -21,14 +21,15 @@ This work is licensed under a
 <a href="https://ias-uni-siegen.github.io/Automation_T/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
 
 The covered topics are:
-- An initial overview of power electronics devices and components
-- Fundamental semiconductor physics
-- pn junctions
-- Introduction to power semiconductors- P-i-N diodes, Schottky, and BJTs 
-- Conventional power semiconductors- Thyristors, MPSFETs, and BJTs
-- Next generation power semiconductors- Wide bandgap devices and gate drive networks
-- Passive components- capacitors, inductors, and passive filters
-- Way forward in power semiconductors- packaging, thermal, reliability and faults. 
+- Module I: Introduction to Automation Technologies.
+- Module II: Sensor Technologies.
+- Module III: Signal Conditioning.
+- Module IV: Processors in Automation Systems.
+- Module V: Controllers and Communication.
+- Module VI: Industrial communication systems.
+- Module VI: Actuators and Motion Systems.
+- Module VII: Testing and Validation.
+- Module VIII: Industrial Case Studies.
 
 
 <!-- Should be added by TATSAT
