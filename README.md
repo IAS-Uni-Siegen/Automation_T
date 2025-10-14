@@ -30,11 +30,15 @@ The covered topics are:
 - Passive components- capacitors, inductors, and passive filters
 - Way forward in power semiconductors- packaging, thermal, reliability and faults. 
 
+
+<!-- Should be added by TATSAT
 ## Exercise tasks (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/Automation_T/exercise.pdf" target="_blank" class="image fit"><img src="misc/Exercise_preview.png" alt=""></a>
 
 ## Exercise tasks including solutions (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/Automation_T/exercise_with_solution.pdf" target="_blank" class="image fit"><img src="misc/Exercise_with_solution_preview.png" alt=""></a>
+
+-->
 
 <!--## Exam history
 
