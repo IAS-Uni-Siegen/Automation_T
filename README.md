@@ -53,9 +53,9 @@ The covered topics are:
 ## Citation
 See "Cite this repository" info box on the top-right or use the following BibTeX entry for citing it:
 ```
-@misc{Sah_PEDC_2025,
+@misc{Sah_AT_2025,
     author = {Sah, Bikash},
-    title = {{Power Electronics Devices (and Components)}},
+    title = {{Automation Technologies}},
     url = {https://github.com/IAS-Uni-Siegen/Automation_T},
     year = {2025}
 }
