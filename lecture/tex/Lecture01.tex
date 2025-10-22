@@ -67,13 +67,42 @@ Holidays: 23 Dec 2025, 30 Dec 2025, and 6 Jan 2026. %As required classes will be
 	\end{frame}
 
 
+\begin{frame}{Necessary Prior Knowledge for this Course}
 
+\textbf{Students are expected to have a basic understanding of:}
+\begin{itemize}
+  \item \textbf{Basic physics and laws governing systems:} for example, Newton's law of motion, electricity, dimensional consistency, etc.
+  \item \textbf{Mathematical background:} algebra, complex numbers (phasors), basic calculus and elementary differential equations.
+  \item \textbf{Basic signal theory:} Fourier series, Laplace transform, transfer functions, step/impulse response.
+  \item \textbf{General systems thinking:} reading block diagrams, input-output viewpoints, feedback/feedforward concepts.
+  \item \emph{No advanced programming is required—any code used will be introduced as needed and tied to real automation tasks.}
+\end{itemize}
+
+\textbf{Topics not covered (addressed in other courses):}
+\begin{itemize}
+  \item Machine learning in automation.
+  \item Advanced control theory (e.g., optimal, robust, nonlinear control), robotics, etc.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Recommended reading}
+	\begin{itemize}
+		\item Weyrich, Michael. Industrial Automation and Information Technology. Berlin, Germany: Springer, 2024.
+		\item Daniel E.. Kandray. Programmable Automation Technologies: An Introduction to CNC, Robotics and PLCs. Industrial Press, 2010.
+		\item Hering, Ekbert, and Gert Schönfelder. Sensors in Science and Technology. Springer Fachmedien Wiesbaden, 2022.
+		\item Woods, Roger, John McAllister, Gaye Lightbody, and Ying Yi. FPGA-based implementation of signal processing systems. John Wiley \& Sons, 2008.
+		\item Bartelt, Terry LM. Industrial automated systems: instrumentation and motion control. Delmar Learning, 2010.
+	\end{itemize}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Start %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \center
-\textbf{\huge{Module I: Introduction to Automation Technologies}}
+\textbf{\huge{Module I: Introduction to Automation Technologies}} \\ [5mm]
+\textbf{\Large{Submodule: Introduction}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -658,6 +687,756 @@ A special \textbf{monitoring} function remains; the user decides \textbf{when/wh
 \end{itemize}
 \end{frame}
 
+
+%----------------------------------------------------------
+\begin{frame}{Fundamental Components of Automation Systems}
+\textbf{Core concept:}  
+Automation systems acquire information from the technical process, process it, and influence the process again—closing the feedback loop.
+
+\begin{itemize}
+  \item Three essential elements to form a \textbf{closed-loop system}:
+  \begin{enumerate}
+    \item \textbf{Sensor} — measures physical variables from the process.
+    \item \textbf{Controller} — processes measurement data and generates control commands.
+    \item \textbf{Actuator} — converts control signals into physical action on the process.
+  \end{enumerate}
+  %\item Together, they form a \textbf{closed-loop system} that maintains desired process conditions despite disturbances.
+\end{itemize}
+\begin{center}
+	\vspace{-0.25cm}
+\includegraphics[width=0.75\linewidth]{fig/lec01/components_AT.pdf}\\
+\footnotesize{Functional blocks in a feedback control loop.}
+\end{center}
+\end{frame}
+
+\begin{frame}{The Feedback Control Loop}
+\textbf{Operating principle}
+\begin{itemize}
+  \item \textbf{Reference signal:} desired setpoint from operator or automation program.
+  \item \textbf{Controller:} computes the control signal based on the error (difference between reference and actual output).
+  \item \textbf{Actuator:} applies control effort (force, torque, motion, etc.) to the process.
+  \item \textbf{Sensor:} measures actual output and feeds it back to the controller.
+  \item \textbf{Feedback:} compensates for \textbf{disturbances} to maintain system stability and accuracy.
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Modern trends}
+\begin{itemize}
+  \item Physical proximity of components no longer mandatory—virtualized and networked control is possible via industrial communication.
+  \item Data-driven feedback enables adaptive and remote control architectures.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Actuators: Converting Signals into Action}
+\textbf{Definition:}  
+Actuators transform control signals into mechanical or other physical process variables.
+
+\vspace{1mm}
+\textbf{Forms of actuation}
+\begin{itemize}
+  \item \textbf{Electromechanical:} DC, stepper, and servo motors; often coupled with gears and sensors for precise positioning.
+  \item \textbf{Fluid systems:} Pneumatic and hydraulic drives—convert pressure or flow into linear or rotary motion.
+  \item \textbf{Thermal or chemical:} Generate heat, flow, or chemical reactions to influence process variables.
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Key developments}
+\begin{itemize}
+  \item Integrated electronics and control software → smart servo drives.
+  \item Environmentally friendly pneumatics and efficient hydraulic systems.
+  \item Specialized actuators: piezo, magnetostrictive, or shape-memory drives.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Sensors: The Sensory Organs of Automation Systems}
+\textbf{Role:}  
+Sensors detect the state of elements in a technical process and convert physical or chemical quantities into signals.
+
+\vspace{1mm}
+\textbf{Classification by perception principle:}
+\begin{center}
+\begin{tabular}{l l l}
+\textbf{Sense} & \textbf{Perception} & \textbf{Examples} \\
+\hline
+Vision & Light, contours & Camera, optical systems \\
+Hearing & Sound & Microphone, ultrasound \\
+Smell & Fragrance & Gas or chemical analyzer \\
+Taste & Ingredients & Chromatograph \\
+Touch & Force, shape, heat & Probe, strain gauge, thermometer \\
+\end{tabular}
+\end{center}
+
+\vspace{1mm}
+\textbf{Key trends:}
+\begin{itemize}
+  \item Self-calibration and diagnostic features.
+  \item Data fusion from multiple sensing principles.
+  \item Integration into sensor networks with edge intelligence.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Advanced Sensor Concepts and Data Fusion}
+\textbf{Modern enhancements:}
+\begin{itemize}
+  \item \textbf{Intelligent sensors:} perform preprocessing, self-diagnosis, and error correction.
+  \item \textbf{Data fusion:} combine multiple measurement principles to improve robustness and accuracy.
+  \item \textbf{Human–machine integration:} intuitive visualization and configuration interfaces for non-experts.
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Emerging technologies}
+\begin{itemize}
+  \item \textbf{Sensor networks:} distributed measurement and shared data processing.
+  \item \textbf{Cognitive sensors:} capable of perception and context-aware decision making.
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Outlook:}
+\begin{itemize}
+  \item Sensors are evolving toward \textbf{autonomous subsystems} that enable perception, reasoning, and adaptation—key enablers of \textbf{Industry 4.0}.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Control at the Center of Automation}
+\textbf{Terminology (used precisely in this course)}
+\begin{itemize}
+  \item \textbf{Open-loop control:} controller output does \emph{not} use the measured process output.
+  \item \textbf{Feedforward control (open-loop with disturbance model):} known/disturbance inputs are measured or estimated and compensated \emph{without} comparing to the output.
+  \item \textbf{Closed-loop (feedback) control:} measured output is compared to a reference; the error drives the control action.
+\end{itemize}
+
+\textbf{Key idea} \\
+Real systems often \emph{combine} feedforward (anticipate known effects) with feedback (reject unknown disturbances) for improved performance.
+\end{frame}
+
+
+
+\begin{frame}{Feedforward Control with Disturbance Detection}
+\begin{columns}[T,onlytextwidth]
+\column{0.58\textwidth}
+\textbf{Structure \& assumptions}
+\begin{itemize}
+  \item Relationships between inputs, outputs, and disturbances are known at design time.
+  \item Disturbances that are \textbf{detectable/measurable} can be injected into a compensator to pre-empt their effect.
+  \item Unknown or non-detectable disturbances still pass to the output.
+\end{itemize}
+\vspace{1mm}
+\textbf{Pros/Cons}
+\begin{itemize}
+  \item \(\checkmark\) Fast response, no sensor delay in the loop, can avoid unnecessary actuation.
+  \item \(\times\) Model dependence; cannot correct modelling errors or unmeasured disturbances.
+\end{itemize}
+
+\column{0.40\textwidth}
+\centering
+\vspace{2cm}
+\includegraphics[width=\linewidth]{fig/lec01/feedforward_control.pdf}\\
+\footnotesize{Feedforward with sensor for disturbance detection}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Closed-Loop (Feedback) Control \& Practical Example}
+\textbf{Closed-loop principle}
+\begin{itemize}
+  \item Measure output \(\rightarrow\) compare with reference \(\rightarrow\) control action reduces error.
+  \item Rejects unknown disturbances; tolerates modelling errors.
+\end{itemize}
+
+\textbf{Example: room thermostat}
+\begin{itemize}
+  \item \emph{Feedback only:} keeps temperature at setpoint; sudden window opening (disturbance) causes controller to drive heater hard, wasting energy.
+  \item \emph{With feedforward sensor logic:} detect rapid temperature drop due to ventilation, \textbf{temporarily disable} heating (open-loop action), then resume feedback control after window closes.
+\end{itemize}
+
+\textbf{Lesson:} combine \textbf{feedback} (robustness) with \textbf{feedforward} (anticipation) when disturbance pathways are known.
+\end{frame}
+
+
+\begin{frame}{Choosing Between Control Types}
+\small
+\begin{center}
+\resizebox{0.98\linewidth}{!}{
+\begin{tabular}{@{}l p{3.5cm} p{3.5cm} p{3.5cm}@{}}
+\toprule
+\textbf{Aspect} & \textbf{Open-Loop (pure)} & \textbf{Feedforward (open-loop w/ disturbance)} & \textbf{Closed-Loop (feedback)} \\
+\midrule
+Uses output measurement? & No & No (uses disturbance measurement/model) & \textbf{Yes} (error-driven) \\
+Handles unknown disturbances & Poor & Limited (only measured/known) & \textbf{Good} \\
+Model dependence & Low–Moderate & \textbf{High} (needs accurate path) & Moderate \\
+Response speed & Fast (no sensor delay) & \textbf{Very fast} (anticipatory) & Slower (measurement + computation) \\
+Steady-state accuracy & Sensitive to drift & Sensitive to model mismatch & \textbf{High} with integral action \\
+Typical use & Simple sequences & Known load/ambient effects & General regulation, robustness \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\vspace{1mm}
+\textbf{Practical guideline:} Use \emph{feedback as the backbone}; add \emph{feedforward} when disturbance paths are known and measurable.
+\end{frame}
+
+
+% \begin{frame}{What is an Autonomous System?}
+% \textbf{Core idea}\\
+% Autonomous systems solve complex tasks \emph{independently} and respond to \emph{unpredictable events}. Unlike classic automated systems, they can interact with operators and initiate actions on their own.
+
+% \vspace{2mm}
+% \textbf{Concise definitions (from the text)}
+% \begin{itemize}
+%   \item \emph{Autonomy}: capability of a system/agent to achieve coordinated goals without human intervention by adapting to environmental changes.
+%   \item \emph{Industrial autonomous system}: a delimited technical system that, systematically and without external intervention, achieves its objectives despite uncertain environmental conditions; characterized by \textbf{self-governance} and \textbf{independence}.
+% \end{itemize}
+
+% \vspace{1mm}
+% \textbf{Scope of operation}\\
+% May act in air, on land, and on water; performs tasks typically done by humans; gathers information and takes decisions.
+% \end{frame}
+
+
+
+\begin{frame}{Autonomous System: Architecture at a Glance}
+\begin{columns}[T,onlytextwidth]
+\column{0.56\textwidth}
+\textbf{Main parts (contrasted with an automaton)}
+\begin{itemize}
+  \item \textbf{Perception}: acquire and interpret sensor data, resolve ambiguities.
+  \item \textbf{Reflection}: build/update semantic models of the environment; maintain a runtime world model.
+  \item \textbf{Decision-making}: goal management and action planning under constraints.
+  \item \textbf{Information \& knowledge processing}: initial knowledge (concepts, properties, methods, rules) and learned relations.
+  \item \textbf{Sensors/Actuators}: interact with the technical process (measurements and actions).
+  \item \textbf{User}: supervises, defines context and boundaries (“guard rails”).
+\end{itemize}
+
+\column{0.40\textwidth}
+\centering
+\vspace{2cm}
+\includegraphics[width=\linewidth]{fig/lec01/Auto_sys_arch_key_comp.pdf}\\
+\footnotesize{“Autonomous system architecture”.}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Roles of the Cognitive Components}
+\begin{itemize}
+  \item \textbf{Perception} — interprets sensor data, extracts relevant information from complex/partial observations.
+  \item \textbf{Reflection} — maintains a realistic runtime model; feeds planning with up-to-date context.
+  \item \textbf{Goal management} — selects appropriate objectives for the current situation.
+  \item \textbf{Planning} — chooses and sequences actions; enables actuators to influence the process.
+  \item \textbf{Information/knowledge processing} — augments initial knowledge via learning new relationships (AI/ML).
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Practical stance}
+\begin{itemize}
+  \item AI/ML is key for perception and pattern recognition, but open questions remain for deduction/inference; near-term use is in \emph{well-defined contexts}.
+  \item Many real deployments are \textbf{supervised autonomy}: the system recognizes limits and prompts human intervention when needed.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Levels of Driving Automation (SAE) — Analogy for Autonomy}
+\begin{columns}[T,onlytextwidth]
+\column{0.5\textwidth}
+\small
+\begin{itemize}
+  \item \textbf{L0-L2:} No/partial automation; driver assistance.
+  \item \textbf{L3 “Highly Automated”:} System handles certain use cases; requests human takeover if necessary (commercially available).
+  \item \textbf{L4 “Fully Automated”:} System manages all situations within a \emph{clear use case}; human may intervene via teleoperation in exceptions (active research/prototypes).
+  \item \textbf{L5 “Autonomous”:} System handles all tasks and acts in case of errors/faults — long-term research goal.
+\end{itemize}
+
+\column{0.5\textwidth}
+\centering
+\vspace{2cm}
+\includegraphics[width=\linewidth]{fig/lec01/level_auto.pdf}\\
+\footnotesize{(SAE levels.)}
+\end{columns}
+
+\vspace{-5mm}
+\textbf{Transfer to industry}\\
+Best near-term fit is in \textbf{specialized, well-structured applications} (e.g., mining vehicles, harvesting, intralogistics cells).
+\end{frame}
+
+
+\begin{frame}{Opportunities, Limits, and Responsibilities}
+\textbf{Why autonomy in industry}
+\begin{itemize}
+  \item Addresses labor shortages; increases availability; copes with unforeseen events; supports productivity and safety.
+\end{itemize}
+
+\textbf{Limits \& open challenges}
+\begin{itemize}
+  \item Handling rare/novel situations; robustness under uncertainty; verification and validation of learning components.
+  \item Ethical \& legal issues: accountability when decisions are made by the system; need for societal discourse and risk management.
+\end{itemize}
+
+\textbf{Design takeaway}
+\begin{itemize}
+  \item Engineer \textbf{guard rails}: clear operating domain, fail-safe behaviors, and human-in-the-loop supervision.
+  \item Combine perception-reflection-planning with measurable objectives; log decisions for auditability.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\center
+\textbf{\huge{Module I: Introduction to Automation Technologies}} \\ [5mm]
+\textbf{\Large{Submodule: Safety and open source tools}} \\ [10mm]
+\end{frame}
+
+
+\begin{frame}{What is Mechatronics?}
+\textbf{Origin \& sense of the term}
+\begin{itemize}
+  \item “Mecha” (mechanism) + “tronics” (electronics): products integrate electronics/software \emph{intimately} with mechanisms—boundaries blur.
+  \item A \textbf{mechatronic system}: a mechanical machine under electronic (incl.\ software) control.
+  \item \textbf{Mechatronics (discipline)}: all subject matter needed to \emph{specify and develop} such systems—modelling/simulation of the machine, sensors/actuators, and the control system.
+\end{itemize}
+
+\textbf{Canonical scope (per text)}
+\begin{itemize}
+  \item \textbf{Mechanical systems}: elements, machines, precision mechanics
+  \item \textbf{Electronic systems}: micro/power electronics, sensor \& actuator tech
+  \item \textbf{Information technology}: systems theory, automation, software engineering, AI
+\end{itemize}
+
+\textbf{Modern view}: mechatronics is a \emph{holistic} system-design activity, not just “add electronics to mechanics.”
+\end{frame}
+
+
+
+\begin{frame}{Generic Mechatronic System Design}
+\begin{columns}[T,onlytextwidth]
+\column{0.52\textwidth}
+\textbf{Block perspective}
+\begin{itemize}
+  \item Mechanical system \(\leftrightarrow\) Sensors/Actuators
+  \item Electrical/electronic system (power + interface)
+  \item A/D \& D/A conversion around the control computer
+  \item Computer system executes control/software functions
+\end{itemize}
+
+\textbf{Implication}
+\begin{itemize}
+  \item Co-design across mechanics–electronics–software is mandatory; signals bridge domains.
+\end{itemize}
+
+\column{0.44\textwidth}
+\centering
+\includegraphics[width=\linewidth]{fig/lec01/AT_design_process.pdf}\\
+\footnotesize{Generic Mechatronic System Design}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Mechatronic Design Process (from the text)}
+\begin{columns}[T,onlytextwidth]
+\column{0.56\textwidth}
+\textbf{Main lanes}
+\begin{itemize}
+  \item \textbf{Modelling/Simulation}: recognize need \(\rightarrow\) concept \& functions \(\rightarrow\) first-principle modular models \(\rightarrow\) sensor/actuator selection \(\rightarrow\) detailed models \(\rightarrow\) control design \(\rightarrow\) optimisation.
+  \item \textbf{Prototyping}: HIL (hardware-in-the-loop) simulation \(\rightarrow\) design optimisation.
+  \item \textbf{Deployment/Lifecycle}: embedded software deployment \(\rightarrow\) lifecycle optimisation \(\rightarrow\) info for future modules/upgrades.
+\end{itemize}
+
+\column{0.40\textwidth}
+\centering
+\vspace{2 cm}
+\includegraphics[width=\linewidth]{fig/lec01/AT_design_Safety.pdf}\\
+\footnotesize{Mechatronic Design Process}
+\end{columns}
+
+\vspace{1mm}
+\textbf{What the figure emphasizes}\\
+Prominent role of modelling \& simulation; translation of control models into embedded software follows in deployment.
+\end{frame}
+
+
+\begin{frame}{Mechatronic Design Process (from the text)}
+\centering
+\includegraphics[width=\linewidth]{fig/lec01/AT_design_Safety.pdf}\\
+\footnotesize{Mechatronic Design Process}
+\end{frame}
+
+\begin{frame}{System-Level Modelling \& Systems Engineering Notes}
+\textbf{Why systems engineering matters}
+\begin{itemize}
+  \item Mechatronic design integrates multiple engineering disciplines from \emph{concept} stage—beyond traditional siloed flows.
+  \item Activities align with ISO 15288 ideas: stakeholder needs, system requirements, architecture, detailed design, and analysis.
+\end{itemize}
+
+\textbf{SysML for concept design}
+\begin{itemize}
+  \item Addresses the lack of an early mechatronic concept process by enabling \textbf{system-level models} that treat all domains equitably—including \emph{non-material} (software) components.
+  \item Mechatronic systems are \textbf{systems-of-systems}; SysML diagrams capture dependencies among subsystems originating from different disciplines.
+\end{itemize}
+
+\textbf{Takeaway}\\
+Start with system-level models; iterate models \(\rightarrow\) HIL \(\rightarrow\) deployment; carry forward information for upgrades.
+\end{frame}
+
+
+\begin{frame}{Hierarchy of Safety Requirements}
+\textbf{Motivation:}
+\begin{itemize}
+  \item To develop a \textbf{safety argument} for a \emph{mechatronic system} that integrates both mechanical and electrical/electronic (E/E) subsystems.
+  \item Based on the ISO 26262 hierarchy, safety requirements are cascaded through several levels of abstraction.
+\end{itemize}
+
+\textbf{Safety hierarchy (ISO 26262):}
+\begin{itemize}
+  \item \textbf{Safety Goals} — derived from \emph{item definition}.
+  \item \textbf{Functional Safety Requirements} — applied to the \emph{preliminary architecture}.
+  \item \textbf{Technical Safety Requirements} — mapped to \emph{system design}.
+  \item \textbf{Hardware Safety Requirements} — assigned to hardware design.
+  \item \textbf{Software Safety Requirements} — assigned to software design.
+\end{itemize}
+
+\textbf{Challenge:}  
+No universally accepted equivalent hierarchy yet exists for \emph{mechatronic or mechanical} systems — motivating the need for a unified model.
+\end{frame}
+
+
+\begin{frame}{Functional Safety Concept}
+\textbf{Definition:}
+\begin{itemize}
+  \item Derived from ISO 26262 — ensures that the system maintains a safe state even under foreseeable faults.
+  \item In a \textbf{mechatronic context}, this extends beyond E/E components to include mechanical subsystems.
+\end{itemize}
+
+\textbf{In Mechatronic Systems:}
+\begin{itemize}
+  \item The \textbf{Mechatronic Functional Safety Concept} includes both control logic and the physical plant (mechanical system).
+  \item Mechanical aspects formerly referred to as \emph{external measures} are now internalized into the concept.
+  \item The concept remains independent of detailed E/E and mechanical designs but defines required safe states and control strategies.
+\end{itemize}
+
+\textbf{Purpose:}  
+Provide a unified architecture that integrates \emph{mechanical and electrical safety assumptions} early in design.
+\end{frame}
+
+
+\begin{frame}{Technical Safety Concept}
+\textbf{Definition:}
+\begin{itemize}
+  \item Refines functional safety requirements into detailed, implementable \emph{technical requirements}.
+  \item Establishes how the safety goals are realized through both E/E and mechanical design decisions.
+\end{itemize}
+
+\textbf{In Mechatronic Systems:}
+\begin{itemize}
+  \item The \textbf{Mechatronic Technical Safety Concept} links the functional concept with physical system implementation.
+  \item It includes mappings between:
+    \begin{itemize}
+      \item Mechanical design parameters
+      \item E/E subsystem performance limits
+      \item Interfaces at the \textbf{Mechanical-E/E boundary}
+    \end{itemize}
+  \item These relationships define how both domains interact to achieve required safety integrity.
+\end{itemize}
+\textbf{Purpose:}  
+Ensure traceability from high-level safety goals down to specific mechanical and E/E design choices.
+\end{frame}
+
+
+\begin{frame}{Hardware Safety and Integration}
+\textbf{Hardware Safety Requirements:}
+\begin{itemize}
+  \item Derived from the technical safety concept; specify measurable reliability and fault tolerance targets.
+  \item Include quantitative metrics such as fault rates, diagnostic coverage, and safe failure fraction.
+\end{itemize}
+
+\textbf{Integration Challenges in Mechatronic Systems:}
+\begin{itemize}
+  \item Hardware safety applies not only to electronic hardware but also to:
+    \begin{itemize}
+      \item Electromechanical interfaces (e.g., actuators, sensors, converters)
+      \item Mechanical structures critical to safe operation
+    \end{itemize}
+  \item Co-validation of mechanical and E/E subsystems is essential to verify safe performance.
+\end{itemize}
+
+\textbf{Takeaway:}  
+Mechatronic safety demands a \textbf{unifying design ontology} linking functional, technical, and hardware domains — ensuring traceability from system goals down to component implementation.
+\end{frame}
+
+
+\begin{frame}{Introduction to HARA for Mechatronic Systems}
+\textbf{Purpose of HARA- Hazard Analysis and Risk Assessment:}
+\begin{itemize}
+  \item Identify and evaluate potential hazards that can lead to unsafe conditions in a mechatronic system.
+  \item Derive safety goals and requirements systematically from system-level behavior.
+\end{itemize}
+
+\textbf{Applied Example: 4CAS (Four Corner Air Suspension System)}
+\begin{itemize}
+  \item 4CAS raises or lowers vehicle body using air springs at each wheel.
+  \item Sensors measure ride height; ECU adjusts pressure via electromechanical valves.
+  \item Typical functions:
+    \begin{itemize}
+      \item Maintain level body at selected height.
+      \item Adjust vehicle height for comfort, aerodynamics, or off-road conditions.
+    \end{itemize}
+\end{itemize}
+
+\textbf{HARA Objective:}
+Link mechanical (pneumatic, structural) and E/E (electronic, software) subsystems within a unified safety argument.
+\end{frame}
+
+
+\begin{frame}{System Architecture Context - 4CAS}
+\begin{columns}[T,onlytextwidth]
+\column{0.55\textwidth}
+\textbf{System Components:}
+\begin{itemize}
+  \item \textbf{Vehicle Body \& Chassis} — dynamic mass and structural reference.
+  \item \textbf{Pneumatic System} — air springs, valves, compressor.
+  \item \textbf{4CAS E/E System} — ECU, sensors, software control.
+  \item \textbf{Electromechanical Interface} — connects mechanical and electrical domains.
+  \item \textbf{User Interface} — in-cabin and remote commands.
+\end{itemize}
+
+\textbf{System Features:}
+\begin{itemize}
+  \item Closed-loop control at each corner.
+  \item Cross-linking for rough terrain handling.
+  \item Automatic lowering at high speed.
+\end{itemize}
+
+\column{0.42\textwidth}
+\vspace{2cm}
+\centering
+\includegraphics[width=\linewidth]{fig/lec01/4CAS.pdf}\\
+\footnotesize{High-level 4CAS Block Diagram.}
+\end{columns}
+\end{frame}
+
+\begin{frame}{HARA Framework for Mechatronic Systems}
+\textbf{Pars 1: Mechatronic Item Definition and HARA}
+\begin{itemize}
+  \item Defines system boundaries and operational context.
+  \item Identifies hazards and operational scenarios.
+  \item Evaluates hazardous events to establish \textbf{Mechatronic Safety Goals}.
+\end{itemize}
+
+\textbf{Key Steps:}
+\begin{enumerate}
+  \item \textbf{Initial System Description} — captures mechanical and E/E domains.
+  \item \textbf{Mechatronic Item Definition} — functional behavior, interfaces, and assumptions.
+  \item \textbf{Mechatronic HARA Documentation} — hazards, operational situations, and hazardous events.
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{HARA Framework for Mechatronic Systems}
+	\centering
+	\includegraphics[width=0.65\linewidth]{fig/lec01/HARA.pdf}\\
+	\footnotesize{HARA Design Description}
+\end{frame}
+
+
+\begin{frame}{Hazard Identification and Safety Goal Derivation}
+\textbf{Conceptual Flow (from the figure and text)}
+\begin{itemize}
+  \item Hazards arise from both \textbf{mechanical} (e.g., over-pressure, spring failure) and \textbf{E/E} (e.g., sensor fault, ECU error) domains.
+  \item Each operational situation is evaluated to define corresponding \textbf{Hazardous Events}.
+  \item Risk levels (severity, exposure, controllability) determine the \textbf{ASIL} (Automotive Safety Integrity Level).
+  \item From hazardous events, \textbf{Mechatronic Safety Goals} are derived — spanning mechanics, electronics, and software.
+\end{itemize}
+
+\textbf{Example (4CAS):}
+\begin{itemize}
+  \item \emph{Hazard:} Loss of air pressure in one corner → vehicle tilt → loss of control.
+  \item \emph{Safety Goal:} Maintain stable body height and prevent rapid tilt under fault conditions.
+\end{itemize}
+
+\textbf{Outcome:}
+The HARA provides the foundational safety reasoning upon which functional, technical, and hardware safety concepts are built.
+\end{frame}
+
+
+
+\begin{frame}{Safety Concepts in Mechatronic Systems}
+\textbf{Hierarchy of Safety Concepts (ISO 26262-inspired):}
+\begin{enumerate}
+  \item \textbf{Functional Safety Concept (Pars 2)} — defines system-level safe behavior and responses.
+  \item \textbf{Technical Safety Concept (Pars 3)} — allocates safety requirements to system elements.
+  \item \textbf{Hardware/E/E Technical Safety Concept (Pars 4)} — addresses hardware, software, and interface implementation.
+\end{enumerate}
+
+\textbf{Integration Challenge:}
+\begin{itemize}
+  \item Mechanical and E/E systems must be unified under one safety argument.
+  \item Functional $\rightarrow$ Technical $\rightarrow$ Hardware flow ensures traceability from hazard to implementation.
+\end{itemize}
+
+\textbf{4CAS Context Example:}  
+Air suspension must maintain vehicle height even if a sensor or valve fails — this defines the top-level \emph{Functional Safety Goal}.
+\end{frame}
+
+
+\begin{frame}{Functional Safety Concept (Pars 2)}
+\textbf{Objective:}
+Translate the \emph{Mechatronic Safety Goals} from HARA into concrete \emph{functional behaviors} that guarantee safety.
+
+\textbf{Key Components:}
+\begin{itemize}
+  \item \textbf{Mechatronic System Architecture} = Mechanical + E/E Architecture.
+  \item \textbf{Functional Safety Requirements} are assigned to both mechanical and electronic elements.
+  \item \textbf{External Measures} still exist for effects outside system scope (e.g., backup mechanical stops).
+\end{itemize}
+
+\textbf{Example (4CAS):}  
+If an air-pressure sensor fails, the ECU must detect the fault and switch to a safe mode — e.g., lock ride height until service.
+\end{frame}
+
+
+\begin{frame}{Functional Safety Concept (Pars 2)}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/lec01/mech_func_safety.pdf}\\
+\footnotesize{Mechatronic Functional Safety Concept Diagram.}
+\end{frame}
+
+
+\begin{frame}{Technical Safety Concept (Pars 3)}
+\textbf{Objective:}
+Refine functional requirements into implementable, verifiable \textbf{technical safety requirements}.
+
+\textbf{Key Aspects:}
+\begin{itemize}
+  \item Extends design to explicit \textbf{mechanical elements} (e.g., actuators, springs).
+  \item Defines \textbf{interfaces} between E/E and mechanical subsystems.
+  \item Allocates safety requirements across:
+    \begin{itemize}
+      \item \textbf{E/E System Elements:} controllers, sensors, software.
+      \item \textbf{Mechanical System Elements:} valves, cylinders, mounts.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Example (4CAS):}  
+Ensure valve response time and ECU actuation timing meet defined limits so that pressure adjustments remain stable under faults.
+\end{frame}
+
+
+\begin{frame}{Technical Safety Concept (Pars 3)}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/lec01/mech_func_safety.pdf}\\
+\footnotesize{Mechatronic Technical Safety Concept Diagram.}
+\end{frame}
+
+
+\begin{frame}{Hardware / E/E Technical Safety Concept (Pars 4)}
+\textbf{Objective:}
+Detail how E/E and software components implement and verify technical safety requirements.
+
+\textbf{Elements:}
+\begin{itemize}
+  \item \textbf{Hardware Software Interface Specification} — defines signal, timing, and fault-reaction behavior.
+  \item \textbf{Design Targets:} fault tolerance, diagnostic coverage, random failure rates.
+  \item \textbf{Physically Realised System:} Hardware + Embedded Executable + Mechanical Interface.
+\end{itemize}
+
+\textbf{Example (4CAS):}  
+ECU performs real-time diagnostics of height sensors; if the sensor drifts, the controller uses redundant input or holds last safe pressure.
+\end{frame}
+
+
+\begin{frame}{Hardware / E/E Technical Safety Concept (Pars 4)}
+\centering
+\includegraphics[width=0.85\linewidth]{fig/lec01/mech_EE_safety.pdf}\\
+\footnotesize{(Insert your Fig.\ 62: E/E Technical Safety Concept Diagram.)}
+\end{frame}
+
+
+\begin{frame}{Relationship Between Concepts}
+\textbf{Cascading Structure:}
+\begin{enumerate}
+  \item \textbf{Functional Safety Concept} defines “\emph{what}” must be safe.
+  \item \textbf{Technical Safety Concept} defines “\emph{how}” it will be made safe.
+  \item \textbf{Hardware/E/E Concept} defines “\emph{how it is implemented and verified}”.
+\end{enumerate}
+
+\textbf{4CAS Example Summary:}
+\begin{itemize}
+  \item \textbf{Functional:} Keep vehicle level under all driving modes.  
+  \item \textbf{Technical:} Ensure consistent pneumatic pressure control, even with sensor or valve degradation.  
+  \item \textbf{Hardware:} Verify electrical and mechanical subsystems meet reliability and timing specifications.
+\end{itemize}
+
+\textbf{Outcome:}
+These layers ensure complete traceability from hazard → goal → design → verification, across both mechanical and electronic domains.
+\end{frame}
+
+
+%---------------- Slide: Open-Source Automation ----------------
+\begin{frame}{Open-Source Automation: Tools and Benefits}
+\textbf{What is Open-Source Automation?}
+\begin{itemize}
+    \item \textbf{Definition:} Use of freely available, community-driven hardware and software for automation, control, and data management.
+    \item \textbf{Goal:} Promote transparency, interoperability, and cost-effective experimentation without vendor lock-in.
+\end{itemize}
+
+\vspace{3mm}
+\textbf{Typical Open-Source Ecosystem}
+% Removed \begin{table}[h!] and \end{table} as they are usually not necessary (and sometimes problematic) in Beamer frames.
+\scriptsize
+\begin{tabular}{p{2.7cm}p{7cm}}
+\toprule
+\textbf{Layer} & \textbf{Example Tools / Platforms}\\
+\midrule
+Field / Sensors & Arduino, ESP32, Raspberry Pi Pico, MicroPython\\
+Control / PLC   & OpenPLC, OpenHAB rules engine, IEC 61131-3 editor\\
+Edge / SCADA    & Node-RED, Grafana, InfluxDB, Mosquitto (MQTT broker)\\
+Analytics / Cloud & Python (NumPy, Pandas), TensorFlow Lite, Scikit-learn\\
+Communication   & OPC UA (open62541), Modbus TCP, MQTT\\
+Modeling / Simulation & OpenModelica, PyPSA, SimPy, PyBaMM\\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}{Open-Source Automation: Tools and Benefits}
+\vspace{2mm}
+\textbf{Benefits for Students}
+\begin{itemize}
+    \item \textbf{Hands-on learning:} Build and control systems using low-cost hardware and public repositories.
+    \item \textbf{Reproducibility:} Fully inspect, modify, and share experimental setups.
+    \item \textbf{Skill development:} Exposure to real industrial protocols (OPC UA, MQTT) and modern data pipelines.
+    \item \textbf{Community \& Collaboration:} Global developer support and continuous improvement.
+\end{itemize}
+\end{frame}
+
+% --- Slide 1: Reproducibility in Automation Systems ---
+\begin{frame}{Reproducibility in Automation Systems}
+
+\textbf{Why it matters}
+\begin{itemize}
+  \item Modern automation projects combine hardware, software, and data—making reproducibility essential for verification and scalability.
+  \item Ensures that experiments, control logic, and system behaviour can be \textbf{replicated across teams, sites, or devices}.
+  \item Enables traceability and transparency in industrial R\&D and academic workflows.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Reproducibility in Automation Systems}
+\vspace{2mm}
+\textbf{Core principles of reproducibility}
+\begin{itemize}
+  \item \textbf{Version control:} Git/GitHub or GitLab to track PLC code, Node-RED flows, and Python scripts.
+  \item \textbf{Environment definition:} Docker or Conda environments to reproduce runtime dependencies.
+  \item \textbf{Documentation:} Markdown, Jupyter Notebooks, and READMEs for configuration and setup.
+  \item \textbf{Automated testing:} Simulate logic and signal behaviour to ensure consistent results.
+\end{itemize}
+
+\vspace{2mm}
+\textbf{Example:}\\
+A student replicates a temperature-control experiment from another group by cloning the GitHub repo and launching an identical OpenPLC + Node-RED + InfluxDB Docker stack.
+\end{frame}
+
 % % --- Slide 3: The Automation Stack (Mechatronics Lens) ---
 % \begin{frame}{The Automation Stack (Mechatronics Lens)}
 % \begin{columns}[T,onlytextwidth]
@@ -688,23 +1467,7 @@ A special \textbf{monitoring} function remains; the user decides \textbf{when/wh
 %% Necessary prior knowledge %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % --- Slide: Necessary Prior Knowledge ---
-\begin{frame}{Necessary Prior Knowledge for this Course}
 
-\textbf{Students are expected to have a basic understanding of:}
-\begin{itemize}
-  \item \textbf{Basic physics and laws governing systems:} for example, Newton's law of motion, electricity, dimensional consistency, etc.
-  \item \textbf{Mathematical background:} algebra, complex numbers (phasors), basic calculus and elementary differential equations.
-  \item \textbf{Basic signal theory:} Fourier series, Laplace transform, transfer functions, step/impulse response.
-  \item \textbf{General systems thinking:} reading block diagrams, input-output viewpoints, feedback/feedforward concepts.
-  \item \emph{No advanced programming is required—any code used will be introduced as needed and tied to real automation tasks.}
-\end{itemize}
-
-\textbf{Topics not covered (addressed in other courses):}
-\begin{itemize}
-  \item Machine learning in automation.
-  \item Advanced control theory (e.g., optimal, robust, nonlinear control), robotics, etc.
-\end{itemize}
-\end{frame}
 
 
 
@@ -729,13 +1492,3 @@ A special \textbf{monitoring} function remains; the user decides \textbf{when/wh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recommended reading %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Recommended reading}
-	\begin{itemize}
-		\item Weyrich, Michael. Industrial Automation and Information Technology. Berlin, Germany: Springer, 2024.
-		\item Daniel E.. Kandray. Programmable Automation Technologies: An Introduction to CNC, Robotics and PLCs. Industrial Press, 2010.
-		\item Hering, Ekbert, and Gert Schönfelder. Sensors in Science and Technology. Springer Fachmedien Wiesbaden, 2022.
-		\item Woods, Roger, John McAllister, Gaye Lightbody, and Ying Yi. FPGA-based implementation of signal processing systems. John Wiley \& Sons, 2008.
-		\item Bartelt, Terry LM. Industrial automated systems: instrumentation and motion control. Delmar Learning, 2010.
-	\end{itemize}
-\end{frame}
