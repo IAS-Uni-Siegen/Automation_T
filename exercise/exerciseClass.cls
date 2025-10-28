@@ -87,7 +87,7 @@
 
 \fancyhead[L]{
     \textbf{\large{\@title}}\\
-    Prof. Dr.-Ing. Oliver Wallscheid
+    Dr. Bikash Sah
 }
 
 \fancyhead[R]{
@@ -108,7 +108,7 @@
     %\setlength{\parskip}{0pt}\\
     \setlength{\parskip}{0pt}%~\\
     \FloatBarrier
-    \noindent\underline{Answer:}%~\\ %if you want the actual answer to start from the next line simply add ~\\ also
+    \noindent\underline{Solution:}%~\\ %if you want the actual answer to start from the next line simply add ~\\ also
     %\let\oldfigure\figure
     %\renewcommand{\figure}{\vspace{-1\baselineskip}\oldfigure}
     \FloatBarrier
