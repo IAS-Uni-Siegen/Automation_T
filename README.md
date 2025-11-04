@@ -32,14 +32,13 @@ The covered topics are:
 - Module VIII: Industrial Case Studies.
 
 
-<!-- Should be added by TATSAT
+
 ## Exercise tasks (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/Automation_T/exercise.pdf" target="_blank" class="image fit"><img src="misc/Exercise_preview.png" alt=""></a>
 
 ## Exercise tasks including solutions (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/Automation_T/exercise_with_solution.pdf" target="_blank" class="image fit"><img src="misc/Exercise_with_solution_preview.png" alt=""></a>
 
--->
 
 <!--## Exam history
 
