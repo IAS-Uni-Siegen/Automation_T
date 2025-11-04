@@ -425,120 +425,128 @@ where $R(H)$ is the resistance in magnetic field $H$ and $R(0)$ is resistance wi
 \end{frame}
 
 \begin{frame}{Classification of Magnetoresistive Effects}
-\small
-\textbf{Overview of Magnetoresistive Effects}
 
+\textbf{Overview of Magnetoresistive (MR) Effects:}
 \begin{columns}[T]
-\column{0.48\textwidth}
+\column{0.4\textwidth}
 \textbf{Non-magnetic materials (MR):}
-\begin{itemize}
-    \item \textbf{OMR (Ordinary MR)} - due to electron deflection by magnetic field.
-    \item \textbf{EMR (Extraordinary MR)} - occurs in inhomogeneous semiconductor structures.
-    \item Effect visible at high fields; in Bismuth (Bi), resistance changes up to 100\%.
+\begin{itemize} \small
+    \item \textbf{OMR - Ordinary Magnetoresistance:}
+    Caused by Lorentz-force deflection of charge carriers in a magnetic field.\\
+    Effect is small ($<1\%$) in most metals, but large in semimetals like Bi (up to 100\%).
+    \item \textbf{EMR - Extraordinary Magnetoresistance:}
+    Observed in hybrid metal/semiconductor structures (e.g., InSb).\\
+    Large resistance change due to field-induced current redistribution.
 \end{itemize}
 
-\column{0.48\textwidth}
+\column{0.6\textwidth}
 \textbf{Magnetic materials (XMR):}
-\begin{itemize}
-    \item \textbf{AMR (Anisotropic MR)}: 3-4\% change.
-    \item \textbf{GMR (Giant MR)}: 6-100\% change in multilayers.
-    \item \textbf{CMR (Colossal MR)}: >100\%, perovskite structures.
-    \item \textbf{TMR (Tunnel MR)}: up to 50\%, depends on magnetization angle.
+\begin{itemize} \small
+    \item \textbf{AMR - Anisotropic MR:}
+    Change of 3-4 \% depending on angle between current and magnetization. Caused by spin-orbit interaction in ferromagnets (e.g., NiFe alloys).
+    \item \textbf{GMR - Giant MR:}
+    6-100 \% change in multilayer structures (FM/NM/FM). Due to spin-dependent electron scattering at interfaces.
+    \item \textbf{CMR - Colossal MR:}
+    $>$100 \% change in perovskite manganites (e.g., La$_{1-x}$Sr$_x$MnO$_3$).\\
+    Linked to double-exchange interaction and phase transitions.
+    \item \textbf{TMR - Tunnel MR:}
+    Up to 50 \% change in magnetic tunnel junctions (FM/insulator/FM).\\
+    Arises from spin-polarized tunneling; depends on relative magnetization angle.
 \end{itemize}
 \end{columns}
-
-\end{frame}
-
-
-\begin{frame}{Anisotropic Magnetoresistance (AMR): Fundamentals}
-\small
-\textbf{Principle:}
-In ferromagnetic materials, regions with uniform magnetization (\textit{Weiss domains}) interact with current flow. Resistance depends on the angle $\beta$ between the magnetization $\mathbf{M}$ and the current density $\mathbf{j}$.
-
-
-\begin{columns}
-\column{0.5\textwidth}
-\medskip
-\textbf{Electric Field Components:}
-\[
-E = E_p \cos \beta + E_s \sin \beta, \quad j_p = j \cos \beta, \quad j_s = j \sin \beta
-\]
-index p: parallel and index s: vertical \\
-\medskip
-\textbf{Ohm's Law:}
-\[
-E_p = \rho_p j_p, \quad E_s = \rho_s j_s
-\]
-
-Combining these gives:
-\[
-E(\beta) = j\rho_s \left(1 + \frac{\rho_p - \rho_s}{\rho_s} \cos^2 \beta \right)
-\]
-\column{0.5\textwidth}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{fig/lec02/mag_2.pdf}
-    \caption*{Relation between $\mathbf{M}$, $\mathbf{E}$, and $\mathbf{j}$}
-\end{figure}
-
-\end{columns}
-
 \end{frame}
 
 
 
-\begin{frame}{Angle and Field Dependence of AMR}
-\small
-\textbf{Resistance vs. Magnetization Angle:}
-\[
-R(\beta) = \frac{l}{bd}\rho_s + \frac{l}{bd}(\rho_p - \rho_s)\cos^2 \beta
-\]
-
-\textbf{Dependence on Applied Magnetic Field:}
-\[
-R(H_y) = \frac{l}{bd}\rho_s \left(1 + \frac{\rho_p - \rho_s}{\rho_s} \left[1 - \left(\frac{H_y}{H_k}\right)^2\right]\right)
-\quad \text{for } |H_y| \leq H_k
-\]
-and
-\[
-R(H_y) = \frac{l}{bd}\rho_s \quad \text{for } |H_y| > H_k
-\]
-
-\medskip
-Here $H_k$ is the \textbf{critical field} aligning Weiss domains with the external field.
-
-\begin{itemize}
-    \item Below $H_k$: quadratic dependence.
-    \item Above $H_k$: saturation of magnetization.
-\end{itemize}
-
-\end{frame}
+% \begin{frame}{Anisotropic Magnetoresistance (AMR): Fundamentals}
+% \small
+% \textbf{Principle:}
+% In ferromagnetic materials, regions with uniform magnetization (\textit{Weiss domains}) interact with current flow. Resistance depends on the angle $\beta$ between the magnetization $\mathbf{M}$ and the current density $\mathbf{j}$.
 
 
-\begin{frame}{AMR Sensor Design – Barber Pole Structure}
-\small
-\textbf{Motivation:} Linearize AMR characteristic for sensor use.
+% \begin{columns}
+% \column{0.5\textwidth}
+% \medskip
+% \textbf{Electric Field Components:}
+% \[
+% E = E_p \cos \beta + E_s \sin \beta, \quad j_p = j \cos \beta, \quad j_s = j \sin \beta
+% \]
+% index p: parallel and index s: vertical \\
+% \medskip
+% \textbf{Ohm's Law:}
+% \[
+% E_p = \rho_p j_p, \quad E_s = \rho_s j_s
+% \]
 
-\textbf{Barber Pole Structure:}
-\begin{itemize}
-    \item Conductive strips (e.g., Al) deposited at $45^\circ$ to current direction $I$.
-    \item Forces current to flow diagonally to magnetization axis.
-    \item Produces nearly linear response for $H_y \ll H_k$.
-\end{itemize}
+% Combining these gives:
+% \[
+% E(\beta) = j\rho_s \left(1 + \frac{\rho_p - \rho_s}{\rho_s} \cos^2 \beta \right)
+% \]
+% \column{0.5\textwidth}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.8\linewidth]{fig/lec02/mag_2.pdf}
+%     \caption*{Relation between $\mathbf{M}$, $\mathbf{E}$, and $\mathbf{j}$}
+% \end{figure}
+
+% \end{columns}
+
+% \end{frame}
 
 
-\medskip
-\textbf{Resulting Characteristic:}
-\[
-R(H) = R_0 + \Delta R \frac{H_y}{H_k} \sqrt{1 - \left(\frac{H_y}{H_k}\right)^2}
-\]
 
-\end{frame}
+% \begin{frame}{Angle and Field Dependence of AMR}
+% \small
+% \textbf{Resistance vs. Magnetization Angle:}
+% \[
+% R(\beta) = \frac{l}{bd}\rho_s + \frac{l}{bd}(\rho_p - \rho_s)\cos^2 \beta
+% \]
+
+% \textbf{Dependence on Applied Magnetic Field:}
+% \[
+% R(H_y) = \frac{l}{bd}\rho_s \left(1 + \frac{\rho_p - \rho_s}{\rho_s} \left[1 - \left(\frac{H_y}{H_k}\right)^2\right]\right)
+% \quad \text{for } |H_y| \leq H_k
+% \]
+% and
+% \[
+% R(H_y) = \frac{l}{bd}\rho_s \quad \text{for } |H_y| > H_k
+% \]
+
+% \medskip
+% Here $H_k$ is the \textbf{critical field} aligning Weiss domains with the external field.
+
+% \begin{itemize}
+%     \item Below $H_k$: quadratic dependence.
+%     \item Above $H_k$: saturation of magnetization.
+% \end{itemize}
+
+% \end{frame}
+
+
+% \begin{frame}{AMR Sensor Design – Barber Pole Structure}
+% \small
+% \textbf{Motivation:} Linearize AMR characteristic for sensor use.
+
+% \textbf{Barber Pole Structure:}
+% \begin{itemize}
+%     \item Conductive strips (e.g., Al) deposited at $45^\circ$ to current direction $I$.
+%     \item Forces current to flow diagonally to magnetization axis.
+%     \item Produces nearly linear response for $H_y \ll H_k$.
+% \end{itemize}
+
+
+% \medskip
+% \textbf{Resulting Characteristic:}
+% \[
+% R(H) = R_0 + \Delta R \frac{H_y}{H_k} \sqrt{1 - \left(\frac{H_y}{H_k}\right)^2}
+% \]
+
+% \end{frame}
 
 
 
 \begin{frame}{Applications and Modern Extensions of Magnetoresistive Sensors}
-\small
+
 \textbf{From Physical Effect to Engineering Application}
 
 \begin{itemize}
@@ -546,7 +554,7 @@ R(H) = R_0 + \Delta R \frac{H_y}{H_k} \sqrt{1 - \left(\frac{H_y}{H_k}\right)^2}
     \begin{itemize}
         \item Used in \textbf{position, speed, and angle sensors}.
         \item Common in automotive wheel speed and camshaft sensors.
-        \item Offers linear output (with barber pole) and low cost.
+        \item Offers linear output (under certain conditions) and low cost.
     \end{itemize}
 
     \item \textbf{Giant Magnetoresistance (GMR):}
@@ -583,6 +591,9 @@ R(H) = R_0 + \Delta R \frac{H_y}{H_k} \sqrt{1 - \left(\frac{H_y}{H_k}\right)^2}
 \end{frame}
 
 
+\begin{frame}
+\textbf{\Large{Magnetostrictive Effect}}
+\end{frame}
 
 \begin{frame}{Magnetostrictive Effect: Principle of Operation}
 \begin{columns}
@@ -607,6 +618,7 @@ where $\kappa^*$ = magnetostriction constant, $H$ = magnetic field strength, and
 \end{frame}
 
 
+
 \begin{frame}{Magnetostrictive Effect: Principle of Operation}
 \begin{columns}
 \column{0.45\textwidth}
@@ -615,7 +627,7 @@ where $\kappa^*$ = magnetostriction constant, $H$ = magnetic field strength, and
     \item The effect arises from the rotation of \textbf{Weiss domains} aligning with the external magnetic field.
     \item The material volume remains constant — only shape changes.
     \item Increase in length → \textit{positive magnetostriction}; decrease → \textit{negative magnetostriction}.
-    \item Typical change: $-3\times10^{-5}$ (Ni) to $+5\times10^{-5}$ (Fe).
+    \item Typical change: $-3\times10^{-5}$ m (Ni) to $+5\times10^{-5}$ m (Fe).
 \end{itemize}
 \column{0.55\textwidth}
 \begin{figure}
@@ -681,9 +693,10 @@ where $\kappa^*$ = magnetostriction constant, $H$ = magnetic field strength, and
 \column{0.5\textwidth}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{fig/lec02/mag_4.pdf}
-    \caption*{Types of Magnetostrictive Effect}
+    \includegraphics[width=0.75\linewidth]{fig/lec02/wiedemann.jpg}
+    \caption*{Wiedemann Effect in a level sensor, source: \href{https://www.nohken.com/en/products/198/}{Nohken Automation, Products}}
 \end{figure}
+
 \end{columns}
 
 \end{frame}
@@ -801,6 +814,10 @@ NiMnGa & 50,000 & Wiedemann \\
 % \end{frame}
 
 
+\begin{frame}
+\textbf{\Large{Inductive Effect}}
+\end{frame}
+
 \begin{frame}{Inductive Effects: Principle of Operation}
 \begin{columns}
 \column{0.48\textwidth}
@@ -828,8 +845,6 @@ NiMnGa & 50,000 & Wiedemann \\
 \end{figure}
 \end{columns}
 \end{frame}
-
-
 
 \begin{frame}{Inductive Effects: Principle of Operation}
 \begin{columns}
@@ -963,19 +978,19 @@ A rotating ferromagnetic toothed wheel modulates magnetic flux through a station
 The changing flux induces a voltage.
 
 \begin{columns}
-\column{0.48\textwidth}
+\column{0.52\textwidth}
 \medskip
-\textbf{Flux Variation:}
+\textbf{Flux Variation:} $B_0$ -- DC component + $\hat{B}$-- AC component, Z: number of teeth
 \[
 B = B_0 + \hat{B} \sin(Z \omega t)
 \]
 
-\textbf{Induced Voltage:}
+\textbf{Induced Voltage:} for effective cross sectional area $A$
 \[
 u_{\text{ind}} = N \hat{B} A Z \omega \cos(Z \omega t)
 \]
 
-\textbf{Key Relationships:}
+\textbf{Key Relationships:} $K_G$ -- sensor/geometric constant
 \[
 u_S = K_G (B \sin(\omega t)) \frac{d\varphi}{dt}, \quad \hat{u}_S = 2 \pi K_G B n
 \]
@@ -1069,10 +1084,10 @@ Note: DIN EN 50010 standardizes sensor characteristics and switching distances.
 \begin{itemize}
     \item Fully \textbf{contactless}, wear- and maintenance-free.
     \item Operates reliably in harsh industrial environments (dust, oil, moisture).
-    \item High switching frequencies (up to 18 kHz) and repeat accuracy (< 1\%).
-    \item Low temperature drift (< 0.06\%/°C).
+    \item High switching frequencies (up to 18 kHz) and repeat accuracy ($<$ 1\%).
+    \item Low temperature drift ($<$ 0.06\%/°C).
     \item High EMC and thermal resistance (-60°C to +200°C).
-    \item Large measurement range (0.5 mm - 1.1 m) with linearity up to 0.3\%.
+    \item Large measurement range (0.5 mm -- 1.1 m) with linearity up to 0.3\%.
     \item Compact, low power consumption, and long service life.
 \end{itemize}
 
@@ -1098,4 +1113,1483 @@ Compliant with DIN EN 50010 and widely used in proximity, position, and metal de
     \item Embedded limit sensors for automation.
 \end{itemize}
 
+\end{frame}
+
+
+
+\begin{frame}
+\textbf{\Large{Capacitive Effect}}
+\end{frame}
+
+\begin{frame}{Capacitor and Capacitance: Basic Principle}
+\textbf{Definition:}
+A \textbf{capacitor} consists of two mutually insulated, oppositely charged conductor surfaces.  
+When a voltage $U$ is applied, charge $Q$ accumulates on the plates, defined by:
+\[
+C = \frac{Q}{U}
+\]
+The unit of capacitance is the \textbf{Farad (F)}.
+
+\begin{columns}
+\column{0.55\textwidth}
+\textbf{For a parallel plate capacitor:}
+\[
+C = \varepsilon_0 \varepsilon_r \frac{A}{d}
+\]
+where:
+\begin{itemize}
+    \item $\varepsilon_0$ - electric field constant ($8.854 \times 10^{-12}$ As/Vm)
+    \item $\varepsilon_r$ - relative permittivity (dielectric constant)
+    \item $A$ - plate area
+    \item $d$ - distance between plates
+\end{itemize}
+\column{0.45\textwidth}
+\vspace{-1.5\baselineskip}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/lec02/cap_1a.pdf}
+    \caption*{Parallel plate capacitor schematic, source: \href{https://commons.wikimedia.org/wiki/File:Parallel_plate_capacitor.svg}{Wikimedia Commons}, Public domain}
+\end{figure}
+
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Parameters Influencing Capacitance}
+\begin{columns}
+\column{0.48\textwidth}
+The capacitance of a plate capacitor can be altered through the following parameters:
+
+\begin{enumerate}
+    \item \textbf{Plate Distance ($d$):}
+    \begin{itemize}
+        \item Capacitance $\propto 1/d$
+        \item Nonlinear relation, can be linearized using \textbf{differential capacitor circuits.}
+    \end{itemize}
+    
+    \item \textbf{Active Area ($A$):}
+    \begin{itemize}
+        \item Capacitance $\propto A$
+        \item Used in displacement or position sensors where overlap area changes.
+    \end{itemize}
+    
+    \item \textbf{Dielectric Permittivity ($\varepsilon_r$):}
+    \begin{itemize}
+        \item Capacitance $\propto \varepsilon_r$
+        \item Depends on the medium between the plates.
+        \item Used for material, moisture, and level measurement.
+    \end{itemize}
+\end{enumerate}
+
+\column{0.52\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{fig/lec02/cap1b.pdf}
+    \caption*{Parameters influencing capacitance: (a) plate distance, (b) active area, (c) dielectric permittivity}
+\end{figure}
+
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}{Permittivity and Dielectric Materials}
+\textbf{Permittivity ($\varepsilon_r$)} determines how well a material can store electric field energy.
+
+\medskip
+\textbf{Typical values:}
+\begin{table}[h]
+\begin{tabular}{l c | l c}
+\toprule
+\textbf{Material} & $\varepsilon_r$ & \textbf{Material} & $\varepsilon_r$ \\
+\midrule
+Vacuum, Air & 1 & Glass, Polyamide & 5 \\
+Wood (humid) & 2-7 & Marble & 8 \\
+Paraffin, Oil & 2.2 & Al$_2$O$_3$ & 12 \\
+Polyethylene & 2.3 & Alcohol & 26 \\
+Plexiglass & 3.3 & Water & 81 \\
+Quartz Glass & 3.7 & Ta$_2$O$_5$ & 27 \\
+Ceramics (LDC) & 10-200 & Ceramics (HDC) & $10^3$-$10^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Observation:}
+\begin{itemize}
+    \item High $\varepsilon_r$ → greater capacitance sensitivity.
+    \item Choice of dielectric depends on required measurement range and sensitivity.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Differential Capacitor Principle}
+\textbf{Concept:}
+Two capacitors ($C_1$, $C_2$) share a common movable electrode.
+
+
+\textbf{Working:}
+\begin{itemize}
+    \item When the center plate moves by $\Delta d$, one capacitance increases ($C_1$), the other decreases ($C_2$).
+    \item The differential output $(C_1 - C_2)$ varies linearly with displacement.
+    \item Used for \textbf{acceleration and position sensing.}
+\end{itemize}
+\begin{columns}
+\column{0.48\textwidth}
+\textbf{Acceleration Sensing:}
+\begin{itemize}
+    \item Movable middle electrode = seismic mass.
+    \item Acceleration changes distance → $\Delta d$ → measurable $\Delta C$.
+\end{itemize}
+\column{0.48\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/lec02/cap1c.pdf}
+    \caption*{Differential capacitor for acceleration measurement}
+\end{figure}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Sensors Based on Dielectric Change}
+
+Sensors that measure variations in \textbf{permittivity $\varepsilon_r$} are used for:
+\begin{columns}
+\column{0.6\textwidth}
+\begin{itemize}
+    \item Identifying material type (metal, plastic, paper, etc.)
+    \item Counting and sorting materials with different $\varepsilon_r$
+    \item Determining moisture content (air humidity absorbed by polymer dielectric)
+    \item Measuring layer thickness or coatings
+    \item \textbf{Level measurement} of solids, liquids, or powders
+\end{itemize}
+
+\textbf{Working:}
+\begin{itemize}
+    \item A dielectric with higher $\varepsilon_r$ changes the effective capacitance.
+    \item In mixtures (air + material), the capacitance reflects the proportion of each.
+\end{itemize}
+\column{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/lec02/cap1d.pdf}
+    \caption*{Capacitive sensor detecting material presence via dielectric change}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Capacitive Level Measurement}
+\textbf{Principle:}
+\begin{itemize}
+    \item Capacitance changes with the \textbf{filling level} inside a vessel.
+    \item Higher filling → greater $\varepsilon_r$ → higher capacitance.
+\end{itemize}
+
+\textbf{Configuration (Nonconductive Material):}
+\begin{itemize}
+    \item \textbf{Active electrode} measures capacitance.
+    \item \textbf{Ground electrode} surrounds the active electrode.
+    \item Electric field lines extend into the dielectric (liquid/air mix).
+\end{itemize}
+
+\textbf{Behavior:}
+\begin{itemize}
+    \item As filling rises, the effective dielectric constant increases.
+    \item When threshold value is reached, capacitance crosses preset limit → output signal.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Conductive and Nonconductive Media Comparison}
+\small
+\textbf{Nonconductive filling materials:}
+\begin{itemize}
+    \item Container wall acts as dielectric.
+    \item Electric field partly in wall, partly in filling medium.
+    \item Typical capacitance range: $10^{-14}$–$10^{-13}$ F.
+\end{itemize}
+
+\textbf{Conductive filling materials:}
+\begin{itemize}
+    \item The filling itself acts as the second capacitor plate.
+    \item When empty → low capacitance (large effective $d$).
+    \item When full → high capacitance due to direct conductive coupling.
+\end{itemize}
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Immersion sensors in chemical and food industries.
+    \item Level sensing of conductive liquids with high sensitivity.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Capacitance in the AC Circuit}
+In an AC circuit, a capacitor introduces an \textbf{imaginary reactance} $X_C$ given by:
+\[
+X_C = -j \frac{1}{\omega C}
+\]
+Substituting $C = \varepsilon_0 \varepsilon_r \frac{A}{d}$ gives:
+\[
+X_C = -j \frac{d}{\omega \varepsilon_0 \varepsilon_r A}
+\]
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item Reactance $X_C$ changes proportionally with plate distance $d$.
+    \item Thus, capacitance sensors can detect distance or approach of objects.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Capacitance in the AC Circuit- Capacitive Sensor}
+\textbf{Sensor structure:}
+\begin{itemize}
+    \item RC oscillator circuit with sensor electrodes.
+    \item Comparator and amplifier generate a switching output.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/lec02/cap_2.pdf}
+    \caption{Capacitive proximity sensor circuit}
+\end{figure}
+
+
+\end{frame}
+
+\begin{frame}{Principle of Capacitive Proximity Sensing}
+When a metallic or non-metallic object (switching flag) enters the \textbf{active electric field zone}, it alters the effective capacitance, changing the RC oscillator amplitude.
+
+\textbf{Operation modes:}
+\begin{itemize}
+    \item \textbf{Open capacitor (no object)} - large air gap, low capacitance, no oscillation.
+    \item \textbf{Object close (switching lug)} - gap decreases, capacitance rises, oscillator starts oscillating.
+    \item Comparator detects oscillation amplitude → switching signal.
+\end{itemize}
+
+\textbf{Switching distance:}
+\begin{itemize}
+    \item Rated distance: $s_n$ - distance at which the sensor switches.
+    \item Safe distance: $s_a = \text{correction factor} \times s_n$.
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Advantages and Limitations of Capacitive Sensors}
+\small
+\textbf{Advantages:}
+\begin{itemize}
+    \item Contactless, wear-free, non-reactive operation.
+    \item Robust, reliable, sweat-proof, bounce-free signal.
+    \item High repeatability (2–5\% of real distance).
+    \item Excellent thermal stability ($5\times10^{-6}$/K).
+    \item Nanometer-scale resolution (0.01 nm).
+    \item High EMC resistance, low power, long service life.
+    \item Adaptive and programmable, cost-effective.
+\end{itemize}
+
+\textbf{Limitations:}
+\begin{itemize}
+    \item Dust and moisture may affect performance (compensated by design).
+    \item Limited switching distance (15–50 mm typical).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Applications of Capacitive Sensor Technology}
+\small
+\textbf{Mechanical / Automation:}
+\begin{itemize}
+    \item Detection through glass/plastic walls.
+    \item Presence check, position, path, and distance measurement.
+    \item Monitoring material thickness and roundness.
+    \item Measurement of acceleration, vibration, and tool gaps.
+\end{itemize}
+
+\textbf{Food / Pharmaceutical / Chemical / Medical:}
+\begin{itemize}
+    \item Filling level of solids, powders, or liquids (PVC, water, oils, acids).
+    \item Detects viscous media: glues, disinfectants, blood.
+\end{itemize}
+
+\textbf{Semiconductor industry:}
+\begin{itemize}
+    \item Acid level control in wafer processing.
+    \item Wafer presence and alignment checks.
+\end{itemize}
+
+\textbf{Special Applications:}
+\begin{itemize}
+    \item PC touchpads, smartphones, portable media, humidity detection.
+\end{itemize}
+
+\begin{center}
+\textit{(Insert Fig. 2.44 / Table 2.12: Application areas of capacitive sensors)}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\textbf{\Large{Gaussian Effect}}
+\end{frame}
+
+\begin{frame}{Gaussian Effect: Principle of Operation}
+\textbf{Definition:}
+The \textbf{Gaussian Effect} is a \textit{galvanomagnetic effect} that occurs when a current-carrying conductor or semiconductor is placed in a magnetic field $\mathbf{B}$ that is \textbf{not parallel} to the current flow.
+
+\begin{columns}
+\column{0.48\textwidth}
+\textbf{Physical basis:}
+\begin{itemize}
+    \item A \textbf{Lorentz force} $\mathbf{F_L}$ acts on moving charge carriers.
+    \item This deflects electrons, causing them to follow a \textbf{zigzag path}.
+    \item The effective path length of electrons increases → \textbf{increased resistance}.
+\end{itemize}
+
+\column{0.52\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{fig/lec02/gauss_1.pdf}
+    \caption*{Origin of Gaussian effect: electron deflection in magnetic field}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Gaussian Effect: Principle of Operation}
+\textbf{Lorentz Force:}
+\[
+\mathbf{F_L} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
+\]
+\textbf{Ohm's Law:} \quad $\mathbf{j} = \sigma \mathbf{E}$,  
+where $\mathbf{j}$ is current density and $\sigma$ is electrical conductivity.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/lec02/gauss_1.pdf}
+    \caption*{Origin of Gaussian effect: electron deflection in magnetic field}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Microscopic Description of the Gaussian Effect}
+\small
+\textbf{Microscopic relations:}
+\[
+\sigma = q n \mu
+\]
+where:
+\begin{itemize}
+    \item $q$ - charge of carrier, $n$ - carrier density, $\mu$ - mobility of charge carriers.
+\end{itemize}
+
+\textbf{Current density:}
+\[
+\mathbf{j} = \rho \mathbf{v}, \quad \rho = q n
+\]
+
+\textbf{Drift velocity:}
+\[
+\mathbf{v} = \mu \mathbf{E}
+\]
+
+\textbf{Force balance:}
+\[
+\mathbf{F} = q \mathbf{E} \quad \Rightarrow \quad \mathbf{v} = \frac{\mu \mathbf{F}}{q}
+\]
+
+\textbf{Interpretation:}
+Electron drift depends on both $\mathbf{E}$ and $\mathbf{B}$, leading to altered trajectories and measurable resistance variation.
+\end{frame}
+
+
+\begin{frame}{Derivation of Conductivity Change in Magnetic Field}
+When $\mathbf{B}$ is perpendicular to the electron motion:
+\begin{columns}
+\column{0.6\textwidth}
+\[
+\mathbf{v} =
+\begin{pmatrix}
+v_x \\ v_y
+\end{pmatrix}
+= \mu
+\begin{pmatrix}
+E + v_y B \\
+- v_x B
+\end{pmatrix}
+\]
+
+Solving for $v_x$:
+\[
+v_x = \frac{\mu E}{1 + \mu^2 B^2}
+\]
+
+\textbf{Implication:}
+\begin{itemize}
+    \item Drift velocity \textbf{decreases} as $B$ increases.
+    \item Current density $j = \rho v_x$ also decreases.
+    \item Therefore, conductivity $\sigma$ decreases, and resistance increases.
+\end{itemize}
+
+\textbf{Resulting resistance relation:}
+\[
+R(B) = R_0 \left(1 + \mu^2 B^2\right)
+\]
+
+\column{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{fig/lec02/gauss_2.pdf}
+    \caption*{Variation of resistance with magnetic flux density due to Gaussian effect}
+\end{figure}
+\textbf{Conclusion:} Resistance increases quadratically with magnetic flux density.
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Application of the Gaussian Effect}
+\small
+\textbf{1. Magnetic Field Measurement:}
+\begin{itemize}
+    \item Used in \textbf{Magneto-Resistive Sensors (MDRs)} and field plates.
+    \item Resistance $R$ varies with $\mathbf{B}$ → can be calibrated for field strength.
+\end{itemize}
+
+\textbf{2. Field Plate Construction:}
+\begin{itemize}
+    \item A ceramic substrate with a thin semiconductor layer (e.g., InSb).
+    \item Embedded metallic needles (e.g., NiSb) guide current paths.
+    \item Magnetic flux density $B$ perpendicular to plate alters resistance.
+\end{itemize}
+
+\textbf{3. Typical properties of field plates (Table 2.13):}
+\begin{itemize}
+    \item Output resistance $R_0$: 10 $\Omega$ - 10 k$\Omega$.
+    \item Temperature coefficient $\alpha \approx -0.004\,\text{K}^{-1}$.
+    \item Max operating temperature $\approx 95^\circ$C.
+    \item Max power $\approx$ 0.5 W.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Working Mechanism Summary}
+\small
+\textbf{Electron motion:}
+\begin{itemize}
+    \item Without magnetic field → straight-line conduction.
+    \item With magnetic field → Lorentz force causes zigzag trajectory.
+\end{itemize}
+
+\textbf{Effect on resistance:}
+\begin{itemize}
+    \item Longer electron paths increase collision frequency.
+    \item Effective resistivity rises proportionally to $B^2$.
+\end{itemize}
+
+\textbf{Materials used:}
+\begin{itemize}
+    \item High-mobility semiconductors: InSb, InAs, GaAs, Si.
+    \item Often doped with Te to adjust resistive response.
+    \item Typically exhibit \textbf{negative temperature coefficients.}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Summary: Gaussian Effect in Sensors}
+\small
+\textbf{Key outcomes:}
+\begin{itemize}
+    \item Magnetic field $\mathbf{B}$ increases resistance quadratically.
+    \item Based on Lorentz force and carrier deflection.
+    \item Enables non-contact magnetic field and current measurement.
+\end{itemize}
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Magnetic field and flux density measurement.
+    \item Current, angle, and rotational speed sensing.
+    \item Field plates and magneto-resistive devices.
+\end{itemize}
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item Compact and solid-state design.
+    \item Fast response and high sensitivity.
+    \item Suitable for DC and low-frequency magnetic field detection.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\textbf{\Large{Hall Effect}}
+\end{frame}
+
+
+\begin{frame}{Hall Effect: Principle of Operation}
+\small
+The \textbf{Hall Effect}, like the Gaussian Effect, belongs to the \textit{galvanomagnetic effects}.
+
+
+\textbf{Concept:}
+\begin{itemize}
+    \item When a current-carrying conductor or semiconductor is placed in a \textbf{magnetic field} $\mathbf{B}$ with a perpendicular component, charge carriers experience a \textbf{Lorentz force}.
+\end{itemize}
+\begin{columns}
+\column{0.48\textwidth}
+\vspace{-0.5cm}
+\begin{itemize}
+    \item This deflects the electrons, creating a potential difference across the conductor — the \textbf{Hall voltage} $U_H$.
+\end{itemize}
+\textbf{Lorentz force:}
+\vspace{-0.5cm}
+\[
+F_L = -q v_x B_z
+\]
+\textbf{Electric counterforce at equilibrium:}
+\[
+F_{el} = -q E_y \quad \text{and} \quad -q E_y = -q v_x B_z
+\]
+
+\textbf{Therefore:}
+\[
+E_y = v_x B_z
+\]
+\[
+U_H = E_y b = v_x B_z b
+\]
+\column{0.48\textwidth}
+\begin{figure}
+    \centering
+    \vspace{-1cm}
+    \includegraphics[width=0.75\linewidth]{fig/lec02/hall_1.pdf}
+    \caption*{Hall effect: charge carrier deflection and Hall voltage generation}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Mathematical Description of Hall Voltage}
+\small
+\textbf{Current density relation:}
+\[
+j_x = n e v_x
+\]
+where:
+\begin{itemize}
+    \item $n$ – number of charge carriers per unit volume,
+    \item $e$ – elementary charge,
+    \item $v_x$ – carrier velocity in $x$-direction.
+\end{itemize}
+
+\textbf{Hall voltage:}
+\[
+U_H = \frac{1}{n e} j_x B_z b
+\]
+Defining the \textbf{Hall coefficient:}
+\[
+A_H = \frac{1}{n e}
+\]
+Then:
+\[
+U_H = A_H j_x B_z b
+\]
+
+\textbf{Hall resistance:}
+\[
+R_H = \frac{A_H B_z}{d} \quad \Rightarrow \quad U_H = R_H I_x
+\]
+\textbf{Interpretation:} $U_H$ increases linearly with $B_z$ and decreases with carrier density $n$.
+\end{frame}
+
+
+\begin{frame}{Physical Interpretation}
+\small
+\textbf{Key points:}
+\begin{itemize}
+    \item A magnetic field deflects charge carriers (electrons or holes) perpendicular to the current.
+    \item The resulting charge separation builds up a Hall voltage $U_H$.
+    \item At equilibrium, the Lorentz force equals the electric force.
+\end{itemize}
+
+\textbf{Dependence:}
+\begin{itemize}
+    \item $U_H \propto I_x B_z$
+    \item $U_H \propto 1 / (n e)$ — inversely proportional to carrier density.
+    \item Independent of the specific resistivity of the material.
+\end{itemize}
+
+\textbf{Implications:}
+\begin{itemize}
+    \item Semiconductors produce a much larger $U_H$ than metals.
+    \item Sign of $U_H$ indicates whether conduction is via electrons or holes.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Hall Coefficients for Different Materials}
+\small
+\textbf{Typical Hall coefficients ($A_H$) in $10^{-11}\,\text{m}^3/\text{C}$:}
+
+\begin{table}[h]
+\scriptsize
+\begin{tabular}{l c | l c}
+\toprule
+\textbf{Material} & $A_H$ & \textbf{Material} & $A_H$ \\
+\midrule
+\textit{Electron conductors:} & & \textit{Hole conductors:} & \\
+Copper (Cu) & -5.5 & Cadmium (Cd) & +6 \\
+Gold (Au) & -7.5 & Tin (Sn) & +14 \\
+Silver (Ag) & -8.4 & Beryllium (Be) & +24.4 \\
+Sodium (Na) & -25 & & \\
+Cesium (Cs) & -28 & & \\
+\midrule
+\textit{Semiconductors:} & & & \\
+Bismuth (Bi) & $-5 \times 10^4$ & Silicon (Si), Germanium (Ge) & $10^8$–$10^{10}$ \\
+Indium antimonide (InSb) & $-2.4 \times 10^7$ & Indium arsenide (InAs) & $-10^7$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Observation:}
+Semiconductors have high $A_H$ due to higher carrier mobility $\mu$ and lower carrier density $n$.
+\end{frame}
+
+
+\begin{frame}{Applications of the Hall Effect}
+\small
+\textbf{Basic sensing principle:}
+\begin{itemize}
+    \item A magnetic field perpendicular to the Hall sensor produces a transverse voltage $U_H$.
+    \item The Hall voltage is proportional to $I_x B_z$.
+\end{itemize}
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Measurement of \textbf{magnetic fields} and \textbf{currents}.
+    \item \textbf{Position and speed} detection (rotational or linear motion).
+    \item Contactless signal transmission and switching.
+    \item Detection of coating thickness or conductive layers.
+\end{itemize}
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item Compact, robust, and can be \textbf{integrated into semiconductor chips}.
+    \item High sensitivity, low cost, suitable for DC and low-frequency magnetic fields.
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Automotive and Industrial Applications}
+\small
+\textbf{In automotive systems:}
+\begin{itemize}
+    \item Pedal position sensing (e.g., brake or accelerator).
+    \item Ignition timing control.
+    \item Belt buckle or handbrake detection.
+    \item Rotational speed measurement (wheel or motor speed).
+\end{itemize}
+
+\textbf{Advantages over inductive sensors:}
+\begin{itemize}
+    \item Operates even at zero or very low rotational speeds.
+    \item Output signal independent of rotational speed.
+    \item Provides digital square-wave output — easily processed by control electronics.
+\end{itemize}
+
+\textbf{Common shapes:}
+\begin{itemize}
+    \item Rectangular, cross, and butterfly designs.
+\end{itemize}
+
+\textbf{Design optimization:}
+\begin{itemize}
+    \item 3D field simulations (FEM) used for optimal sensor layout and magnetic coupling.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary: Hall Effect Sensors}
+\small
+\textbf{Operating principle:}
+\begin{itemize}
+    \item Based on Lorentz-force-induced charge separation.
+    \item Generates measurable Hall voltage $U_H$ proportional to magnetic field $B_z$.
+\end{itemize}
+
+\textbf{Key relations:}
+\[
+U_H = \frac{1}{n e} j_x B_z b = A_H j_x B_z b
+\]
+\[
+A_H = \frac{1}{n e}, \quad R_H = \frac{A_H B_z}{d}
+\]
+\vspace{-0.25cm}
+\textbf{Applications:}
+\begin{itemize}
+    \item Magnetic field, current, and position sensing.
+    \item Motion and speed detection.
+    \item Integrated electronics for feedback and control systems.
+\end{itemize}
+\vspace{-0.15cm}
+\textbf{Advantages:}
+\begin{itemize}
+    \item Linear response, compact design, compatible with CMOS integration.
+    \item High sensitivity and robust operation in harsh environments.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\textbf{\Large{Thermoelectric Effect}}
+\end{frame}
+
+\begin{frame}{Thermoelectric Effect -- Principle}
+\small
+\textbf{Definition:}
+When two dissimilar conductors are joined at both ends and exposed to different temperatures
+($T_{AB}$, $T_{BA}$), a voltage $U_{th}$ is generated due to charge carrier diffusion.
+\[
+\Delta T = T_{BA} - T_{AB}
+\]
+This phenomenon is known as the \textbf{Seebeck Effect}.
+
+\textbf{Physical explanation:}
+\begin{itemize}
+    \item Thermal energy of a metal is stored partly as atomic oscillation and partly as electron kinetic energy.
+    \item Electrons at the hotter end gain higher kinetic energy and diffuse toward the colder end.
+    \item This diffusion creates a potential difference — the \textbf{thermoelectric voltage}.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Seebeck Coefficient and Its Origin}
+\small
+\textbf{Theoretical Seebeck coefficient of material A:}
+\[
+S'_A = -\frac{1}{3e} \frac{d}{dT} \left\langle \frac{1}{2} m v^2 \right\rangle
+\]
+where:
+\begin{itemize}
+    \item $e$ – electron charge,
+    \item $T$ – absolute temperature,
+    \item $\langle \frac{1}{2} m v^2 \rangle$ – average kinetic energy of conduction electrons.
+\end{itemize}
+
+\textbf{Simplified expression (for metals):}
+\[
+S'_A = -\frac{\pi^2 k_B^2 T}{2 e E_F}
+\]
+where $k_B$ is the Boltzmann constant and $E_F$ the Fermi energy.
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item $S'_A$ is material-dependent.
+    \item It is positive for \textit{p-type} materials (hole conduction) and negative for \textit{n-type}.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Thermoelectric Voltage Relation}
+\small
+When conductors A and B are connected at two points with different temperatures $T_{AB}$ and $T_{BA}$:
+
+\[
+U_{th} = \int_{T_{AB}}^{T_{BA}} S_{AB}(T) \, dT
+\]
+
+where:
+\[
+S_{AB}(T) = S_A(T) - S_B(T)
+\]
+is the \textbf{differential Seebeck coefficient} between materials A and B.
+
+\textbf{Key features:}
+\begin{itemize}
+    \item $U_{th}$ is proportional to the temperature difference $\Delta T$.
+    \item $S_{AB}$ depends on material pair and temperature.
+    \item Platinum is often used as the reference material ($S=0$).
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Material Dependence of the Seebeck Effect}
+\small
+\textbf{Typical thermoelectric voltages (relative to platinum, 0–100 °C):}
+\begin{itemize}
+    \item Platinum: 0.0 mV
+    \item Constantan: –3.2 mV
+    \item Nickel: –1.9 mV
+    \item Tungsten: +0.7 mV
+    \item Copper: +0.7 mV
+    \item Iron: +1.9 mV
+    \item Nickel–chrome: +2.2 mV
+\end{itemize}
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item The sign indicates current direction (electron or hole conduction).
+    \item Combining two materials (e.g., Cu–Constantan) forms a thermocouple with measurable $U_{th}$.
+    \item For Cu–Constantan: $0.7 + 3.2 = 3.9$ mV for $\Delta T = 100$ °C.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Standard Thermocouple Types (DIN EN 60584-1)}
+\small
+\begin{table}[h]
+\scriptsize
+% Example with manually set widths (you will need to adjust these)
+\begin{tabular}{l p{4.0cm} c c p{4.0cm}}
+\toprule
+\textbf{Type} & \textbf{Materials} & \textbf{Cont. Range} & \textbf{Short-time} & \textbf{Remarks} \\
+& & \textbf{($^\circ$C)} & \textbf{($^\circ$C)} & \\
+\midrule
+K & Ni-Cr / Ni-Al (“Chromel/Alumel”) & 0–1100 & –180–1300 & Most common; oxidizing atmospheres \\
+J & Fe / Cu-Ni (“Iron/Constantan”) & 0–700 & –180–800 & Dry and reducing atmospheres \\
+N & Ni-Si / Ni-Si-Mg (“Nisil/Nicrosil”) & 0–1100 & –270–1300 & High stability; newer type \\
+R & Pt-13 Rh / Pt & 0–1600 & –50–1700 & High-T; ceramic protection \\
+S & Pt-10 Rh / Pt & 0–1600 & –50–1750 & High-T; ceramic protection \\
+B & Pt-30 Rh / Pt-6 Rh & 200–1700 & 0–1820 & Very high T; high-purity ceramic \\
+T & Cu / Cu-Ni (“Copper/Constantan”) & –185–300 & 250–400 & Low to cryogenic T; stable in moisture \\
+E & Ni-Cr / Cu-Ni (“Chromel/Constantan”) & 0–800 & –40–900 & High signal output \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+
+\begin{frame}{Applications of the Thermoelectric Effect}
+\small
+\textbf{Temperature measurement:}
+\begin{itemize}
+    \item Measurement of \textbf{temperature differences} or absolute temperature (with a known reference).
+    \item Basis of \textbf{thermocouples} and \textbf{thermopiles}.
+\end{itemize}
+
+\textbf{Material property measurement:}
+\begin{itemize}
+    \item Determines conduction type (electron vs. hole).
+    \item Detects chemical or gaseous impurities through \textbf{Fermi-level shift}.
+\end{itemize}
+
+\textbf{Special case - Gas detection:}
+\begin{itemize}
+    \item Chemisorption modifies charge carrier concentration.
+    \item A fixed temperature gradient produces a voltage change proportional to impurity concentration.
+\end{itemize}
+
+\textbf{Amplification:}
+\begin{itemize}
+    \item Thermoelectric voltages are very small (µV–mV range).
+    \item Amplified using low-offset or \textbf{chopper-stabilized amplifiers}.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Thermopile Sensors and Heat Radiation Detection}
+\small
+\textbf{Thermopile:}
+\begin{itemize}
+    \item Formed by connecting multiple thermocouples in series.
+    \item Increases sensitivity for small temperature differences.
+\end{itemize}
+
+\textbf{Working principle:}
+\begin{itemize}
+    \item A thin membrane in the chip center absorbs heat radiation.
+    \item Temperature difference between the center and periphery generates voltage.
+\end{itemize}
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Infrared heat detection and non-contact temperature sensing.
+    \item Used in MEMS-based thermopile sensors and pyroelectric detectors.
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Summary: Thermoelectric (Seebeck) Effect}
+\small
+\textbf{Fundamental relation:}
+\[
+U_{th} = \int_{T_{AB}}^{T_{BA}} S_{AB}(T) \, dT
+\]
+
+\textbf{Key properties:}
+\begin{itemize}
+    \item $S_{AB}$ depends on materials and temperature.
+    \item $U_{th}$ proportional to temperature difference $\Delta T$.
+    \item Positive for p-type, negative for n-type materials.
+\end{itemize}
+
+\textbf{Practical relevance:}
+\begin{itemize}
+    \item Basis for thermocouples (K, J, T, E, etc.).
+    \item Enables temperature and material analysis.
+    \item Can be used in thermopiles for heat radiation sensing.
+\end{itemize}
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item Simple, robust, no external power supply required.
+    \item Wide temperature range, fast response, miniaturizable.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Thermoresistance Effect — Principle}
+\small
+\textbf{Concept:}
+The electrical resistance of materials depends on:
+\begin{itemize}
+    \item Composition and crystal structure,
+    \item Degree of purity and homogeneity,
+    \item Temperature $T$.
+\end{itemize}
+
+For metals and metal alloys, resistance increases with temperature:
+\[
+R(T) = R_0 \left[1 + a(T - T_0) + b(T - T_0)^2 \right]
+\]
+where:
+\begin{itemize}
+    \item $R_0$ - resistance at reference temperature $T_0$ (0 °C or 20 °C),
+    \item $a$ - temperature coefficient (linear term),
+    \item $b$ - higher-order coefficient (non-linear term).
+\end{itemize}
+
+\textbf{Mechanism:} Electron scattering increases with atomic vibrations and impurities, raising resistance.
+\end{frame}
+
+\begin{frame}{Temperature Coefficient and Platinum Sensors}
+\small
+\textbf{Temperature coefficient:}
+\[
+a = \frac{1}{R_0}\frac{dR(T)}{dT}
+\]
+Typical values:
+\begin{itemize}
+    \item Platinum (Pt): $3.89 \times 10^{-3}\,\mathrm{K^{-1}}$
+    \item Nickel-Chromium: $(0.02 - 0.05) \times 10^{-3}\,\mathrm{K^{-1}}$
+\end{itemize}
+
+\textbf{Platinum sensors (Pt 100, Pt 1000):}
+\begin{itemize}
+    \item Pt 100 → 100 $\Omega$ at 0 °C; Pt 1000 → 1000 $\Omega$ at 0 °C.
+    \item Highly stable, chemically resistant, and accurate.
+    \item Range: –220 °C to +1000 °C (depending on type).
+\end{itemize}
+
+\textbf{Equation fit:} Linear up to 100 °C; slight deviation above.
+\end{frame}
+
+
+\begin{frame}{Designs and Characteristics of Pt Resistors}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{fig/lec02/pt.pdf}
+    \caption*{Coding of Pt sensors (source: Heraeus Sensor Technology GmbH)}
+\end{figure}
+
+
+\textbf{Properties of Pt thin-film resistors:}
+\begin{itemize}
+    \item Precise, long-term stable, vibration and shock resistant.
+    \item High resistance to corrosion, humidity, and aggressive chemicals.
+    \item Excellent linearity and standard calibration curves (DIN EN 60751).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Thermal Response and Self-Heating}
+\small
+\textbf{Thermal response time:}
+\begin{itemize}
+    \item Time for sensor resistance to change by 50 \% ($t_{0.5}$) or 90 \% ($t_{0.9}$) of a temperature step.
+    \item Depends on medium (air, water) and sensor design.
+\end{itemize}
+
+\textbf{Self-heating effect:}
+\[
+\Delta T = P \cdot S, \quad P = I^2 R
+\]
+where $S$ is the self-heating coefficient (K/mW).  
+→ Higher measuring current increases sensor temperature and error.
+
+\textbf{Measuring currents (Heraeus recommendation):}
+\begin{itemize}
+    \item Pt 100: 0.3-1.0 mA, Pt 1000: 0.1-0.3 mA.
+\end{itemize}
+\textbf{Applications:}
+\begin{itemize}
+    \item Automotive, HVAC, industrial process, and life-science temperature sensing.
+    \item High-accuracy measurement (–196 °C to +1000 °C).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Temperature Effects in Semiconductors}
+\begin{columns}
+\column{0.6\textwidth}
+
+\textbf{Semiconducting ceramics (thermistors):}
+\begin{itemize}
+    \item Show much higher temperature dependence of resistance.
+    \item Two types:
+    \begin{itemize}
+        \item \textbf{PTC} – Positive Temperature Coefficient: $R\uparrow$ with $T\uparrow$
+        \item \textbf{NTC} – Negative Temperature Coefficient: $R\downarrow$ with $T\uparrow$
+    \end{itemize}
+\end{itemize}
+
+\textbf{Behavior:}
+\begin{itemize}
+    \item Metals (Pt, Ni) → linear positive coefficient.
+    \item Semiconductors → nonlinear high temperature sensitivity.
+\end{itemize}
+
+\column{0.4\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/lec02/RT_char.png}
+    \caption*{Resistance vs. Temperature for Pt, PTC, and NTC sensors (source: Hesse, Schnell: Sensors for process and factory automation, Vieweg+Teubner, 2009)}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{PTC Thermistors (Positive Temperature Coefficient)}
+\begin{columns}
+\column{0.6\textwidth}
+\textbf{Material:} Titanate ceramics - BaTiO\textsubscript{3}, SrTiO\textsubscript{3}.
+
+\textbf{Behavior:}
+\begin{itemize}
+    \item Below Curie temperature → $R$ decreases (slightly NTC-like).
+    \item Above Curie temperature → $R$ increases exponentially.
+\end{itemize}
+
+\[
+R(T) = R_N \exp[A(T - T_N)]
+\]
+Typical $A = 0.16\,\mathrm{K^{-1}}$ ($\approx$ 40 × higher than metals).
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Temperature compensation and monitoring,
+    \item Over-current and thermal overload protection.
+\end{itemize}
+
+\column{0.4\textwidth}
+
+\begin{figure}
+  \vspace{-1cm}
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/lec02/PTC.png}
+    \caption*{PTC symbol and R-T curve (PTC resistors to DIN 44080)- (source: Ekbert, H., et al.: Sensoren und Messsysteme, 4th ed., Springer Vieweg, 2016)}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{NTC Thermistors (Negative Temperature Coefficient)}
+\begin{columns}
+\column{0.6\textwidth}
+\textbf{Material:} Mixed oxide semiconductors (e.g., Fe\textsubscript{2}O\textsubscript{3}, MgCr\textsubscript{2}O\textsubscript{4}, Ba(NO\textsubscript{3})\textsubscript{2}).
+
+\textbf{Behavior:}
+\[
+R(T) = R_N \exp\!\left[B\!\left(\frac{1}{T} - \frac{1}{T_N}\right)\right]
+\]
+\[
+A = -\frac{B}{T^2}
+\]
+→ Resistance decreases exponentially with temperature.
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Temperature measurement, compensation, and voltage regulation.
+    \item Rapid, sensitive response -- widely used over PTC types.
+\end{itemize}
+
+
+
+\column{0.4\textwidth}
+
+\begin{figure}
+    \centering
+    \vspace{-1cm}
+    \includegraphics[width=0.75\linewidth]{fig/lec02/NTC.png}
+    \caption*{NTC symbol and R-T curve (NTC resistors to DIN 44070) - (source: Ekbert, H., et al.: Sensoren und Messsysteme, 4th ed., Springer Vieweg, 2016)}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Comparison Summary: Pt, PTC, and NTC Sensors}
+\small
+\begin{table}[h]
+\scriptsize
+\begin{tabular}{l l l l}
+\toprule
+\textbf{Property} & \textbf{Pt Resistor (Metal)} & \textbf{PTC Thermistor} & \textbf{NTC Thermistor} \\
+\midrule
+Material & Metal / Alloy (Pt, Ni, Cu) & Titanate ceramics (BaTiO\textsubscript{3}) & Mixed oxides (Fe, Mg, Cr) \\
+Temp. coeff. & Positive, linear & Positive, nonlinear (above Curie T) & Negative, exponential \\
+Accuracy & Very high & Moderate & High (in limited range) \\
+Response time & Moderate & Fast & Very fast \\
+Range (°C) & –220 to +1000 & 0 to 200 & –50 to +250 \\
+Applications & Precision thermometers & Over-current, compensation & Temperature sensing, control \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Summary:}  
+Pt sensors → precision measurement.  
+PTC → protection and switching.  
+NTC → fast thermal sensing.
+\end{frame}
+
+
+\begin{frame}
+    {\textbf{\Large{Photoelectric Effect}}}
+\end{frame}
+
+\begin{frame}{Photoelectric Effect – Overview}
+
+\textbf{Definition:}
+The photoelectric effect occurs when a \textbf{photon (quantum of light)} is absorbed by an \textbf{electron}, releasing it from its bond.
+
+\textbf{Key Principle:}
+\begin{itemize}
+    \item A photon transfers its energy to an electron.
+    \item The photon's energy must exceed the electron’s \textbf{binding energy}.
+\end{itemize}
+
+\textbf{Types of Photoelectric Effect:}
+\begin{itemize}
+    \item \textbf{Outer photoelectric effect:} Electron emission from metal surfaces.
+    \item \textbf{Inner photoelectric effect:} Electron excitation within semiconductors.
+    \item \textbf{Photoionization:} Complete removal of an electron from atoms or molecules.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Photoelectric Effect – Overview}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{fig/lec02/photoelec_1.pdf}
+    \caption*{Types of photoelectric effect: outer, inner, and photoionization}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Outer Photoelectric Effect – Principle}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Mechanism:}
+\begin{itemize}
+    \item Short-wave electromagnetic radiation (light) strikes a metal surface.
+    \item Electrons are ejected — creating a measurable \textbf{photocurrent}.
+\end{itemize}
+
+\textbf{Energy relationship:}
+\[
+E_{\text{kin}} = h f - W_A
+\]
+where
+\begin{itemize}
+    \item $h$ – Planck’s constant ($6.626 \times 10^{-34}\,\mathrm{Js}$)
+    \item $f$ – frequency of incident light
+    \item $W_A$ – work function (binding energy)
+\end{itemize}
+
+\textbf{Key Implications:}
+\begin{itemize}
+    \item No electrons emitted if $h f < W_A$
+    \item \textbf{Cut-off frequency:} $f_{\text{gr}} = W_A / h$
+    \item Increasing light intensity increases photocurrent but not electron energy.
+\end{itemize}
+\column{0.5\textwidth}
+\vspace{-2cm}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{fig/lec02/photoelec_2.pdf}
+    \caption*{Outer photoelectric effect: photon absorption and electron emission}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Outer Photoelectric Effect – Characteristics}
+\begin{columns}
+\column{0.6\textwidth}
+\textbf{Observations:}
+\begin{itemize}
+    \item The \textbf{kinetic energy} of photoelectrons depends only on light \textbf{frequency}, not intensity.
+    \item The \textbf{photocurrent} increases with light intensity.
+    \item There exists a \textbf{threshold frequency} below which no emission occurs.
+\end{itemize}
+
+\textbf{Photon Energy Relation:}
+\[
+E_{\text{ph}} = h f = \frac{h c}{\lambda}
+\]
+Thus:
+\[
+E_{\text{ph}} \propto \frac{1}{\lambda}
+\]
+
+\column{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{fig/lec02/photoelec_2b.pdf}
+    \caption*{Outer photoelectric effect: photon absorption and electron emission}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Inner Photoelectric Effect – Photoconductivity}
+\textbf{Mechanism:}
+\begin{itemize}
+    \item In semiconductors, photons lift electrons from the \textbf{valence band} to the \textbf{conduction band}.
+    \item This increases the number of free charge carriers → higher conductivity.
+\end{itemize}
+\begin{columns}
+\column{0.6\textwidth}
+\textbf{Energy Condition:}
+\[
+E_{\text{ph}} = h f = \frac{h c}{\lambda} \geq E_g
+\]
+or equivalently:
+\[
+\lambda \leq 1.24\,\mu\text{m·eV} / E_g
+\]
+
+\textbf{Band Model Explanation:}
+\begin{itemize}
+    \item Photons with $E_{\text{ph}} > E_g$ generate electron-hole pairs.
+    \item More photons → higher conductivity (photoconduction).
+\end{itemize}
+\column{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{fig/lec02/photoelec_3.pdf}
+    \caption*{Inner photoelectric effect: photon absorption and electron excitation in semiconductors}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Applications of Photoelectric Effect}
+\textbf{Practical Uses:}
+\begin{itemize}
+    \item \textbf{Photon detectors} (photomultipliers, photodiodes)
+    \item \textbf{Optocouplers} for galvanic isolation
+    \item \textbf{Light barriers and light curtains} for automation
+    \item \textbf{Light and color sensors} for measurement and control
+    \item \textbf{Photovoltaic cells} (solar energy conversion)
+\end{itemize}
+
+
+\textbf{Summary:}
+\begin{itemize}
+    \item Outer effect → metal emission and photocurrent.
+    \item Inner effect → semiconductor excitation and increased conductivity.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Optical Effects – Physical Basis}
+\begin{columns}
+\column{0.6\textwidth}
+\textbf{Light as an Electromagnetic Phenomenon:}
+\begin{itemize}
+    \item Light exhibits both \textbf{wave} and \textbf{particle} characteristics.
+    \item As a wave → described by wavelength $\lambda$, frequency $f$, and velocity $c$:
+    \[
+    c = \lambda \cdot f
+    \]
+    \item As a particle → light consists of \textbf{photons} carrying quantized energy:
+    \[
+    E_{\text{ph}} = h \cdot f
+    \]
+\end{itemize}
+
+\textbf{Visible Light Spectrum:}
+\begin{itemize}
+    \item $\lambda$ range: 380-780 nm, $f$ range: $3.84\times10^{14}$-$7.89\times10^{14}$ Hz.
+    \item Light can be absorbed, reflected, or refracted.
+\end{itemize}
+
+\column{0.4\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{fig/lec02/opto_1.pdf}
+    \caption*{Wave and particle characteristics of light}
+\end{figure}
+
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Wave and Particle Characteristics of Light}
+
+\textbf{Wave Nature:}
+\begin{itemize}
+    \item Involves reflection, refraction, diffraction, interference, and polarization.
+    \item Described by the oscillation of electric $(E)$ and magnetic $(H)$ fields.
+\end{itemize}
+\begin{columns}
+\column{0.6\textwidth}
+\textbf{Particle Nature:}
+\begin{itemize}
+    \item Light behaves as a stream of photons with discrete energy packets.
+    \item Responsible for photoelectric and photoconductive effects.
+\end{itemize}
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Wave properties → optics, lenses, fiber optics.
+    \item Photon properties → photodiodes, photoelectric sensors, lasers.
+\end{itemize}
+
+\column{0.4\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{fig/lec02/opto_1.pdf}
+    \caption*{Wave and particle characteristics of light}
+\end{figure}
+
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Refraction and Reflection of Light}
+\small
+\textbf{Refraction:}
+When light passes from one medium to another, its speed and direction change.
+\[
+\frac{\sin \varepsilon}{\sin \beta} = \frac{c}{c'} = \frac{n'}{n}
+\]
+where $n$ = refractive index, $c$ = speed of light in vacuum, $c'$ = in medium.
+
+
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Snell's Law:}
+\[
+n = \frac{c_0}{c}
+\]
+\textbf{Reflection:}
+\begin{itemize}
+    \item Angle of incidence = angle of reflection.
+    \item Total internal reflection occurs if angle of incidence $> \text{critical angle}$.
+\end{itemize}
+
+\textbf{Applications:}
+\begin{itemize}
+    \item Optical fibers utilize total internal reflection to guide light efficiently.
+\end{itemize}
+
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/lec02/opto_2.pdf}
+    \caption*{Refraction and reflection of light at an interface}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Optical Sensors – Principle of Operation}
+\small
+\textbf{Basic Components:}
+\begin{itemize}
+    \item \textbf{Transmitter:} light source (e.g., LED, laser).
+    \item \textbf{Transmission medium:} air, glass, or fiber.
+    \item \textbf{Receiver:} converts light signal into electrical signal (e.g., photodiode).
+\end{itemize}
+
+\textbf{Working Concept:}
+\begin{itemize}
+    \item Based on absorption, reflection, or refraction of light.
+    \item Used for object detection, distance sensing, and imaging.
+\end{itemize}
+
+\textbf{Equation of photon energy:}
+\[
+E_{\text{ph}} = h \cdot f = \frac{h \cdot c}{\lambda}
+\]
+
+\textbf{Examples:}
+\begin{itemize}
+    \item Photoelectric sensors, optical encoders, light barriers, and camera modules.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Laser Principle and Optical Emission}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{fig/lec02/opto_3.pdf}
+    \caption*{Absorption, spontaneous emission, and laser principle}
+\end{figure}
+\textbf{Photon-Energy Interaction:}
+\begin{itemize}
+    \item \textbf{Absorption:} photon excites electron from $E_1 \rightarrow E_2$.
+    \item \textbf{Spontaneous emission:} electron falls from $E_2 \rightarrow E_1$, emitting one photon.
+    \item \textbf{Stimulated emission:} incident photon induces another photon of same phase → amplification.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Laser Principle and Optical Emission}
+
+
+\textbf{Laser (Light Amplification by Stimulated Emission of Radiation):}
+\begin{itemize}
+    \item Coherent and monochromatic light output.
+    \item Used in measurement, identification, and communication.
+\end{itemize}
+
+\textbf{Energy relationship:}
+\[
+E_{\text{ph}} = h \cdot f
+\]
+
+\end{frame}
+
+\begin{frame}{Summary of physical effects used in sensors}
+\begin{itemize}
+    \item Lits of all the physical effects used in sensors were covered in this lecture series.
+    \item Each effect has unique principles, equations, and applications.
+    \item Understanding these effects is crucial for sensor design and application.
+    \item This knowledge enables the development of advanced sensing technologies across various fields.
+    \item Further reading and exploration of each effect can lead to innovative sensor solutions.
+    \item Try to visualize how these effects can be combined in multi-functional sensors. Maybe you come up with new ideas!
+\end{itemize}
 \end{frame}
