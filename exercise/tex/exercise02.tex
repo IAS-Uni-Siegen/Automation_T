@@ -2,8 +2,8 @@
 %% Begin exercise %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ex{Sensors}
-\newif\ifshowsolutions
-\showsolutionstrue % <-- change to \showsolutionstrue to show
+% \newif
+% \showsolutionstrue % <-- change to \showsolutionstrue to show
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.1 %%
@@ -19,7 +19,7 @@ Assume quasi-static force transfer F(t) = m a(t) and a charge amplifier with C$_
 
 \subtask{ Compute the sensor charge \( Q(t) \) and amplifier output \( v_o(t) \).}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \noindent
 Force:
@@ -67,12 +67,12 @@ for \( 0 \le t \le 4~\text{ms} \) (and zero outside the half-sine).
 \textit{Note:} The output \( v_o(t) \) follows a negative half-sine waveform with a peak amplitude of approximately \(-14.825~\text{V}\), due to the inverting nature of the charge amplifier.
 
 \end{solutionblock}
-\fi
+
 
 
 \subtask{ Estimate the sensor capacitance \( C_s \) and discuss how \( C_s \) versus \( C_f \) affects the scale factor and low-frequency droop.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \textbf{Ideal charge amplifier:} For an ideal op-amp, the output depends only on the generated charge and the feedback capacitor:
 \[
@@ -87,12 +87,12 @@ C_s = \frac{\varepsilon_0 \varepsilon_r A}{t} \approx 2.7~\mathrm{nF}, \quad
 \text{Smaller } $C_f$ \text{ increases sensitivity but also raises noise and saturation risk.}
 
 \end{solutionblock}
-\fi
+
 
 
 \subtask{ If the device warms by \( +40^{\circ}\mathrm{C} \), qualitatively discuss the expected sensitivity shift and explain why a constant force cannot be measured indefinitely with a piezoelectric sensor.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Piezo sensors’ sensitivity depends on $d_{33}$ and $\varepsilon_r$, which decrease with temperature, 
 while leakage and dielectric loss increase, causing faster signal droop. 
@@ -100,7 +100,7 @@ They generate charge under stress but cannot hold a DC output because leakage an
 absorption make the signal decay. 
 Therefore, piezo sensors are best for measuring dynamic or transient forces, not constant ones.
 \end{solutionblock}
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.2 %%
@@ -113,7 +113,7 @@ All four gauges experience the same temperature rise of $+30~^\circ\text{C}$.
 
 \subtask{Derive the bridge output $U_A$ with two active gauges in tension and two in compression.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Take the standard Wheatstone full-bridge. Label resistances clockwise: 
 $R_1$ (top left), $R_2$ (bottom left), $R_3$ (top right), $R_4$ (bottom right).
@@ -161,11 +161,11 @@ If all four gauges experience the same temperature change, adding $\Delta R_T$ t
 
 Practical note: small errors can occur due to TCR mismatches, uneven mounting, or self-heating, but a full bridge greatly reduces temperature effects compared to a single gauge or half-bridge.
 \end{solutionblock}
-\fi
+
 
 \subtask{If the adhesive allows only $I_\text{exc} \le 15~\text{mA}$ to avoid self-heating, check compliance.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 For a full bridge with \(U_\text{exc} = 5\ \text{V}\) and two series legs (\(\approx 2R\)) in parallel:
 
@@ -192,7 +192,7 @@ P_\text{tot} = \frac{U_\text{exc}^2}{R_\text{eq}} = 0.208\ \text{W}, \quad P_\te
 At \(U_\text{exc} = 1.8\ \text{V}\), \(P_\text{gauge} \approx 6.75\ \text{mW}\) (safe).
 
 \end{solutionblock}
-\fi
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.3 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -202,7 +202,7 @@ A square silicon diaphragm carries four diffused piezoresistors in a full bridge
 
 \subtask{Find the small-signal bridge sensitivity \(S = dU_A/dp\)}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 For each resistor, \(\Delta R / R = k_\pi \varepsilon\). With two \(+\varepsilon\) and two \(-\varepsilon\):
 
@@ -222,11 +222,11 @@ Bridge sensitivity formula:
 S = \frac{dU_A}{dp} = U_\text{exc} \, k_\pi \, \frac{d\varepsilon}{dp}
 \]
 \end{solutionblock}
-\fi
+
 
 \subtask{Discuss why silicon (vs. metal SG) achieves much higher sensitivity and how temperature-dependent \(\rho\) enters}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Silicon’s large piezoresistive effect (\(k_\pi \approx 80\)) gives much higher sensitivity than metal gauges (\(k \approx 2\)). 
 Temperature affects resistivity \(\rho(T)\), adding a TCR term to \(\Delta R/R\).
@@ -235,7 +235,7 @@ Temperature affects resistivity \(\rho(T)\), adding a TCR term to \(\Delta R/R\)
 \]
 The bridge cancels common temperature shifts, but additional compensation is usually required.
 \end{solutionblock}
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.4 %%
@@ -249,7 +249,7 @@ Flux density at full scale: \(B = 80~\text{mT}\).
 
 \subtask{ For A, estimate \(U_H\) using \(U_H = (A_H B/d) I_x\) with a typical semiconductor \(A_H\).}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \[
 U_H = \frac{A_H B}{d} I_x
@@ -260,11 +260,11 @@ U_H = \frac{5\times10^{-4}\cdot0.08}{1\times10^{-5}}\cdot0.005 = 0.02~\text{V} =
 \]
 Typical Hall output = 4–40~mV for \(A_H\) between \(10^{-4}\) and \(10^{-3}\ \text{m}^3/\text{C}\)
 \end{solutionblock}
-\fi
+
 
 \subtask{ For B, use 5~mA constant-current bias and the \(R(B)\) characteristic to estimate \(\Delta V\).}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 With MR ratio \(\Delta R / R_0 \approx 0.02\) at \(B = 80~\text{mT}\):
 \[
@@ -272,11 +272,11 @@ With MR ratio \(\Delta R / R_0 \approx 0.02\) at \(B = 80~\text{mT}\):
 \]
 So MR yields = 100~mV output, higher than the Hall signal.
 \end{solutionblock}
-\fi
+
 
 \subtask{ Compare temperature robustness and reasons to pick A vs. B.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \textbf{Temperature sensitivity:}  
 MR has \(\alpha \approx -0.004~\text{K}^{-1}\), giving:
@@ -291,7 +291,7 @@ Hall devices also vary with temperature, but typically only a few \% over tens o
 Hall $\rightarrow$ simple, linear DC response, moderate sensitivity (~20~mV), better thermal stability.  
 MR $\rightarrow$ higher sensitivity (~100~mV) but large \(|\alpha|\), needs calibration or temperature control.
 \end{solutionblock}
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.5 %%
@@ -303,7 +303,7 @@ A magnetostrictive rod (wave speed $v = 2850~\text{m/s}$) is used in a non-conta
 
 \subtask{ Estimate $x$.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Assuming the pulse travels one way (no reflection path),
 \[
@@ -311,11 +311,11 @@ x = v t = 2850 \times 152 \times 10^{-6}
    = 0.4332~\text{m} \approx 433~\text{mm.}
 \]
 \end{solutionblock}
-\fi
+
 
 \subtask{ Correct for the electronics delay of $3.0~\mu\text{s}$.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Corrected travel time:
 \[
@@ -329,11 +329,11 @@ x_{\text{corr}} = v t_{\text{true}}
 \]
 The delay caused an overestimate of $\approx 8.5~\text{mm.}$
 \end{solutionblock}
-\fi
+
 
 \subtask{ Temperature effect on position error.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Given $ \frac{\Delta v}{v} = -0.02\%\!/\text{K}$, for a $+20~\text{K}$ change:
 \[
@@ -346,17 +346,17 @@ Since $x \propto v$,
 \]
 Thus, a $+20~\text{K}$ temperature rise (uncorrected) causes $\approx -1.7~\text{mm}$ error.
 \end{solutionblock}
-\fi
+
 
 \subtask{ Principle of operation (Villari and Wiedemann effects).}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \textbf{Wiedemann effect (launch):} A current pulse through the rod interacts with a magnetic bias, producing a torsional strain wave. \\
 \textbf{Villari effect (detection):} The torsional stress under the external magnet alters the local magnetization, inducing a voltage in a pickup coil. \\
 The time-of-flight of this torsional wave gives the absolute position of the magnet.
 \end{solutionblock}
-\fi
+
 
 
 
@@ -371,7 +371,7 @@ A conductive aluminium target causes an inductance drop $\Delta L = -12\%$ at th
 
 \subtask{ Find the free-run frequency and the switch-point frequency.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 The free-run oscillator frequency is
 \[
@@ -387,11 +387,11 @@ f_s = \frac{1}{2\pi\sqrt{L'C}}
      \approx 594~\text{kHz.}
 \]
 \end{solutionblock}
-\fi
+
 
 \subtask{ Explain why conductive non-magnetic targets reduce $L$ and how coil $Q$ plays in detection margin.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Conductive targets (e.g., aluminium) support eddy currents that \emph{oppose} the coil’s magnetic flux (Lenz’s law), thus reducing effective $L$ and increasing oscillator frequency.
 
@@ -410,7 +410,7 @@ a typical moderate value for practical proximity sensors.
 Eddy currents $\Rightarrow$ lower $L$, higher $f$.\\
 High $Q$ $\Rightarrow$ sharper frequency or amplitude change, improving switch detection.
 \end{solutionblock}
-\fi
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -424,7 +424,7 @@ Sheet thickness variations $\Delta d$ are to be resolved.
 
 \subtask{ Compute nominal capacitance $C_0$.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \[
 C_0 = \varepsilon_0 \varepsilon_r \frac{A}{d}
@@ -432,11 +432,11 @@ C_0 = \varepsilon_0 \varepsilon_r \frac{A}{d}
      = 2.12\times10^{-11}~\text{F} = 21.2~\text{pF.}
 \]
 \end{solutionblock}
-\fi
+
 
 \subtask{ If the sheet bows, causing a +5\% fringing-equivalent increase in effective area, estimate the apparent thickness error if the parallel-plate model is used.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 If $A_{\rm eff} = 1.05A$, then $C_{\rm meas} = 1.05C_0$ while the model assumes $A$ constant:
 \[
@@ -447,7 +447,7 @@ d_{\rm inf} = \frac{\varepsilon_0 \varepsilon_r A}{C_{\rm meas}}
 Numerically, $\Delta d \approx -0.024~\text{mm} = -23.8~\mu\text{m}$.  
 Thus, ignoring fringing makes the sheet appear $\approx$24~µm thinner.
 \end{solutionblock}
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.8 %%
@@ -459,7 +459,7 @@ A field-plate bridge measures speed via a steel toothed wheel. Bridge excitation
 
 \subtask{ Output waveform and shape}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 As each tooth passes, the magnetic field \(B\) rises and falls, changing the resistance as \(R = R_0(1 \pm \delta)\).  
 The bridge output is:
@@ -468,11 +468,11 @@ U_A = U_{\rm exc}\,\delta.
 \]
 Because \(R(B)\) is nonlinear and the field shape around the tooth is not perfectly sinusoidal, the output is a \emph{quasi-sinusoidal but slightly distorted} waveform.
 \end{solutionblock}
-\fi
+
 
 \subtask{ Estimate peak-to-peak output}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 With opposite arms varying by \(\pm8\%\):
 \[
@@ -480,12 +480,12 @@ With opposite arms varying by \(\pm8\%\):
 \]
 Hence about \(0.26~\text{V}\) amplitude on each side of zero.
 \end{solutionblock}
-\fi
+
 
 \subtask{ If the element self-heats by $+15~\mathrm{K}$, estimate the DC drift using $\alpha \approx -0.004~\mathrm{K}^{-1}$ and discuss compensation.
 }
 
-\ifshowsolutions
+
 \begin{solutionblock}
 Self-heating by \(+15~\text{K}\) and \(\alpha = -0.004~\text{K}^{-1}\) gives:
 \[
@@ -494,7 +494,7 @@ Self-heating by \(+15~\text{K}\) and \(\alpha = -0.004~\text{K}^{-1}\) gives:
 i.e. a \(-6\%\) baseline drop, causing a DC offset in the bridge.  
 Use ratiometric or differential sensing and temperature correction to cancel this drift.
 \end{solutionblock}
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.9 %%
@@ -506,7 +506,7 @@ An RTD with $R(25^\circ \text{C}) = 100~\Omega$ measures air temperature. The th
 
 \subtask{Find the maximum measurement current $I_{\rm max}$.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 The self-heating temperature rise is
 
@@ -522,11 +522,11 @@ I_{\rm max} = \sqrt{\frac{\Delta T}{\Theta R}}
              \approx 2.24~\text{mA}.
 \]
 \end{solutionblock}
-\fi
+
 
 \subtask{If the response time is dominated by thermal capacitance $C_{\rm th} = 30~\text{mJ/K}$, estimate the time constant $\tau$ and discuss the speed/accuracy trade-off.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 The thermal time constant is
 
@@ -536,7 +536,7 @@ The thermal time constant is
 
 \textit{Note:} Increasing $I$ improves the electrical signal-to-noise ratio (SNR), but it also increases self-heating $\Delta T$. A compromise must be made: choose $I$ such that the self-heating error is within the allowed budget while still meeting the required measurement bandwidth.
 \end{solutionblock}
-\fi
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -549,7 +549,7 @@ A C-core with a $1.0~\text{mm}$ gap surrounds a conductor carrying up to $150~\t
 
 \subtask{Estimate the magnetic flux density $B$ in the gap at full scale.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 The gap dominates the reluctance, so the magnetic flux density can be estimated as:
 
@@ -563,11 +563,11 @@ with $N = 1$ turn. Substituting values:
 B \approx \frac{4\pi \times 10^{-7} \cdot 150}{1.0\times 10^{-3}} \approx 0.19~\text{T}.
 \]
 \end{solutionblock}
-\fi
+
 
 \subtask{Estimate the Hall voltage $U_H$ for a semiconductor and a metal.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 The Hall voltage is:
 
@@ -588,7 +588,7 @@ U_H = \frac{A_H B}{d} I_x
     \item Hall sensors can provide a \textbf{compact, direct voltage output} proportional to current, simplifying signal processing, whereas inductive sensors need integration circuits for DC estimation.
 \end{enumerate}
 \end{solutionblock}
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.11 %%
@@ -613,7 +613,7 @@ The text states that photoconductors are slow (response in seconds at low light)
 
 \subtask{Explain the physical reason for this major difference in response speed.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \textbf{Photoconductor}: A photon excites an electron from the valence band to the conduction band, creating an electron-hole pair. 
 These carriers increase the material's conductivity. 
@@ -625,11 +625,11 @@ The built-in electric field quickly sweeps electrons to the n-side and holes to 
 The signal ends immediately when photons stop, as there are no free carriers waiting to recombine. 
 This drift-current mechanism is vastly faster than the slow recombination in photoconductors.
 \end{solutionblock}
-\fi
+
 
 \subtask{Which device is the only viable choice for this 5~ms application?}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 The application requires a response time $< 5~\text{ms}$:
 
@@ -640,7 +640,7 @@ The application requires a response time $< 5~\text{ms}$:
 
 Thus, the \textbf{Silicon Photodiode} is the correct choice.
 \end{solutionblock}
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 2.12 %%
@@ -663,7 +663,7 @@ with the following parameters:
 
 \subtask{Calculate the sensor resistance $R(T)$ at $T = 0^\circ\text{C}$ and $T = 50^\circ\text{C}$.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 \textbf{At $T = 0^\circ\text{C}$ (273.15 K):}
 
@@ -689,11 +689,11 @@ R(50^\circ\text{C}) &= 10~\text{k}\Omega \cdot e^{3950 \left(\frac{1}{323.15} - 
 
 \textit{Self-check:} $R(0^\circ\text{C}) > R_N > R(50^\circ\text{C})$, consistent with NTC behavior.
 \end{solutionblock}
-\fi
+
 
 \subtask{Explain qualitatively how adding a parallel resistor $R_P$ helps linearize the sensor output.}
 
-\ifshowsolutions
+
 \begin{solutionblock}
 The $R_T(T)$ curve of the NTC is convex (steep at low temperatures, flatter at high temperatures). Adding a parallel resistor $R_P$ gives an equivalent resistance:
 
@@ -708,6 +708,6 @@ R_{\rm eq} = \frac{R_T \cdot R_P}{R_T + R_P}
 
 The parallel resistor compresses the high-resistance (low-temperature) end of the curve more than the low-resistance (high-temperature) end, flattening the exponential behavior and making the response more linear over the 0–50°C range. This reduces sensitivity slightly but significantly improves linearity for simple analog voltage dividers.
 \end{solutionblock}
-\fi
+
 
 \end{document}
