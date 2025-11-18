@@ -8,9 +8,181 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introduction to the p-n junctions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Measurement and Signal Processing}
+\small
+\textbf{Goal:} Transform a physical phenomenon into a measurable and interpretable electrical signal.
+
+\begin{itemize}
+    \item Measurement = objective assignment of numerical value to a property.
+    \item Signal processing ensures that sensor outputs are usable by controllers or digital systems.
+    \item Conditioning bridges the physical world and the information world.
+\end{itemize}
+
+\begin{block}{Core Idea}
+Sensors $\Rightarrow$ Signal Conditioning $\Rightarrow$ Data Conversion $\Rightarrow$ Processing $\Rightarrow$ Display/Control
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Elements of a Measurement System}
+\centering
+\includegraphics[scale=0.6]{fig/lec03/measurement_loop.pdf}
+
+\end{frame}
+
+
+\begin{frame}{Elements of a Measurement System}
+\textbf{Subsystems:}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{enumerate}
+    \item \textbf{Sensor / Transducer} - converts physical to electrical signals.
+    \item \textbf{Signal Conditioning} - amplifies, filters, linearizes.
+    \item \textbf{Data Transmission} - carries signals to control or display unit.
+    \item \textbf{Controller / Processor} - interprets and acts upon data.
+    \item \textbf{Actuator} - applies control action to the system or process.
+\end{enumerate}
+\column{0.5\textwidth}
+\centering
+\includegraphics[scale=0.35]{fig/lec03/measurement_loop.pdf}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Transducers, Sensors, and Actuators}
+\small
+\textbf{Transducer:} Converts energy from one form to another. \\ 
+\textbf{Sensor:} Input transducer--detects a physical variable and converts it to an electrical signal.  \\
+\textbf{Actuator:} Output transducer--converts electrical signals into mechanical motion or other actions.
+
+\begin{block}{Key Concepts}
+\begin{itemize}
+    \item Always some energy flow from measured system to sensor $\Rightarrow$ avoid loading effect.
+    \item Six domains: mechanical, thermal, magnetic, electrical, chemical, radiation.
+    \item Sensors with electric outputs dominate modern systems.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Advantages of Electrical Measurement Systems}
+\small
+\begin{enumerate}
+    \item Electric parameters vary with almost any physical quantity (temperature, strain, pressure).
+    \item Signal energy can be amplified  -- minimal disturbance to measured system.
+    \item Wide availability of integrated circuits for conditioning and processing.
+    \item Data can be easily recorded, transmitted, and displayed electronically.
+    \item Electrical signals are versatile and compatible with digital systems.
+\end{enumerate}
+\textbf{Primary sensor:} interacts with the measurand (e.g., diaphragm senses pressure).  \\ 
+\textbf{Secondary sensor:} converts the effect into an electrical signal (e.g., strain gauge).
+
+\begin{itemize}
+    \item Example: Pressure $\rightarrow$ diaphragm deformation $\rightarrow$ resistance change $\rightarrow$ voltage signal.
+    \item Full sensor assembly includes sensing element + package + leads.
+    \item The raw signal typically has low amplitude and needs conditioning.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Signal Conditioning}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Signal conditioning:} prepares sensor output for transmission, digitization, or display.
+
+\begin{itemize}
+    \item Functions: amplification, filtering, impedance matching, level shifting, modulation/demodulation.
+    \item Converts weak analog signals (mV range) to standard ranges ($\pm 10$ V or 4–20 mA).
+    \item Analog-to-digital converters (ADCs) need well-conditioned inputs.
+    \item Final display may be analog (pointer, gauge) or digital (numeric, bar graph).
+\end{itemize}
+\column{0.5\textwidth}
+\centering
+\includegraphics[scale=0.35]{fig/lec03/measurement_loop.pdf}
+%\caption*{Signal conditioning stage highlighted in the measurement chain.}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Interfaces and Data Domains}
+\small
+\textbf{Measurement systems involve multiple data domains:}
+\begin{itemize}
+    \item Domains describe how information is represented or transmitted.
+    \item Interface stages (ADC, DAC) convert between domains.
+\end{itemize}
+
+\textbf{Common domains:}
+\begin{itemize}
+    \item \textbf{Analog:} signal amplitude represents information (voltage, current).
+    \item \textbf{Time:} information encoded in timing (frequency, phase, pulse width).
+    \item \textbf{Digital:} information represented numerically (binary codes, counts).
+    \item \textbf{Chemical/Physical:} domains prior to conversion to electrical form.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Data Domain Representation}
+\begin{columns}
+\column{0.35\textwidth}
+\textbf{Information carriers:}
+\begin{itemize}
+    \item \textbf{Analog domain:} amplitude (voltage/current).
+    \item \textbf{Time domain:} period, frequency, or phase.
+    \item \textbf{Digital domain:} pulse count, word code.
+\end{itemize}
+\textit{Each stage in the measurement chain may operate in a different domain, requiring proper interfacing and conversion.}
+\column{0.65\textwidth}
+\centering
+\includegraphics[scale=0.65]{fig/lec03/data_domains.pdf}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Direct Adjustment Indirect Measurements}
+\small
+\textbf{Direct measurement:}
+\begin{itemize}
+    \item Comparison with a reference standard (e.g., weighing scale, voltmeter).
+\end{itemize}
+
+\textbf{Indirect measurement:}
+\begin{itemize}
+    \item Computed from other quantities using physical laws.
+    \item Examples:
+    \begin{itemize}
+        \item Power = Voltage × Current
+        \item Distance = $\int$ speed dt
+    \end{itemize}
+\end{itemize}
+\vspace{4pt}
+\textbf{Most modern measurements are indirect and require signal processing.}
+\end{frame}
+
+
+\begin{frame}{Summary and Context for Next Topics}
+\small
+\textbf{You have learned:}
+\begin{itemize}
+    \item The structure of a measurement and control system.
+    \item Roles of transducers, sensors, actuators, and conditioners.
+    \item The flow of information through different domains.
+\end{itemize}
+
+\textbf{Next lectures:}
+\begin{itemize}
+    \item Resistive and bridge circuits for signal generation.
+    \item Operational amplifiers in conditioning.
+    \item ADCs, DACs, sampling, and quantization.
+\end{itemize}
+
+\end{frame}
+
+
+
 \begin{frame}{Overview of Signal Processing and Calibration}
 \small
-\textbf{Goal:} Convert a physical quantity into a usable electrical signal.
+\textbf{Goal:} Convert a physical quantity/phenomenon into a usable electrical/digital signal decision
 
 \begin{itemize}
   \item Sensors generate low-level, often non-linear, analog outputs.
@@ -24,50 +196,6 @@
   \item Influence of disturbance variables (e.g. temperature).
   \item Nonlinear characteristic curves $\rightarrow$ need linearization and filtering.
 \end{enumerate}
-\end{frame}
-
-% \begin{frame}{From Physical Property to Electrical Signal}
-% \small
-% \textbf{Sensors act as energy converters:}
-% \begin{itemize}
-%   \item Convert mechanical, thermal, optical, or chemical quantities into voltage, current, or resistance.
-%   \item Classified by \textbf{measured property} (temperature, pressure, force, position, etc.).
-%   \item Or by \textbf{electrical output type} (voltage, current, resistance, capacitance).
-% \end{itemize}
-
-% \begin{block}{Active vs. Passive Sensors (Kester, 2000)}
-% \begin{itemize}
-%   \item \textbf{Active sensors:} Require external excitation (e.g., RTDs, strain gauges).
-%   \item \textbf{Passive sensors:} Self-generating (e.g., thermocouples, photodiodes).
-% \end{itemize}
-% \end{block}
-% \end{frame}
-
-
-\begin{frame}{Typical Measurement Chain}
-\centering
-%\includegraphics[width=0.9\linewidth]{fig/measurement_chain.png}
-\vspace{4pt}
-\small
-\textbf{Process:}
-\begin{enumerate}
-  \item Sensor converts the stimulus.
-  \item Signal conditioning amplifies and linearizes.
-  \item ADC digitizes the signal.
-  \item Microcontroller processes, controls, and communicates.
-  \item DAC or actuator output closes the control loop.
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{Signal Processing: Basic Types}
-\small
-\textbf{Physical effects generating the sensor signal:}
-\begin{itemize}
-  \item \textbf{Charge / Voltage generation:} piezoelectric, thermoelectric, photoelectric.
-  \item \textbf{Resistance or Conductance change:} strain gauge, thermistor, FET-based sensors.
-  \item \textbf{Capacitance or Inductance change:} displacement, proximity, humidity sensors.
-\end{itemize}
-
 \textbf{Output types:}
 \begin{itemize}
   \item Binary (on/off)
@@ -76,131 +204,830 @@
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Analog (Discrete) Signal Conditioning}
-\small
-\textbf{Purpose:} Boost and shape low-level analog signals.
-
-\textbf{Features:}
+\begin{frame}{Signal Conditioning Functions}
 \begin{itemize}
-  \item Low-noise amplification (e.g., differential bridge amplifiers).
-  \item Offset and gain trimming via resistors.
-  \item Filtering of unwanted frequency components.
+    \item \textbf{Amplification:} Boosts weak sensor signals to usable levels.
+    \item \textbf{Filtering:} Removes noise and unwanted frequency components.
+    \item \textbf{Linearization:} Corrects nonlinear sensor outputs.
+    \item \textbf{Impedance Matching:} Ensures proper signal transfer between stages.
+    \item \textbf{Level Shifting:} Adjusts signal baseline for compatibility.
+    \item \textbf{Modulation/Demodulation:} Prepares signals for transmission or extraction.
+    \item \textbf{Isolation:} Prevents ground loops and protects against high voltages.
+    \item \textbf{Calibration:} Adjusts system to ensure accurate measurements.
+    \item \textbf{Conversion:} Transforms signals between analog and digital domains.
+    \item \textbf{Data Transmission:} Sends signals over distances without degradation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Common Signal Conditioning Techniques}
+\begin{itemize}
+    \item \textbf{Bridge Circuits:} Convert resistance changes (e.g., strain gauges) into voltage signals.
+    \item \textbf{Operational Amplifiers:} Used for amplification, filtering, and buffering.
+    \item \textbf{Filters:} Low-pass, high-pass, band-pass, and notch filters to manage frequency content.
+    \item \textbf{Analog-to-Digital Converters (ADCs):} Convert analog signals to digital form for processing.
+    \item \textbf{Digital-to-Analog Converters (DACs):} Convert digital signals back to analog form.
+    \item \textbf{Multiplexers:} Allow multiple sensor signals to be processed by a single conditioning circuit.
+    \item \textbf{Isolation Amplifiers:} Provide galvanic isolation between input and output.
+    \item \textbf{Temperature Compensation Circuits:} Mitigate effects of temperature variations on sensor outputs.
+    \item \textbf{Signal Modulators/Demodulators:} Prepare signals for transmission over long distances.
+    \item \textbf{Data Transmission Protocols:} Ensure reliable communication between sensors and processing units.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction to D.C. and A.C. Bridges}
+\small
+\textbf{Objective:} Bridge circuits are used to measure unknown resistance, capacitance, or inductance precisely by comparing with known components.
+
+Conversion of tiny sensor variations (strain gauge, RTD, capacitive sensor) into measurable voltages and principles of null deflection help to curtain noise and improve accuracy.
+
+\begin{itemize}
+    \item Based on the principle of \textbf{null deflection} — when the bridge is balanced, no current flows through the detector.
+    \item Used extensively for \textbf{signal conditioning} in sensors and transducers.
+    \item D.C. bridges → resistive transducers (strain gauges, resistance temperature detectors (RTDs)).\\
+          A.C. bridges → reactive transducers (inductive, capacitive).
 \end{itemize}
 
-\begin{block}{Example}
-\centering
-%\includegraphics[width=0.7\linewidth]{fig/analog_conditioning_bridge.png}
+\begin{block}{Bridge Balance Principle}
+\[
+\frac{Z_1}{Z_2} = \frac{Z_3}{Z_4}
+\]
+At balance: $V_X = V_Y$ and detector current = 0.
 \end{block}
-\textit{Resistive bridge with differential amplifier: R1–R4 form the sensor bridge, IC1A/IC1B amplify to standard level.}
-\end{frame}
-
-\begin{frame}{System Circuits for Signal Conditioning}
-\small
-\textbf{Motivation:} Integrate signal processing tasks in ICs for compactness and reliability.
-
-\begin{itemize}
-  \item Use of ICs like \textbf{XTR108} (Texas Instruments) for RTD/bridge-to-current loop conversion.
-  \item On-chip features:
-  \begin{itemize}
-    \item Programmable gain amplifier (PGA)
-    \item Multiplexer for multiple inputs
-    \item Linearization and excitation current source
-    \item EEPROM for calibration constants
-  \end{itemize}
-  \item Standard 4–20 mA industrial output.
-\end{itemize}
 \end{frame}
 
 
-
-\begin{frame}{Signal Conditioning with ASICs and Microcontrollers}
+\begin{frame}{Introductory Example: Half-Bridge Measurement}
 \small
-\textbf{ASICs (Application-Specific ICs):}
+\textbf{Half-bridge concept:}
+\[
+e_o = e_i \frac{R_2}{R_1 + R_2}, \qquad [e_o, e_i\ \text{in V}]
+\]
+where:
+\[
+R_1 = R + \Delta R, \quad R_2 = R.
+\]
+\begin{columns}
+\column{0.65\textwidth}
+\textbf{Issues:}
 \begin{itemize}
-  \item Tailored to specific sensors (pressure, displacement, etc.)
-  \item Contain analog and digital processing, temperature compensation, EEPROM storage.
+    \item Always produces non-zero offset: $e_o(e_{\text{stimulus}=0}) \neq 0$.
+    \item Temperature drift affects balance.
 \end{itemize}
 
-\textbf{Microcontroller-based processing:}
+\textbf{Use cases:}
 \begin{itemize}
-  \item Integrates ADC, DAC, or PWM unit.
-  \item Enables flexible digital linearization and compensation.
-  \item Supports communication interfaces (SPI, I$^2$C, UART).
+    \item Basic resistance sensing demonstration.
+    \item Precursor to full Wheatstone bridge.
 \end{itemize}
+\column{0.35\textwidth}
+\begin{figure}
+  \vspace{-2cm}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/half_bridge.pdf}
+    \caption*{Half-Bridge Circuit}
+\end{figure}
+\end{columns}
 
-\textbf{Example:} MSP430 µC with sensor bridge input and display output.
+
 \end{frame}
 
-\begin{frame}{Sensor Calibration: Concepts}
+\begin{frame}{Wheatstone DC Bridge}
 \small
-\textbf{Calibration:} Documentation of deviation between measured and true values.
 
-\textbf{Adjustment:} Setting the sensor output to a known standard point (setpoint).
+\begin{columns}
+\column{0.55\textwidth}
+\textbf{Balance condition:}
+\[
+\frac{R_1}{R_2} = \frac{R_3}{R_4}, \qquad [R\ \Omega]
+\]
 
-\textbf{Compensation techniques:}
+\textbf{Output voltage (unbalanced):}
+\[
+e_o = e_i\left(
+\frac{R_2}{R_1+R_2} -
+\frac{R_4}{R_3+R_4}
+\right)
+\]
+
+\textbf{Characteristics:}
 \begin{itemize}
-  \item \textbf{Passive compensation:} Using resistive bridges (trim R1–R4 for zero and slope).
-  \item \textbf{Analog compensation:} Op-amp circuits adjusting offset/gain.
-  \item \textbf{Digital compensation:} Performed in ASICs or µCs via software.
+    \item High accuracy for small $\Delta R$.
+    \item Sensitive to temperature unless compensated.
+\end{itemize}
+
+\column{0.45\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/wheatstone_DC_bridge.pdf}
+    \caption*{Wheatstone Bridge Circuit}
+\end{figure}
+\end{columns}
+
+\textbf{Use cases:}  
+Strain gauges, RTDs, precision resistance measurement.  
+\textbf{Advantages:} simple, accurate, high SNR.  
+\textbf{Disadvantages:} 4-resistor matching needed, temp-drift.
+\end{frame}
+
+\begin{frame}{Practical Wheatstone Bridge with Zero \& Sensitivity Adjustments}
+\small
+\begin{columns}
+\column{0.55\textwidth}
+\begin{itemize}
+    \item Variable resistor $R_4$ used for \textbf{zero adjustment}.
+    \item $R_S$ introduces \textbf{sensitivity control} for the null detector.
+\end{itemize}
+
+\textbf{Output near balance:}
+\[
+e_o \approx \frac{e_i}{4R}( \Delta R_1 - \Delta R_3 )
+\]
+
+\textbf{Use cases:}  
+Industrial load cells, pressure transducers, torque sensors.
+
+\column{0.45\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/modi_wheatstone_DC_bridge.pdf}
+    \caption*{Practical Wheatstone Bridge Circuit}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Double Active Arm Bridge (Two-Element Bridge)}
+\small
+\begin{columns}
+\column{0.55\textwidth}
+
+\textbf{Purpose:} Increase sensitivity + temperature compensation.
+
+\[
+e_o \approx \frac{e_i}{2R}(\Delta R)
+\]
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item Doubles output sensitivity.
+    \item Self-temperature-compensating.
+\end{itemize}
+
+\textbf{Use cases:}  
+Mechanical systems with tension/compression pairs (e.g., 4-arm strain gauge load cells).
+
+\column{0.45\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/two_sensitive_bridge.pdf}
+    \caption*{Double Active Arm Bridge Circuit}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Full Bridge with Four Active Sensors}
+\small
+\textbf{Maximum sensitivity:}
+\[
+e_o = \frac{e_i}{4} \left( \frac{\Delta R}{R} \right) \times 4
+\]
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item Highest output level.
+    \item Excellent common-mode rejection.
+    \item Full temperature compensation.
+\end{itemize}
+
+\textbf{Use cases:} high-accuracy weighing systems, multi-axis force sensors.
+
+\end{frame}
+
+
+\begin{frame}{General AC Bridge Theory}
+\small
+
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Impedance representation:}
+\[
+Z = R + jX, \qquad [Z\ \Omega]
+\]
+
+\textbf{Balance condition:}
+\[
+Z_1 Z_4 = Z_2 Z_3
+\]
+
+\textbf{For balance:}
+\begin{itemize}
+    \item Real parts must match.
+    \item Imaginary parts must match.
+\end{itemize}
+
+\textbf{Use cases:}  
+Inductance, capacitance, dielectric loss, dissipation factor.
+\column{0.5\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/four_active_bridge.pdf}
+    \caption*{General AC Bridge Circuit}
+\end{figure}
+\end{columns}
+\end{frame}
+
+% ----------------------------------------------------------
+\begin{frame}{Maxwell Bridge (Inductance with Resistance)}
+\small
+\begin{columns}
+\column{0.65\textwidth}
+\textbf{Used for:} measuring inductance $L$ in series with resistance $R$.
+
+\[
+Z_1 = \frac{R_1}{1 + j\omega R_1 C_1}
+\quad
+Z_4 = R_4 + j\omega L_4
+\]
+
+\textbf{From balance:}
+\[
+R_4 = \frac{R_2 R_3}{R_1}, \qquad [\Omega]
+\]
+\[
+L_4 = R_2 R_3 C_1, \qquad [\text{H}]
+\]
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item Frequency-independent solution.
+    \item Easy to balance physically.
+\end{itemize}
+
+\textbf{Disadvantages:} not suitable for high-Q coils.  
+\textbf{Use cases:} medium inductors (10 mH–100 H).
+\column{0.35\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/maxwell.pdf}
+    \caption*{Maxwell Bridge Circuit}
+\end{figure}
+\end{columns}
+\end{frame}
+
+% ----------------------------------------------------------
+\begin{frame}{Hay Bridge (High-Q Inductance Measurement)}
+\small
+\begin{columns}
+\column{0.65\textwidth}
+\textbf{Used for:} inductors with small series resistance (high Q).
+
+\[
+R_1 R_4 = R_2 R_3, \qquad [\Omega]
+\]
+\[
+L_4 = R_2 R_3 C_1, \qquad [\text{H}]
+\]
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item Works well for high-Q inductors.
+    \item Frequency-independent result.
+\end{itemize}
+
+\textbf{Disadvantages:}  
+Not accurate for lossy inductors.
+\column{0.35\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/hay_bridge.pdf}
+    \caption*{Hay Bridge Circuit}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+% ----------------------------------------------------------
+\begin{frame}{Schering Bridge (Capacitance + Loss Measurement)}
+\small
+\begin{columns}
+\column{0.6\textwidth}
+\textbf{Unknown:} $C_4$ with series loss $R_4$.
+
+\[
+R_1 C_3 = R_2 C_4 \qquad [\text{s}]
+\]
+\[
+R_4 C_4 = R_1 C_1
+\]
+
+\textbf{Measures:}
+\begin{itemize}
+    \item Capacitance $C$ (in farads)
+    \item Dissipation factor, dielectric loss
+\end{itemize}
+
+\textbf{Use cases:} insulation testing, high-voltage apparatus, dielectric materials.
+
+\column{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/schering_bridge.pdf}
+    \caption*{Schering Bridge Circuit}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{The Wien Frequency Bridge: Principle and Circuit}
+\small
+\begin{columns}
+\column{0.65\textwidth}
+\textbf{Purpose:}  
+The Wien frequency bridge is designed so that the bridge balances (i.e., $e_o = 0$) \textbf{only at one specific frequency} of the applied AC signal.  
+Thus, it acts as a \textbf{notch filter} or a selective frequency measurement circuit.
+
+\textbf{Circuit characteristics:}
+\begin{itemize}
+    \item Arms $Z_3$ and $Z_4$ are pure resistances, with $Z_4 = 2 Z_3$.
+    \item Variable resistors $R_1$ and $R_2$ are mechanically ganged so both adjust simultaneously to the same value $R$.
+    \item Capacitors in opposite arms $C_1$ and $C_2$ have identical values $C$.
+\end{itemize}
+
+\textbf{Impedances:}
+\[
+Z_1 = \frac{R}{1 + j\omega C R}, \qquad
+Z_2 = R + \frac{1}{j\omega C}
+\]
+\[
+Z_3 = R_3 \qquad\qquad
+Z_4 = 2R_3
+\]
+\column{0.35\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/wein_bridge.pdf}
+    \caption*{Wien Frequency Bridge Circuit}  
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Wien Frequency Bridge: Balance Condition and Frequency}
+\small
+\begin{columns}
+\column{0.65\textwidth}
+\textbf{Balance condition for AC bridges:}
+\[
+Z_1 Z_4 = Z_2 Z_3
+\]
+
+Substitute impedances:
+\[
+\frac{R}{1 + j\omega CR} \cdot 2R_3 
+= 
+\left(R + \frac{1}{j\omega C}\right) R_3
+\]
+
+After simplifying and separating real and imaginary parts, the balance occurs when:
+\[
+\omega = \frac{1}{CR} \quad [\mathrm{rad/s}]
+\]
+\[
+f = \frac{1}{2\pi CR} \quad [\mathrm{Hz}]
+\]
+\column{0.35\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/wein_bridge.pdf}
+    \caption*{Wien Frequency Bridge Circuit}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Wien Frequency Bridge: Balance Condition and Frequency}
+\small
+\begin{columns}
+\column{0.65\textwidth}
+\textbf{Interpretation:}
+\begin{itemize}
+    \item Bridge gives \textbf{zero output} only at a single frequency.
+    \item Acts as a \textbf{precise frequency indicator} or \textbf{notch filter}.
+\end{itemize}
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item High frequency selectivity.
+    \item Components adjust symmetrically → good stability.
+\end{itemize}
+
+\textbf{Limitations:}
+\begin{itemize}
+    \item Sensitive to tolerance of $R$ and $C$.
+    \item Not suitable for broadband measurements.
+\end{itemize}
+\column{0.35\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.9]{fig/lec03/wein_bridge.pdf}
+    \caption*{Wien Frequency Bridge Circuit}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Summary Table: DC and AC Bridges}
+\small
+\begin{tabular}{p{2.5cm} p{4.5cm} p{4cm}}
+\toprule
+\textbf{Bridge} & \textbf{Measures} & \textbf{Use Cases} \\
+\midrule
+Wheatstone & Resistance, $\Delta R$ & Strain, RTD \\
+Practical Wheatstone & Precise $\Delta R$ & Load cells \\
+Double-arm bridge & High sensitivity & Force/torque \\
+Maxwell & L with R & Medium inductors \\
+Hay & High-Q inductors & RF coils \\
+Schering & C and dielectric loss & HV equipment \\
+Maxwell–Wien & Precision L & Standards \\
+De Sauty & Ideal C & Cap. comparison \\
+Owen & Low-Q inductors & Lossy coils \\
+Wien frequency & Frequency $f$ & Oscillators \\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Introduction to Operational Amplifiers}
+\small
+\textbf{Why Op-Amps?}
+\begin{itemize}
+    \item Widely used in analog signal conditioning, filtering, instrumentation, and measurement systems.
+    \item Originally used in analog computers for mathematical operations: 
+    addition, subtraction, differentiation, integration.
+    \item Modern op-amps are compact ICs with high performance, low noise, and wide bandwidth.
+\end{itemize}
+
+\textbf{Role in Signal Conditioning}
+\begin{itemize}
+    \item Amplification of weak sensor signals.
+    \item Conversion between signal domains (e.g., current–voltage).
+    \item Implementation of filters and mathematical operations.
+    \item Isolation between high/low impedance stages.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Analog and Digital Adjustment Methods}
+
+\begin{frame}{Operational Amplifier Terminals}
 \small
-\textbf{Analog signal processing (ASIC SCA2096):}
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Terminals of an Op-Amp}
 \begin{itemize}
-  \item Uses D/A converters for gain and offset correction.
-  \item Temperature influence compensated via secondary correction path.
-  \item Three-step calibration: high, room, and low temperature.
-\end{itemize}
-
-\textbf{Digital signal processing:}
-\begin{itemize}
-  \item Offset/gain correction and linearization in software.
-  \item Employs high-resolution ADC + digital correction function.
-  \item Uses either arithmetic equations or lookup tables.
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Digital Correction Strategies}
-\small
-\textbf{Arithmetic method:}
-\begin{itemize}
-  \item Uses polynomial equations with coefficients determined during calibration.
-  \item Example: $Y = Z_p + \text{Offset}(Z_{T1}) / \text{Gain}(Z_{T1})$.
-\end{itemize}
-
-\textbf{Characteristic curve interpolation:}
-\begin{itemize}
-  \item Interpolates between stored calibration points.
-  \item Linear interpolation sufficient for dense data; higher orders for complex curves.
-\end{itemize}
-
-\textbf{Lookup Table (LUT):}
-\begin{itemize}
-  \item Fastest method; stores precomputed outputs.
-  \item High memory consumption, but ideal for embedded real-time applications.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Emergence of Smart Sensors}
-\small
-\textbf{Smart sensors = Sensor + Conditioning + Processing + Communication}
-
-\begin{itemize}
-  \item Integrate:
+    \item Two input terminals: 
     \begin{itemize}
-      \item Precision amplifier and ADC
-      \item Microcontroller or DSP
-      \item Digital interface (SPI, I$^2$C, fieldbus)
+        \item Non-inverting input ($+$)
+        \item Inverting input ($-$)
     \end{itemize}
-  \item Provide self-calibration, self-diagnostics, and standard digital output.
-  \item Enable plug-and-play interoperability in industrial networks.
+    \item One output terminal.
 \end{itemize}
 
-\centering
-%\includegraphics[width=0.75\linewidth]{fig/smart_sensor_block.png}
-%\caption*{Smart sensor concept — integrating sensing, conditioning, and intelligence (after Kester, 2000).}
+\textbf{Input Configurations}
+\begin{itemize}
+    \item Single-ended input and output.
+    \item Differential input, single-ended output.
+    \item Differential input and differential output.
+\end{itemize}
+
+\column{0.5\textwidth}
+\begin{figure}
+    \includegraphics[width=0.75\linewidth]{fig/lec03/op_amp_sym.pdf}
+    \caption*{Op-amp configurations: single-ended and differential}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Characteristics of the Ideal Operational Amplifier}
+\small
+An ideal op-amp is defined by the following properties:
+
+\begin{enumerate}
+    \item \textbf{Infinite open-loop gain}, $A_{\mathrm{VOL}} \rightarrow \infty$
+    \item \textbf{Infinite input impedance}, $Z_{\mathrm{in}} \rightarrow \infty$  
+    $\rightarrow$ No input current: $i_+ = i_- = 0$
+    \item \textbf{Zero output impedance}, $Z_{\mathrm{out}} = 0$
+    \item \textbf{Infinite bandwidth}  
+    $\rightarrow$ constant gain from DC to $\infty$
+    \item \textbf{Zero input offset voltage and current}
+\end{enumerate}
+
+\textbf{Implications:}
+\begin{itemize}
+    \item No voltage difference between inputs under negative feedback.
+    \item Output adjusts to maintain $v_+ = v_-$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Golden Rules of Ideal Op-Amps}
+\small
+\begin{columns}
+\column{0.6\textwidth}
+
+\textbf{Golden Rule 1:}  
+Under negative feedback, the op-amp forces  
+\[
+v_+ = v_-
+\]
+
+\textbf{Golden Rule 2:}  
+\[
+i_+ = i_- = 0
+\]
+No current flows into either input terminal.
+
+\textbf{Consequences:}
+\begin{itemize}
+    \item The inverting input can act as a \textbf{virtual ground} if the non-inverting terminal is grounded.
+    \item The inverting node becomes a \textbf{summing point} for currents.
+\end{itemize}
+\column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.7\linewidth]{fig/lec03/basic_op_amp.pdf}
+    \caption*{Inverting and non-inverting feedback configurations}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Inverting Operational Amplifier}
+\small
+\begin{columns}
+\column{0.65\textwidth}
+
+\textbf{Circuit Principle}
+\begin{itemize}
+    \item Input applied to the inverting terminal via resistor $R_i$.
+    \item Feedback resistor $R_f$ returns output to inverting input.
+    \item Non-inverting terminal grounded ($v_+=0$).
+\end{itemize}
+
+\textbf{Derivation}
+Using Golden Rules:
+\[
+i_i = \frac{e_i}{R_i}, \quad i_f = \frac{-e_o}{R_f}
+\]
+Since $i_i = i_f$:
+\[
+\frac{e_i}{R_i} = -\frac{e_o}{R_f}
+\]
+\[
+\Rightarrow \frac{e_o}{e_i} = -\frac{R_f}{R_i}
+\]
+
+
+\column{0.35\textwidth}
+\begin{figure}
+\hspace{-1cm}\includegraphics[scale=0.8]{fig/lec03/invert_op_amp.pdf}
+\end{figure}
+\textbf{Closed-loop gain:}
+\[
+A_{V,CL} = -\frac{R_f}{R_i}
+\]
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Non-Inverting Operational Amplifier}
+\small
+\begin{columns}
+\column{0.65\textwidth}
+
+
+\textbf{Key Feature:} Input is applied to the $+$ terminal, so output is in-phase.
+
+\[
+e_B = e_i
+\]
+
+Using feedback current:
+\[
+i_f = \frac{0 - e_o}{R_1 + R_f}
+\]
+
+From nodal condition:
+\[
+i_f = \frac{e_i - e_o}{R_f}
+\]
+
+Solving the equations:
+\[
+A_{V,CL} = \frac{e_o}{e_i} = 1 + \frac{R_f}{R_i}
+\]
+
+
+
+\column{0.35\textwidth}
+\begin{figure}
+\hspace{-1cm}\includegraphics[scale=0.8]{fig/lec03/non_invert_op_amp.pdf}
+\end{figure}
+\textbf{Properties:}
+\begin{itemize}
+    \item No inversion of signal.
+    \item High input impedance.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Op-Amp as a Current-to-Voltage Converter}
+\small
+\begin{columns}
+\column{0.6\textwidth}
+
+\textbf{Used in:}
+\begin{itemize}
+    \item Photodiodes
+    \item Sensors generating current output
+    \item Precision current measurement
+\end{itemize}
+
+\textbf{Derivation:}
+Current flows through $R_f$:
+\[
+e_o = - I_i R_f \quad \text{(V)}
+\]
+
+\textbf{Units:}  
+$[I_i]=$ A, $[R_f]=$ $\Omega$, $[e_o]=$ V
+
+\column{0.4\textwidth}
+\begin{figure}
+\includegraphics[width=1\linewidth]{fig/lec03/current_to_voltage.pdf}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Summing Amplifier (Current Summation)}
+\small
+\begin{columns}
+\column{0.5\textwidth}
+
+\textbf{Currents summed at virtual ground:}
+\[
+I_f = I_1 + I_2 + I_3
+\]
+
+Output:
+\[
+e_o = -R_f(I_1 + I_2 + I_3)
+\]
+
+\textbf{Voltage Summation Form:}
+\[
+e_o = -R_f\left(\frac{e_1}{R_1} + \frac{e_2}{R_2} + \frac{e_3}{R_3}\right)
+\]
+
+\column{0.5\textwidth}
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{fig/lec03/summing_amplifier.pdf}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Voltage-to-Current Converter (V-I Converter)}
+\small
+\begin{columns}
+\column{0.4\textwidth}
+
+\[
+I_L = \frac{e_i}{R_1}
+\]
+
+\textbf{Load current independent of load resistor:}  
+Set by $R_1$ only.
+
+Used in:
+\begin{itemize}
+    \item Actuators
+    \item Transducer excitation
+    \item Analog driving circuits
+\end{itemize}
+
+\column{0.6\textwidth}
+\begin{figure}
+\includegraphics[width=0.6\linewidth]{fig/lec03/volt_to_current.pdf}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Op-Amp as a Buffer (Voltage Follower)}
+\small
+\begin{columns}
+\column{0.4\textwidth}
+
+\textbf{Unity gain:}
+\[
+e_o = e_i
+\]
+
+\textbf{Purpose:}
+\begin{itemize}
+    \item High input impedance.
+    \item Low output impedance.
+    \item Prevents loading of previous stage.
+\end{itemize}
+
+\column{0.6\textwidth}
+\begin{figure}
+\includegraphics[width=0.6\linewidth]{fig/lec03/buffer.pdf}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Differential Amplifier}
+\small
+\begin{columns}
+\column{0.4\textwidth}
+\textbf{Deriving the Output Voltage:}
+\[
+ e_1 \frac{R_2}{R_T}
+ = e_2 \frac{R_2}{R_T} + e_o \frac{R_1}{R_T}
+\]
+Cancel $R_T$ and rearrange:
+\[
+   e_o = (e_1 - e_2)\frac{R_2}{R_1}
+\]
+
+\vspace{6pt}
+\textbf{Final Transfer Function:}
+\[
+\boxed{
+e_o = (e_1 - e_2)\frac{R_2}{R_1}
+}
+\]
+
+\column{0.6\textwidth}
+\begin{figure}
+\includegraphics[width=0.6\linewidth]{fig/lec03/differential.pdf}
+\end{figure}
+\textbf{Output expression:}
+\[
+e_o = (e_1 - e_2)\frac{R_2}{R_1}
+\]
+
+\textbf{Use Cases:}
+\begin{itemize}
+    \item Sensor differential measurement.
+    \item Rejecting common-mode interference.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Ideal Op-Amp Integrator}
+\small
+%\vspace{-0.5cm}
+\begin{columns}
+\column{0.6\textwidth}
+Input current through $R$:
+\[
+   I_i = \frac{e_i(t) - 0}{R} = \frac{e_i(t)}{R} \quad [\si{\ampere}]
+\]
+Feedback current through capacitor $C$ (voltage across $C$ is $v_C = -e_o(t)$):
+\[
+   I_f = C \, \frac{\mathrm{d}v_C}{\mathrm{d}t}
+       = C \, \frac{\mathrm{d}(-e_o(t))}{\mathrm{d}t}
+       = -C \, \frac{\mathrm{d}e_o(t)}{\mathrm{d}t}
+\]
+
+Equating $I_i = I_f$:
+\[
+   \frac{e_i(t)}{R} = -C \, \frac{\mathrm{d}e_o(t)}{\mathrm{d}t}
+\]
+
+\textbf{Output–input relationship (integrator equation):}
+\[
+   \frac{\mathrm{d}e_o(t)}{\mathrm{d}t} = -\frac{1}{RC} e_i(t)
+   \quad \Longrightarrow \quad
+   e_o(t) = -\frac{1}{RC} \int e_i(t)\,\mathrm{d}t + e_o(0)
+\]
+
+\column{0.4\textwidth}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{fig/lec03/integrator.pdf}
+\end{figure}
+For a properly reset integrator with $e_o(0)=0$:
+\[
+\boxed{
+   e_o(t) = -\dfrac{1}{RC} \displaystyle\int e_i(t)\,\mathrm{d}t
+}
+\]
+with $R$ in \si{\ohm}, $C$ in \si{\farad}, so $RC$ has units of \si{\second}.
+
+\end{columns}
 \end{frame}
