@@ -1,0 +1,985 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Signal Conditioning}
+% \newif%\ifshowsolutions
+% \showsolutionsfalse % <-- change to \showsolutionstrue to show
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Band-Stop Filter}
+
+The signal conditioning section of an instrumentation system requires a tunable filter 
+at its input in order to reject selected spot frequencies in the range \(1\text{ kHz}\) 
+to \(3\text{ kHz}\). The circuit chosen to undertake this filtering task is the 
+\textit{Wien frequency bridge}, as shown in Figure~\ref{fig:wien-bridge}, having component values as follows:
+\[
+C_1 = C_2 = 0.01\,\mu\text{F}, \qquad R_3 = 100\,\text{k}\Omega.
+\]
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{wien_frequency_bridge.pdf}
+    \caption{Wien frequency bridge circuit}
+    \label{fig:wien-bridge}
+\end{figure}
+
+\subtask{State a suitable value for \(R_4\).}
+
+%\ifshowsolutions
+\begin{solutionblock}
+\noindent
+For the Wien frequency bridge used as a notch (band-stop) filter, 
+the bridge null occurs when the following condition is satisfied:
+\[
+\frac{R_4}{R_3} = 2.
+\]
+
+\noindent
+Given:
+\[
+R_3 = 100~\text{k}\Omega,
+\]
+the required value of \(R_4\) is:
+\[
+R_4 = 2R_3 = 200~\text{k}\Omega.
+\]
+
+\bigskip
+\noindent
+Therefore, a suitable choice is:
+\[
+\boxed{R_4 = 200~\text{k}\Omega.}
+\]
+
+\end{solutionblock}
+%\fi
+
+
+\subtask{Calculate the higher and lower values of \(R_1\) and \(R_2\) necessary to achieve the required frequency coverage.}
+
+%\ifshowsolutions
+\begin{solutionblock}
+\noindent
+For the Wien frequency bridge (with \(C_1=C_2=C\) and \(R_1=R_2=R\) at balance), the bridge null (centre) frequency is
+\[
+f_0=\frac{1}{2\pi R C}.
+\]
+
+\noindent
+Rearranging for \(R\):
+\[
+R=\frac{1}{2\pi f_0 C}.
+\]
+
+\noindent
+Given:
+\[
+C_1=C_2=C=0.01~\mu\text{F}=0.01\times10^{-6}~\text{F}=1.0\times10^{-8}~\text{F},
+\]
+and the required frequency coverage \(f_0=1\ \text{kHz}\) to \(3\ \text{kHz}\), compute the corresponding resistor values.
+
+\noindent
+For the lower frequency \(f_0=1\ \text{kHz}\):
+\begin{align*}
+    R_{\text{high}} &= \frac{1}{2\pi(1\times10^{3})(1.0\times10^{-8})}
+    = \frac{1}{2\pi\times10^{-5}}\\[4pt]
+    &= 1.5915494309\times10^{4}~\Omega
+    \approx 15.915~\text{k}\Omega.
+\end{align*}
+
+\noindent
+For the higher frequency \(f_0=3\ \text{kHz}\):
+\begin{align*}
+    R_{\text{low}} &= \frac{1}{2\pi(3\times10^{3})(1.0\times10^{-8})}
+    = \frac{1}{6\pi\times10^{-5}}\\[4pt]
+    &= 5.3051647697\times10^{3}~\Omega
+    \approx 5.305~\text{k}\Omega.
+\end{align*}
+
+\bigskip
+\noindent
+Thus, to cover the band \(1\ \text{kHz}\) to \(3\ \text{kHz}\) you should make \(R_1\) and \(R_2\) equal and adjustable over the range:
+\[
+\boxed{R_1=R_2 \approx 5.305\ \text{k}\Omega\ \text{(for }3\ \text{kHz}\text{)} \ \text{to}\ 
+15.915\ \text{k}\Omega\ \text{(for }1\ \text{kHz}\text{).}}
+\]
+
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Shering Bridge}
+
+A transducer sensor having a passive impedance comprising a capacitance of \(0.1\ \mu\mathrm{F}\) in series with a resistance of \(500\ \Omega\) is interfaced to a signal conditioning system by a Schering bridge as shown in Figure~\ref{fig:schering}. With no stimulus applied to the sensor the bridge is in balance and the output voltage, \(e_0\), is zero. The bridge component values at balance are as follows:
+\[
+C_1 = 0.025\ \mu\mathrm{F}, \qquad C_3 = 0.1\ \mu\mathrm{F}, \qquad R_1 = R_2 = 2\ \text{k}\Omega,
+\]
+\(R_4\) and \(C_4\) together comprise the sensor, and the a.c.\ supply is \(10\ \mathrm{V}\) at a frequency of \(1\ \mathrm{kHz}\). If the sensor is stimulated so causing its capacitance to increase by \(10\%\), calculate the bridge output voltage.
+
+\begin{figure}[h!]
+    \centering
+    % The image file is referenced by its local path (as provided)
+    \includegraphics[width=0.45\textwidth]{shering_bridge.pdf}
+    \caption{Figure 1.10\quad The Schering bridge.}
+    \label{fig:schering}
+\end{figure}
+
+\bigskip
+
+%\ifshowsolutions
+\begin{solutionblock}
+\noindent
+We use the Schering-bridge topology shown in Fig.~\ref{fig:schering}. The four arms (measured from the top-left, top-right, bottom-left, bottom-right nodes) have the following impedances:
+
+\[
+Z_1 = \frac{R_1}{1 + j\omega C_1 R_1}, \qquad
+Z_2 = R_2,
+\]
+\[
+Z_3 = \frac{1}{j\omega C_3}, \qquad
+Z_4 = R_4 - \frac{j}{\omega C_4}.
+\]
+
+\noindent
+Given (at balance):
+\[
+R_1 = R_2 = 2\ \text{k}\Omega,\quad C_1 = 0.025\ \mu\mathrm{F},\quad C_3 = 0.1\ \mu\mathrm{F},
+\]
+\[
+R_4 = 500\ \Omega,\quad C_4 = 0.1\ \mu\mathrm{F},\quad f = 1\ \text{kHz},\quad V_s = 10\ \mathrm{V}.
+\]
+
+\noindent
+Angular frequency:
+\[
+\omega = 2\pi f = 2\pi(1000) = 6283.185\ \text{rad/s}.
+\]
+
+\bigskip
+\noindent
+At the left node (\(X\)) and right node (\(Y\)) the divider formulas give:
+\[
+V_X = V_s\frac{Z_2}{Z_1+Z_2},\qquad
+V_Y = V_s\frac{Z_4}{Z_3+Z_4}.
+\]
+The bridge output is
+\[
+e_0 = V_X - V_Y.
+\]
+At initial balance \(V_X=V_Y\) and \(e_0=0\). If the sensor capacitance increases by \(10\%\), then
+\[
+C_4' = 1.1\,C_4 = 0.11\ \mu\mathrm{F}.
+\]
+We compute the new \(Z_4'\) and \(V_Y'\) and take \(V_X\) (unchanged).
+
+\bigskip
+\noindent
+Compute the relevant reactances and impedances:
+
+\[
+X_{C_1}=\frac{1}{\omega C_1}=\frac{1}{6283.185\times 0.025\times10^{-6}}
+      \approx 6366.2\ \Omega,
+\]
+so
+\[
+Z_1=\frac{R_1}{1+j\omega C_1 R_1} = \frac{2000}{1 + j\,(6283.185)(0.025\times10^{-6})(2000)}
+    = \frac{2000}{1 + j\,0.31416}.
+\]
+
+\[
+Z_1 \approx 1908.9 - j\,600.4\ \Omega.
+\]
+
+\noindent
+Left-arm (lower) impedance:
+\[
+Z_2 = R_2 = 2000\ \Omega.
+\]
+
+\noindent
+Therefore the left-node divider gives
+\[
+V_X = V_s\frac{Z_2}{Z_1+Z_2} = 10\cdot\frac{2000}{(1908.9 - j\,600.4)+2000}
+=10\cdot\frac{2000}{3908.9 - j\,600.4}.
+\]
+
+\[
+V_X \approx 5.116 + j\,0.786\ \text{V}.
+\]
+
+\bigskip
+\noindent
+Right-arm impedances before and after change:
+
+\[
+Z_3 = \frac{1}{j\omega C_3} = -\frac{j}{\omega C_3}
+    = -\frac{j}{6283.185\times 0.1\times10^{-6}}
+    = -j\,1591.55\ \Omega.
+\]
+
+\noindent
+Sensor (original) \(C_4 = 0.1\ \mu\mathrm{F}\):
+\[
+Z_4 = R_4 - \frac{j}{\omega C_4} = 500 - j\,1591.55\ \Omega.
+\]
+
+\noindent
+Sensor (after +10\%): \(C_4' = 0.11\ \mu\mathrm{F}\):
+\[
+X_{C_4'} = \frac{1}{\omega C_4'} = \frac{1}{6283.185\times 0.11\times10^{-6}}
+         \approx 1446.86\ \Omega,
+\]
+\[
+Z_4' = 500 - j\,1446.86\ \Omega.
+\]
+
+\noindent
+Now compute the right-node divider with the updated \(Z_4'\):
+\[
+V_Y' = V_s\frac{Z_4'}{Z_3 + Z_4'}
+     = 10\cdot\frac{500 - j\,1446.86}{(-j\,1591.55) + (500 - j\,1446.86)}
+     = 10\cdot\frac{500 - j\,1446.86}{500 - j\,(3038.41)}.
+\]
+
+\noindent
+\[
+V_Y' \approx 10\,(0.2916 + j\,0.0122) \approx 2.916 + j\,0.122\ \text{V}.
+\]
+
+\bigskip
+\noindent
+Finally the bridge output (complex) is
+\[
+e_0 = V_X - V_Y' \approx (5.116 + j\,0.786) - (2.916 + j\,0.122)
+       = 2.200 + j\,0.664\ \text{V}.
+\]
+
+\noindent
+The magnitude and phase are
+\[
+|e_0| = \sqrt{2.200^2 + 0.664^2} \approx 2.308\ \text{V},\qquad
+\angle e_0 = \tan^{-1}\!\left(\frac{0.664}{2.200}\right) \approx 16.8^\circ.
+\]
+
+\[
+\boxed{e_0 \approx 2.308\ \text{V at }+16.8^\circ.}
+\]
+
+\noindent
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.3 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Operational Amplifiers output}
+For each of the circuits shown in Figure~\ref{fig:circuit}, calculate the output voltage $e_0$.
+\begin{figure}[h!]
+    \centering
+    % Subfigure 1
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{task_3_3_a.pdf}
+        \caption{}
+        \label{fig:suba}
+    \end{subfigure}
+    \hfill % Adds horizontal space between subfigures
+    % Subfigure 2
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{task_3_3_b.pdf}
+        \caption{}
+        \label{fig:subb}
+    \end{subfigure}
+    
+    \caption{Circuits for task 3.3}
+    \label{fig:circuit}
+\end{figure}
+
+
+\subtask{(a) Summing Amplifier Circuit}
+%\ifshowsolutions
+\begin{solutionblock}
+
+The circuit functions as a Superposition Amplifier. The total output $e_0$ is the sum of the contributions from the inverting inputs ($e_{0, \text{Inv}}$) and the non-inverting input ($e_{0, \text{NonInv}}$).
+
+\underline{1. Contribution from Inverting Inputs ($V_1, V_2$):}
+The circuit acts as an Inverting Summing Amplifier with $R_F = 100 \text{ k}\Omega$ and $R_1 = R_2 = 20 \text{ k}\Omega$.
+\[
+e_{0, \text{Inv}} = - \left( \frac{R_F}{R_1} V_1 + \frac{R_F}{R_2} V_2 \right)
+\]
+\[
+e_{0, \text{Inv}} = - \left( 5 \times (2 \text{ mV}) + 5 \times (-1 \text{ mV}) \right) = -5 \text{ mV}
+\]
+
+\underline{2. Contribution from Non-Inverting Input ($V^+$):}
+The non-inverting input is $V^+ = +3 \text{ mV}$. The equivalent input resistance $R_{\text{in}}$ for the non-inverting stage is the parallel combination of $R_1$ and $R_2$:
+\[
+R_{\text{in}} = R_1 || R_2 = 20 \text{ k}\Omega || 20 \text{ k}\Omega = 10 \text{ k}\Omega
+\]
+The Non-Inverting Gain ($A_{\text{NonInv}}$) is:
+\[
+A_{\text{NonInv}} = 1 + \frac{R_F}{R_{\text{in}}} = 1 + \frac{100 \text{ k}\Omega}{10 \text{ k}\Omega} = 11
+\]
+\[
+e_{0, \text{NonInv}} = V^+ \times A_{\text{NonInv}} = 3 \text{ mV} \times 11 = 33 \text{ mV}
+\]
+
+\underline{3. Total Output Voltage:}
+\[
+e_0 = e_{0, \text{Inv}} + e_{0, \text{NonInv}} = -5 \text{ mV} + 33 \text{ mV}
+\]
+\[
+e_0 = +28 \text{ mV}
+\]
+
+\end{solutionblock}
+%\fi
+
+
+\subtask{(b) Differential Amplifier Circuit}
+
+%\ifshowsolutions
+\begin{solutionblock}
+The circuit is a balanced Differential Amplifier since $\frac{R_F}{R_{i1}} = \frac{R_g}{R_{i2}} = 2$.
+The output voltage $e_0$ is given by:
+\[
+e_0 = \frac{R_F}{R_{i1}} (V_{\text{P}} - V_{\text{N}})
+\]
+With $R_F = 20 \text{ k}\Omega$, $R_{i1} = 10 \text{ k}\Omega$, $V_{\text{P}} = -2 \text{ V}$, and $V_{\text{N}} = +3 \text{ V}$:
+\[
+e_0 = \frac{20 \text{ k}\Omega}{10 \text{ k}\Omega} \times (-2 \text{ V} - 3 \text{ V})
+\]
+\[
+e_0 = 2 \times (-5 \text{ V})
+\]
+\[
+e_0 = -10 \text{ V}
+\]
+\end{solutionblock}
+%\fi
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.4 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Inverting Op-Amp}
+
+An inverting operational amplifier circuit has an overall voltage signal gain of 
+$19.5 \text{ dB}$. If the input resistor is $10 \text{ k}\Omega$ and the feedback 
+resistor $100 \text{ k}\Omega$.
+Assume a negligible signal source impedance.
+
+\subtask{ Calcualte the feedback fraction, $\beta$}
+
+%\ifshowsolutions
+\begin{solutionblock}
+The feedback fraction $\beta$ is defined as the ratio of the fed-back voltage ($V^-$) to the source of that voltage ($V_{\text{out}}$):
+\[
+\beta = \frac{V^-}{V_{\text{out}}}
+\]
+Therefore, the feedback fraction ($\beta$) for an inverting operational amplifier is defined by the components connecting the inverting terminal to ground ($R_1$) and to the output ($R_F$):
+\[
+\beta = \frac{R_1}{R_1 + R_F}
+\]
+Substituting the values:
+\[
+\beta = \frac{10 \text{ k}\Omega}{10 \text{ k}\Omega + 100 \text{ k}\Omega} = \frac{10}{110}
+\]
+\[
+\beta = \frac{1}{11} \approx 0.0909
+\]
+\end{solutionblock}
+%\fi
+
+\subtask{ Calculate the amplifier open loop gain in decibels.}
+%\ifshowsolutions
+\begin{solutionblock}
+\text{Convert Closed-Loop Gain to Linear Ratio}
+
+\[
+A_{\text{CL}} = 10^{\frac{A_{\text{CL(dB)}}}{20}}
+\]
+Substituting $A_{\text{CL(dB)}} = 19.5 \text{ dB}$:
+\[
+A_{\text{CL}} = 10^{\frac{19.5}{20}} = 10^{0.975}
+\]
+\[
+A_{\text{CL}} \approx 9.441
+\]
+
+\text{Use the Negative Feedback Equation}
+
+The closed-loop gain ($A_{\text{CL}}$) is related to the open-loop gain ($A_{\text{OL}}$) by:
+\[
+A_{\text{CL}} = \frac{A_{\text{OL}}}{1 + \beta A_{\text{OL}}}
+\]
+Solving for $A_{\text{OL}}$:
+\[
+A_{\text{OL}} = \frac{A_{\text{CL}}}{1 - A_{\text{CL}} \beta}
+\]
+
+\text{Calculate $A_{\text{OL}}$ (Linear Ratio)}
+
+Substituting $A_{\text{CL}} \approx 9.441$ and $\beta = 1/11$:
+\[
+A_{\text{OL}} = \frac{9.441}{1 - 9.441 \times (1/11)}
+\]
+\[
+A_{\text{OL}} = \frac{9.441}{1 - 0.85827} \approx 66.61
+\]
+
+\text{Convert $A_{\text{OL}}$ to Decibels}
+
+\[
+A_{\text{OL(dB)}} = 20 \log_{10} (A_{\text{OL}})
+\]
+\[
+A_{\text{OL(dB)}} = 20 \log_{10} (66.61)
+\]
+\[
+A_{\text{OL(dB)}} \approx 36.47 \text{ dB}
+\]
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.5 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Inverting Op-Amp with T-Resistance Network}
+
+For Figure~\ref{fig:T} show that the gain of the circuit is approximately given by:
+\[
+A_v \approx -\frac{R_f}{R_1}\left[1 + \frac{R_2}{R_3}\right]
+\]
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_3_5.pdf}
+    \caption{T-resistance network as feedback}
+    \label{fig:T}
+\end{figure}
+%\ifshowsolutions
+\begin{solutionblock}
+
+The circuit is analyzed using the ideal operational amplifier rules:
+\begin{enumerate}
+    \item The voltage difference between the input terminals is zero (Virtual Short): $e_X = e_Y$.
+    \item No current flows into the input terminals: $i_X = i_Y = 0$.
+\end{enumerate}
+
+\textbf{Determine Voltages at Input Terminals}\\
+The non-inverting terminal Y is connected to ground, so:
+\[
+e_Y = 0
+\]
+Due to the virtual short (Rule 1):
+\[
+e_X = e_Y = 0
+\]
+
+\textbf{Current at Node X (Inverting Terminal)}\\
+Apply Kirchhoff's Current Law (KCL) at node X: the input current ($i_i$) must equal the feedback current ($i_f$), since the current into the Op-Amp terminal ($i_X$) is zero (Rule 2).
+\[
+i_i + i_f = 0 \quad \Rightarrow \quad i_i = -i_f
+\]
+
+\textbf{Calculate Input Current ($i_i$)}\\
+The input current flows from $e_i$ through $R_1$ to node X ($e_X = 0$):
+\[
+i_i = \frac{e_i - e_X}{R_1} = \frac{e_i - 0}{R_1}
+\]
+\[
+i_i = \frac{e_i}{R_1}
+\]
+
+\textbf{Calculate Feedback Current ($i_f$)}\\
+The feedback current $i_f$ flows from node X ($e_X = 0$) through $R_f$ to node A.
+\[
+i_f = \frac{e_X - e_A}{R_f} = \frac{0 - e_A}{R_f}
+\]
+\[
+i_f = -\frac{e_A}{R_f}
+\]
+Therefore, 
+\[
+\frac{e_i}{R_1} = -\frac{e_A}{R_f}
+\]
+Using the voltage divider rule at the output side:
+\[
+e_A = e_0 \left( \frac{R_3}{R_2+R_3} \right)
+\]
+Substituting this in the previous equation:
+\[
+\frac{e_i}{R_1} = -\frac{e_0 \left( \frac{R_3}{R_2+R_3} \right)}{R_f}
+\]
+\[
+\frac{e_0}{e_i} = \frac{R_f(R_2 + R_3)}{R_1 R_3}
+\]
+\[
+\text{Gain} = \frac{R_f R_2 + R_f R_3}{R_1 R_3}
+\]
+
+The final desired result for the inverting amplifier is:
+\[
+A_v = -\frac{R_f}{R_1} \left( 1 + \frac{R_2}{R_3} \right)
+\]
+
+\end{solutionblock}
+%\fi
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.6 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Programmable Gain Op-Amp}
+
+If in Figure~\ref{fig:Programmable gain} a logic 1 transistor-transistor logic (TTL) 
+input closes the relevant switch, calculate the output voltage for the case where 
+$E_i = 2 \text{ mV}$ and:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_3_6.pdf}
+    \caption{Programmable Gain Op-Amp}
+    \label{fig:Programmable gain}
+\end{figure}
+
+\subtask{TTL digital input word is 1001.}
+
+%\ifshowsolutions
+\begin{solutionblock}
+The circuit is an Inverting Summing Amplifier where the gain is controlled by the TTL digital word $DCBA$. A logic '1' closes the switch, connecting the corresponding resistor to the inverting terminal.
+
+The output voltage ($E_o$) is given by the formula:
+\[
+E_o = -E_i \times R_F \times \left( \frac{D}{R_D} + \frac{C}{R_C} + \frac{B}{R_B} + \frac{A}{R_A} \right)
+\]
+Where $D, C, B, A \in \{0, 1\}$ are the logic inputs.
+
+\textbf{Component Values:}
+\begin{itemize}
+    \item Input Voltage: $E_i = 2 \text{ mV}$
+    \item Feedback Resistor: $R_F = 1 \text{ M}\Omega = 1000 \text{ k}\Omega$
+    \item Input Resistors: $R_D = 10 \text{ k}\Omega$, $R_C = 50 \text{ k}\Omega$, $R_B = 100 \text{ k}\Omega$, $R_A = 500 \text{ k}\Omega$
+\end{itemize}
+
+\textbf{Digital Input Word $DCBA = 1001$}
+
+Inputs $D=1$ and $A=1$ are active.
+\[
+E_o = - (2 \text{ mV}) \times (1000 \text{ k}\Omega) \times \left( \frac{1}{10 \text{ k}\Omega} + \frac{0}{50 \text{ k}\Omega} + \frac{0}{100 \text{ k}\Omega} + \frac{1}{500 \text{ k}\Omega} \right)
+\]
+\[
+E_o = - (2 \text{ mV}) \times 1000 \text{ k}\Omega \times \left( 0.1 \text{ mS} + 0.002 \text{ mS} \right)
+\]
+\[
+E_o = - (2 \text{ mV}) \times 1000 \text{ k}\Omega \times (0.102 \text{ mS})
+\]
+Since $(1000 \text{ k}\Omega) \times (0.102 \text{ mS}) = 102$ (unitless gain):
+\[
+E_o = -2 \text{ mV} \times 102
+\]
+\[
+E_o = -204 \text{ mV}
+\]
+
+\end{solutionblock}
+%\fi
+
+
+\subtask{TTL digital input word is 1001.}
+%\ifshowsolutions
+\begin{solutionblock}
+Inputs $C=1$ and $B=1$ are active.
+\[
+E_o = - (2 \text{ mV}) \times (1000 \text{ k}\Omega) \times \left( \frac{0}{10 \text{ k}\Omega} + \frac{1}{50 \text{ k}\Omega} + \frac{1}{100 \text{ k}\Omega} + \frac{0}{500 \text{ k}\Omega} \right)
+\]
+\[
+E_o = - (2 \text{ mV}) \times 1000 \text{ k}\Omega \times \left( 0.02 \text{ mS} + 0.01 \text{ mS} \right)
+\]
+\[
+E_o = - (2 \text{ mV}) \times 1000 \text{ k}\Omega \times (0.03 \text{ mS})
+\]
+Since $(1000 \text{ k}\Omega) \times (0.03 \text{ mS}) = 30$ (unitless gain):
+\[
+E_o = -2 \text{ mV} \times 30
+\]
+\[
+E_o = -60 \text{ mV}
+\]
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.7 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Transducer and Op-Amp}
+
+A transducer bridge and an operational amplifier are connected as 
+per Figure~\ref{fig:transducer and op-amp}. $E = 10 \text{ V}$, $R_f = 50 \text{ k}\Omega$ and $R = 120 \ \Omega$. The transducer 
+has a passive resistance $R_x = 120 \ \Omega$ and is stimulated such that its 
+resistance changes by $0.1\%$. Calculate the amplifier output voltage. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_3_7.pdf}
+    \caption{Transducer and Op-amp}
+    \label{fig:transducer and op-amp}
+\end{figure}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+Equating currents at X and again assuming an ideal operational amplifier:
+\[
+\frac{E - V_X}{R} = \frac{V_X - e_o}{R_f} + \frac{V_X - 0}{R}
+\]
+
+Equating currents at Y and again assuming an ideal operational amplifier:
+\[
+\frac{E - V_Y}{R} = \frac{V_Y - 0}{R(1+a)} + \frac{V_Y - 0}{R_f}
+\]
+Because normal operational amplifier action makes $V_X = V_Y$, if we make 
+both of these equal to $V$ we can rewrite above equations to produce the following equation.
+\[
+\frac{V - e_o}{R_f} + \frac{V}{R} = \frac{V}{R(1+a)} + \frac{V}{R_f}
+\]
+Hence
+\[
+e_o = \left[\frac{V}{R} - \frac{V}{R(1+a)}\right] R_f
+\]
+But we can express $V$ in terms of $E$ and the circuit component values by examining the right limb of the transducer bridge:
+\[
+V = V_Y = E \left[ \frac{R(1+a) \parallel R_f}{R + R(1+a) \parallel R_f} \right]
+\]
+whence
+\[
+V = \frac{ER_f(1+a)}{R(1+a) + R_f + R_f(1+a)}
+\]
+Substituting and rearranging we obtain:
+\[
+e_o = \frac{ERa}{R} \frac{1}{(1+a)\left(\frac{R+R_f}{R_f}\right) + 1}
+\]
+If $a$ is small, the above equation is virtually linear.
+
+
+\textbf{Calculate the voltage $V$:}\\
+\[
+V = \frac{ER_f(1+a)}{R(1+a) + R_f + R_f(1+a)}
+\]
+Substituting the values $E = 10 \text{ V}$, $R = 120 \ \Omega$, $R_f = 50000 \ \Omega$, 
+and $a = 0.001$:
+\[
+V = \frac{10 \text{ V} \cdot 50000 \ \Omega \cdot (1.001)}{120 \ \Omega \cdot (1.001) + 50000 \ \Omega + 50000 \ \Omega \cdot (1.001)}
+\]
+\[
+V = \frac{500500}{120.12 + 50000 + 50050} = \frac{500500}{100170.12}
+\]
+\[
+V \approx 4.9965 \ \text{V}
+\]
+
+\textbf{Calculate the output voltage $e_o$}\\
+\[
+e_o = \left[\frac{V}{R} - \frac{V}{R(1+a)}\right] R_f = \frac{V R_f}{R} \frac{a}{1+a}
+\]
+Substituting the calculated $V$ and component values:
+\[
+e_o = \frac{4.9965 \ \text{V} \cdot 50000 \ \Omega}{120 \ \Omega} \cdot \frac{0.001}{1.001}
+\]
+\[
+e_o \approx 4.9965 \ \text{V} \times 416.6667 \times 0.000999001
+\]
+\[
+e_o \approx 2081.875 \times 0.000999
+\]
+\[
+e_o \approx 2.080 \ \text{V}
+\]
+
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.8 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Capacitor Multiplier Circuit Analysis}
+
+A signal conditioning situation requires the use of a special 
+capacitor having a value of $4780 \ \mu\text{F}$. Unfortunately the most 
+suitable capacitor available is only $1000 \ \mu\text{F}$ so it is decided to use 
+the circuit shown in Figure~\ref{fig:Capacitance Multiplier} effectively to increase the value of 
+the capacitor to $4780 \ \mu\text{F}$.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{task_3_8.pdf}
+    \caption{Capacitor Multiplier Circuit}
+    \label{fig:Capacitance Multiplier}
+\end{figure}
+\subtask{Calculate the Required Gain ($A_{V2}$)}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+\[
+I_i = \frac{e_i - e_o}{\frac{1}{j\omega C_1}} = \frac{e_i - \left(-\frac{R_2}{R_1} e_i\right)}{\frac{1}{j\omega C_1}} = \frac{e_i \left(1 + \frac{R_2}{R_1}\right)}{\frac{1}{j\omega C_1}}
+\]
+\[
+= \frac{e_i}{\frac{1}{j\omega C_{eff}}}, \quad \text{where } C_{eff} = C_1 \left[1 + \frac{R_2}{R_1}\right]
+\]
+The effective capacitance ($C_{eq}$) of the capacitance multiplier circuit shown is given by the formula:
+\[
+C_{eq} = C_1 \left(1 + \frac{R_2}{R_1}\right) = C_1 \cdot A_{V2}
+\]
+where $A_{V2}$ is the gain of the non-inverting amplifier $A_2$.
+
+The required gain factor $A_{V2}$ is:
+\[
+A_{V2} = \frac{C_{eq}}{C_1}
+\]
+Substituting the given values $C_{eq} = 4780 \ \mu\text{F}$ and $C_1 = 1000 \ \mu\text{F}$:
+\[
+A_{V2} = \frac{4780 \ \mu\text{F}}{1000 \ \mu\text{F}}
+\]
+\[
+A_{V2} = 4.78
+\]
+\end{solutionblock}
+%\fi
+
+\subtask{Suggest Suitable Resistor Values ($R_1$ and $R_2$)}
+%\ifshowsolutions
+\begin{solutionblock}
+The gain of the non-inverting amplifier $A_2$ is $A_{V2} = 1 + \frac{R_2}{R_1}$. We need the ratio $\frac{R_2}{R_1}$:
+\[
+\frac{R_2}{R_1} = A_{V2} - 1 = 4.78 - 1
+\]
+\[
+\frac{R_2}{R_1} = 3.78
+\]
+To suggest suitable values, we choose a standard resistor value for $R_1$ (e.g., $10 \ \text{k}\Omega$) and calculate $R_2$:
+\[
+R_2 = 3.78 \cdot R_1
+\]
+Let $R_1 = 10 \ \text{k}\Omega$:
+\[
+R_2 = 3.78 \cdot 10 \ \text{k}\Omega = 37.8 \ \text{k}\Omega
+\]
+\textbf{Suggested values:}
+\begin{itemize}
+    \item $R_1 = 10 \ \text{k}\Omega$
+    \item $R_2 = 37.8 \ \text{k}\Omega$ (A standard E96 value of $38.3 \ \text{k}\Omega$ or $37.4 \ \text{k}\Omega$ would be chosen in practice).
+\end{itemize}
+\end{solutionblock}
+%\fi
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.9 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Amplifier Noise and SNR Analysis}
+
+An antenna of noise temperature $160 \ \text{K}$ feeds a signal to an 
+amplifier of noise temperature $260 \ \text{K}$, bandwidth $2 \ \text{MHz}$ and power 
+gain $90 \ \text{dB}$. The SNR at the amplifier input is $30 \ \text{dB}$. Assuming $k$ to 
+be $1.38 \times 10^{-23} \ \text{J/K}$, calculate the output signal power and the output 
+SNR.
+
+\subtask{Convert Parameters to Linear Units}
+
+%\ifshowsolutions
+\begin{solutionblock}
+\begin{itemize}
+    \item Boltzmann's Constant: $k = 1.38 \times 10^{-23} \ \text{J/K}$
+    \item Bandwidth: $B = 2 \ \text{MHz} = 2 \times 10^6 \ \text{Hz}$
+    \item Linear Input SNR:
+    \[
+    \text{SNR}_{\text{in}} = 10^{30/10} = 1000
+    \]
+    \item Linear Power Gain:
+    \[
+    G = 10^{90/10} = 10^9
+    \]
+\end{itemize}
+\end{solutionblock}
+%\fi
+
+\subtask{Calculate Reference Input Noise Power ($N_A$)}
+
+%\ifshowsolutions
+\begin{solutionblock}
+The input noise power ($N_A$) used to define the $\text{SNR}_{\text{in}}$ is the antenna noise power ($N_A = k T_A B$):
+\[
+N_A = k T_A B = (1.38 \times 10^{-23} \ \text{J/K}) \cdot (160 \ \text{K}) \cdot (2 \times 10^6 \ \text{Hz})
+\]
+\[
+N_A = 4.416 \times 10^{-15} \ \text{W}
+\]
+\end{solutionblock}
+%\fi
+
+\subtask{Calculate Output Signal Power ($S_{\text{out}}$)}
+
+%\ifshowsolutions
+\begin{solutionblock}
+First, find the input signal power ($S_{\text{in}}$) using $N_A$:
+\[
+S_{\text{in}} = \text{SNR}_{\text{in}} \cdot N_A = 1000 \cdot (4.416 \times 10^{-15} \ \text{W})
+\]
+\[
+S_{\text{in}} = 4.416 \times 10^{-12} \ \text{W}
+\]
+The output signal power is $S_{\text{out}} = S_{\text{in}} \cdot G$:
+\[
+S_{\text{out}} = (4.416 \times 10^{-12} \ \text{W}) \cdot (10^9)
+\]
+\[
+S_{\text{out}} \approx 4.42 \times 10^{-3} \ \text{W}
+\]
+\end{solutionblock}
+%\fi
+
+\subtask{Calculate Output SNR ($\text{SNR}_{\text{out}}$)}
+
+%\ifshowsolutions
+\begin{solutionblock}
+The output SNR is determined by the Noise Figure ($NF$) of the amplifier stage relative to the antenna temperature ($T_A$):
+\[
+NF = 1 + \frac{T_E}{T_A} = 1 + \frac{260 \ \text{K}}{160 \ \text{K}} = 2.625
+\]
+The output SNR is $\text{SNR}_{\text{out}} = \text{SNR}_{\text{in}} / NF$:
+\[
+\text{SNR}_{\text{out}} = \frac{1000}{2.625}
+\]
+\[
+\text{SNR}_{\text{out}} \approx 381
+\]
+In dB units:
+\[
+\text{SNR}_{\text{out}} (\text{dB}) = 10 \cdot \log_{10}(381)
+\]
+\[
+\text{SNR}_{\text{out}} \approx 25.8 \ \text{dB}
+\]
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3.10 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\task{Amplifier Noise and SNR Analysis}
+
+A $30 \ \mu\text{W}$ signal, having a $\text{SNR}$ of $35 \ \text{dB}$, is amplified by an amplifier
+of power gain $20 \ \text{dB}$. The internal noise generated by the amplifier
+is equivalent to an additional noise power of $6 \ \text{nW}$ at its input.
+Calculate:
+
+\subtask{Parameters in Linear Units}
+
+%\ifshowsolutions
+\begin{solutionblock}
+\begin{itemize}
+    \item Input Signal Power: $S_{\text{in}} = 30 \ \mu\text{W} = 30 \times 10^{-6} \ \text{W}$
+    \item Amplifier Added Noise: $N_A = 6 \ \text{nW} = 6 \times 10^{-9} \ \text{W}$
+    \item Linear Input SNR:
+    \[
+    \text{SNR}_{\text{in}} = 10^{35/10} \approx 3162.28
+    \]
+    \item Linear Power Gain:
+    \[
+    G = 10^{20/10} = 100
+    \]
+\end{itemize}
+\end{solutionblock}
+%\fi
+
+\subtask{Input noise power caused by the $35 \ \text{dB}$ input $\text{SNR}$}
+%\ifshowsolutions
+\begin{solutionblock}
+The input noise power $N_{\text{in}}$ is derived from the definition of $\text{SNR}$:
+\[
+N_{\text{in}} = \frac{S_{\text{in}}}{\text{SNR}_{\text{in}}} = \frac{30 \times 10^{-6} \ \text{W}}{3162.27}
+\]
+\[
+N_{\text{in}} \approx 9.4868 \times 10^{-9} \ \text{W} \quad (\mathbf{9.49 \ \text{nW}})
+\]
+\end{solutionblock}
+%\fi
+
+\subtask{Output Signal Power ($S_{\text{out}}$)}
+%\ifshowsolutions
+\begin{solutionblock}
+The output signal power is the input signal power multiplied by the linear power gain ($G$):
+\[
+S_{\text{out}} = S_{\text{in}} \cdot G = (30 \times 10^{-6} \ \text{W}) \cdot 100
+\]
+\[
+S_{\text{out}} = 0.003 \ \text{W} \quad (\mathbf{3 \ \text{mW}})
+\]
+\end{solutionblock}
+%\fi
+
+\subtask{Total output noise power}
+%\ifshowsolutions
+\begin{solutionblock}
+The total noise power at the output is the amplified sum of the source noise ($N_{\text{in}}$) and the amplifier's added noise ($N_A$, referred to the input):
+\[
+N_{\text{out, total}} = (N_{\text{in}} + N_A) \cdot G
+\]
+\[
+N_{\text{out, total}} = (9.4868 \times 10^{-9} \ \text{W} + 6 \times 10^{-9} \ \text{W}) \cdot 100
+\]
+\[
+N_{\text{out, total}} = (15.4868 \times 10^{-9} \ \text{W}) \cdot 100
+\]
+\[
+N_{\text{out, total}} \approx 1.5487 \times 10^{-6} \ \text{W} \quad (\mathbf{1.55 \ \mu\text{W}})
+\]
+\end{solutionblock}
+%\fi
+
+\subtask{Calculate the Output SNR ($\text{SNR}_{\text{out}}$)}
+%\ifshowsolutions
+\begin{solutionblock}
+
+The output $\text{SNR}$ is the ratio of $S_{\text{out}}$ to $N_{\text{out, total}}$:
+\[
+\text{SNR}_{\text{out}} = \frac{S_{\text{out}}}{N_{\text{out, total}}} = \frac{0.003 \ \text{W}}{1.54868 \times 10^{-6} \ \text{W}}
+\]
+\[
+\text{SNR}_{\text{out}} \approx 1937.13
+\]
+In dB units:
+\[
+\text{SNR}_{\text{out}} (\text{dB}) = 10 \log_{10}(1937.13)
+\]
+\[
+\text{SNR}_{\text{out}} \approx 32.87 \ \text{dB}
+\]
+\end{solutionblock}
+%\fi
