@@ -2192,6 +2192,9 @@ S_{1/f}(f) \propto \frac{1}{f^{\alpha}},\quad \alpha\approx 1.
 
 %--------------------------------------------------
 \begin{frame}{First–Order Passive Low–Pass CR Filter}
+  \begin{columns}
+  \column{0.5\textwidth}
+
 \begin{itemize}
   \item Circuit: series resistor $R$ followed by shunt capacitor $C$.
   \item Input voltage $e_i$ applied across series ($R$–$C$); output $e_o$ taken across $C$.
@@ -2206,20 +2209,37 @@ Using voltage division in complex form:
 \[
 e_o = -j\,\frac{X_C}{R - jX_C}\,e_i
 \]
-(The minus sign corresponds to the reference chosen in the book.)
 \end{block}
+  \column{0.5\textwidth}
+  \begin{figure}
+      \includegraphics[width=0.8\linewidth]{fig/lec03/first_CR_filter.pdf}
+      \caption*{First–order passive low–pass CR filter}
+  \end{figure}
+  \end{columns}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{First–Order Passive Low–Pass CR Filter}
+  \begin{columns}
+  \column{0.5\textwidth}
 
 \begin{itemize}
   \item At low frequency ($f\to 0$): $X_C\to\infty$, so $e_o \approx e_i$ (pass).
   \item At high frequency ($f\to\infty$): $X_C\to 0$, so $e_o \approx 0$ (blocked).
 \end{itemize}
-
-\vspace{0.2cm}
-\fbox{\parbox[c][2.0cm][c]{0.9\linewidth}{\centering Insert Figure 9.1: CR low–pass circuit}}
+  \column{0.5\textwidth}
+  \begin{figure}
+      \includegraphics[width=0.8\linewidth]{fig/lec03/first_CR_filter.pdf}
+      \caption*{First–order passive low–pass CR filter}
+  \end{figure}
+  \end{columns}
 \end{frame}
+
 
 %--------------------------------------------------
 \begin{frame}{Low–Pass Magnitude Response and Cut–off Frequency}
+    \begin{columns}
+  \column{0.5\textwidth}
 From the complex relation:
 \[
 \left|\frac{e_o}{e_i}\right|
@@ -2237,17 +2257,34 @@ which occurs at
 f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
 \]
 \end{block}
+  \column{0.5\textwidth}
+  \begin{figure}
+      \includegraphics[width=0.5\linewidth]{fig/lec03/gain_phase_first_low_pass.pdf}
+      \caption*{First–order passive low–pass CR filter}
+  \end{figure}
+  \end{columns}
+
+\end{frame}
+
+
+%--------------------------------------------------
+\begin{frame}{Low–Pass Magnitude Response and Cut–off Frequency}
+    \begin{columns}
+  \column{0.5\textwidth}
 
 \begin{itemize}
   \item For $f \ll f_c$: $\left|\frac{e_o}{e_i}\right|\approx 1$ (flat pass–band).
   \item For $f \gg f_c$: gain falls with slope \(\approx -20\si{\decibel}/\text{decade}\).
   \item Phase shifts from \(0^\circ\) (low $f$) to \(-90^\circ\) (high $f$), with \(-45^\circ\) at $f_c$.
 \end{itemize}
+  \column{0.5\textwidth}
+  \begin{figure}
+      \includegraphics[width=0.5\linewidth]{fig/lec03/gain_phase_first_low_pass.pdf}
+      \caption*{First–order passive low–pass CR filter}
+  \end{figure}
+  \end{columns}
 
-\vspace{0.2cm}
-\fbox{\parbox[c][2.0cm][c]{0.9\linewidth}{\centering Insert Figure 9.2: Bode magnitude and phase for first–order LPF}}
 \end{frame}
-
 %--------------------------------------------------
 \begin{frame}{Second–Order Passive Low–Pass CR Filter (Cascade)}
 \begin{columns}
