@@ -663,6 +663,12 @@ Wien frequency & Frequency $f$ & Oscillators \\
 \end{tabular}
 \end{frame}
 
+\begin{frame}
+    \begin{center}
+            \Large{Operational Amplifiers for Signal Conditioning}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Introduction to Operational Amplifiers}
 \small
 \textbf{Why Op-Amps?}
@@ -1419,6 +1425,11 @@ f_1 \approx A_{OL} \cdot f_c
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \begin{center}
+            \Large{Transducer Amplifiers}
+    \end{center}
+\end{frame}
 
 %=====================================================
 \begin{frame}{Transducer Amplifiers: Overview}
@@ -2147,4 +2158,1235 @@ S_{1/f}(f) \propto \frac{1}{f^{\alpha}},\quad \alpha\approx 1.
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \begin{center}
+            \Large{Fiters in Measurement Systems- Passive Filters and Active Filters}
+    \end{center}
+\end{frame}
 
+%--------------------------------------------------
+\begin{frame}{Passive Filters: Purpose and Types}
+\begin{itemize}
+  \item A \textbf{filter} is a network that passes AC signals only over a defined frequency range and attenuates others.
+  \item Widely used in:
+  \begin{itemize}
+    \item telecommunications and audio,
+    \item instrumentation and sensor interfaces,
+    \item power electronics and EMI/noise suppression.
+  \end{itemize}
+  \item Two broad classes:
+  \begin{description}
+    \item[Passive filters:] only \textbf{R}, \textbf{L}, \textbf{C} elements, no active gain devices.
+    \item[Active filters:] use op-amps/transistors in addition to RLC.
+  \end{description}
+  \item Four basic responses (for both passive and active filters):
+  \begin{enumerate}
+    \item Low–pass (LPF),
+    \item High–pass (HPF),
+    \item Band–pass (BPF),
+    \item Band–stop / notch (BSF).
+  \end{enumerate}
+\end{itemize}
+
+\vspace{0.2cm}
+\fbox{\parbox[c][2.0cm][c]{0.9\linewidth}{\centering Insert a generic ``frequency response'' sketch here (gain vs.\ $f$ for LPF/HPF/BPF/BSF)}}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{First–Order Passive Low–Pass CR Filter}
+\begin{itemize}
+  \item Circuit: series resistor $R$ followed by shunt capacitor $C$.
+  \item Input voltage $e_i$ applied across series ($R$–$C$); output $e_o$ taken across $C$.
+\end{itemize}
+
+\begin{block}{Complex transfer relation}
+Capacitive reactance:
+\[
+X_C = \frac{1}{2\pi f C} \quad [\si{\ohm}]
+\]
+Using voltage division in complex form:
+\[
+e_o = -j\,\frac{X_C}{R - jX_C}\,e_i
+\]
+(The minus sign corresponds to the reference chosen in the book.)
+\end{block}
+
+\begin{itemize}
+  \item At low frequency ($f\to 0$): $X_C\to\infty$, so $e_o \approx e_i$ (pass).
+  \item At high frequency ($f\to\infty$): $X_C\to 0$, so $e_o \approx 0$ (blocked).
+\end{itemize}
+
+\vspace{0.2cm}
+\fbox{\parbox[c][2.0cm][c]{0.9\linewidth}{\centering Insert Figure 9.1: CR low–pass circuit}}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{Low–Pass Magnitude Response and Cut–off Frequency}
+From the complex relation:
+\[
+\left|\frac{e_o}{e_i}\right|
+  = \frac{X_C}{\sqrt{R^2 + X_C^2}}
+  = \frac{1}{\sqrt{1 + (2\pi f R C)^2}}
+\]
+
+\begin{block}{Cut–off (corner) frequency}
+Defined at the \(-3\si{\decibel}\) point:
+\[
+\left|\frac{e_o}{e_i}\right| = \frac{1}{\sqrt{2}} \approx 0.707
+\]
+which occurs at
+\[
+f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
+\]
+\end{block}
+
+\begin{itemize}
+  \item For $f \ll f_c$: $\left|\frac{e_o}{e_i}\right|\approx 1$ (flat pass–band).
+  \item For $f \gg f_c$: gain falls with slope \(\approx -20\si{\decibel}/\text{decade}\).
+  \item Phase shifts from \(0^\circ\) (low $f$) to \(-90^\circ\) (high $f$), with \(-45^\circ\) at $f_c$.
+\end{itemize}
+
+\vspace{0.2cm}
+\fbox{\parbox[c][2.0cm][c]{0.9\linewidth}{\centering Insert Figure 9.2: Bode magnitude and phase for first–order LPF}}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{Second–Order Passive Low–Pass CR Filter (Cascade)}
+\begin{columns}
+\column{0.65\textwidth}
+
+\begin{itemize}
+  \item A steeper roll–off can be obtained by cascading two first–order sections.
+  \item Example: two identical $CR$ low–pass sections.
+\end{itemize}
+
+\begin{block}{Qualitative behaviour}
+\begin{itemize}
+  \item Each section contributes \(-20\si{\decibel}/\text{decade}\) above its cut–off.
+  \item If both have the same $f_c$, the asymptotic high–frequency slope is
+        \(-40\si{\decibel}/\text{decade}\).
+  \item In practice, the gain in the pass–band is reduced and the transition region is
+        more rounded than the ideal second–order approximation.
+\end{itemize}
+\end{block}
+
+\column{0.35\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/sec_order_CR_filter.pdf}
+    \caption*{Cascaded CR low–pass filter and Bode response}
+\end{figure}
+\vspace{-0.5cm}
+\begin{itemize}
+  \item Cascaded RC sections are simple but give limited control over pass–band flatness
+        (e.g.\ Butterworth vs.\ Chebyshev characteristics).
+\end{itemize}
+
+\end{columns}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{Second–Order Low–Pass LCR Filter (RLC Network)}
+    \begin{columns}
+    \column{0.65\textwidth}
+
+\begin{itemize}
+  \item Use a series inductor $L$ feeding a parallel $C$–$R$ network (Figure 9.4).
+  \item $L$ and $C$ chosen so that their natural resonant frequency is near the desired cut–off.
+\end{itemize}
+
+\begin{block}{Resonant frequency and damping}
+\[
+f_0 \approx \frac{1}{2\pi\sqrt{LC}} \quad [\si{\hertz}]
+\]
+\begin{itemize}
+  \item $R$ controls damping:
+  \begin{itemize}
+    \item Low $R$: \textbf{underdamped} – peaking and ringing.
+    \item Critical $R$: \textbf{critically damped} – fast response without overshoot.
+    \item Very high $R$: \textbf{overdamped} – slow, no overshoot.
+  \end{itemize}
+\end{itemize}
+\end{block}
+    \column{0.35\textwidth}
+\begin{figure}
+    \includegraphics[width=0.6\linewidth]{fig/lec03/LCR_Low_pass.pdf}
+    \caption*{LCR low–pass filter and resonance curve}
+\end{figure}
+\vspace{-0.5cm}
+\begin{itemize}
+  \item Advantages: steeper roll–off and adjustable ``knee'' region.
+  \item Drawbacks: needs an inductor (bulky, lossy, sensitive to magnetic coupling).
+\end{itemize}
+
+
+    \end{columns}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{First–Order Passive High–Pass CR Filter}
+    \begin{columns}
+    \column{0.65\textwidth}
+
+\begin{itemize}
+  \item High–pass filter obtained by simply \textbf{interchanging} $R$ and $C$ of the low–pass filter.
+  \item Circuit: series capacitor $C$ followed by resistor $R$ to ground; output across $R$ (Figure 9.5).
+\end{itemize}
+
+\begin{block}{Magnitude response}
+With $X_C = 1/(2\pi f C)$,
+\[
+\left|\frac{e_o}{e_i}\right|
+  = \frac{R}{\sqrt{R^2 + X_C^2}}
+  = \frac{2\pi f R C}{\sqrt{1 + (2\pi f R C)^2}}
+\]
+Cut–off frequency:
+\[
+f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
+\]
+\end{block}
+
+\column{0.35\textwidth}
+\begin{figure}
+    \includegraphics[width=0.6\linewidth]{fig/lec03/CR_High_Pass.pdf}
+    \caption*{CR high–pass filter circuit}
+\end{figure}
+\vspace{-0.5cm}
+\begin{itemize}
+  \item For $f \ll f_c$: $|e_o/e_i|\approx 0$ (low frequencies blocked).
+  \item For $f \gg f_c$: $|e_o/e_i|\approx 1$ (high frequencies passed).
+  \item Slope is \(+20\si{\decibel}/\text{decade}\) below $f_c$.
+\end{itemize}
+
+\end{columns}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{Second–Order Band–Pass LCR Filter}
+    \begin{columns}
+    \column{0.65\textwidth}
+
+\begin{itemize}
+  \item Use a series $C$–$L$–$R$ network.
+  \item At resonance, the series $LC$ combination has minimal impedance, so the output across $R$ peaks.
+\end{itemize}
+
+\begin{block}{Key parameters}
+\begin{itemize}
+  \item Resonant (centre) frequency:
+  \[
+  f_0 = \frac{1}{2\pi\sqrt{LC}} \quad [\si{\hertz}]
+  \]
+  \item Lower and upper \(-3\si{\decibel}\) cut–off frequencies: $f_{cl}$ and $f_{cu}$.
+  \item Bandwidth:
+  \[
+  B = f_{cu} - f_{cl} \quad [\si{\hertz}]
+  \]
+\end{itemize}
+\end{block}
+
+    \column{0.35\textwidth}
+\begin{figure}
+    \includegraphics[width=0.8\linewidth]{fig/lec03/LCR_Band_Pass.pdf}
+    \caption*{LCR band–pass filter and frequency response}  
+\end{figure}
+    \end{columns}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}{Second–Order Band–Pass LCR Filter}
+    \begin{columns}
+    \column{0.65\textwidth}
+
+\begin{block}{Key parameters}
+\begin{itemize}
+  \item Quality factor:
+  \[
+  Q = \frac{f_0}{B}
+  \]
+\end{itemize}
+\end{block}
+
+\begin{itemize}
+  \item Higher $Q$ $\Rightarrow$ narrower pass–band and more selective filter.
+  \item Used for channel selection, tuned amplifiers, and sensor resonance shaping.
+\end{itemize}
+
+    \column{0.35\textwidth}
+\begin{figure}
+    \includegraphics[width=0.8\linewidth]{fig/lec03/LCR_Band_Pass.pdf}
+    \caption*{LCR band–pass filter and frequency response}  
+\end{figure}
+
+    \end{columns}
+\end{frame}
+
+
+%--------------------------------------------------
+\begin{frame}{Second–Order Band–Stop (Notch) LCR Filter}
+    \begin{columns}
+    \column{0.65\textwidth}
+
+\begin{itemize}
+  \item Parallel $L$–$C$ network in series with $R$.
+  \item At resonance, the parallel $LC$ presents a very high impedance, so almost no signal reaches the output.
+\end{itemize}
+\vspace{-0.5cm}
+\begin{block}{Notch behaviour}
+\begin{itemize}
+  \item Resonant (notch) frequency:
+  \[
+  f_0 = \frac{1}{2\pi\sqrt{LC}} \quad [\si{\hertz}]
+  \]
+  \item For $f \approx f_0$: output is strongly attenuated (deep notch).
+  \item For $f \ll f_0$ or $f \gg f_0$: the circuit behaves approximately like a simple low–pass or high–pass path, so the signal is transmitted.
+\end{itemize}
+\end{block}
+
+    \column{0.35\textwidth}
+\begin{figure}
+    \includegraphics[width=0.8\linewidth]{fig/lec03/LCR_Notch.pdf}
+    \caption*{LCR band–stop (notch) filter and frequency response}
+\end{figure}
+    \end{columns}
+\end{frame}
+
+
+%--------------------------------------------------
+\begin{frame}{Second–Order Band–Stop (Notch) LCR Filter}
+    \begin{columns}
+    \column{0.65\textwidth}
+
+\begin{itemize}
+  \item Typical use: rejection of a single interfering tone (e.g.\ \SI{50}{\hertz} mains hum).
+\end{itemize}
+    \column{0.35\textwidth}
+\begin{figure}
+    \includegraphics[width=0.8\linewidth]{fig/lec03/LCR_Notch.pdf}
+    \caption*{LCR band–stop (notch) filter and frequency response}
+\end{figure}
+
+    \end{columns}
+\end{frame}
+
+
+%--------------------------------------------------
+\begin{frame}{Summary: Passive Filters and Their Limitations}
+\begin{block}{Four basic passive filter types}
+\begin{itemize}
+  \item Low–pass, high–pass, band–pass, band–stop.
+  \item Built from combinations of \textbf{R}, \textbf{L}, \textbf{C} elements.
+  \item First–order and second–order sections can be cascaded to obtain desired shapes.
+\end{itemize}
+\end{block}
+
+\begin{block}{Higher–order and named responses}
+\begin{itemize}
+  \item By choosing component values appropriately in multi–section networks, one can approximate
+        standard responses: Butterworth, Bessel, Chebyshev, Cauer, etc.
+  \item These shapes trade off pass–band flatness, transition sharpness, and phase/step response.
+\end{itemize}
+\end{block}
+
+\begin{block}{Practical limitations of passive filters}
+\begin{itemize}
+  \item Inductors are bulky, heavy, lossy, and radiate magnetic fields (coupling/EMI issues).
+  \item Component tolerances and loading can shift the cut–off and detune the filter.
+  \item Passive networks cannot provide voltage or current gain; they only attenuate.
+\end{itemize}
+\end{block}
+
+\textbf{Motivation for next topic:} \alert{Active filters} using operational amplifiers overcome many of these limitations while implementing the same transfer functions.
+\end{frame}
+
+%---------------------------------------------
+\begin{frame}{Active Filters: Motivation and Basic Idea}
+\begin{itemize}
+  \item \textbf{Filter goal:} shape the frequency content of an analogue signal
+        (noise rejection, anti–aliasing, channel selection, etc.).
+  \item \textbf{Passive filters} use only $R$, $L$, $C$:
+        \begin{itemize}
+          \item No power gain; they always \emph{attenuate}.
+          \item Input and output impedances depend on $R$, $L$, $C$ 
+                $\Rightarrow$ strong \textbf{loading} effects.
+          \item Inductors can be bulky, expensive, and magnetically noisy.
+        \end{itemize}
+  \item \textbf{Active filters} use $R$, $C$ and an \textbf{active device}
+        (transistor or operational amplifier):
+        \begin{itemize}
+          \item Provide \emph{voltage or current gain} while filtering.
+          \item High input impedance, low output impedance
+                $\Rightarrow$ minimal loading of signal source and load.
+          \item Inductor–like behaviour can be synthesised using $R$ and $C$
+                (\emph{gyrator} concept).
+        \end{itemize}
+  \item In practice, modern active filters are almost always op‐amp based;
+        early examples used transistor emitter followers for buffering.
+\end{itemize}
+
+% \vspace{0.2cm}
+% \fbox{\parbox[c][2.3cm][c]{0.9\linewidth}{\centering
+% Insert generic \emph{active filter block diagram}: source $\rightarrow$ active network $\rightarrow$ load}}
+\end{frame}
+%---------------------------------------------
+
+%---------------------------------------------
+\begin{frame}{Second-Order Active Filter with Emitter Follower}
+\begin{columns}
+\column{0.6\textwidth}
+  \begin{itemize}
+  \item Start from a \textbf{passive} second‐order low–pass $CR$ filter
+        (two cascaded first–order sections).
+  \item Add an \textbf{emitter follower} to buffer the $CR$ network:
+        \begin{itemize}
+          \item High input impedance at the transistor base.
+          \item Low output impedance at the emitter $\rightarrow$ drives load
+                without disturbing filter characteristics.
+        \end{itemize}
+  \item Top figure: two $CR$ sections followed by emitter follower.
+        \begin{itemize}
+          \item Cheap implementation but often \textbf{overdamped}
+                (highly smoothed knee, poor selectivity).
+        \end{itemize}
+\end{itemize}
+\column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
+    \caption*{Second–order active low–pass filters using
+    transistor emitter follower for buffering}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+
+%---------------------------------------------
+\begin{frame}{Second-Order Active Filter with Emitter Follower}
+\begin{columns}
+\column{0.6\textwidth}
+  \begin{itemize}
+  \item Below figure: introduces \textbf{positive feedback} from emitter to
+        the junction between $C_1$ and $C_2$ (``bootstrapping'').
+        \begin{itemize}
+          \item Near cut–off frequency, positive feedback partially cancels
+                damping and sharpens the knee.
+          \item At low frequencies, $C_1$ reactance is large 
+                $\Rightarrow$ feedback effect small.
+          \item At high frequencies, $C_2$ reactance becomes small
+                $\Rightarrow$ signal leaks to earth and is attenuated.
+        \end{itemize}
+  \item Product $R_1 C_1$ and $R_2 C_2$ largely sets $f_c$;
+        ratio $C_1/C_2$ controls damping (under/over–damped behaviour).
+\end{itemize}
+\column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
+    \caption*{Second–order active low–pass filters using
+    transistor emitter follower for buffering}
+\end{figure}
+\end{columns}
+
+\end{frame}
+%---------------------------------------------
+
+
+%---------------------------------------------
+\begin{frame}{First-Order Active Low-Pass Filter (Op-Amp)}
+  \begin{columns}
+  \column{0.6\textwidth}
+\begin{itemize}
+  \item Realised by placing a \textbf{single $CR$ network} in the op‐amp
+        feedback path.
+  \item For the inverting configuration:
+        \begin{itemize}
+          \item Input resistor $R$ from source $e_i$ to inverting node.
+          \item Feedback branch: series connection of $R$ and $C$.
+          \item Non‐inverting input at reference (typically 0 V).
+        \end{itemize}
+  \item Closed‐loop transfer function (magnitude response):
+        \[
+          \frac{e_o}{e_i(j f)} 
+            = \frac{1}{1 + j \dfrac{f}{f_c}}
+        \]
+        with
+        \[
+          f_c = \frac{1}{2\pi C R} \quad [\text{Hz}].
+        \]
+\end{itemize}
+  \column{0.4\textwidth}
+    \begin{figure}
+        \includegraphics[width=0.9\linewidth]{fig/lec03/inv_filter.pdf}
+        \caption*{First–order active low–pass filter
+        using op‐amp}
+    \end{figure}
+
+  \end{columns}
+\end{frame}
+%---------------------------------------------
+%---------------------------------------------
+\begin{frame}{First-Order Active Low-Pass Filter (Op-Amp)}
+  \begin{columns}
+  \column{0.6\textwidth}
+\begin{itemize}
+  \item Realised by placing a \textbf{single $CR$ network} in the op‐amp
+        feedback path.
+  \item \textbf{Frequency behaviour:}
+        \begin{itemize}
+          \item $f \ll f_c$: $|e_o/e_i| \approx 1$ (pass–band, $\approx 0$ dB).
+          \item $f = f_c$: $|e_o/e_i| = 1/\sqrt{2} \approx 0.707$ ($-3$ dB point).
+          \item $f \gg f_c$: $|e_o/e_i| \propto 1/f$ (slope $-20$ dB/decade).
+        \end{itemize}
+      \item Phase shift:
+        \[
+          \angle \frac{e_o}{e_i} = -\tan^{-1}\!\left(\frac{f}{f_c}\right)
+        \]
+        $\rightarrow$ $0^\circ$ at low $f$, $-45^\circ$ at $f_c$, $-90^\circ$ at high $f$.
+\end{itemize}
+  \column{0.4\textwidth}
+    \begin{figure}
+        \includegraphics[width=0.9\linewidth]{fig/lec03/inv_filter.pdf}
+        \caption*{First–order active low–pass filter
+        using op‐amp}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+
+%---------------------------------------------
+\begin{frame}{First-Order Active High-Pass Filter (Op-Amp)}
+    \begin{columns}
+  \column{0.6\textwidth}
+\begin{itemize}
+  \item Swap the positions of $R$ and $C$ in the input branch:
+        \begin{itemize}
+          \item Capacitor $C$ in series with the input signal.
+          \item Resistor $R$ to the virtual earth node.
+          \item Feedback is resistive so that high frequencies pass.
+        \end{itemize}
+  \item Idealised transfer function:
+        \[
+          \frac{e_o}{e_i(j f)} 
+             = \frac{j\,f/f_c}{1 + j\,f/f_c},
+          \qquad
+          f_c = \frac{1}{2\pi C R}.
+        \]
+\end{itemize}
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/op_amp_high_pass.pdf}
+    \caption*{First–order active high–pass filter
+    using op‐amp}
+\end{figure}
+
+  \end{columns}
+\end{frame}
+
+
+%---------------------------------------------
+\begin{frame}{First-Order Active High-Pass Filter (Op-Amp)}
+  \begin{columns}
+  \column{0.6\textwidth}
+\begin{itemize}
+  \item \textbf{Frequency behaviour:}
+        \begin{itemize}
+          \item $f \ll f_c$: $|e_o/e_i| \approx f/f_c$ 
+                (strong attenuation of low frequencies; stop–band).
+          \item $f = f_c$: $|e_o/e_i| = 1/\sqrt{2}$ ($-3$ dB point).
+          \item $f \gg f_c$: $|e_o/e_i| \approx 1$ (flat pass–band, $0$ dB).
+        \end{itemize}
+  \item Phase shift:
+        \[
+          \angle \frac{e_o}{e_i} = +\tan^{-1}\!\left(\frac{f_c}{f}\right)
+        \]
+        $\rightarrow$ $+90^\circ$ at very low $f$, $+45^\circ$ at $f_c$, $0^\circ$ at high $f$.
+  \item Practical note: at very low frequencies the input capacitor
+        blocks DC and slow drifts, useful for removing offset or hum.
+\end{itemize}
+
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/op_amp_high_pass.pdf}
+    \caption*{First–order active high–pass filters
+    using op‐amp}
+\end{figure}
+
+  \end{columns}
+
+\end{frame}
+%---------------------------------------------
+
+%---------------------------------------------
+\begin{frame}{Second-Order Active Low- and High-Pass Filters}
+
+  \begin{columns}
+  \column{0.6\textwidth}
+
+\begin{itemize}
+  \item By \textbf{adding a second $CR$ branch} and using appropriate
+        feedback, we obtain a \textbf{second–order} response:
+        \begin{itemize}
+          \item Low–pass: two frequency–selective elements in the feedback.
+          \item High–pass: dual structure with series $C$ and parallel $R$.
+        \end{itemize}
+  \item Normalised low–pass transfer function (Butterworth choice):
+        \[
+          \frac{e_o}{e_i(j f)} =
+          \frac{1}{1 - \left(\frac{f}{f_c}\right)^2 
+                   + \sqrt{2}\,j\left(\frac{f}{f_c}\right)}.
+        \]
+\end{itemize}
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/sec_order_high_pass.pdf}
+    \caption*{Second–order active low–pass filters
+    using op‐amp}
+\end{figure}
+  \end{columns}
+\end{frame}
+%---------------------------------------------
+%---------------------------------------------
+\begin{frame}{Second-Order Active Low- and High-Pass Filters}
+
+  \begin{columns}
+  \column{0.6\textwidth}
+
+\begin{itemize}
+  \item Magnitude:
+        \[
+          \left|\frac{e_o}{e_i}\right|
+           = \frac{1}{
+                \sqrt{\left[1 - \left(\frac{f}{f_c}\right)^2\right]^2
+                      + 2\left(\frac{f}{f_c}\right)^2}
+              }.
+        \]
+  \item \textbf{Properties:}
+        \begin{itemize}
+          \item Flat pass–band (Butterworth) with no ripple.
+          \item Slope in stop–band: $-40$ dB/decade (twice first–order).
+          \item ``Knee'' sharpness and damping determined by ratio of
+                capacitor and resistor values.
+        \end{itemize}
+  \item High–pass version has a dual transfer function with
+        $(f/f_c)$ in the numerator; its stop–band and pass–band
+        are interchanged.
+\end{itemize}
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/sec_order_high_pass.pdf}
+    \caption*{Second–order active low–pass filter
+    using op‐amp}
+\end{figure}
+  \end{columns}
+\end{frame}
+
+%---------------------------------------------
+\begin{frame}{Normalisation and Scaling of Active Filters}
+\begin{itemize}
+  \item Start from a \textbf{single–pole} active low–pass filter:
+        \[
+          f_c = \frac{1}{2\pi C R} \quad \text{or} \quad
+          \omega_c = \frac{1}{C R} \quad [\text{rad/s}].
+        \]
+  \item \textbf{Normalised design:}
+        \begin{itemize}
+          \item Choose $R = 1~\Omega$, $C = 1~\text{F}$ 
+                $\Rightarrow \omega_c = 1~\text{rad/s}$.
+          \item Easy to tabulate/filter responses as functions of 
+                $\omega/\omega_c$.
+        \end{itemize}
+  \item \textbf{Impedance scaling} (e.g.\ to $500~\Omega$ level):
+        \begin{itemize}
+          \item Multiply \emph{all} resistances by scaling factor $k_Z$.
+          \item Divide \emph{all} capacitances by $k_Z$ to keep $CR$ constant.
+          \item Example: $k_Z=500$ gives $R=500~\Omega$, 
+                $C = 1/500~\text{F} = 2\,\text{mF}$, still $\omega_c=1~\text{rad/s}$.
+        \end{itemize}
+  \item \textbf{Frequency scaling} (change $\omega_c$ without changing
+        impedance level):
+        \begin{itemize}
+          \item To increase $\omega_c$ by factor $k_f$, reduce the product
+                $CR$ by $k_f$.
+          \item Often achieved by dividing either $R$ or $C$ by $k_f$
+                (or both appropriately).
+          \item Example: from $\omega_c=1~\text{rad/s}$ to $50~\text{rad/s}$ at
+                $R=500~\Omega$ requires $C = 1/(50\times 500) = 40~\mu\text{F}$.
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%---------------------------------------------
+
+\begin{frame}{Active Filter Design: Summary for Practice}
+\begin{itemize}
+  \item \textbf{Step 1:} Choose required filter \emph{type} and \emph{order}
+        (low–pass, high–pass, band–pass, band–stop; first or second order, etc.).
+  \item \textbf{Step 2:} Select an appropriate \emph{response family}
+        (Butterworth for flat pass–band, Chebyshev for sharper roll–off, etc.).
+  \item \textbf{Step 3:} Start from a \textbf{normalised} prototype
+        (e.g.\ $R=1~\Omega$, $C$ values from tables, $\omega_c=1~\text{rad/s}$).
+  \item \textbf{Step 4:} Apply \emph{impedance scaling} and \emph{frequency scaling}
+        to obtain practical $R$, $C$ and desired cut–off $f_c$.
+  \item \textbf{Step 5:} Choose an op–amp:
+        \begin{itemize}
+          \item Bandwidth $\gg$ required filter bandwidth.
+          \item Low input bias current and offset for low–frequency filters.
+          \item Adequate output swing and slew rate.
+        \end{itemize}
+  \item \textbf{Step 6:} Verify with Bode plots (simulation + hand sketch) that:
+        \begin{itemize}
+          \item Pass–band gain and flatness meet requirements.
+          \item Cut–off frequency and slope are correct
+                ($20$ dB/decade per pole).
+          \item Phase behaviour is acceptable for the intended application.
+        \end{itemize}
+\end{itemize}
+\end{frame}
+%---------------------------------------------
+
+\begin{frame}
+    \begin{center}
+            \Large{Analogue and Digital Conversions}
+    \end{center}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Analogue and Digital Conversions: Motivation}
+
+  \begin{columns}
+  \column{0.6\textwidth}
+
+\begin{itemize}
+  \item Modern control and instrumentation systems increasingly use \textbf{digital microcomputers} for:
+  \begin{itemize}
+    \item process control,
+    \item data acquisition,
+    \item communication and supervision.
+  \end{itemize}
+  \item However, the \textbf{process itself} and most sensors/actuators remain \textbf{analogue}:
+  \begin{itemize}
+    \item transducers generate analogue voltages/currents,
+    \item actuators (valves, motors, heaters) are driven by analogue signals or PWM.
+  \end{itemize}
+  \item Therefore we need:
+  \begin{itemize}
+    \item \textbf{ADC} (Analogue-to-Digital Conversion) to bring sensor information into the digital domain.
+    \item \textbf{DAC} (Digital-to-Analogue Conversion) to send control actions back to the analogue process.
+  \end{itemize}
+\end{itemize}
+
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.99\linewidth]{fig/lec03/intro_ADC_DAC.pdf}
+    \caption*{Typical analogue–digital control loop with ADC and DAC}
+\end{figure}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Typical Analogue--Digital Control Loop}
+\begin{itemize}
+  \item \textbf{Transducer sensor} converts physical quantity (force, \dots) to analogue voltage or current.
+  \item \textbf{ADC} periodically samples the analogue signal and produces a digital word for the microcomputer.
+  \item \textbf{Digital microcomputer}:
+  \begin{itemize}
+    \item executes control algorithm,
+    \item compares measured value with stored setpoint,
+    \item computes a new control output.
+  \end{itemize}
+  \item \textbf{DAC} converts the digital control word to an analogue signal.
+  \item \textbf{Analogue controller / actuator} uses this signal to adjust process variables (fuel valve, pump speed, heater power, \dots).
+\end{itemize}
+
+\begin{block}{Key Design Requirements}
+  \begin{itemize}
+    \item Conversion must be \textbf{fast enough} to follow process dynamics.
+    \item Conversion must be \textbf{accurate enough} (resolution, noise, linearity).
+    \item ADC and DAC must integrate with signal conditioning (filters, amplifiers, isolation).
+  \end{itemize}
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Sampling of the Analogue Input}
+  \begin{columns}
+  \column{0.6\textwidth}
+\begin{itemize}
+  \item Goal of sampling: represent a \textbf{continuous-time analogue waveform} by a sequence of discrete-time values.
+  \item Figure 11.2:
+  \begin{itemize}
+    \item (a) original analogue waveform,
+    \item (b) regularly spaced sampling instants,
+    \item (c) sampled amplitudes forming a pulse train.
+  \end{itemize}
+  \item The \textbf{height} of each sample pulse equals the instantaneous value of the analogue signal at the sampling instant.
+  \item The more samples per period, the better the sampled data follow the original waveform.
+\end{itemize}
+  \column{0.4\textwidth}
+    \begin{figure}
+        \includegraphics[width=0.99\linewidth]{fig/lec03/sampling.pdf}
+        \caption*{Sampling an analogue waveform}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Nyquist Sampling Theorem and Practical Rule}
+\begin{block}{Nyquist Sampling Theorem}
+If the highest frequency present in the analogue signal is $f_{\max}$, then:
+\[
+f_s \ge 2 f_{\max}
+\]
+is sufficient to reconstruct the signal exactly (in the absence of noise and with ideal filtering).
+\end{block}
+
+\begin{itemize}
+  \item $f_s$ = sampling frequency, period $T_s = 1/f_s$.
+  \item At least \textbf{two samples per cycle} of the highest frequency component are required.
+  \item In practice:
+  \begin{itemize}
+    \item often choose $f_s \gg 2 f_{\max}$ to simplify anti-alias filtering and to allow for non-idealities,
+    \item additional margin is useful when the signal bandwidth is not precisely known or may vary.
+  \end{itemize}
+  \item If the sampling rate is too low, \textbf{aliasing} occurs.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Aliasing: When Sampling is Too Slow}
+  \begin{columns}
+  \column{0.6\textwidth}
+\begin{itemize}
+  \item Aliasing occurs when $f_s < 2 f_{\max}$.
+  \item High-frequency components are \textbf{misinterpreted} as lower frequency signals in the sampled data.
+  \item Figure 11.3 shows:
+  \begin{itemize}
+    \item (a) triangular wave of $8\,$kHz sampled at only $10\,$kHz:
+          apparent digital waveform has a lower frequency (alias).
+    \item (b) two different analogue sinusoids A and B generating the same digitised sample sequence C.
+  \end{itemize}
+  \item Result: the discrete-time representation contains \textbf{false frequency content} and cannot uniquely represent the original waveform.
+\end{itemize}
+
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/anti_alia.pdf}
+    \caption*{Aliasing of a wave sampled too slowly}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Aliasing: When Sampling is Too Slow}
+\begin{columns}
+  \column{0.6\textwidth}
+
+\begin{block}{Anti-aliasing}
+  \begin{itemize}
+    \item Use an \textbf{analogue low-pass filter} before the ADC input.
+    \item Limit input spectrum to below $f_s/2$ to prevent high-frequency components from folding into the band of interest.
+  \end{itemize}
+\end{block}
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/anti_alia.pdf}
+    \caption*{Aliasing of a wave sampled too slowly}
+\end{figure}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Sample-and-Hold Circuit: Why It Is Needed}
+  \begin{columns}
+  \column{0.6\textwidth}
+
+\begin{itemize}
+  \item Practical ADCs require a \textbf{constant input voltage} during the conversion time.
+  \item A \textbf{sample-and-hold} (S/H) circuit:
+  \begin{itemize}
+    \item samples the analogue signal during a short \emph{aperture time},
+    \item stores it on a capacitor,
+    \item holds it essentially constant while the ADC performs conversion.
+  \end{itemize}
+\end{itemize}
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.99\linewidth]{fig/lec03/sample_hold.pdf}
+    \caption*{Sample-and-hold timing diagram}
+\end{figure}
+  \end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Sample-and-Hold Circuit: Why It Is Needed}
+  \begin{columns}
+  \column{0.6\textwidth}
+
+\begin{block}{Typical Sample-and-Hold Arrangement}
+  \begin{itemize}
+    \item Buffer amplifier A1 isolates the signal source and charges the hold capacitor $C$ rapidly.
+    \item MOSFET sampling switch connects $C$ briefly to the analogue input when a sampling pulse arrives.
+    \item During \emph{hold}, A2 buffers the capacitor, presenting a stable voltage to the ADC.
+    \item Non-idealities: \textbf{droop} due to leakage currents, finite acquisition time, aperture uncertainty (timing jitter).
+  \end{itemize}
+\end{block}
+
+  \column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.99\linewidth]{fig/lec03/sample_hold.pdf}
+    \caption*{Sample-and-hold timing diagram}
+\end{figure}
+  \end{columns}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Quantisation in an $N$-bit ADC}
+\begin{itemize}
+  \item After sampling, each analogue value must be mapped to one of $2^N$ discrete \textbf{quantisation levels}.
+  \item Example from Table 11.1:
+  \begin{itemize}
+    \item Analogue range: $0$ to $3.5$ mV.
+    \item 3-bit ADC $\Rightarrow 2^3 = 8$ levels, spacing $\Delta V = 0.5$ mV.
+    \item Each level assigned a 3-bit binary code (000 to 111).
+  \end{itemize}
+  \item Any analogue value is replaced by the \textbf{nearest} level: \emph{quantising}.
+\end{itemize}
+
+\begin{block}{Resolution (Quantum Size)}
+For a full-scale range $V_{\text{FS}}$ and $N$ bits:
+\[
+\Delta V = \frac{V_{\text{FS}}}{2^N - 1}
+\]
+\vspace{-0.75cm}
+\begin{itemize}
+  \item $\Delta V$ is both the smallest step in output code and the smallest detectable change (ideal case).
+  \item Increasing $N$ reduces $\Delta V$ and thus improves measurement resolution.
+\end{itemize}
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Quantisation Error and Resolution Examples}
+  \begin{columns}
+  \column{0.6\textwidth}
+\begin{itemize}
+  \item Quantisation error is typically taken as $\pm \frac{1}{2} \Delta V$.
+  \item For the 3-bit example (range $0$--$3.5$ mV, $\Delta V = 0.5$ mV):
+  \begin{itemize}
+    \item quantisation error $\approx \pm 0.25$ mV.
+    \item binary code 010 represents all inputs between $0.75$ mV and $1.25$ mV.
+  \end{itemize}
+  \item Increasing bit length:
+  \begin{itemize}
+    \item 4 bits: error reduces to about $\pm 0.117$ mV.
+    \item 8 or 12 bits: error becomes very small (sub-microvolt range in the example).
+  \end{itemize}
+\end{itemize}
+\column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/4_bit_ADC.pdf}
+    \caption*{Quantisation levels and "staircase" trasfer characteristics for 4-bit ADC}
+\end{figure}
+  
+  \end{columns}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Quantisation Noise}
+  \begin{columns}
+\column{0.6\textwidth}
+\begin{itemize}
+  \item The analogue signal is continuous; the quantised version has \textbf{discrete steps}.
+  \item Figure 11.6 illustrates:
+  \begin{itemize}
+    \item (a) original smooth analogue waveform,
+    \item (b) discrete sampled points,
+    \item (c) reconstructed waveform showing a jagged, castellated shape.
+  \end{itemize}
+  \item The difference between the original and quantised/reconstructed waveforms appears as \textbf{quantisation noise}.
+  \item It is often modelled as an \emph{approximately white} noise source uniformly distributed between $\pm \Delta V/2$ (for many codes and no overload).
+\end{itemize}
+
+\column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.7\linewidth]{fig/lec03/quant_noise.pdf}
+    \caption*{Quantisation noise due to finite resolution}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Quantisation Noise}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{block}{Design Trade-off}
+  \begin{itemize}
+    \item More bits $\Rightarrow$ smaller steps $\Rightarrow$ lower quantisation noise but higher converter complexity, cost, and conversion time.
+    \item Choice of $N$ depends on required accuracy, noise floor, and bandwidth.
+  \end{itemize}
+\end{block}
+\column{0.4\textwidth}
+\begin{figure}
+    \includegraphics[width=0.7\linewidth]{fig/lec03/quant_noise.pdf}
+    \caption*{Quantisation noise due to finite resolution}
+\end{figure}
+\end{columns}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Digital-to-Analogue Conversion (DAC): Overview}
+\begin{itemize}
+  \item DAC performs the \textbf{reverse} of ADC: converts digital word to analogue output voltage or current.
+  \item Widely used for:
+  \begin{itemize}
+    \item generating analogue control signals from a microcontroller,
+    \item reconstructing waveforms from digital data (audio, arbitrary waveform generation),
+    \item implementing many ADC architectures internally.
+  \end{itemize}
+  \item Key performance parameters:
+  \begin{itemize}
+    \item resolution (number of bits),
+    \item settling time (time to reach final value within a specified error after a code change),
+    \item linearity and monotonicity,
+    \item output range and drive capability.
+  \end{itemize}
+\end{itemize}
+
+\begin{block}{Digital Word}
+  \begin{itemize}
+    \item Input to DAC is a binary number (word).
+    \item Each bit contributes a weighted current or voltage.
+    \item Analogue output represents the sum of all weighted contributions.
+  \end{itemize}
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Weighted Resistor DAC: Principle}
+  \begin{columns}
+    
+  \column{0.5\textwidth}
+\begin{itemize}
+  \item Consider the 4-bit DAC of Fig.\ 11.7 using an op-amp summing amplifier.
+  \item Each digital input bit controls a switch connecting either:
+  \begin{itemize}
+    \item reference voltage $V_R$ (logic 1), or
+    \item ground (logic 0)
+  \end{itemize}
+  to a resistor branch.
+  \item Resistors are weighted: $R,\,2R,\,4R,\,8R$.
+  \item Currents $I_1$ to $I_4$ from each branch sum at the op-amp input node $V_X$ (virtual earth).
+\end{itemize}
+  \column{0.5\textwidth}
+\begin{figure}  
+    \includegraphics[width=0.75\linewidth]{fig/lec03/weight_res_DAC.pdf}
+    \caption*{4-bit weighted resistor DAC using op-amp summing amplifier}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Weighted Resistor DAC: Principle}
+  \begin{columns}
+    
+  \column{0.5\textwidth}
+\begin{block}{Current and Output Voltage}
+For a given digital input pattern:
+\[
+I_f = I_1 + I_2 + I_3 + I_4
+\]
+\[
+e_o = I_f R_f
+\]
+where $R_f$ is the feedback resistor (often chosen as $8R$ in the example to give convenient scaling).
+\end{block}
+
+  \column{0.5\textwidth}
+\begin{figure}  
+    \includegraphics[width=0.75\linewidth]{fig/lec03/weight_res_DAC.pdf}
+    \caption*{4-bit weighted resistor DAC using op-amp summing amplifier}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Worked Example: 4-bit Weighted Resistor DAC}
+\textbf{Example from text:}
+\begin{itemize}
+  \item Resistor values: $R,\,2R,\,4R,\,8R$.
+  \item Feedback resistor: $R_f = 8R$.
+  \item Reference voltage: $V_R$.
+  \item Digital input word: $1010$ (MSB to LSB).
+\end{itemize}
+
+\begin{block}{Step 1: Determine Branch Currents}
+\begin{itemize}
+  \item Bits 1 and 3 are 1; bits 2 and 4 are 0.
+  \item Therefore:
+  \[
+  I_1 = \frac{V_R}{R}, \quad
+  I_3 = \frac{V_R}{4R}, \quad
+  I_2 = I_4 = 0
+  \]
+  \item Total current:
+  \[
+  I_f = I_1 + I_2 + I_3 + I_4 = \frac{V_R}{R} + \frac{V_R}{4R}
+      = \frac{5V_R}{4R}
+  \]
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Worked Example: 4-bit Weighted Resistor DAC}
+
+
+\begin{block}{Step 2: Output Voltage}
+\[
+e_o = I_f R_f = \frac{5V_R}{4R} \times 8R = 10 V_R
+\]
+\end{block}
+
+\textbf{Comment:} extending this approach to 8 or 12 bits requires many precise resistor values, which is why practical DACs prefer the R--2R ladder implementation.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{R--2R Ladder DAC}
+  \begin{columns}
+
+  \column{0.5\textwidth}
+\begin{itemize}
+  \item The R--2R ladder DAC uses only two resistor values, $R$ and $2R$, arranged in a repeated ladder network.
+  \item Digital switches connect each ladder node either to ground (bit 0) or to a reference voltage (bit 1).
+  \item The ladder presents a constant input resistance to the reference source, independent of word length.
+  \item For a 4-bit ladder with input word 1111, the combined current through the feedback resistor $R_f$ produces the maximum output voltage.
+\end{itemize}
+  \column{0.5\textwidth}
+\begin{figure}
+    \includegraphics[width=0.75\linewidth]{fig/lec03/4_bit_R_2R.pdf}
+    \caption*{4-bit R--2R ladder DAC using op-amp summing amplifier}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Flash (Parallel) ADC}
+  \begin{columns}
+  \column{0.5\textwidth}
+\begin{itemize}
+  \item A flash ADC uses a bank of comparators in parallel, each set to a different reference threshold.
+  \item The analogue input is compared simultaneously with all thresholds; the pattern of comparator outputs is encoded into a binary word.
+  \item Provides extremely fast conversion (sub-20\,ns) at the cost of large hardware: $2^{N}-1$ comparators for $N$ bits.
+  \item Common for very high-speed, low-to-medium resolution applications (oscilloscopes, RF receivers).
+\end{itemize}
+
+  \column{0.5\textwidth}
+\begin{figure}
+    \includegraphics[width=0.75\linewidth]{fig/lec03/flash_ADC.pdf}
+    \caption*{Flash ADC block diagram and example with 2-bit output}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Successive Approximation ADC}
+  \begin{columns}
+  \column{0.5\textwidth}
+
+\begin{itemize}
+  \item Uses a binary search to converge on the input voltage.
+  \item A DAC generates trial voltages from a programmable register; these are compared with the input using a single comparator.
+  \item Starting from MSB, each trial bit is set or cleared depending on whether the DAC output is too high or too low.
+  \item Requires exactly $N$ comparison steps for an $N$-bit result; offers good speed and resolution with moderate hardware.
+\end{itemize}
+ \column{0.5\textwidth}
+\begin{figure}
+    \includegraphics[width=0.75\linewidth]{fig/lec03/succ_approx_ADC.pdf}
+    \caption*{Successive Approximation ADC block diagram}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Successive Approximation ADC}
+
+\begin{figure}
+    \includegraphics[width=0.4\linewidth]{fig/lec03/succ_approx_ADC_out.pdf}
+    \caption*{Successive Approximation ADC block diagram}
+    \end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Counter-Ramp (Integrating) ADC}
+  \begin{columns}
+      \column{0.5\textwidth}
+
+\begin{itemize}
+  \item A DAC generates a staircase or ramp voltage $V_2$ controlled by a binary counter.
+  \item The ramp is compared with the analogue input $V_1$; while $V_2 < V_1$ the counter is allowed to increment.
+  \item When $V_2$ exceeds $V_1$, the comparator disables the clock and the counter value is latched as the digital result.
+  \item Conversion time is proportional to input level and limited by the maximum count; simpler but usually slower than SAR or flash ADCs.
+\end{itemize}
+
+  \column{0.5\textwidth}
+\begin{figure}
+    \includegraphics[width=0.75\linewidth]{fig/lec03/counter_ramp.pdf}
+    \caption*{Counter-ramp ADC block diagram}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Other Integrating ADC Types}
+\begin{itemize}
+  \item \textbf{Single-slope ramp ADC}: uses a linear ramp generated by an integrator. The time taken for the ramp to reach the input voltage is measured with a counter. Simple but sensitive to ramp slope and clock errors.
+  \item \textbf{Dual-slope (dual-ramp) ADC}: first integrates the unknown input for a fixed time, then integrates a reference voltage of opposite polarity until the integrator output returns to zero. The second integration time gives the digital result.
+  \item Dual-slope conversion averages the input over many clock cycles and strongly rejects noise and component drift, at the expense of slower conversion.
+  \item These concepts motivate more advanced integrating schemes such as \textbf{delta–sigma} converters.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Delta--Sigma Charge-Balance ADC: Principle}
+  \begin{columns}
+    \column{0.5\textwidth}
+
+\begin{itemize}
+  \item Aim: obtain high resolution by converting the \emph{average} analogue input over many clock cycles into a digital count.
+  \item The analogue input current charges the integrator capacitor; the integrator output is compared with zero.
+  \item Depending on comparator output, fixed-size current pulses (derived from a reference source) are switched into or out of the summing junction.
+  \item The feedback pulses balance the input on average, keeping the integrator output bounded around zero.
+\end{itemize}
+
+  \column{0.5\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/del_sig_ADC.pdf}
+    \caption*{Delta--sigma charge-balance ADC block diagram}
+    \end{figure}
+
+\end{columns}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Delta--Sigma Charge-Balance ADC: Operation}
+\begin{columns}
+    \column{0.5\textwidth}
+
+\begin{itemize}
+  \item Over a window of $N$ clock periods, a total of $n$ charge pulses is applied to balance the input.
+  \item The condition of zero net charge at the summing node implies that $n$ is proportional to the average analogue input current.
+  \item The digital output is simply the pulse count $n$ (or its binary representation), giving very fine effective resolution.
+  \item Key advantages: excellent noise averaging, high linearity and suitability for low-frequency, high-accuracy measurement (e.g.\ digital multimeters).
+\end{itemize}
+ \column{0.5\textwidth}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{fig/lec03/del_sig_ADC.pdf}
+    \caption*{Delta--sigma charge-balance ADC block diagram}
+    \end{figure}
+
+\end{columns}
+\end{frame}
