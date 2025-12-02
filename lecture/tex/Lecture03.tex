@@ -2557,7 +2557,7 @@ f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
           \item High input impedance, low output impedance
                 $\Rightarrow$ minimal loading of signal source and load.
           \item Inductor–like behaviour can be synthesised using $R$ and $C$
-                (\emph{gyrator} concept).
+                (\emph{gyrator} (impedance converter) concept).
         \end{itemize}
   \item In practice, modern active filters are almost always op‐amp based;
         early examples used transistor emitter followers for buffering.
@@ -2569,63 +2569,63 @@ f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
 \end{frame}
 %---------------------------------------------
 
-%---------------------------------------------
-\begin{frame}{Second-Order Active Filter with Emitter Follower}
-\begin{columns}
-\column{0.6\textwidth}
-  \begin{itemize}
-  \item Start from a \textbf{passive} second‐order low–pass $CR$ filter
-        (two cascaded first–order sections).
-  \item Add an \textbf{emitter follower} to buffer the $CR$ network:
-        \begin{itemize}
-          \item High input impedance at the transistor base.
-          \item Low output impedance at the emitter $\rightarrow$ drives load
-                without disturbing filter characteristics.
-        \end{itemize}
-  \item Top figure: two $CR$ sections followed by emitter follower.
-        \begin{itemize}
-          \item Cheap implementation but often \textbf{overdamped}
-                (highly smoothed knee, poor selectivity).
-        \end{itemize}
-\end{itemize}
-\column{0.4\textwidth}
-\begin{figure}
-    \includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
-    \caption*{Second–order active low–pass filters using
-    transistor emitter follower for buffering}
-\end{figure}
-\end{columns}
+% %---------------------------------------------
+% \begin{frame}{Second-Order Active Filter with Emitter Follower}
+% \begin{columns}
+% \column{0.6\textwidth}
+%   \begin{itemize}
+%   \item Start from a \textbf{passive} second‐order low–pass $CR$ filter
+%         (two cascaded first–order sections).
+%   \item Add an \textbf{emitter follower} to buffer the $CR$ network:
+%         \begin{itemize}
+%           \item High input impedance at the transistor base.
+%           \item Low output impedance at the emitter $\rightarrow$ drives load
+%                 without disturbing filter characteristics.
+%         \end{itemize}
+%   \item Top figure: two $CR$ sections followed by emitter follower.
+%         \begin{itemize}
+%           \item Cheap implementation but often \textbf{overdamped}
+%                 (highly smoothed knee, poor selectivity).
+%         \end{itemize}
+% \end{itemize}
+% \column{0.4\textwidth}
+% \begin{figure}
+%     \includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
+%     \caption*{Second–order active low–pass filters using
+%     transistor emitter follower for buffering}
+% \end{figure}
+% \end{columns}
 
-\end{frame}
+% \end{frame}
 
 
-%---------------------------------------------
-\begin{frame}{Second-Order Active Filter with Emitter Follower}
-\begin{columns}
-\column{0.6\textwidth}
-  \begin{itemize}
-  \item Below figure: introduces \textbf{positive feedback} from emitter to
-        the junction between $C_1$ and $C_2$ (``bootstrapping'').
-        \begin{itemize}
-          \item Near cut–off frequency, positive feedback partially cancels
-                damping and sharpens the knee.
-          \item At low frequencies, $C_1$ reactance is large 
-                $\Rightarrow$ feedback effect small.
-          \item At high frequencies, $C_2$ reactance becomes small
-                $\Rightarrow$ signal leaks to earth and is attenuated.
-        \end{itemize}
-  \item Product $R_1 C_1$ and $R_2 C_2$ largely sets $f_c$;
-        ratio $C_1/C_2$ controls damping (under/over–damped behaviour).
-\end{itemize}
-\column{0.4\textwidth}
-\begin{figure}
-    \includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
-    \caption*{Second–order active low–pass filters using
-    transistor emitter follower for buffering}
-\end{figure}
-\end{columns}
+% %---------------------------------------------
+% \begin{frame}{Second-Order Active Filter with Emitter Follower}
+% \begin{columns}
+% \column{0.6\textwidth}
+%   \begin{itemize}
+%   \item Below figure: introduces \textbf{positive feedback} from emitter to
+%         the junction between $C_1$ and $C_2$ (``bootstrapping'').
+%         \begin{itemize}
+%           \item Near cut–off frequency, positive feedback partially cancels
+%                 damping and sharpens the knee.
+%           \item At low frequencies, $C_1$ reactance is large 
+%                 $\Rightarrow$ feedback effect small.
+%           \item At high frequencies, $C_2$ reactance becomes small
+%                 $\Rightarrow$ signal leaks to earth and is attenuated.
+%         \end{itemize}
+%   \item Product $R_1 C_1$ and $R_2 C_2$ largely sets $f_c$;
+%         ratio $C_1/C_2$ controls damping (under/over–damped behaviour).
+% \end{itemize}
+% \column{0.4\textwidth}
+% \begin{figure}
+%     \includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
+%     \caption*{Second–order active low–pass filters using
+%     transistor emitter follower for buffering}
+% \end{figure}
+% \end{columns}
 
-\end{frame}
+% \end{frame}
 %---------------------------------------------
 
 
@@ -2639,7 +2639,7 @@ f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
   \item For the inverting configuration:
         \begin{itemize}
           \item Input resistor $R$ from source $e_i$ to inverting node.
-          \item Feedback branch: series connection of $R$ and $C$.
+          \item Feedback branch: parallel connection of $R$ and $C$.
           \item Non‐inverting input at reference (typically 0 V).
         \end{itemize}
   \item Closed‐loop transfer function (magnitude response):
@@ -2667,8 +2667,6 @@ f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
   \begin{columns}
   \column{0.6\textwidth}
 \begin{itemize}
-  \item Realised by placing a \textbf{single $CR$ network} in the op‐amp
-        feedback path.
   \item \textbf{Frequency behaviour:}
         \begin{itemize}
           \item $f \ll f_c$: $|e_o/e_i| \approx 1$ (pass–band, $\approx 0$ dB).
@@ -2953,7 +2951,7 @@ f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
   \column{0.6\textwidth}
 \begin{itemize}
   \item Goal of sampling: represent a \textbf{continuous-time analogue waveform} by a sequence of discrete-time values.
-  \item Figure 11.2:
+  \item In figure:
   \begin{itemize}
     \item (a) original analogue waveform,
     \item (b) regularly spaced sampling instants,
@@ -2999,7 +2997,7 @@ is sufficient to reconstruct the signal exactly (in the absence of noise and wit
 \begin{itemize}
   \item Aliasing occurs when $f_s < 2 f_{\max}$.
   \item High-frequency components are \textbf{misinterpreted} as lower frequency signals in the sampled data.
-  \item Figure 11.3 shows:
+  \item Figure shows:
   \begin{itemize}
     \item (a) triangular wave of $8\,$kHz sampled at only $10\,$kHz:
           apparent digital waveform has a lower frequency (alias).
@@ -3039,7 +3037,7 @@ is sufficient to reconstruct the signal exactly (in the absence of noise and wit
 %------------------------------------------------
 \begin{frame}{Sample-and-Hold Circuit: Why It Is Needed}
   \begin{columns}
-  \column{0.6\textwidth}
+  \column{0.4\textwidth}
 
 \begin{itemize}
   \item Practical ADCs require a \textbf{constant input voltage} during the conversion time.
@@ -3050,7 +3048,7 @@ is sufficient to reconstruct the signal exactly (in the absence of noise and wit
     \item holds it essentially constant while the ADC performs conversion.
   \end{itemize}
 \end{itemize}
-  \column{0.4\textwidth}
+  \column{0.6\textwidth}
 \begin{figure}
     \includegraphics[width=0.99\linewidth]{fig/lec03/sample_hold.pdf}
     \caption*{Sample-and-hold timing diagram}
@@ -3062,7 +3060,7 @@ is sufficient to reconstruct the signal exactly (in the absence of noise and wit
 %------------------------------------------------
 \begin{frame}{Sample-and-Hold Circuit: Why It Is Needed}
   \begin{columns}
-  \column{0.6\textwidth}
+  \column{0.5\textwidth}
 
 \begin{block}{Typical Sample-and-Hold Arrangement}
   \begin{itemize}
@@ -3073,7 +3071,7 @@ is sufficient to reconstruct the signal exactly (in the absence of noise and wit
   \end{itemize}
 \end{block}
 
-  \column{0.4\textwidth}
+  \column{0.5\textwidth}
 \begin{figure}
     \includegraphics[width=0.99\linewidth]{fig/lec03/sample_hold.pdf}
     \caption*{Sample-and-hold timing diagram}
@@ -3084,7 +3082,7 @@ is sufficient to reconstruct the signal exactly (in the absence of noise and wit
 \begin{frame}{Quantisation in an $N$-bit ADC}
 \begin{itemize}
   \item After sampling, each analogue value must be mapped to one of $2^N$ discrete \textbf{quantisation levels}.
-  \item Example from Table 11.1:
+  \item Example:
   \begin{itemize}
     \item Analogue range: $0$ to $3.5$ mV.
     \item 3-bit ADC $\Rightarrow 2^3 = 8$ levels, spacing $\Delta V = 0.5$ mV.
@@ -3139,7 +3137,7 @@ For a full-scale range $V_{\text{FS}}$ and $N$ bits:
 \column{0.6\textwidth}
 \begin{itemize}
   \item The analogue signal is continuous; the quantised version has \textbf{discrete steps}.
-  \item Figure 11.6 illustrates:
+  \item Figure illustrates:
   \begin{itemize}
     \item (a) original smooth analogue waveform,
     \item (b) discrete sampled points,
@@ -3209,7 +3207,7 @@ For a full-scale range $V_{\text{FS}}$ and $N$ bits:
     
   \column{0.5\textwidth}
 \begin{itemize}
-  \item Consider the 4-bit DAC of Fig.\ 11.7 using an op-amp summing amplifier.
+  \item Consider the 4-bit DAC of figure using an op-amp summing amplifier.
   \item Each digital input bit controls a switch connecting either:
   \begin{itemize}
     \item reference voltage $V_R$ (logic 1), or
