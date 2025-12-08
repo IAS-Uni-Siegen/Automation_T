@@ -26,6 +26,12 @@ Types of Processors:
 \end{frame}
 
 
+\begin{frame}
+    \begin{center}
+            \Large{Programmable Logic Controllers (PLCs)}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Interface of Automation Device - Process}
 \centering
 \includegraphics[scale=0.4]{fig/lec04/Interface_Automation_Device-Process.pdf}
@@ -131,52 +137,6 @@ control a system (or plant) so it behaves as required.
     timer, or in response to an alarm.
 \end{frame}
 
-
-\begin{frame}{Cyclic Processing in PLC}
-    \begin{columns}
-    \column{0.5\textwidth}
-    In a programmable logic controller (PLC), the program usually runs in a cycle (loop).
-    \begin{itemize}
-        \item PLC programs normally run in a \textbf{cyclic loop}.
-        \item After switching on, the PLC executes a \textbf{start-up block} once.
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \textbf{Cyclic Program Scan}
-    \begin{enumerate}
-        \item Start at the \textbf{top of the main program} (e.g., Siemens: OB1).
-        \item Execute each instruction \textbf{sequentially} to the end.
-        \item Run internal \textbf{system routines}.
-        \item Restart from the \textbf{top of the program}.
-    \end{enumerate}
-
-    \vspace{0.3cm}
-
-    \column{0.5\textwidth}
-    \centering
-    \includegraphics[scale=0.45]{fig/lec04/cyclical_processing.pdf}
-    \end{columns}
-\end{frame}
-
-
-\begin{frame}{Cyclic Processing in PLC}
-    \textbf{Program Blocks}
-    \begin{itemize}
-        \item Functions and function blocks can be called inside the main block.
-        \item Nested calls are possible (depth depends on the PLC manufacturer).
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \textbf{Processing Time (Scan Time)}
-    \begin{itemize}
-        \item Total cycle time = sum of processing times of all called blocks.
-        \item If a block is called $n$ times, its time is counted $n$ times.
-    \end{itemize}
-\end{frame}
-
-
 \begin{frame}{Program Blocks Overview}
 \begin{enumerate}
     \item \textbf{Organizational Blocks (OBs)}  
@@ -206,7 +166,73 @@ control a system (or plant) so it behaves as required.
 
 \begin{frame}{Raw structuring of programs}
     \centering
-    \includegraphics[scale=0.45]{fig/lec04/program_structure.pdf}
+    \includegraphics[scale=0.6]{fig/lec04/program_structure.pdf}
+\end{frame}
+
+
+\begin{frame}{Process Image Table}
+    \textbf{Process Image of Inputs (PII)}
+    \begin{itemize}
+        \item At the start of every cycle, all input states are scanned.
+        \item These values are stored in the Process Image Input table.
+        \item During program execution, the PLC uses the stored values.
+        \item Ensures consistent input data throughout the cycle.
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \textbf{Process Image of Outputs (PIO)}
+    \begin{itemize}
+        \item Output values written by the program are stored in the PIO table.
+        \item At the end of the cycle, the table is copied to actual outputs.
+        \item Then a new cycle begins.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Cyclic Processing in PLC}
+    \begin{columns}
+    \column{0.5\textwidth}
+    In a programmable logic controller (PLC), the program usually runs in a cycle (loop).
+    \begin{itemize}
+        \item PLC programs normally run in a \textbf{cyclic loop}.
+        \item After switching on, the PLC executes a \textbf{start-up block} once.
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \textbf{Cyclic Program Scan}
+    \begin{enumerate}
+        \item Start at the \textbf{top of the main program} (e.g., Siemens: OB1).
+        \item Execute each instruction \textbf{sequentially} to the end.
+        \item Run internal \textbf{system routines}.
+        \item Restart from the \textbf{top of the program}.
+    \end{enumerate}
+
+    \vspace{0.3cm}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[scale=0.5]{fig/lec04/cyclical_processing.pdf}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Cyclic Processing in PLC}
+    \textbf{Program Blocks}
+    \begin{itemize}
+        \item Functions and function blocks can be called inside the main block.
+        \item Nested calls are possible (depth depends on the PLC manufacturer).
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \textbf{Processing Time (Scan Time)}
+    \begin{itemize}
+        \item Total cycle time = sum of processing times of all called blocks. \\
+        $T_{cyc} = T_{read\_PII} + T_{exec\_prog} + T_{write\_PIO} + T_{overhead}$ \\
+        where, $T_{exec\_prog}$ = sum of execution times of all blocks called in the cycle, $T_{read\_PII}$ = time to read process image of inputs, $T_{write\_PIO}$ = time to write process image of outputs, $T_{overhead}$ = additional overhead time.
+        \item If a block is called $n$ times, its time is counted $n$ times.
+    \end{itemize}
 \end{frame}
 
 
@@ -235,26 +261,6 @@ control a system (or plant) so it behaves as required.
                 \item Or by the programming tool
             \end{itemize}
         \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Process Image Table}
-    \textbf{Process Image of Inputs (PII)}
-    \begin{itemize}
-        \item At the start of every cycle, all input states are scanned.
-        \item These values are stored in the Process Image Input table.
-        \item During program execution, the PLC uses the stored values.
-        \item Ensures consistent input data throughout the cycle.
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \textbf{Process Image of Outputs (PIO)}
-    \begin{itemize}
-        \item Output values written by the program are stored in the PIO table.
-        \item At the end of the cycle, the table is copied to actual outputs.
-        \item Then a new cycle begins.
-    \end{itemize}
 \end{frame}
 
 
@@ -862,3 +868,643 @@ Rem. 3: Only with binary operand. \\
     \centering
     \includegraphics[scale=0.5]{fig/lec04/SFC_transition_3.pdf}
 \end{frame}
+
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item PLC programs are structured into various program blocks (OBs, FCs, FBs, DBs, SFCs, SFBs).
+        \item The main program runs in a cyclic loop, with possible interruptions for alarms or timed events.
+        \item The Process Image Table ensures consistent input/output states during program execution.
+        \item Boolean operations, flip-flops, timers, and data types are fundamental building blocks in PLC programming.
+        \item Statement List (STL), Ladder Diagram (LAD), Function Block Diagram (FBD), and Sequential Function Chart (SFC) are key programming languages used in PLCs.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \begin{center}
+            \Large{Digital Signal Processing (DSPs)}
+    \end{center}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}{Digital Signal Processing: Overview}
+  \begin{itemize}
+    \item \textbf{Goal of DSP:} Process real–world signals (speech, audio, images, biomedical, radar, etc.) after converting them into discrete–time, discrete–amplitude sequences.
+    \item In early electronics, processing was done in the \textbf{analogue} domain:
+          \begin{itemize}
+            \item Direct amplification, filtering, modulation using RLC circuits, op-amps, etc.
+            \item Performance limited by component tolerances, ageing, temperature drift and noise.
+          \end{itemize}
+    \item \textbf{Digital implementation}:
+          \begin{itemize}
+            \item Signals are converted to digital form via A/D conversion.
+            \item Processing is carried out using algorithms on DSP processors, microprocessors or FPGAs.
+            \item Advantages: programmability, reproducibility, ease of design changes, robustness to ageing and environmental variations.
+          \end{itemize}
+    \item This chapter: introduce DSP concepts that affect hardware implementation and prepare ground for FPGA-based realizations.
+  \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{DSP Hardware Platforms}
+  \begin{itemize}
+    \item \textbf{General-purpose microprocessors}
+          \begin{itemize}
+            \item Flexible, but not optimized for real-time multiply–accumulate intensive tasks.
+          \end{itemize}
+    \item \textbf{Dedicated DSP microprocessors}
+          \begin{itemize}
+            \item Special hardware: MAC units, hardware loop controllers, addressing modes for circular buffers.
+            \item Ideal for audio, communications, control applications.
+          \end{itemize}
+    \item \textbf{FPGAs}
+          \begin{itemize}
+            \item Highly parallel, reconfigurable fabric; can implement custom datapaths and pipelines.
+            \item Particularly suited for high-throughput, low-latency applications (e.g. baseband processing, image processing).
+          \end{itemize}
+    \item For FPGA implementation we must understand:
+          \begin{itemize}
+            \item Sampling rates and throughput requirements.
+            \item Wordlength / number representation (fixed vs floating point).
+            \item Algorithmic complexity (number of multiplications/additions).
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Basic DSP System}
+  \begin{columns}
+    \column{0.55\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/Digitalisation_analogue.pdf} % Figure 2.1
+    \column{0.45\textwidth}
+      \begin{itemize}
+        \item Analogue input is first \textbf{sampled} and \textbf{quantized} by an A/D converter.
+        \item Result is a discrete-time, discrete-amplitude sequence $x(n)$.
+        \item The \textbf{DSP system} applies algorithms:
+              \begin{itemize}
+                \item Filtering, spectral analysis.
+                \item Compression / coding.
+                \item Detection, estimation, equalisation, etc.
+              \end{itemize}
+        \item Output sequence $y(n)$ is converted back to analogue via a D/A converter and reconstruction filter.
+      \end{itemize}
+  \end{columns}
+  \vspace{0.2cm}
+  \begin{itemize}
+    \item Key design question: what signal processing must occur in the digital domain, and what sampling rate / resolution are required to meet system specifications?
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Digitisation of Analogue Signals}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/dsp_digitalisation.pdf} % Figure 2.2
+    \column{0.5\textwidth}
+      \begin{itemize}
+        \item \textbf{Sampling}: capture signal amplitude at uniform time instants $t = nT$.
+        \item \textbf{Quantisation}: map continuous amplitude to discrete levels (integers).
+        \item Typical digital representation:
+              \[
+                x(n) \in \mathbb{Z},\quad n = \ldots,-1,0,1,\ldots
+              \]
+        \item Trade-off:
+              \begin{itemize}
+                \item Higher sampling rate $\Rightarrow$ better temporal resolution, higher data rate.
+                \item More quantisation bits $\Rightarrow$ higher SNR, more hardware cost.
+              \end{itemize}
+      \end{itemize}
+  \end{columns}
+  \vspace{0.2cm}
+  \begin{itemize}
+    \item DSP algorithms operate on these numeric sequences; the quality of digitisation sets a fundamental limit on achievable performance.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Sampling of Continuous-Time Signals}
+  \begin{itemize}
+    \item Let $x_a(t)$ be a continuous-time analogue signal.
+    \item Uniform sampling with sampling period $T$ produces discrete-time sequence
+          \[
+            x(n) = x_a(nT), \quad -\infty < n < \infty.
+          \]
+    \item The sequence $\{x(n)\}$ can be viewed as:
+          \begin{itemize}
+            \item A list of measurements at equally spaced instants.
+            \item A representation of $x_a(t)$ suitable for digital processing.
+          \end{itemize}
+    \item The \textbf{sampling rate} (or sampling frequency) is
+          \[
+            f_s = \frac{1}{T} \quad \text{[samples/second]}.
+          \]
+    \item Key issue: how large must $f_s$ be so that $x_a(t)$ can be reconstructed (approximately) from $x(n)$?
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Nyquist–Shannon Sampling Theorem}
+  \begin{itemize}
+    \item Assume $x_a(t)$ is bandlimited: its continuous-time Fourier transform $X_a(f)=0$ for $|f| > f_m$.
+    \item \textbf{Sampling theorem:}
+          \begin{block}{}
+            Perfect reconstruction of $x_a(t)$ from uniform samples is possible if
+            \[
+              f_s \geq 2 f_m.
+            \]
+            The minimum sampling rate $f_s = 2 f_m$ is the \textbf{Nyquist rate}.
+          \end{block}
+    \item If $f_s < 2 f_m$, high-frequency components fold back into low frequencies (\textbf{aliasing}).
+    \item Practical implication:
+          \begin{itemize}
+            \item Use analogue \emph{anti-aliasing filters} before the ADC to limit bandwidth to $f_m$.
+            \item Select $f_s$ taking into account non-ideal filter roll-off and system margins.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Sampling Rates in Practice}
+  \begin{columns}
+    \column{0.6\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/sampling_DSP.pdf} % Figure 2.4
+    \column{0.4\textwidth}
+      \begin{itemize}
+        \item Sampling rates span orders of magnitude:
+              \begin{itemize}
+                \item \textbf{Medical measurements}: Hz range (e.g. slow temperature signals, some biosignals).
+                \item \textbf{Audio / speech}: kHz range (e.g. 8 kHz telephony, 44.1 kHz CD audio).
+                \item \textbf{Radar / image processing}: MHz range for high spatial/temporal resolution.
+              \end{itemize}
+        \item Horizontal axis is logarithmic; highlights that DSP techniques must be scalable across very different data rates.
+      \end{itemize}
+  \end{columns}
+  \vspace{0.2cm}
+  \begin{itemize}
+    \item Sampling rate selection is driven by:
+          \begin{itemize}
+            \item Signal bandwidth and Nyquist theorem.
+            \item Application requirements (perceptual quality, diagnostic content).
+            \item Hardware capabilities and data storage / transmission limits.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Sampling Examples: Speech, Music, EEG}
+  \begin{itemize}
+    \item \textbf{Speech}
+          \begin{itemize}
+            \item Most energy below $\approx 4$ kHz; standardized sampling at 8 kHz.
+            \item Higher harmonics above $\approx 4$ kHz contribute little to intelligibility.
+          \end{itemize}
+    \item \textbf{Music}
+          \begin{itemize}
+            \item Human hearing up to $\approx 20$ kHz.
+            \item CD audio uses 44.1 kHz $\Rightarrow$ Nyquist $\approx 22.05$ kHz, covering audible spectrum.
+          \end{itemize}
+    \item \textbf{Biomedical signals (EEG, ABR)}
+          \begin{itemize}
+            \item EEG bandwidth of interest often tens of Hz to a few kHz.
+            \item Example: auditory brainstem response (ABR) in 100–3000 Hz range.
+            \item EEG may be sampled at 20 kHz, giving Nyquist of 10 kHz for capturing fine temporal features and allowing digital filtering.
+          \end{itemize}
+    \item These examples illustrate how sampling rate is chosen not only from theory but also from the physics and perceptual/diagnostic needs of the application.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{DSP Transformations: Time vs Frequency Domain}
+  \begin{itemize}
+    \item Many DSP tasks are easier in the \textbf{frequency domain}:
+          \begin{itemize}
+            \item Filtering, spectral analysis, modulation, compression, feature extraction.
+          \end{itemize}
+    \item Core transforms used:
+          \begin{itemize}
+            \item \textbf{Discrete Fourier Transform (DFT)} and its efficient implementation, the \textbf{FFT}.
+            \item \textbf{Discrete Cosine Transform (DCT)} – real-valued transform heavily used in image/video compression.
+            \item \textbf{Wavelet transforms} – multi-resolution analysis for non-stationary signals.
+          \end{itemize}
+    \item Hardware implications:
+          \begin{itemize}
+            \item These transforms are computation–intensive (many multiplications/additions).
+            \item Efficient FPGA or DSP implementations rely on exploiting symmetry, periodicity and pipeline/parallel architectures.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Discrete Fourier Transform (DFT)}
+  \begin{itemize}
+    \item For a finite-length sequence $x(n)$, $n = 0,\ldots,N-1$, the $N$-point DFT is
+          \[
+            X(k) = \sum_{n=0}^{N-1} x(n) W_N^{nk}, \quad k = 0,\ldots,N-1,
+          \]
+          where the \textbf{twiddle factor} is
+          \[
+            W_N = e^{-j2\pi/N}.
+          \]
+    \item Interpretation:
+          \begin{itemize}
+            \item $X(k)$ are samples of the discrete-time Fourier transform on the unit circle.
+            \item Each $X(k)$ corresponds to a complex sinusoid of frequency $2\pi k/N$.
+          \end{itemize}
+    \item Inverse DFT:
+          \[
+            x(n) = \frac{1}{N}\sum_{k=0}^{N-1} X(k) W_N^{-nk}.
+          \]
+    \item Direct computation requires $N^2$ complex multiplications and a similar number of additions – expensive for large $N$.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Fast Fourier Transform (FFT)}
+  \begin{columns}
+    \column{0.4\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FFT_structure.pdf} % Figure 2.5
+    \column{0.55\textwidth}
+      \begin{itemize}
+        \item FFT algorithms exploit \textbf{symmetry} and \textbf{periodicity} in $W_N^{nk}$.
+        \item Basic idea (radix-2):
+              \begin{itemize}
+                \item Decompose $N$-point DFT into smaller DFTs of size $N/2$, $N/4$, …, 2.
+                \item Combine using “butterfly” computations.
+              \end{itemize}
+        \item Computational complexity reduced from $O(N^2)$ to $O(N\log_2 N)$.
+        \item Essential for real-time spectrum analysis, OFDM communication, and many other high-speed applications.
+      \end{itemize}
+  \end{columns}
+  \vspace{0.1cm}
+  \begin{itemize}
+    \item In OFDM (e.g. IEEE 802.11a), FFT/IFFT are used to map data symbols onto many orthogonal subcarriers and recover them at the receiver.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Discrete Cosine Transform (DCT)}
+  \begin{itemize}
+    \item The 1-D DCT of a length-$N$ sequence $x(n)$ is
+          \[
+            X(k) = \sum_{n=0}^{N-1} x(n)\cos\left[\frac{\pi}{N}\left(n + \frac{1}{2}\right)k\right],
+            \quad k = 0,\ldots,N-1.
+          \]
+          (Only cosine terms, so $X(k)$ is real-valued.)
+    \item Widely used in image and video compression (JPEG, MPEG):
+          \begin{itemize}
+            \item For 2-D images, DCT is applied to $8\times 8$ blocks:
+                  \[
+                    F_{u,v} = a(u)a(v) \sum_{x=0}^{7}\sum_{y=0}^{7}
+                    f_{x,y}\cos\left[\frac{\pi}{8}\left(x+\frac12\right)u\right]
+                    \cos\left[\frac{\pi}{8}\left(y+\frac12\right)v\right].
+                  \]
+            \item Low-frequency coefficients (small $u,v$) capture most of the image energy.
+            \item High-frequency coefficients can be coarsely quantized or discarded to achieve compression.
+          \end{itemize}
+    \item After quantization, coefficients are often read in a zig-zag order to group low-frequency terms together.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Wavelet Transform and DWT}
+  \begin{itemize}
+    \item Wavelets are short-duration oscillatory functions that provide \textbf{time–frequency} localization.
+    \item Wavelet decomposition:
+          \begin{itemize}
+            \item Decomposes a signal into shifted and scaled versions of a prototype wavelet.
+            \item Very suitable for non-stationary signals where classical FFT (fixed frequency resolution) is inadequate.
+          \end{itemize}
+    \item \textbf{Discrete Wavelet Transform (DWT)} via filter banks:
+          \begin{itemize}
+            \item Input $x(n)$ is passed through a \textbf{low-pass} filter $g(n)$ and a \textbf{high-pass} filter $h(n)$.
+            \item Outputs are down-sampled by 2 to produce approximation and detail coefficients:
+                  \[
+                    y_{\text{low}}(n) = \sum_{k=-\infty}^{\infty} x(k) g(2n-k),
+                  \]
+                  \[
+                    y_{\text{high}}(n) = \sum_{k=-\infty}^{\infty} x(k) h(2n-k).
+                  \]
+            \item Process can be iterated on the low-pass branch to obtain multi-resolution representations.
+          \end{itemize}
+    \item Applications: image compression and denoising, biomedical signal analysis, transient detection.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Digital Filters: Overview}
+  \begin{itemize}
+    \item A \textbf{filter} shapes the spectral content of a signal:
+          \begin{itemize}
+            \item Low-pass, high-pass, band-pass, band-stop, etc.
+          \end{itemize}
+    \item \textbf{Analogue filters}:
+          \begin{itemize}
+            \item Implemented using resistors, capacitors, inductors, op-amps.
+            \item Continuous-time, continuous-amplitude.
+          \end{itemize}
+    \item \textbf{Digital filters}:
+          \begin{itemize}
+            \item Implemented as algorithms operating on discrete-time sequences.
+            \item Use arithmetic operations (add, multiply, delay).
+            \item Very precise and stable; easily reconfigurable in software or hardware (DSP, FPGA).
+          \end{itemize}
+    \item Two main classes:
+          \begin{itemize}
+            \item Finite Impulse Response (FIR) – impulse response of finite duration.
+            \item Infinite Impulse Response (IIR) – involves feedback, theoretically infinite impulse response.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Finite Impulse Response (FIR) Filters}
+  \begin{columns}
+    \column{0.55\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FIR.pdf} % Figure 2.8 or 2.7
+    \column{0.45\textwidth}
+      \begin{itemize}
+        \item General FIR filter of length $N$:
+              \[
+                y(n) = \sum_{i=0}^{N-1} a_i x(n-i).
+              \]
+        \item Realized using:
+              \begin{itemize}
+                \item Delay elements $z^{-1}$ (registers / memory).
+                \item Multipliers implementing coefficients $a_i$.
+                \item Adders accumulating partial sums.
+              \end{itemize}
+      \end{itemize}
+  \end{columns}
+  \vspace{0.1cm}
+  \begin{itemize}
+    \item FIR filters are always \textbf{BIBO stable} since their impulse response is finite.
+    \item With symmetric coefficients ($a_i = a_{N-1-i}$), FIR filters exhibit \textbf{linear phase}: they delay all frequency components equally, avoiding waveform distortion.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{LTI Properties and FIR Structures}
+  \begin{itemize}
+    \item An FIR filter (or any digital filter) is \textbf{linear} and \textbf{time-invariant} if it satisfies:
+          \begin{itemize}
+            \item \textbf{Superposition}: response to $x_1(n)+x_2(n)$ is $y_1(n)+y_2(n)$.
+            \item \textbf{Homogeneity}: response to $c\,x(n)$ is $c\,y(n)$.
+            \item \textbf{Shift invariance}: shift in input produces equal shift in output.
+          \end{itemize}
+    \item These properties enable:
+          \begin{itemize}
+            \item Convolution description of filtering.
+            \item Use of frequency response $H(e^{j\omega})$ to characterise behavior.
+          \end{itemize}
+    \item FIR filters can be combined:
+          \begin{itemize}
+            \item \textbf{Cascade} structure: output of one filter is input to the next.
+            \item \textbf{Parallel} structure: inputs processed by multiple filters, then summed.
+          \end{itemize}
+  \end{itemize}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(a)
+    \column{0.5\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(b)
+  \end{columns}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}{Low-Pass FIR Filter Specifications}
+  \begin{columns}
+    \column{0.55\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FIR_spec.pdf} % Figure 2.10
+    \column{0.45\textwidth}
+      \small
+      \begin{itemize}
+        \item Design starts from a \textbf{desired magnitude response}:
+              \begin{itemize}
+                \item Passband with nearly constant gain.
+                \item Stopband with strong attenuation.
+              \end{itemize}
+        \item Key parameters:
+              \begin{itemize}
+                \item Passband edge frequency $f_p$.
+                \item Stopband begin frequency $f_c$.
+                \item Passband ripple $\delta_1$.
+                \item Stopband ripple / attenuation $\delta_2$.
+                \item \textbf{Transition band}: region between $f_p$ and $f_c$.
+              \end{itemize}
+        \item Ripple ratio: $\displaystyle \text{Ripple ratio} = \frac{\delta_2}{\delta_1}$.
+        \item Example plot shows the ripples in both passband and stopband and the ideal gain level.
+      \end{itemize}
+  \end{columns}
+  \vspace{0.1cm}
+  \small
+  \begin{itemize}
+    \item Specifications $(\delta_1,\delta_2,f_p,f_c)$ directly determine filter length and window choice.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{From Ideal Response to Practical FIR Filter}
+  \small
+  \begin{itemize}
+    \item Start with an \textbf{ideal} (infinite-length) low-pass response:
+          \begin{itemize}
+            \item Sharp transition; zero passband/stopband ripple.
+            \item Impulse response $h_\text{ideal}(n)$ extends to $\pm\infty$.
+          \end{itemize}
+    \item \textbf{Design idea}:
+          \begin{enumerate}
+            \item Specify desired magnitude response $|H_d(\omega)|$ with given $f_p,f_c,\delta_1,\delta_2$.
+            \item Compute corresponding \emph{inverse transform} to obtain $h_\text{ideal}(n)$.
+            \item Truncate to a finite length $N$ and shift to make it causal.
+          \end{enumerate}
+    \item Simple truncation $\Rightarrow$ multiply $h_\text{ideal}(n)$ by a \textbf{rectangular window}.
+          \begin{itemize}
+            \item This introduces oscillations (ripples) near discontinuities in the frequency domain
+                  $\Rightarrow$ \textbf{Gibbs phenomenon}.
+            \item Ripples occur in both passband and stopband (see Figure 2.10).
+          \end{itemize}
+    \item Practical design uses alternative windows (Hamming, Hann, Kaiser, Dolph–Chebyshev, …) to control ripple and transition width.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Effect of Window Type on Low-Pass FIR Response}
+  \begin{columns}
+    \column{0.95\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (a)
+  \end{columns}
+  \vspace{0.1cm}
+  \small
+  \begin{itemize}
+    \item Example: $N=100$-tap low-pass FIR designed with:
+          \begin{itemize}
+            \item \textbf{Hamming window} – relatively wide mainlobe, low sidelobe level ($\approx -40$ dB).
+            \item \textbf{Dolph–Chebyshev window} – narrower mainlobe (sharper transition) but higher sidelobes for same length.
+          \end{itemize}
+    \item For fixed $N$:
+          \begin{itemize}
+            \item Choice of window trades \textbf{transition width} vs \textbf{ripple level}.
+            \item Chebyshev: better frequency selectivity, more pronounced ripple pattern.
+            \item Hamming: smoother response, weaker stopband attenuation at some frequencies.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Effect of Filter Length on Low-Pass FIR Response}
+  \begin{columns}
+    \column{0.95\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (b) / 2.12
+  \end{columns}
+  \vspace{0.1cm}
+  \small
+  \begin{itemize}
+    \item Increasing the number of taps to $N=400$:
+          \begin{itemize}
+            \item \textbf{Narrower transition band} between passband and stopband.
+            \item \textbf{Reduced ripple} (for same window) because the approximation to the ideal response improves.
+          \end{itemize}
+    \item Cost:
+          \begin{itemize}
+            \item 4$\times$ more multiplications and additions per output sample compared with $N=100$.
+            \item More memory for storing coefficients and previous samples.
+          \end{itemize}
+    \item Design trade-off:
+          \begin{itemize}
+            \item Meet specs $(\delta_1,\delta_2,f_p,f_c)$ with \emph{minimum} $N$ and appropriate window.
+            \item For FPGA/ASIC, this directly impacts area, power and achievable sampling rate.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Motivation for IIR Filters}
+  \small
+  \begin{itemize}
+    \item FIR filters are simple and robust, but:
+          \begin{itemize}
+            \item Require many taps to achieve very sharp cut-off.
+            \item Computational cost increases linearly with filter length.
+          \end{itemize}
+    \item \textbf{Infinite Impulse Response (IIR) filters} introduce feedback (recursive structure):
+          \begin{itemize}
+            \item Can approximate analogue filter characteristics (Butterworth, Chebyshev, Elliptic) with far fewer coefficients.
+            \item Sharper transition for a given order compared to FIR.
+          \end{itemize}
+    \item Main trade-offs:
+          \begin{itemize}
+            \item Possible \textbf{non-linear phase} (phase distortion).
+            \item Susceptible to \textbf{stability} and \textbf{quantisation} issues due to feedback.
+          \end{itemize}
+    \item Design approach:
+          \begin{itemize}
+            \item Often start from a well-known analogue prototype $H_A(s)$.
+            \item Transform into digital $H_D(z)$ using mappings such as impulse invariance, $z$-transform, or bilinear transform.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Direct-Form IIR Structure}
+  \begin{columns}
+    \column{0.55\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/IIR_direct.pdf} % Figure 2.12
+    \column{0.45\textwidth}
+      \small
+      \begin{itemize}
+        \item General IIR difference equation:
+              \[
+                y(n) = \sum_{i=0}^{N-1} a_i x(n-i) + \sum_{j=1}^{M-1} b_j y(n-j).
+              \]
+        \item Corresponding transfer function:
+              \[
+                H(z) = \frac{\sum_{i=0}^{N-1} a_i z^{-i}}{1 - \sum_{j=1}^{M-1} b_j z^{-j}}.
+              \]
+        \item Realisation:
+              \begin{itemize}
+                \item Feedforward path: FIR-like part with coefficients $a_i$.
+                \item Feedback path: uses previous outputs scaled by $b_j$.
+              \end{itemize}
+      \end{itemize}
+  \end{columns}
+  \vspace{0.1cm}
+  \small
+  \begin{itemize}
+    \item Direct-form structures are straightforward but can be sensitive to coefficient quantisation and round-off noise, especially for high-order filters.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{From Analogue to Digital: Bilinear Transform}
+  \small
+  \begin{itemize}
+    \item Start with an analogue prototype $H_A(s)$.
+    \item Apply \textbf{bilinear transform}:
+          \[
+            s = \frac{2}{T}\,\frac{1 - z^{-1}}{1 + z^{-1}},
+          \]
+          leading to a digital transfer function $H_D(z) = H_A(s)\big|_{s = \frac{2}{T}\frac{1 - z^{-1}}{1 + z^{-1}}}$.
+    \item Properties:
+          \begin{itemize}
+            \item Maps the \textbf{left-half $s$-plane} onto the \textbf{interior of the unit circle} in the $z$-plane:
+                  \begin{itemize}
+                    \item Stability of analogue filter $\Rightarrow$ stability of digital filter.
+                  \end{itemize}
+            \item Frequency axis is \textbf{warped}: linear frequency $\omega$ in analogue domain maps nonlinearly to digital frequency $\Omega$ (Figure 2.13).
+          \end{itemize}
+    \item To compensate, critical analogue frequencies are \textbf{pre-warped} before transformation.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Frequency Warping and IIR Distortion}
+  \begin{columns}
+    \column{0.6\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/IIR_dist.pdf} % Figure 2.13 or 2.14
+    \column{0.4\textwidth}
+      \small
+      \begin{itemize}
+        \item Plot shows relation between analogue frequency $\omega$ and digital frequency $\Omega$.
+        \item At low frequencies the mapping is nearly linear; at higher frequencies, the spacing becomes compressed.
+        \item Result: passband/stopband edges in the digital filter are \emph{shifted} relative to analogue specifications.
+        \item Pre-warping ensures that important band edges (e.g. passband cutoff) line up after transformation.
+      \end{itemize}
+  \end{columns}
+  \vspace{0.1cm}
+  \small
+  \begin{itemize}
+    \item For implementation and numerical robustness, high-order IIR filters are usually decomposed into cascaded \textbf{second-order sections}:
+          \[
+            y(n) = a_0 x(n) + a_1 x(n-1) + a_2 x(n-2) + b_1 y(n-1) + b_2 y(n-2).
+          \]
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Wave Digital Filters (WDFs): Concept}
+  \small
+  \begin{itemize}
+    \item WDFs form a special class of digital filters derived from classical analogue \textbf{lattice/ladder} networks.
+    \item Basic idea:
+          \begin{itemize}
+            \item Express analogue circuit in terms of \emph{wave variables} (incident and reflected waves at ports).
+            \item Map each analogue element (resistor, capacitor, inductor) to a corresponding digital adaptor.
+          \end{itemize}
+    \item Advantages:
+          \begin{itemize}
+            \item Very \textbf{low sensitivity} to coefficient quantisation and round-off.
+            \item Good control of losses and passband/stopband attenuation.
+            \item Structures are well suited for fixed-point implementation with limited wordlength.
+          \end{itemize}
+    \item Frequency response of WDFs preserves key properties of the original analogue network, while also benefiting from digital flexibility.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Frequency Impact of Warping in WDFs}
+  \begin{columns}
+    \column{0.6\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/IIR_warp.pdf} % Figure 2.14
+    \column{0.4\textwidth}
+      \small
+      \begin{itemize}
+        \item Figure compares loss / attenuation vs frequency for:
+              \begin{itemize}
+                \item Analogue prototype filter.
+                \item Corresponding digital WDF implementation.
+              \end{itemize}
+        \item Due to frequency warping, some shift between analogue and digital curves occurs, especially near band edges.
+        \item Nevertheless, WDF structure keeps:
+              \begin{itemize}
+                \item Low sensitivity to coefficient errors.
+                \item Close match to desired attenuation characteristics.
+              \end{itemize}
+      \end{itemize}
+  \end{columns}
+  \vspace{0.1cm}
+  \small
+  \begin{itemize}
+    \item In DSP hardware design, WDFs enable efficient, robust realizations for applications requiring stringent filter specs and fixed-point arithmetic.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
