@@ -264,12 +264,12 @@ control a system (or plant) so it behaves as required.
 \end{frame}
 
 
-\begin{frame}{Boolean Operations}
+\begin{frame}{Building blocks of PLC: Boolean Operations}
   \centering
   \includegraphics[scale=0.5]{fig/lec04/bool.pdf}
 \end{frame}
 
-\begin{frame}{RS Flip-Flop}
+\begin{frame}{Building blocks of PLC: RS Flip-Flop}
 
 \textbf{RS Flip-Flop:}
     \begin{columns}
@@ -298,7 +298,7 @@ control a system (or plant) so it behaves as required.
 \end{frame}
 
 
-\begin{frame}{RS Flip-Flop}
+\begin{frame}{Building blocks of PLC: RS Flip-Flop}
     \begin{columns}
     \column{0.55\textwidth}
     \textbf{Priority rules:}
@@ -353,7 +353,7 @@ control a system (or plant) so it behaves as required.
 
 
 
-\begin{frame}{Elementary Data Types (Example: SIEMENS)}
+\begin{frame}{Building blocks of PLC: Data Types (elementary e.g. from SIEMENS)}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt} % reduce column spacing
@@ -399,7 +399,7 @@ STRUCT & Structure of components with arbitrary data types \newline Example: STR
 \end{frame}
 
 
-\begin{frame}{Operand Types}
+\begin{frame}{Building blocks of PLC: Operand Types}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt} % reduce column spacing
@@ -427,7 +427,7 @@ System data & SM *) \\
 \end{frame}
 
 
-\begin{frame}{Compare and Arithmetic Operations}
+\begin{frame}{Building blocks of PLC: Compare and Arithmetic Operations}
 \footnotesize
 \begin{itemize}
     \item \textbf{Compare operations:} $<$, $>$, $\leq$, $\geq$, ==, $\neq$
@@ -446,7 +446,7 @@ System data & SM *) \\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Load, Assignment and Organizational Functions}
+\begin{frame}{Building blocks of PLC: Load, Assignment and Organizational Functions}
 \footnotesize
 \begin{itemize}
     \item \textbf{Load operations:} L or LD
@@ -466,13 +466,13 @@ System data & SM *) \\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Shift Functions and Type Conversions}
+\begin{frame}{Building blocks of PLC: Shift Functions and Type Conversions}
 \footnotesize
 \begin{itemize}
     \item \textbf{Shift and rotate operations:}
     \begin{itemize}
         \item Shift left/right, rotate left/right on accumulator or memory
-        \item Examples: SLW 3 (shift left 3), SRW 5 (shift right 5), RLD 6 (rotate left 6)
+        \item Examples: SLW 3 (shift left word by 3 bits), SRW 5 (shift right words by 5 bits), RLD 6 (rotate left word by 6 bits)
     \end{itemize}
     \item \textbf{Type conversions:}
     \begin{itemize}
@@ -485,7 +485,7 @@ System data & SM *) \\
 \end{frame}
 
 
-\begin{frame}{Statement List (STL) - Control Statements}
+\begin{frame}{Building blocks of PLC: Statement List (STL) - Control Statements}
 \footnotesize
 \begin{itemize}
     \item A statement list consists of multiple control statements.
@@ -498,7 +498,7 @@ System data & SM *) \\
         \item May include a comment at the end of the line
     \end{itemize}
     \item Blank lines can be inserted between statements
-    \item For binary operands, the pre-occupation of RLO can be done by the first statement of an AND or OR operation
+    \item For binary operands, the pre-occupation of Result of Logic Operation (RLO) can be done by the first statement of an AND or OR operation
     \item \textbf{Note:} Nested logic (use of `(` and `)`) requires a stack of RLOs
 \end{itemize}
 \end{frame}
@@ -528,7 +528,7 @@ System data & SM *) \\
 \end{frame}
 
 
-\begin{frame}{Operations, Modifiers, and Operands}
+\begin{frame}{Building blocks of PLC: Operations, Modifiers, and Operands}
 \footnotesize
 \begin{itemize}
     \item Default semantics: 
@@ -684,7 +684,7 @@ Rem. 3: Only with binary operand. \\
 \end{frame}
 
 
-\begin{frame}{FBD: Bit Logic Instructions and Comparison Instructions}
+\begin{frame}{Function Block Diagram (FBD): Bit Logic Instructions and Comparison Instructions}
   \centering
   \includegraphics[scale=0.5]{fig/lec04/bit_logic_and_comparison.pdf}
 \end{frame}
@@ -699,7 +699,7 @@ Rem. 3: Only with binary operand. \\
   \includegraphics[scale=0.5]{fig/lec04/timer_and_conversion.pdf}
 \end{frame}
 
-\begin{frame}{Display of Functions in STL and FBD - 1}
+\begin{frame}{Display of Functions in statement list (STL) and FBD - 1}
   \centering
   \includegraphics[scale=0.35]{fig/lec04/FBD_1.pdf}
 \end{frame}
@@ -724,7 +724,6 @@ Rem. 3: Only with binary operand. \\
 \begin{frame}{Sequential Function Chart (SFC) Overview}
 \begin{columns}
     \column{0.5\textwidth}
-    \footnotesize
     \begin{itemize}
         \item SFC subdivides a PLC program into \textbf{Steps} and \textbf{Transitions}.
         \item Steps and transitions are connected by \textbf{directional connections}.
@@ -747,7 +746,6 @@ Rem. 3: Only with binary operand. \\
 
 
 \begin{frame}{Steps}
-\footnotesize
 \begin{itemize}
     \item A step defines behavior of the program for given inputs/outputs via its \textbf{actions}.
     \item A step is either \textbf{active} or \textbf{inactive}.
@@ -764,7 +762,6 @@ Rem. 3: Only with binary operand. \\
 
 
 \begin{frame}{Transitions}
-\footnotesize
 \begin{itemize}
     \item A transition specifies the condition for moving from preceding steps to following steps.
     \item Represented by a horizontal line crossing vertical directional connections.
@@ -798,7 +795,6 @@ Rem. 3: Only with binary operand. \\
 \end{frame}
 
 \begin{frame}{Actions and Action Blocks}
-\footnotesize
 \begin{itemize}
     \item \textbf{Actions:} Operations executed while the associated step is active.
     \item Steps with no actions act as \textbf{Waiting} steps.
@@ -836,7 +832,6 @@ Rem. 3: Only with binary operand. \\
 \end{frame}
 
 \begin{frame}{Sequence Rules}
-\footnotesize
 \begin{itemize}
     \item Initial state defined by active initial steps and initial variable values.
     \item Transition switching:
@@ -1232,6 +1227,8 @@ Rem. 3: Only with binary operand. \\
 \end{frame}
 %------------------------------------------------
 \begin{frame}{LTI Properties and FIR Structures}
+    \begin{columns}
+    \column{0.6\textwidth}
   \begin{itemize}
     \item An FIR filter (or any digital filter) is \textbf{linear} and \textbf{time-invariant} if it satisfies:
           \begin{itemize}
@@ -1250,11 +1247,10 @@ Rem. 3: Only with binary operand. \\
             \item \textbf{Parallel} structure: inputs processed by multiple filters, then summed.
           \end{itemize}
   \end{itemize}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(a)
-    \column{0.5\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(b)
+    \column{0.4\textwidth}
+      \includegraphics[width=0.7\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(a)
+
+      \includegraphics[width=0.7\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(b)
   \end{columns}
 \end{frame}
 %------------------------------------------------
@@ -1317,10 +1313,9 @@ Rem. 3: Only with binary operand. \\
 %------------------------------------------------
 \begin{frame}{Effect of Window Type on Low-Pass FIR Response}
   \begin{columns}
-    \column{0.95\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (a)
-  \end{columns}
-  \vspace{0.1cm}
+    \column{0.5\textwidth}
+      \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (a)
+    \column{0.5\textwidth}
   \small
   \begin{itemize}
     \item Example: $N=100$-tap low-pass FIR designed with:
@@ -1335,14 +1330,14 @@ Rem. 3: Only with binary operand. \\
             \item Hamming: smoother response, weaker stopband attenuation at some frequencies.
           \end{itemize}
   \end{itemize}
+   \end{columns}
 \end{frame}
 %------------------------------------------------
 \begin{frame}{Effect of Filter Length on Low-Pass FIR Response}
   \begin{columns}
-    \column{0.95\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (b) / 2.12
-  \end{columns}
-  \vspace{0.1cm}
+    \column{0.45\textwidth}
+      \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (b) / 2.12
+    \column{0.6\textwidth}
   \small
   \begin{itemize}
     \item Increasing the number of taps to $N=400$:
@@ -1361,6 +1356,7 @@ Rem. 3: Only with binary operand. \\
             \item For FPGA/ASIC, this directly impacts area, power and achievable sampling rate.
           \end{itemize}
   \end{itemize}
+    \end{columns}
 \end{frame}
 %------------------------------------------------
 \begin{frame}{Motivation for IIR Filters}
@@ -1441,9 +1437,9 @@ Rem. 3: Only with binary operand. \\
 %------------------------------------------------
 \begin{frame}{Frequency Warping and IIR Distortion}
   \begin{columns}
-    \column{0.6\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/IIR_dist.pdf} % Figure 2.13 or 2.14
     \column{0.4\textwidth}
+      \includegraphics[width=0.8\textwidth]{fig/lec04/IIR_dist.pdf} % Figure 2.13 or 2.14
+    \column{0.6\textwidth}
       \small
       \begin{itemize}
         \item Plot shows relation between analogue frequency $\omega$ and digital frequency $\Omega$.
@@ -1484,7 +1480,7 @@ Rem. 3: Only with binary operand. \\
 \begin{frame}{Frequency Impact of Warping in WDFs}
   \begin{columns}
     \column{0.6\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/IIR_warp.pdf} % Figure 2.14
+      \includegraphics[width=0.8\textwidth]{fig/lec04/IIR_warp.pdf} % Figure 2.14
     \column{0.4\textwidth}
       \small
       \begin{itemize}
