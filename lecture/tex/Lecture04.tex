@@ -1111,10 +1111,10 @@ Rem. 3: Only with binary operand. \\
     \column{0.55\textwidth}
       \begin{itemize}
         \item FFT algorithms exploit \textbf{symmetry} and \textbf{periodicity} in $W_N^{nk}$.
-        \item Basic idea (radix-2):
+        \item Basic idea (radix-2, $N=2^m$):
               \begin{itemize}
                 \item Decompose $N$-point DFT into smaller DFTs of size $N/2$, $N/4$, …, 2.
-                \item Combine using “butterfly” computations.
+                \item Reuse intermediate results via "butterfly" computations.
               \end{itemize}
         \item Computational complexity reduced from $O(N^2)$ to $O(N\log_2 N)$.
         \item Essential for real-time spectrum analysis, OFDM communication, and many other high-speed applications.
@@ -1122,7 +1122,59 @@ Rem. 3: Only with binary operand. \\
   \end{columns}
   \vspace{0.1cm}
   \begin{itemize}
-    \item In OFDM (e.g. IEEE 802.11a), FFT/IFFT are used to map data symbols onto many orthogonal subcarriers and recover them at the receiver.
+    \item In OFDM (e.g. IEEE 802.11a), FFT/IFFT (inverse) are used to map data symbols onto many orthogonal subcarriers and recover them at the receiver.
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+\begin{frame}{Radix-2 DIT FFT: Even--Odd Decomposition}
+  \begin{itemize}
+    \item Start from the $N$-point DFT:
+          \[
+            X(k) = \sum_{n=0}^{N-1} x(n) W_N^{nk}.
+          \]
+    \item Split the sum into even and odd indices, $x_e(n)=x(2n)$, $x_o(n)=x(2n+1)$:
+          \[
+            X(k) = \sum_{n=0}^{N/2-1} x_e(n) W_N^{2nk}
+                 + W_N^{k} \sum_{n=0}^{N/2-1} x_o(n) W_N^{2nk}.
+          \]
+    \item Use $W_N^{2nk} = W_{N/2}^{nk}$ to obtain
+          \[
+            X(k) = E(k) + W_N^{k} O(k),
+          \]
+          where $E(k)$ and $O(k)$ are $N/2$-point DFTs of $x_e$ and $x_o$.
+    \item For $k+N/2$:
+          \[
+            X(k+N/2) = E(k) - W_N^{k} O(k), \text{giving a pair of outputs from one butterfly.}
+          \]
+          
+    \item Recursively applying this decomposition $m=\log_2 N$ times yields the full radix-2 FFT.
+  \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{FFT Butterfly and Implementation Notes}
+  \begin{itemize}
+    \item A radix-2 \textbf{butterfly} computes
+          \[
+            X_1 = A + W B, \qquad X_2 = A - W B,
+          \]
+          where $A$ and $B$ are intermediate values and $W$ is a twiddle factor.
+    \item Data-flow organisation:
+          \begin{itemize}
+            \item \textbf{Decimation-in-time (DIT)}: split in time domain, outputs appear in bit-reversed order.
+            \item \textbf{Decimation-in-frequency (DIF)}: split in frequency domain, inputs in bit-reversed order.
+          \end{itemize}
+    \item Hardware aspects:
+          \begin{itemize}
+            \item Each stage has $N/2$ butterflies; total of $(N/2)\log_2 N$ butterflies.
+            \item Fixed-point implementations require careful scaling to avoid overflow.
+            \item Pipeline and systolic FFT architectures exploit concurrency for high throughput.
+          \end{itemize}
+    \item Practical design choices:
+          \begin{itemize}
+            \item Power-of-two sizes for radix-2; mixed-radix FFTs for composite $N$.
+            \item Use of in-place algorithms to minimise memory.
+          \end{itemize}
   \end{itemize}
 \end{frame}
 %------------------------------------------------
@@ -1136,18 +1188,38 @@ Rem. 3: Only with binary operand. \\
           (Only cosine terms, so $X(k)$ is real-valued.)
     \item Widely used in image and video compression (JPEG, MPEG):
           \begin{itemize}
-            \item For 2-D images, DCT is applied to $8\times 8$ blocks:
-                  \[
-                    F_{u,v} = a(u)a(v) \sum_{x=0}^{7}\sum_{y=0}^{7}
-                    f_{x,y}\cos\left[\frac{\pi}{8}\left(x+\frac12\right)u\right]
-                    \cos\left[\frac{\pi}{8}\left(y+\frac12\right)v\right].
-                  \]
-            \item Low-frequency coefficients (small $u,v$) capture most of the image energy.
-            \item High-frequency coefficients can be coarsely quantized or discarded to achieve compression.
+              \item The DCT can be viewed as the DFT of an \textbf{even extension} of $x(n)$:
+                        \begin{itemize}
+                          \item Reflect the sequence around the boundaries to avoid artificial discontinuities.
+                          \item This leads to purely real, cosine-only basis functions.
+                        \end{itemize}
+            \item Enables effective \textbf{quantization} and \textbf{compression} by discarding high-frequency coefficients.
           \end{itemize}
-    \item After quantization, coefficients are often read in a zig-zag order to group low-frequency terms together.
   \end{itemize}
 \end{frame}
+%------------------------------------------------
+\begin{frame}{DCT: Relation to DFT and Energy Compaction}
+  \begin{itemize}
+    \item Basis functions:
+          \begin{itemize}
+            \item For fixed $k$, $\cos\!\left[\frac{\pi}{N}(n+\tfrac{1}{2})k\right]$ has $k$ half-cycles over the block.
+            \item Low $k$ $\Rightarrow$ slowly varying patterns; high $k$ $\Rightarrow$ fine detail and edges.
+          \end{itemize}
+    \item \textbf{Energy compaction}: for many natural signals/images,
+          \begin{itemize}
+            \item Most of the signal energy is captured in a few low-$k$ coefficients.
+            \item High-$k$ coefficients are often small and can be coarsely quantized or set to zero.
+          \end{itemize}
+    \item JPEG pipeline (simplified):
+          \begin{enumerate}
+            \item Convert RGB to YCbCr, possibly subsample chroma.
+            \item Apply 2-D DCT to each $8\times8$ block.
+            \item Divide by a quantization matrix and round.
+            \item Reorder coefficients in a zig-zag scan and apply run-length + entropy coding.
+          \end{enumerate}
+  \end{itemize}
+\end{frame}
+   
 %------------------------------------------------
 \begin{frame}{Wavelet Transform and DWT}
   \begin{itemize}
@@ -1172,6 +1244,40 @@ Rem. 3: Only with binary operand. \\
     \item Applications: image compression and denoising, biomedical signal analysis, transient detection.
   \end{itemize}
 \end{frame}
+
+%------------------------------------------------
+\begin{frame}{DWT: Multiresolution Decomposition}
+  \begin{itemize}
+    \item The low-pass branch can be iterated to obtain multiple resolution levels:
+          \[
+            x(n) \rightarrow
+            \begin{cases}
+              A_1(n), D_1(n) \\
+              A_2(n), D_2(n) \\
+              \vdots \\
+              A_J(n), D_J(n)
+            \end{cases}
+          \]
+          where $A_j$ are approximations and $D_j$ are details at scale $j$.
+    \item Time–frequency tiling:
+          \begin{itemize}
+            \item Fine time resolution / coarse frequency resolution at high frequencies.
+            \item Coarse time resolution / fine frequency resolution at low frequencies.
+            \item Better matches many real-world signals (e.g. bursts, edges) than the fixed resolution of the FFT/STFT.
+          \end{itemize}
+    \item Perfect reconstruction:
+          \begin{itemize}
+            \item With suitable analysis and synthesis filters, the original signal can be exactly reconstructed from $\{A_J, D_J,\ldots,D_1\}$.
+            \item This underpins wavelet-based compression schemes (e.g. JPEG2000).
+          \end{itemize}
+    \item Design choices:
+          \begin{itemize}
+            \item Orthogonal vs biorthogonal wavelets (Daubechies, Symmlet, Coiflet, etc.).
+            \item Support length and regularity trade off localisation versus smoothness.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
 %------------------------------------------------
 \begin{frame}{Digital Filters: Overview}
   \begin{itemize}
@@ -1476,9 +1582,9 @@ Rem. 3: Only with binary operand. \\
 %------------------------------------------------
 \begin{frame}{Frequency Impact of Warping in WDFs}
   \begin{columns}
-    \column{0.6\textwidth}
+    \column{0.5\textwidth}
       \includegraphics[width=0.8\textwidth]{fig/lec04/IIR_warp.pdf} % Figure 2.14
-    \column{0.4\textwidth}
+    \column{0.5\textwidth}
       \small
       \begin{itemize}
         \item Figure compares loss / attenuation vs frequency for:
@@ -1500,4 +1606,44 @@ Rem. 3: Only with binary operand. \\
     \item In DSP hardware design, WDFs enable efficient, robust realizations for applications requiring stringent filter specs and fixed-point arithmetic.
   \end{itemize}
 \end{frame}
+
 %------------------------------------------------
+\begin{frame}{DSP in a Nutshell: From Signals to Implementations}
+  \begin{itemize}
+    \item \textbf{Start: real-world signals}
+          \begin{itemize}
+            \item Continuous-time, continuous-amplitude (speech, audio, images, biomedical, radar).
+            \item Sampled and quantised $\Rightarrow$ discrete-time sequences $x(n)$ for digital processing.
+          \end{itemize}
+
+    \item \textbf{Analyse in the transform domain}
+          \begin{itemize}
+            \item DFT/FFT: complex exponential basis, efficient $O(N\log N)$ spectrum computation.
+            \item DCT: cosine-only basis with strong energy compaction (JPEG/MPEG).
+            \item Wavelet/DWT: multi-resolution time–frequency analysis for non-stationary signals.
+          \end{itemize}
+
+    \item \textbf{Shape spectra using digital filters}
+          \begin{itemize}
+            \item FIR filters: convolution with finite $h(n)$, always bounded input, bounded output stability (BIBO) stable, linear phase with symmetric taps.
+            \item IIR filters: recursive structures with poles/zeros; sharp responses with low order but care needed for stability and quantisation.
+            \item Design from specifications $(\delta_1,\delta_2,f_p,f_c)$ via windows, analogue prototypes, bilinear transform, etc.
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}{DSP in a Nutshell: From Signals to Implementations}          \begin{itemize}
+\item \textbf{Map mathematics to hardware/software}
+          \begin{itemize}
+            \item Realisation as structures of adds, multiplies and delays on DSPs, FPGAs or ASICs.
+            \item FFT pipelines, FIR/IIR direct forms, second-order sections, and wave digital filters for robust fixed-point implementation.
+          \end{itemize}
+
+    \item \textbf{Big picture}
+          \begin{itemize}
+            \item DSP provides a toolbox: \emph{sample} $\rightarrow$ \emph{transform} $\rightarrow$ \emph{filter / modify} $\rightarrow$ \emph{reconstruct}.
+            \item Design choices (transform, filter type, structure) are driven by application constraints: accuracy, complexity, latency and implementation platform.
+          \end{itemize}
+\end{itemize}
+\end{frame}
