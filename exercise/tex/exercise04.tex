@@ -1,0 +1,515 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Analog and Digital Conversions}
+% \newif%\ifshowsolutions
+% \showsolutionsfalse % <-- change to \showsolutionstrue to show
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4.1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Digital-to-Analog Converter (DAC) Output Calculation}
+
+A 7-bit DAC has the digital input word $1100111_2$ and a reference voltage of $8 \ \text{V}$.\\
+
+Calculate:
+
+\subtask{Analog Output Voltage}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+\begin{itemize}
+    \item Number of bits: $n = 7$
+    \item Reference voltage: $V_{\text{ref}} = 8 \ \text{V}$
+\end{itemize}
+
+The given binary input is:
+\[
+1100111_2
+\]
+
+Converting to decimal:
+\[
+1100111_2 = 1\cdot2^6 + 1\cdot2^5 + 0\cdot2^4 + 0\cdot2^3 + 1\cdot2^2 + 1\cdot2^1 + 1\cdot2^0
+\]
+\[
+= 64 + 32 + 0 + 0 + 4 + 2 + 1 = 103
+\]
+
+For an ideal DAC, the output voltage is given by:
+\[
+V_{\text{out}} = \frac{D}{2^n} \, V_{\text{ref}}
+\]
+
+Substituting values:
+\[
+V_{\text{out}} = \frac{103}{2^7} \times 8
+\]
+\[
+V_{\text{out}} = \frac{103}{128} \times 8
+\]
+\[
+V_{\text{out}} \approx 6.4375 \ \text{V}
+\]
+
+\[
+\boxed{V_{\text{out}} \approx 6.44 \ \text{V}}
+\]
+
+\end{solutionblock}
+%\fi
+
+\subtask{Conversion Resolution Voltage}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+The resolution (voltage step size) of a DAC is defined as:
+\[
+\Delta V = \frac{V_{\text{ref}}}{2^n}
+\]
+
+Substituting the given values:
+\[
+\Delta V = \frac{8}{2^7} = \frac{8}{128}
+\]
+\[
+\Delta V = 0.0625 \ \text{V}
+\]
+
+\[
+\boxed{\Delta V = 62.5 \ \text{mV}}
+\]
+
+\end{solutionblock}
+%\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4.2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Analog-to-Digital Converter (ADC) Quantization}
+
+An 8-bit ADC has a reference voltage of $10 \ \text{V}$ and an analogue input voltage of
+$6.875 \ \text{V}$.\\
+
+Calculate:
+
+\subtask{Digital Output Word}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+\begin{itemize}
+    \item Number of bits: $n = 8$
+    \item Reference voltage: $V_{\text{ref}} = 10 \ \text{V}$
+    \item Input voltage: $V_{\text{in}} = 6.875 \ \text{V}$
+\end{itemize}
+
+The resolution (LSB size) of the ADC is:
+\[
+\Delta V = \frac{V_{\text{ref}}}{2^n} = \frac{10}{2^8}
+\]
+\[
+\Delta V = \frac{10}{256} = 0.0390 \ \text{V}
+\]
+
+The corresponding digital code is given by:
+\[
+D = \frac{V_{\text{in}}}{\Delta V}
+\]
+
+\[
+D = \frac{6.875}{0.0390} = 176
+\]
+
+Converting the decimal value to binary:
+\[
+176_{10} = 10110000_2
+\]
+
+\[
+\boxed{\text{Digital Output Word} = 10110000_2}
+\]
+
+\end{solutionblock}
+%\fi
+
+\subtask{Percentage Resolution}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+\[
+\text{Percentage Resolution} = \frac{1}{2^n} \times 100\% = \frac{1}{256} \times 100\%
+\]
+
+\[
+\boxed{\text{Percentage Resolution} \approx 0.39\%}
+\]
+
+\end{solutionblock}
+%\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4.2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{DAC Reference Voltage Calculation}
+
+A 6-bit DAC is required to produce an output voltage of $9 \ \text{V}$ when all six
+input bits are at logic 1.\\
+
+Calculate the required reference voltage for this DAC.
+
+\subtask{Reference Voltage}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+\begin{itemize}
+    \item Number of bits: $n = 6$
+    \item Full-scale digital input: $D_{\text{max}} = 2^6 - 1 = 63$
+    \item Required output voltage: $V_{\text{out, max}} = 9 \ \text{V}$
+\end{itemize}
+
+For an ideal DAC, the output voltage is given by:
+\[
+V_{\text{out}} = \frac{D}{2^n} \, V_{\text{ref}}
+\]
+
+At full-scale input ($D = D_{\text{max}} = 63$):
+\[
+9 = \frac{63}{64} \, V_{\text{ref}}
+\]
+
+Solving for the reference voltage:
+\[
+V_{\text{ref}} = \frac{9 \times 64}{63}
+\]
+\[
+V_{\text{ref}} \approx 9.1429 \ \text{V}
+\]
+
+\[
+\boxed{V_{\text{ref}} \approx 9.14 \ \text{V}}
+\]
+
+\end{solutionblock}
+%\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4.4 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{4-bit Weighted DAC Error Analysis}
+
+A 4-bit weighted inverting DAC has the following parameters:
+
+\begin{itemize}
+    \item Reference voltage: $V_R = 1 \ \text{V}$
+    \item Feedback resistor: $R_f = 8 R$
+    \item Input resistors (MSB → LSB): $R$, $2R$, $4R$, $8R$
+\end{itemize}
+
+We calculate the output voltage $V_{\text{out}}$ step by step using the current summation method.
+
+\subtask{Find currents through each resistor}
+\begin{solutionblock}
+Each bit contributes a current through its resistor if the bit is logic 1:
+
+\[
+I_n = \frac{V_R}{R_n}
+\]
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Bit & Resistor & Current if bit = 1 (units of $V_R/R$) \\
+\hline
+$b_3$ (MSB) & $R$   & $I_1 = 1$ \\
+$b_2$        & $2R$  & $I_2 = 0.5$ \\
+$b_1$        & $4R$  & $I_3 = 0.25$ \\
+$b_0$ (LSB) & $8R$  & $I_4 = 0.125$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{solutionblock}
+
+\subtask{Total current and output voltage}
+\begin{solutionblock}
+
+The total current entering the summing node:
+
+\[
+I_f = I_1 + I_2 + I_3 + I_4
+\]
+
+The inverting output voltage is:
+
+\[
+V_{\text{out}} = - R_f \, I_f
+\]
+
+Since $R_f = 8R$ and currents are in units of $V_R/R$, we have:
+
+\[
+V_{\text{out}} = -8 \times (I_1 + I_2 + I_3 + I_4) \ \text{V}
+\]
+\end{solutionblock}
+
+\subtask{Compute $V_{\text{out}}$ for all 16 inputs}
+
+\begin{solutionblock}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Binary Input & Sum of Currents $I_f$ & $V_{\text{out}}$ (V) \\
+\hline
+0000 & 0     & 0   \\
+0001 & 0.125 & -1  \\
+0010 & 0.25  & -2  \\
+0011 & 0.375 & -3  \\
+0100 & 0.5   & -4  \\
+0101 & 0.625 & -5  \\
+0110 & 0.75  & -6  \\
+0111 & 0.875 & -7  \\
+1000 & 1     & -8  \\
+1001 & 1.125 & -9  \\
+1010 & 1.25  & -10 \\
+1011 & 1.375 & -11 \\
+1100 & 1.5   & -12 \\
+1101 & 1.625 & -13 \\
+1110 & 1.75  & -14 \\
+1111 & 1.875 & -15 \\
+\hline
+\end{tabular}
+\end{center}
+\end{solutionblock}
+
+\subtask{Compare with given DAC outputs}
+\begin{solutionblock}
+
+We now compare the calculated outputs ($V_{\text{out}}$) with the measured outputs:
+\\
+NOTE: We compare the absolute vaules of the actual outputs since the negative signs 
+defines the nature of inverting amplifier DAC.
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Binary Input} & \textbf{Calculated $V_{\text{out}}$ (V)} & \textbf{Given $V_{\text{out}}$ (V)} & \textbf{Comment} \\
+\hline
+0000 & 0   & 0   &  Correct \\
+0001 & 1   & 1   &  Correct \\
+0010 & 2   & 0   &  Incorrect \\
+0011 & 3   & 1   &  Incorrect \\
+0100 & 4   & 4   &  Correct \\
+0101 & 5   & 5   &  Correct \\
+0110 & 6   & 4   &  Incorrect \\
+0111 & 7   & 5   &  Incorrect \\
+1000 & 8   & 8   &  Correct \\
+1001 & 9   & 9   &  Correct \\
+1010 & 10  & 8   &  Incorrect \\
+1011 & 11  & 9   &  Incorrect \\
+1100 & 12  & 12  &  Correct \\
+1101 & 13  & 13  &  Correct \\
+1110 & 14  & 12  &  Incorrect \\
+1111 & 15  & 13  &  Incorrect \\
+\hline
+\end{tabular}
+\end{center}
+\end{solutionblock}
+
+\subtask{Assuming the electronic switch is working correctly, state the 
+most likely cause of the DAC functioning incorrectly. }
+
+\begin{solutionblock}
+\begin{itemize}
+    \item All incorrect outputs occur when the \textbf{second least significant bit} ($b_1$, weight $4R$) is logic 1.
+    \item Since the electronic switches are assumed working correctly, the most likely cause is:
+    \[
+    \boxed{\text{Open-circuit or incorrect resistor in the $b_1$ branch (weight $4R$)}}.
+    \]
+    \item The DAC fails to add the $b_1$ contribution, producing the missing 2 V steps in the output.
+\end{itemize}
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4.5 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{R-2R Ladder DAC Output Calculation}
+
+A 4-bit R-2R ladder DAC has the following parameters:
+
+\begin{itemize}
+    \item Reference voltage: $V_{\text{ref}} = 10 \ \text{V}$
+    \item Ladder resistor: $R = 20 \ \text{k}\Omega$
+    \item Feedback resistor: $R_f = 50 \ \text{k}\Omega$
+    \item Op-amp supply limits: $\pm 18 \ \text{V}$
+\end{itemize}
+
+\subtask{Output Voltage for Input 1001}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+For an inverting R-2R ladder DAC, the output voltage is given by:
+
+\[
+V_{\text{out}} = - V_{\text{ref}} \frac{R_f}{R} \left( \frac{b_3}{2} + \frac{b_2}{4} + \frac{b_1}{8} + \frac{b_0}{16} \right)
+\]
+
+Where $b_3$ is the MSB and $b_0$ is the LSB.
+
+The input word is:
+\[
+1001 \quad \Rightarrow \quad b_3=1, \ b_2=0, \ b_1=0, \ b_0=1
+\]
+
+\[
+V_{\text{out}} = - -10 \cdot \frac{50\text{k}\Omega}{20\text{k}\Omega} \left( \frac{1}{2} + 0 + 0 + \frac{1}{16}  \right)
+\]
+
+\[
+\boxed{V_{\text{out}} \approx -14.06 \ \text{V}}
+\]
+
+\end{solutionblock}
+%\fi
+
+\subtask{Maximum Digital Input Word That Can Be Converted}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+The maximum output voltage of the DAC is limited by the op-amp supply: $|V_{\text{out}}| \le 18 \ \text{V}$.
+
+The full-scale output (all bits = 1) is:
+
+\[
+V_{\text{FS}} = - V_{\text{ref}} \frac{R_f}{R} \left( \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} \right)
+\]
+
+\[
+V_{\text{FS}} = -10 \cdot 2.5 \cdot \frac{15}{16} = -25 \cdot 0.9375
+\]
+
+\[
+V_{\text{FS}} = -23.4375 \ \text{V}
+\]
+
+Since $|V_{\text{FS}}| = 23.44 \ \text{V} > 18 \ \text{V}$, the op-amp saturates.  
+
+To find the maximum digital word that does not saturate, let $D_{\text{max}}$ be the decimal equivalent of the digital input:
+
+\[
+V_{\text{out}} = - V_{\text{ref}} \frac{R_f}{R} \frac{D_{\text{max}}}{2^N} \le 18
+\]
+
+\[
+25 \cdot \frac{D_{\text{max}}}{16} \le 18
+\]
+
+\[
+D_{\text{max}} \le \frac{18 \cdot 16}{25} = 11.52
+\]
+
+\[
+\Rightarrow D_{\text{max}} = 11 \quad (\text{round down to nearest integer})
+\]
+
+Convert to 4-bit binary:
+
+\[
+D_{\text{max}} = 1011
+\]
+
+\[
+\boxed{\text{Maximum input word that can be converted without saturation: } 1011}
+\]
+
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4.6 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{AD Conversion with successive approximation}
+
+A 12-bit converter with an input voltage range of 0-10V converts
+a voltage of 7.1875V.
+
+\subtask{Calculate the number of conversion steps (Clock cycles) 
+necessary to get the exact result as a digital number.}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+This converter needs a start bit. If the bit is set exactly one 
+conversion is performed. In the case of the input voltage chosen, 
+the DA converter output is exactly matching with it after 4 bits 
+have been tested. Every additional voltage out of the DA converter
+is too much. That means the remaining bits will be all "0". The 
+converter always tests all bits. That means the conversion doesn't
+stop if a match appear !\\
+The conversion time is always the same.\\
+For 12-bit resolution, it needs 12 cycles regardless of the input value.
+
+\[
+V_{\text{out}} = V_{\text{ref}} \left(
+\frac{b_{N-1}}{2} + \frac{b_{N-2}}{4} + \cdots + \frac{b_1}{2^{N-1}} + \frac{b_0}{2^N}
+\right)
+\]
+
+\[
+V_{\text{out}} = V_{\text{ref}} \left(
+2^{N-1} b_{N-1} + 2^{N-2} b_{N-2} + \cdots + 2 b_1 + b_0
+\right) / 2^N
+\]
+
+\[
+V_{\text{out}} = V_{\text{ref}}
+D
+/ 2^N
+\]
+
+The resolution of an $N$-bit ADC is:
+
+\[
+\Delta V = \frac{V_{\text{FS}}}{2^N - 1}
+\]
+
+where $V_{\text{FS}}$ is the full-scale voltage.  
+
+\[
+\Delta V = \frac{10}{2^{12}-1} = \frac{10}{4095} \approx 0.002442 \ \text{V per step}
+\]
+
+The digital output code corresponding to $V_{\text{in}}$ is:
+
+\[
+D = \frac{V_{\text{in}}}{\Delta V}
+\]
+
+\[
+D = \frac{7.1875}{0.002442} \approx 2943
+\]
+
+For a successive approximation ADC, the number of steps to reach this output is equal to the digital code plus 1 (starting from zero):
+
+\[
+\text{Clock cycles} = D + 1 = 2943 + 1 = 2944
+\]
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{successive_approximation.pdf}
+    \caption{Successive Approximation ADC}
+\end{figure}
+
+\end{solutionblock}
