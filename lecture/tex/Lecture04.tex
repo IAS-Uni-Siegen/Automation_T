@@ -1198,27 +1198,27 @@ Rem. 3: Only with binary operand. \\
   \end{itemize}
 \end{frame}
 %------------------------------------------------
-\begin{frame}{DCT: Relation to DFT and Energy Compaction}
-  \begin{itemize}
-    \item Basis functions:
-          \begin{itemize}
-            \item For fixed $k$, $\cos\!\left[\frac{\pi}{N}(n+\tfrac{1}{2})k\right]$ has $k$ half-cycles over the block.
-            \item Low $k$ $\Rightarrow$ slowly varying patterns; high $k$ $\Rightarrow$ fine detail and edges.
-          \end{itemize}
-    \item \textbf{Energy compaction}: for many natural signals/images,
-          \begin{itemize}
-            \item Most of the signal energy is captured in a few low-$k$ coefficients.
-            \item High-$k$ coefficients are often small and can be coarsely quantized or set to zero.
-          \end{itemize}
-    \item JPEG pipeline (simplified):
-          \begin{enumerate}
-            \item Convert RGB to YCbCr, possibly subsample chroma.
-            \item Apply 2-D DCT to each $8\times8$ block.
-            \item Divide by a quantization matrix and round.
-            \item Reorder coefficients in a zig-zag scan and apply run-length + entropy coding.
-          \end{enumerate}
-  \end{itemize}
-\end{frame}
+% \begin{frame}{DCT: Relation to DFT and Energy Compaction}
+%   \begin{itemize}
+%     \item Basis functions:
+%           \begin{itemize}
+%             \item For fixed $k$, $\cos\!\left[\frac{\pi}{N}(n+\tfrac{1}{2})k\right]$ has $k$ half-cycles over the block.
+%             \item Low $k$ $\Rightarrow$ slowly varying patterns; high $k$ $\Rightarrow$ fine detail and edges.
+%           \end{itemize}
+%     \item \textbf{Energy compaction}: for many natural signals/images,
+%           \begin{itemize}
+%             \item Most of the signal energy is captured in a few low-$k$ coefficients.
+%             \item High-$k$ coefficients are often small and can be coarsely quantized or set to zero.
+%           \end{itemize}
+%     \item JPEG pipeline (simplified):
+%           \begin{enumerate}
+%             \item Convert RGB to YCbCr, possibly subsample chroma.
+%             \item Apply 2-D DCT to each $8\times8$ block.
+%             \item Divide by a quantization matrix and round.
+%             \item Reorder coefficients in a zig-zag scan and apply run-length + entropy coding.
+%           \end{enumerate}
+%   \end{itemize}
+% \end{frame}
    
 %------------------------------------------------
 \begin{frame}{Wavelet Transform and DWT}
@@ -1245,38 +1245,38 @@ Rem. 3: Only with binary operand. \\
   \end{itemize}
 \end{frame}
 
-%------------------------------------------------
-\begin{frame}{DWT: Multiresolution Decomposition}
-  \begin{itemize}
-    \item The low-pass branch can be iterated to obtain multiple resolution levels:
-          \[
-            x(n) \rightarrow
-            \begin{cases}
-              A_1(n), D_1(n) \\
-              A_2(n), D_2(n) \\
-              \vdots \\
-              A_J(n), D_J(n)
-            \end{cases}
-          \]
-          where $A_j$ are approximations and $D_j$ are details at scale $j$.
-    \item Time–frequency tiling:
-          \begin{itemize}
-            \item Fine time resolution / coarse frequency resolution at high frequencies.
-            \item Coarse time resolution / fine frequency resolution at low frequencies.
-            \item Better matches many real-world signals (e.g. bursts, edges) than the fixed resolution of the FFT/STFT.
-          \end{itemize}
-    \item Perfect reconstruction:
-          \begin{itemize}
-            \item With suitable analysis and synthesis filters, the original signal can be exactly reconstructed from $\{A_J, D_J,\ldots,D_1\}$.
-            \item This underpins wavelet-based compression schemes (e.g. JPEG2000).
-          \end{itemize}
-    \item Design choices:
-          \begin{itemize}
-            \item Orthogonal vs biorthogonal wavelets (Daubechies, Symmlet, Coiflet, etc.).
-            \item Support length and regularity trade off localisation versus smoothness.
-          \end{itemize}
-  \end{itemize}
-\end{frame}
+% %------------------------------------------------
+% \begin{frame}{DWT: Multiresolution Decomposition}
+%   \begin{itemize}
+%     \item The low-pass branch can be iterated to obtain multiple resolution levels:
+%           \[
+%             x(n) \rightarrow
+%             \begin{cases}
+%               A_1(n), D_1(n) \\
+%               A_2(n), D_2(n) \\
+%               \vdots \\
+%               A_J(n), D_J(n)
+%             \end{cases}
+%           \]
+%           where $A_j$ are approximations and $D_j$ are details at scale $j$.
+%     \item Time–frequency tiling:
+%           \begin{itemize}
+%             \item Fine time resolution / coarse frequency resolution at high frequencies.
+%             \item Coarse time resolution / fine frequency resolution at low frequencies.
+%             \item Better matches many real-world signals (e.g. bursts, edges) than the fixed resolution of the FFT/STFT.
+%           \end{itemize}
+%     \item Perfect reconstruction:
+%           \begin{itemize}
+%             \item With suitable analysis and synthesis filters, the original signal can be exactly reconstructed from $\{A_J, D_J,\ldots,D_1\}$.
+%             \item This underpins wavelet-based compression schemes (e.g. JPEG2000).
+%           \end{itemize}
+%     \item Design choices:
+%           \begin{itemize}
+%             \item Orthogonal vs biorthogonal wavelets (Daubechies, Symmlet, Coiflet, etc.).
+%             \item Support length and regularity trade off localisation versus smoothness.
+%           \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
 %------------------------------------------------
 \begin{frame}{Digital Filters: Overview}
@@ -1324,7 +1324,7 @@ Rem. 3: Only with binary operand. \\
   \end{columns}
   \vspace{0.1cm}
   \begin{itemize}
-    \item FIR filters are always \textbf{BIBO stable} since their impulse response is finite.
+    \item FIR filters are always \textbf{bounded input bounded outout (BIBO) stable} since their impulse response is finite.
     \item With symmetric coefficients ($a_i = a_{N-1-i}$), FIR filters exhibit \textbf{linear phase}: they delay all frequency components equally, avoiding waveform distortion.
   \end{itemize}
 \end{frame}
@@ -1361,9 +1361,9 @@ Rem. 3: Only with binary operand. \\
 %------------------------------------------------
 \begin{frame}{Low-Pass FIR Filter Specifications}
   \begin{columns}
-    \column{0.55\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FIR_spec.pdf} % Figure 2.10
     \column{0.45\textwidth}
+      \includegraphics[width=\textwidth]{fig/lec04/FIR_spec.pdf} % Figure 2.10
+    \column{0.55\textwidth}
       \small
       \begin{itemize}
         \item Design starts from a \textbf{desired magnitude response}:
@@ -1383,7 +1383,6 @@ Rem. 3: Only with binary operand. \\
         \item Example plot shows the ripples in both passband and stopband and the ideal gain level.
       \end{itemize}
   \end{columns}
-  \vspace{0.1cm}
   \small
   \begin{itemize}
     \item Specifications $(\delta_1,\delta_2,f_p,f_c)$ directly determine filter length and window choice.
@@ -1408,59 +1407,116 @@ Rem. 3: Only with binary operand. \\
           \begin{itemize}
             \item This introduces oscillations (ripples) near discontinuities in the frequency domain
                   $\Rightarrow$ \textbf{Gibbs phenomenon}.
-            \item Ripples occur in both passband and stopband (see Figure 2.10).
+            \item Ripples occur in both passband and stopband.
           \end{itemize}
     \item Practical design uses alternative windows (Hamming, Hann, Kaiser, Dolph–Chebyshev, …) to control ripple and transition width.
   \end{itemize}
 \end{frame}
+
 %------------------------------------------------
-\begin{frame}{Effect of Window Type on Low-Pass FIR Response}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (a)
-    \column{0.5\textwidth}
-  \small
+\begin{frame}{Why Window and Filter Length Matter (FIR Low-Pass)}
+
+  \begin{block}{The message to remember (industrial relevance)}
+  \textbf{Two design knobs} (window type, filter length $N$) determine \textbf{three outcomes} that directly impact
+  \textbf{control/measurement quality} and \textbf{embedded implementation cost}.
+  \end{block}
+
+
+  \begin{block}{Two knobs you can tune}
   \begin{itemize}
-    \item Example: $N=100$-tap low-pass FIR designed with:
-          \begin{itemize}
-            \item \textbf{Hamming window} – relatively wide mainlobe, low sidelobe level ($\approx -40$ dB).
-            \item \textbf{Dolph–Chebyshev window} – narrower mainlobe (sharper transition) but higher sidelobes for same length.
-          \end{itemize}
-    \item For fixed $N$:
-          \begin{itemize}
-            \item Choice of window trades \textbf{transition width} vs \textbf{ripple level}.
-            \item Chebyshev: better frequency selectivity, more pronounced ripple pattern.
-            \item Hamming: smoother response, weaker stopband attenuation at some frequencies.
-          \end{itemize}
-  \end{itemize}
-   \end{columns}
-\end{frame}
-%------------------------------------------------
-\begin{frame}{Effect of Filter Length on Low-Pass FIR Response}
-  \begin{columns}
-    \column{0.45\textwidth}
-      \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (b) / 2.12
-    \column{0.6\textwidth}
-  \small
+  \item \textbf{Window type} (e.g., Hamming vs Dolph--Chebyshev)
   \begin{itemize}
-    \item Increasing the number of taps to $N=400$:
-          \begin{itemize}
-            \item \textbf{Narrower transition band} between passband and stopband.
-            \item \textbf{Reduced ripple} (for same window) because the approximation to the ideal response improves.
-          \end{itemize}
-    \item Cost:
-          \begin{itemize}
-            \item 4$\times$ more multiplications and additions per output sample compared with $N=100$.
-            \item More memory for storing coefficients and previous samples.
-          \end{itemize}
-    \item Design trade-off:
-          \begin{itemize}
-            \item Meet specs $(\delta_1,\delta_2,f_p,f_c)$ with \emph{minimum} $N$ and appropriate window.
-            \item For FPGA/ASIC, this directly impacts area, power and achievable sampling rate.
-          \end{itemize}
+  \item sets \textbf{sidelobes / ripple} (leakage, stopband attenuation)
+  \item influences \textbf{transition sharpness} (mainlobe width)
   \end{itemize}
-    \end{columns}
+  \item \textbf{Filter length $N$} (number of taps)
+  \begin{itemize}
+  \item larger $N$ $\Rightarrow$ \textbf{narrower transition band}
+  \item larger $N$ $\Rightarrow$ \textbf{lower ripple} (for same window)
+  \end{itemize}
+  \end{itemize}
+  \end{block}
+
 \end{frame}
+
+
+\begin{frame}
+
+  \begin{block}{Three outcomes to practice}
+  \begin{itemize}
+  \item \textbf{Signal quality:} noise rejection vs distortion
+  \begin{itemize}
+  \item ripple/leakage $\Rightarrow$ residual noise, spectral leakage
+  \item too-wide transition $\Rightarrow$ poor selectivity
+  \end{itemize}
+  \item \textbf{System behavior:} delay and closed-loop impact
+  \begin{itemize}
+  \item FIR group delay $\approx \frac{N-1}{2}$ samples (linear phase)
+  \end{itemize}
+  \item \textbf{Compute and memory:} feasibility on MCU/FPGA/PLC
+  \begin{itemize}
+  \item cost $\propto N$ multiplies/adds per sample (+ coefficient memory)
+  \end{itemize}
+  \end{itemize}
+  \end{block}
+
+  \begin{alertblock}{Rule-of-thumb decision}
+  \begin{itemize}
+  \item Need \textbf{sharper cutoff}? \ \textbf{Increase $N$} (most reliable).
+  \item Need \textbf{more stopband attenuation}? \ \textbf{Change window} (then adjust $N$ if needed).
+  \item Need \textbf{lower cost/latency}? \ \textbf{Reduce $N$} and accept wider transition / less attenuation.
+  \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+% %------------------------------------------------
+% \begin{frame}{Effect of Window Type on Low-Pass FIR Response}
+%   \begin{columns}
+%     \column{0.5\textwidth}
+%       \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (a)
+%     \column{0.5\textwidth}
+%   \small
+%   \begin{itemize}
+%     \item Example: $N=100$-tap low-pass FIR designed with:
+%           \begin{itemize}
+%             \item \textbf{Hamming window} – relatively wide mainlobe, low sidelobe level ($\approx -40$ dB).
+%             \item \textbf{Dolph–Chebyshev window} – narrower mainlobe (sharper transition) but higher sidelobes for same length.
+%           \end{itemize}
+%     \item For fixed $N$:
+%           \begin{itemize}
+%             \item Choice of window trades \textbf{transition width} vs \textbf{ripple level}.
+%             \item Chebyshev: better frequency selectivity, more pronounced ripple pattern.
+%             \item Hamming: smoother response, weaker stopband attenuation at some frequencies.
+%           \end{itemize}
+%   \end{itemize}
+%    \end{columns}
+% \end{frame}
+% %------------------------------------------------
+% \begin{frame}{Effect of Filter Length on Low-Pass FIR Response}
+%   \begin{columns}
+%     \column{0.45\textwidth}
+%       \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (b) / 2.12
+%     \column{0.6\textwidth}
+%   \small
+%   \begin{itemize}
+%     \item Increasing the number of taps to $N=400$:
+%           \begin{itemize}
+%             \item \textbf{Narrower transition band} between passband and stopband.
+%             \item \textbf{Reduced ripple} (for same window) because the approximation to the ideal response improves.
+%           \end{itemize}
+%     \item Cost:
+%           \begin{itemize}
+%             \item 4$\times$ more multiplications and additions per output sample compared with $N=100$.
+%             \item More memory for storing coefficients and previous samples.
+%           \end{itemize}
+%     \item Design trade-off:
+%           \begin{itemize}
+%             \item Meet specs $(\delta_1,\delta_2,f_p,f_c)$ with \emph{minimum} $N$ and appropriate window.
+%             \item For FPGA/ASIC, this directly impacts area, power and achievable sampling rate.
+%           \end{itemize}
+%   \end{itemize}
+%     \end{columns}
+% \end{frame}
 %------------------------------------------------
 \begin{frame}{Motivation for IIR Filters}
   \small
@@ -1516,50 +1572,50 @@ Rem. 3: Only with binary operand. \\
     \item Direct-form structures are straightforward but can be sensitive to coefficient quantisation and round-off noise, especially for high-order filters.
   \end{itemize}
 \end{frame}
-%------------------------------------------------
-\begin{frame}{From Analogue to Digital: Bilinear Transform}
-  \small
-  \begin{itemize}
-    \item Start with an analogue prototype $H_A(s)$.
-    \item Apply \textbf{bilinear transform}:
-          \[
-            s = \frac{2}{T}\,\frac{1 - z^{-1}}{1 + z^{-1}},
-          \]
-          leading to a digital transfer function $H_D(z) = H_A(s)\big|_{s = \frac{2}{T}\frac{1 - z^{-1}}{1 + z^{-1}}}$.
-    \item Properties:
-          \begin{itemize}
-            \item Maps the \textbf{left-half $s$-plane} onto the \textbf{interior of the unit circle} in the $z$-plane:
-                  \begin{itemize}
-                    \item Stability of analogue filter $\Rightarrow$ stability of digital filter.
-                  \end{itemize}
-            \item Frequency axis is \textbf{warped}: linear frequency $\omega$ in analogue domain maps nonlinearly to digital frequency $\Omega$ (Figure 2.13).
-          \end{itemize}
-    \item To compensate, critical analogue frequencies are \textbf{pre-warped} before transformation.
-  \end{itemize}
-\end{frame}
-%------------------------------------------------
-\begin{frame}{Frequency Warping and IIR Distortion}
-  \begin{columns}
-    \column{0.4\textwidth}
-      \includegraphics[width=0.8\textwidth]{fig/lec04/IIR_dist.pdf} % Figure 2.13 or 2.14
-    \column{0.6\textwidth}
-      \small
-      \begin{itemize}
-        \item Plot shows relation between analogue frequency $\omega$ and digital frequency $\Omega$.
-        \item At low frequencies the mapping is nearly linear; at higher frequencies, the spacing becomes compressed.
-        \item Result: passband/stopband edges in the digital filter are \emph{shifted} relative to analogue specifications.
-        \item Pre-warping ensures that important band edges (e.g. passband cutoff) line up after transformation.
-      \end{itemize}
-  \end{columns}
-  \vspace{0.1cm}
-  \small
-  \begin{itemize}
-    \item For implementation and numerical robustness, high-order IIR filters are usually decomposed into cascaded \textbf{second-order sections}:
-          \[
-            y(n) = a_0 x(n) + a_1 x(n-1) + a_2 x(n-2) + b_1 y(n-1) + b_2 y(n-2).
-          \]
-  \end{itemize}
-\end{frame}
+% %------------------------------------------------
+% \begin{frame}{From Analogue to Digital: Bilinear Transform}
+%   \small
+%   \begin{itemize}
+%     \item Start with an analogue prototype $H_A(s)$.
+%     \item Apply \textbf{bilinear transform}:
+%           \[
+%             s = \frac{2}{T}\,\frac{1 - z^{-1}}{1 + z^{-1}},
+%           \]
+%           leading to a digital transfer function $H_D(z) = H_A(s)\big|_{s = \frac{2}{T}\frac{1 - z^{-1}}{1 + z^{-1}}}$.
+%     \item Properties:
+%           \begin{itemize}
+%             \item Maps the \textbf{left-half $s$-plane} onto the \textbf{interior of the unit circle} in the $z$-plane:
+%                   \begin{itemize}
+%                     \item Stability of analogue filter $\Rightarrow$ stability of digital filter.
+%                   \end{itemize}
+%             \item Frequency axis is \textbf{warped}: linear frequency $\omega$ in analogue domain maps nonlinearly to digital frequency $\Omega$ (Figure 2.13).
+%           \end{itemize}
+%     \item To compensate, critical analogue frequencies are \textbf{pre-warped} before transformation.
+%   \end{itemize}
+% \end{frame}
+% %------------------------------------------------
+% \begin{frame}{Frequency Warping and IIR Distortion}
+%   \begin{columns}
+%     \column{0.4\textwidth}
+%       \includegraphics[width=0.8\textwidth]{fig/lec04/IIR_dist.pdf} % Figure 2.13 or 2.14
+%     \column{0.6\textwidth}
+%       \small
+%       \begin{itemize}
+%         \item Plot shows relation between analogue frequency $\omega$ and digital frequency $\Omega$.
+%         \item At low frequencies the mapping is nearly linear; at higher frequencies, the spacing becomes compressed.
+%         \item Result: passband/stopband edges in the digital filter are \emph{shifted} relative to analogue specifications.
+%         \item Pre-warping ensures that important band edges (e.g. passband cutoff) line up after transformation.
+%       \end{itemize}
+%   \end{columns}
+%   \vspace{0.1cm}
+%   \small
+%   \begin{itemize}
+%     \item For implementation and numerical robustness, high-order IIR filters are usually decomposed into cascaded \textbf{second-order sections}:
+%           \[
+%             y(n) = a_0 x(n) + a_1 x(n-1) + a_2 x(n-2) + b_1 y(n-1) + b_2 y(n-2).
+%           \]
+%   \end{itemize}
+% \end{frame}
 %------------------------------------------------
 \begin{frame}{Wave Digital Filters (WDFs): Concept}
   \small
