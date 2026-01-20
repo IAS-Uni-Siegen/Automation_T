@@ -20,6 +20,7 @@
                 \item Sensors, actuators, HMIs, PLCs, drives.
                 \item Act as \textbf{transmitters}, \textbf{receivers} or both.
               \end{itemize}
+        \item \textbf{Data:} physical quantities (voltage levels, light, RF power) to which information and direction are assigned.
         \item \textbf{Communication modules:}
               \begin{itemize}
                 \item Convert local electrical / logical signals into a format suitable for the network.
@@ -30,7 +31,7 @@
                 \item Copper (twisted pair, RS-485), fibre optics, radio (WLAN, 5G), sometimes power-line.
                 \item Defines attenuation, noise, EMC robustness, maximum distance and speed.
               \end{itemize}
-        \item \textbf{Data:} physical quantities (voltage levels, light, RF power) to which information and direction are assigned.
+
       \end{itemize}
   \end{columns}
 \end{frame}
@@ -89,17 +90,17 @@
       \column{0.65\textwidth}
   \small
   \begin{itemize}
-    \item \textbf{Parallel transmission}
-          \begin{itemize}
-            \item Multiple bits sent simultaneously on separate conductors.
-            \item High raw data rate, but only feasible over short distances.
-            \item Susceptible to skew, crosstalk and EMC issues.
-          \end{itemize}
     \item \textbf{Serial transmission}
           \begin{itemize}
             \item Bits sent sequentially over one pair (or one fibre).
             \item Lower pin count, better EMC, easily galvanically isolated.
             \item Dominant for industrial networks: RS-232, RS-485, CAN, Ethernet, etc.
+          \end{itemize}
+    \item \textbf{Parallel transmission}
+          \begin{itemize}
+            \item Multiple bits sent simultaneously on separate conductors.
+            \item High raw data rate, but only feasible over short distances.
+            \item Susceptible to skew, crosstalk and EMC issues.
           \end{itemize}
     \item Modern fieldbuses and Industrial Ethernet variants are all \textbf{serial} links with advanced encoding and framing.
   \end{itemize}
@@ -643,8 +644,7 @@
     \item \textbf{Interoperability}: devices understand each other’s communication
           services → strict adherence to protocol specifications.
     \item \textbf{Interchangeability}: one device can be replaced by another
-          (possibly from another vendor) without modifying the PLC program
-          → adherence to \textbf{application profiles}.
+          (possibly from another vendor) without modifying (for example, the PLC program) → adherence to \textbf{application profiles}.
     \item A \textbf{profile} is a standardised description of functions and
           parameters for a device class (e.g. drives, encoders, I/O).
           \begin{itemize}
@@ -703,11 +703,6 @@
                 \item Forwards frames based on MAC address (layer\,2).
                 \item Segments collision domains; enables full-duplex links.
                 \item Industrial switches support VLANs, QoS, redundancy (RSTP, MRP).
-              \end{itemize}
-        \item \textbf{Transceiver}
-              \begin{itemize}
-                \item Converts between different physical layers while preserving
-                      the same data link protocol (e.g. RS232–RS485).
               \end{itemize}
       \end{itemize}
     \end{column}
@@ -844,7 +839,7 @@
     \item \textbf{Standardisation:} EN~50295, IEC~62026-2; governed by the AS-International Association.
     \item \textbf{Topology:} \emph{Free topology} (line, star, tree, mixed) without termination;
           allows easy retrofits in existing installations.
-    \item \textbf{Communication \& power on the same 2-wire cable:}
+    \item \textbf{Communication and power on the same 2-wire cable:}
           \begin{itemize}
             \item Yellow, polarised flat cable carries both \textbf{data (\SI{167}{kbps})} and \textbf{30~V DC} supply.
             \item Separate black cable often used for auxiliary power to actuators.
@@ -1126,7 +1121,7 @@ CAN specifies mainly \emph{Physical + Data Link behavior}; CANopen completes the
     \end{itemize}
 
     \vspace{0.4em}
-    \textbf{Profiles concept (as in your figure):}
+    \textbf{Profiles concept (as in figure):}
     \begin{itemize}
       \item \textbf{DS-301:} communication profile (network management + services)
       \item \textbf{DSP-401/402/404/...:} device profiles (I/O, drives, measuring devices, etc.)
@@ -1271,7 +1266,7 @@ PDOs are engineered for deterministic cyclic control; SDOs are engineered for co
       \item \textbf{Open style terminal blocks:} used in cabinets; ensure strain relief and shield termination discipline.
     \end{itemize}
 
-    \textbf{Installation discipline (exam-worthy points)}
+    \textbf{Installation discipline}
     \begin{itemize}
       \item Terminate only at bus ends; avoid star wiring for classical CAN.
       \item Keep stubs short; route away from high dv/dt power cables; maintain shield strategy.
