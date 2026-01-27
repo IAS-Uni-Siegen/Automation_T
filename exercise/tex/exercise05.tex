@@ -1,0 +1,851 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{PLC}
+% \newif%\ifshowsolutions
+% \showsolutionsfalse % <-- change to \showsolutionstrue to show
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Logic Analysis (1)}
+
+The logic below is given:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{task_5_1.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+Please analyse it and simplfy it !
+
+\subtask{Analog Output Voltage}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+\begin{center}
+\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|
+                >{\centering\arraybackslash}p{1cm}|
+                >{\centering\arraybackslash}p{1cm}|}
+\hline
+A & B & C \\
+\hline
+$0$ & $0$  & $0$ \\
+$0$ & $1$  & $0$ \\
+$1$ & $0$  & $1$ \\
+$1$ & $1$  & $1$ \\
+\hline
+\end{tabular}
+\end{center}
+
+The above table shows that the output solely depends on the 
+input A. Therefore, the simplified logic is $C = A$.
+
+\end{solutionblock}
+%\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Logic Analysis (2)}
+
+Which function is fulfilled by the logic below ?
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{task_5_2.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+
+%\ifshowsolutions
+\begin{solutionblock}
+
+\begin{center}
+\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|
+                >{\centering\arraybackslash}p{1cm}|
+                >{\centering\arraybackslash}p{1cm}|
+                >{\centering\arraybackslash}p{1cm}|}
+\hline
+$A$ & $B$ & $C$ & $C_{n+1}$\\
+\hline
+$0$ & $0$  & $0$ & 0\\
+$0$ & $0$  & $1$ & 0\\
+$0$ & $1$  & $0$ & 0\\
+$0$ & $1$  & $1$ & 1\\
+$1$ & $0$  & $0$ & 1\\
+$1$ & $0$  & $1$ & 1\\
+$1$ & $1$  & $0$ & 1\\
+$1$ & $1$  & $1$ & 1\\
+\hline
+\end{tabular}
+\end{center}
+where $C_{n+1}$ is the output for the next cycle.\\
+We have a feedback mechanism. Output $C$ is given as feedback.
+We can set $C = 1$ with A and the to reset $C = 0$  we need $A$ and $B$.\\
+Once $C = 1$ is set, this ciruit holds itself.\\
+It is a Self-holding ciruit.
+This results in the following simplified circuit.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{task_5_2_solution.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.3 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{PLC Statement List (STL) Representation}
+
+\subtask{What does the representation of
+\\
+- the conjunction (AND function) of the inputs I0.0, NOT I0.1 and I0.2  
+and \\
+- the assignment of the result of the logic operation RLO  
+to the output Q0.0 in the form of a statement list (STL) of a PLC look like?}
+
+
+\begin{solutionblock}
+
+The corresponding STL code is:
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+$A$ & $I0.0$  \\
+$AN$ & $I0.1$  \\
+$A$ & $I0.2$  \\
+$=$ & $Q0.0$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{solutionblock}
+
+\subtask{What does the representation of \\
+- the disjunction (OR function) of the inputs I1.0, I1.1, NOT I1.2 and \\
+- the assignment of the RLO to the output Q0.1 and to the  
+Memory bit M 9.1 in the form of a statement list (STL) of a PLC look like?}
+
+\begin{solutionblock}
+
+The corresponding STL code is:
+
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+$O$ & $I1.0$  \\
+$O$ & $I1.1$  \\
+$ON$ & $I1.2$  \\
+$=$ & $Q0.1$  \\
+$=$ & $M9.1$  \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.4 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Contactor circuit}
+
+The contactor circuit is given below:\\
+Please find the PLC internal circuit in the Function Block Diagram (FBD)
+which is equivalent to the contactor circuit !
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_4.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+
+
+\begin{solutionblock}
+The following FBD represents the equivalent contactor circuit:\\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_4_solution_1.pdf}
+    % \caption{Logic Circuit}
+\end{figure}\\
+Alternative Solution using SR Flip-Flops:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_4_solution_2.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\end{solutionblock}
+%\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.5 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{LAD Representation of a Two-Staged Boolean Operation}
+
+Please create the LAD representation of a two staged boolean operation
+which complies with the following description:\\
+The result of the OR operation with the inputs I 25.7 and I 26.0 is to be 
+linked into an AND operation with the inputs I 10.6 und I 10.7. The result 
+is to be assigned to the output Q 8.0.\\
+
+
+%\ifshowsolutions
+\begin{solutionblock}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_5_solution.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.6 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Emulation of the Antivalence (XOR) Operation in a PLC}
+
+How is the antivalence operation (XOR) to be emulated, if it is not  
+contained in the basic operation pool of a certain PLC?
+
+\subtask{STL}
+\begin{solutionblock}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{A} & \textbf{B} & \textbf{A $\oplus$ B} \\ \hline
+0 & 0 & 0 \\ \hline
+0 & 1 & 1 \\ \hline
+1 & 0 & 1 \\ \hline
+1 & 1 & 0 \\ \hline
+\end{tabular}
+\caption{XOR Gate Truth Table}
+\end{table}
+
+\[ XOR = A\overline{B} + \overline{A}B \]
+OR
+\[ XOR = (A + B)(\overline{A} + \overline{B})\]
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+O$\left( \right.$ & \\
+A  & I0.0 \\ 
+AN & I0.1 \\
+$\left. \right)$ & \\
+O$\left( \right.$ & \\
+AN & I0.0 \\ 
+A  & I0.1 \\
+$\left. \right)$ & \\
+= & Q0.0\\
+\hline
+\end{tabular}
+\end{center}
+\end{solutionblock}
+
+\subtask{LAD}
+\begin{solutionblock}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{task_5_6_solution_1.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\end{solutionblock}
+
+\subtask{FBD}
+\begin{solutionblock}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_6_solution_2.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.7 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Pulse Switch}
+
+\textbf{Problem:} Substitution of a contactor circuit by a PLC
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_7.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\bigskip
+
+\textbf{List of Variables}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Symbol & Absolute & Comment \\
+\hline
+S1 & I 1.0 & Momentary-contact switch \\
+H0 & Q 2.2 & Lamp \\
+K1 & M 0.0 & Memory bit \\
+K2 & M 0.1 & Memory bit \\
+K3 & M 0.2 & Memory bit \\
+\hline
+\end{tabular}
+\end{center}
+
+\bigskip
+
+\textbf{Functional description:}
+If the pushbutton S1 is pressed, the contactor K1 is switched on as long  
+as the pushbutton is pressed. At the same time the contactor K3 is  
+switched on and holds itself and the lamp H0 is on.\\
+If the pushbutton S1 is pressed again, contactor K2 is switched on.  
+Thereby contactor K3 drops and the lamp is off.\\
+The procedure can be repeated arbitrarily.\\
+The pushbutton is wired to the input I 1.0. Contactors are to be  
+emulated by memory bits. The output Q 2.2 is directly connected to  
+the lamp.\\
+\bigskip
+
+\textbf{Please create:}
+
+\subtask{The hardware configuration}
+\begin{solutionblock}
+When switch S1 is pressed, the lamp H1 turns ON and remains ON. When the S1 switch
+is again pressed, the lamp H1 turns OFF.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_7_solution_1.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\end{solutionblock}
+
+\subtask{The LAD}
+\begin{solutionblock}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_7_solution_2.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+
+\bigskip
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.8 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Motor Control Circuit}
+
+A function diagram of a motor control circuit is given:
+
+\bigskip
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_5_8.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\bigskip
+
+\subtask{Please specify the hardware configuration when using a PLC!}
+\begin{solutionblock}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{task_5_8_solution.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+\end{solutionblock}
+
+\subtask{Please develop the statement list (STL)!}
+\begin{solutionblock}
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+A$\left( \right.$ & \\
+O  & A11 \\ 
+O & E1 \\
+$\left. \right)$ & \\
+AN & A12 \\ 
+A  & E3 \\
+= & A11\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+A$\left( \right.$ & \\
+O  & E2 \\ 
+O & A12 \\
+$\left. \right)$ & \\
+AN & A11 \\ 
+A  & E3 \\
+= & A12\\
+\hline
+\end{tabular}
+\end{center}
+
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.9 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Momentary Pulse in STL}
+
+Please give a sequence of statements for a so called momentary pulse  
+in STL.\\
+
+(A momentary pulse is the logic ``1''-state of a boolean variable for  
+exactly one program cycle as a reaction to the rising edge of another  
+boolean variable.)
+
+\begin{solutionblock}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{task_5_9_solution.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+1 & A  & X \\ 
+2 & AN & Z \\
+3 & = & Y \\ 
+4 & A  & X \\
+5 & = & Z \\
+\hline
+\end{tabular}
+\end{center}
+Note: in step 4, we are not using AND operation. We are just reading the value of
+input X and then in step 5 assigning it to Z.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.10 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Feed Track Control in a Parts Delivery System}
+
+The feed track in the parts delivery system should always contain  
+enough parts to make sure that the picking and placing process can  
+operate continuously without waiting for parts.\\
+When the upper level switch sees a part for longer than 1 second,  
+the motor of the hopper feeder should be switched off.  
+It should be switched on if the lower level sensor sees no part for  
+longer than one second.\\
+A lamp indicates a failure state. This failure state is set in case of  
+a congestion. It is reset by a pushbutton. The motor may not be on in  
+case of a failure.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{task_5_10.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+\bigskip
+
+\textbf{Wanted:} Logic in FBD
+
+\begin{solutionblock}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_10_solution_1.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_10_solution_2.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.11 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Manually operated press}
+
+This method is usually applied to protect the hands of the operators  
+who operate dangerous machines. The machine only starts if both  
+activation push buttons are pressed nearly at the same time (within  
+0.2 seconds). This has to happen using the left and the right hand.\\
+The machine stops immediately if one of the pushbuttons is released.\\
+Please develop a control program to operate the press cylinder while  
+meeting the above safety requirements.\\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_11.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+\begin{solutionblock}
+    \begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_11_solution_1.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+The timer T5 keeps the signal T1 ON untill 200ms expires.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_11_solution_2.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+Note: The "brick on the button" trick won't work!\\
+That is why edge triggered pulse is used.
+
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.12 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Bending Tool}
+
+Metal sheets are bent to a certain shape using a bending tool. The  
+bending sequence is as follows:\\
+After the pushbutton S1 was pressed, the piston of Cylinder 1A moves  
+out. Thereby the sheet is clamped and pre-bent. When the piston of  
+Cylinder 1A is in its outer end position, the piston of Cylinder 2A  
+moves out, finishes the bending of the sheet and is retracted after it  
+has reached its outer end position. When the inner end position of  
+Cylinder 2A is reached, the piston of Cylinder 1A is also retracted.\\
+The technology sketch below shows the arrangement of the cylinders.\\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_12_1.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+The excitation of the solenoid valves was implemented up to now in a  
+way as shown in the following circuit diagram:\\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_12_2.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+This contactor control shall be replaced by a software solution inside  
+a PLC.\\
+
+\begin{solutionblock}
+
+Hardware configuration:\\
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{task_5_12_solution_1.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+Symbol Table:\\
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Address} & \textbf{Symbol} & \textbf{Comment} \\ \hline
+I0.1 & S1 & Push button: START \\ \hline
+I0.2 & 1B1 & Inner-end pos cylinder 1A \\ \hline
+I0.3 & 1B2 & Outer-end pos cylinder 1A \\ \hline
+I0.4 & 2B1 & Inner-end pos cylinder 2A \\ \hline
+I0.5 & 2B2 & Outer-end pos cylinder 2A \\ \hline
+Q4.1 & 1M1 & Solenoid coil cylinder 1A \\ \hline
+Q4.2 & 2M1 & Solenoid coil cylinder 2A \\ \hline
+\end{tabular}
+\end{table}
+
+LAD:\\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.65\textwidth]{task_5_12_solution_2.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+FBD using Flip Flops:\\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.65\textwidth]{task_5_12_solution_3.pdf}
+% \caption{Logic Circuit}
+\end{figure}
+
+\end{solutionblock}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.13 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\task{Person counter}
+
+An Up-/Down-Counter is to be programmed. The persons in a room are to  
+be counted. For this purpose, the entrance to the room is equipped with  
+two light barriers which are installed in such a way that during the  
+passage through the entrance first one and then both light barriers  
+are interrupted. From that arrangement the counting signal is derived.  
+The sketch shows the counting direction.\\
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{task_5_13_1.pdf}
+\end{center}
+
+The light barriers provide a logic ``1'' signal if the beam is  
+interrupted. The turnstile at the entrance is blocked if the room is  
+occupied.\\
+For resetting the counter, a pushbutton S3 is to be used. H6 is for  
+room lighting. It is only on if there is someone in the room. K1  
+serves for the turnstile control. The maximum number of persons in the  
+room is 10.\\
+From the timing sequence of the interruption of the beams of light,  
+the counting direction can be determined. If light barrier A is  
+interrupted first, then the counting direction is upward. In case of  
+counting direction ``downward'', light barrier B is interrupted first.\\
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{task_5_13_2.pdf}
+\end{center}
+Precondition for counting is that at least one light barrier (in this  
+example light barrier A) is interrupted. If now the state of signal B  
+changes from ``0'' to ``1'', the counter counts upward. If B changes  
+from ``1'' to ``0'', the counter counts downward.\\
+If only one light barrier is interrupted, counting is prohibited.\\
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{task_5_13_3.pdf}
+\end{center}
+Here the precondition for counting is not fulfilled (signal state  
+``1'' for A and an edge at light barrier B).\\
+
+\begin{solutionblock}
+
+Symbol Table:\\
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Address} & \textbf{Symbol} & \textbf{Comment} \\ \hline
+Q4.5 & K1 & Lock turnstile \\ \hline
+M1.0 & M1 & Auxiliary bit for rising edge \\ \hline
+M2.0 & M3 & Auxiliary bit for falling edge \\ \hline
+I0.1 & S1\_LB\_A & Light Barrier A \\ \hline
+I0.2 & S2\_LB\_B & Light Barrier B \\ \hline
+I0.3 & S3\_count\_R & Counter Reset \\ \hline
+Q4.6 & K4 or H6 & Room Lighting \\ \hline
+MW6 & MW6 & Count Value \\ \hline
+\end{tabular}
+\end{table}
+
+\bigskip
+Network 1: Counter 1\\
+CU: Count Up when the \\
+-room is not full ($\overline{K1}$)\\
+-Light Barrier A is interrupted.\\
+-Rising Edge of B is detected.\\
+
+CD: Count Down when the \\
+-Light Barrier A is interrupted.\\
+-Falling Edge of B is detected.\\
+
+CV: Count Value\\ 
+
+P block: Positive Edge Detection\\
+N block: Negative Edge Detection\\
+
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{task_5_13_solution_1.pdf}
+\end{center}
+
+\bigskip
+Network 2: Turnstile\\
+$lock \rightarrow ON$ (1)\\
+$unlock \rightarrow OFF$ (0)\\
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{task_5_13_solution_2.pdf}
+\end{center}
+
+\end{solutionblock}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.14 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Generation of STL from a Timing Diagram}
+
+For the control function displayed in a timing diagram, the STL is to  
+be generated.
+
+\subtask{a}
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{task_5_14_a.pdf}
+\end{center}
+
+\begin{solutionblock}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{I1} & \textbf{I2} & \textbf{Q1} \\ \hline
+0 & 0 & 1 \\ \hline
+0 & 1 & 0 \\ \hline
+1 & 0 & 0 \\ \hline
+1 & 1 & 0 \\ \hline
+\end{tabular}
+\caption{Truth Table for Logic Function (a)}
+\end{table}
+
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+O  & I1 \\ 
+O & I2 \\
+=N & Q1 \\ 
+\hline
+\end{tabular}
+\end{center}
+
+OR
+
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+AN  & I1 \\ 
+AN & I2 \\
+= & Q1 \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\end{solutionblock}
+
+\subtask{b}
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{task_5_14_b.pdf}
+\end{center}
+\begin{solutionblock}
+    
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{I1} & \textbf{I2} & \textbf{Q1} \\ \hline
+0 & 0 & 0 \\ \hline
+0 & 1 & 1 \\ \hline
+1 & 0 & 1 \\ \hline
+1 & 1 & 0 \\ \hline
+\end{tabular}
+\caption{Truth Table for Logic Function (b)}
+\end{table}
+
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+O$\left( \right.$ & \\
+A  & I1 \\ 
+AN & I2 \\
+$\left. \right)$ & \\
+O$\left( \right.$ & \\
+AN & I1 \\ 
+A  & I2 \\
+$\left. \right)$ & \\
+= & Q1\\
+\hline
+\end{tabular}
+\end{center}
+
+\end{solutionblock}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5.15 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\task{Analysis of a Statement List (STL)}
+
+The statement list below is given in STL:
+
+\begin{verbatim}
+A     I0.0
+AN    M5.0
+S     M5.0
+AN    I0.0
+R     M5.0
+\end{verbatim}
+
+What happens here?  
+Can this be done simpler?
+
+\begin{solutionblock}
+
+\begin{itemize}
+\item If the input I0.0 is \textbf{TRUE} and the memory bit M5.0 is
+\textbf{FALSE}, then M5.0 is \textbf{set}.
+\item If the input I0.0 is \textbf{FALSE}, then M5.0 is
+\textbf{reset}.
+\end{itemize}
+
+Thus, the memory bit M5.0 follows the state of the input I0.0.  
+M5.0 is set when I0.0 becomes TRUE and reset when I0.0 becomes FALSE.\\
+
+This behavior corresponds to a simple assignment of the input I0.0 to
+the memory bit M5.0.\\
+
+The same function can be implemented in a simpler and clearer way using
+a direct assignment:\\
+
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}
+                >{\centering\arraybackslash}p{1.5cm}}
+
+\hline
+A  & I0.0 \\ 
+= & M5.0\\
+\hline
+\end{tabular}
+\end{center}
+\end{solutionblock}
