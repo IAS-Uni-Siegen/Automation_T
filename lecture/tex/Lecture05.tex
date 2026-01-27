@@ -1492,7 +1492,7 @@ CANopen excels in robust, low-level control applications; careful engineering is
       \item \textbf{Medium access method: CSMA/CD} (Carrier Sense Multiple Access with Collision Detection).
       \item \textbf{Determinism:} ``resolved using segmentation'' with \textbf{load factor $< 10\%$}.
       \item \textbf{Transmission method:} in \textbf{packets} / IP datagrams, \textbf{64 to 1500 bytes}.
-      \item \textbf{Max useful data:} \textbf{1442 bytes per packet (APDU)} (as stated).
+      \item \textbf{Max useful data:} \textbf{1442 bytes per packet (application protocol data unit-APDU)}.
       \item \textbf{Transmission security:}
       \begin{itemize}
         \item \textbf{CRC32} at link layer level
@@ -1759,11 +1759,11 @@ CANopen excels in robust, low-level control applications; careful engineering is
 \end{frame}
 
 %=========================================================
-\begin{frame}{Example architecture PROFIBUS-DP}
-  \begin{center}
-    \includegraphics[width=0.7\textwidth]{fig/lec05/profibus_example.pdf}
-  \end{center}
-\end{frame}
+% \begin{frame}{Example architecture PROFIBUS-DP}
+%   \begin{center}
+%     \includegraphics[width=0.7\textwidth]{fig/lec05/profibus_example.pdf}
+%   \end{center}
+% \end{frame}
 
 
 %=========================================================
@@ -1794,30 +1794,30 @@ CANopen excels in robust, low-level control applications; careful engineering is
 \end{frame}
 
 %=========================================================
-\begin{frame}{Token ring and master--slave: operational meaning}
-  \justifying
-  \begin{block}{Token ring concept}
-  \begin{itemize}
-    \item Ensures access to the bus for each \textbf{master device} in a \textbf{predefined time window}.
-    \item The \textbf{token} is a special telegram distributed to other masters in a \textbf{maximum configurable period}.
-  \end{itemize}
-  \end{block}
+% \begin{frame}{Token ring and master--slave: operational meaning}
+%   \justifying
+%   \begin{block}{Token ring concept}
+%   \begin{itemize}
+%     \item Ensures access to the bus for each \textbf{master device} in a \textbf{predefined time window}.
+%     \item The \textbf{token} is a special telegram distributed to other masters in a \textbf{maximum configurable period}.
+%   \end{itemize}
+%   \end{block}
 
-  \begin{block}{Master--slave concept}
-  \begin{itemize}
-    \item The master in possession of the token can access:
-      \begin{itemize}
-        \item assigned slaves (passive stations), and
-        \item in general, other masters (FMS message handling).
-      \end{itemize}
-    \item The material notes practical limitations for some implementations:
-      \begin{itemize}
-        \item DP can operate with a \textbf{single master} (mono-master mode).
-        \item A cited ``Premium master module'' may not support master-to-master communication (FMS).
-      \end{itemize}
-  \end{itemize}
-  \end{block}
-\end{frame}
+%   \begin{block}{Master--slave concept}
+%   \begin{itemize}
+%     \item The master in possession of the token can access:
+%       \begin{itemize}
+%         \item assigned slaves (passive stations), and
+%         \item in general, other masters (FMS message handling).
+%       \end{itemize}
+%     \item The material notes practical limitations for some implementations:
+%       \begin{itemize}
+%         \item DP can operate with a \textbf{single master} (mono-master mode).
+%         \item A cited ``Premium master module'' may not support master-to-master communication (FMS).
+%       \end{itemize}
+%   \end{itemize}
+%   \end{block}
+% \end{frame}
 %=========================================================
 \begin{frame}{PPO concept- PROFIBUS-DP}
   \begin{center}
@@ -1855,7 +1855,7 @@ CANopen excels in robust, low-level control applications; careful engineering is
 %=========================================================
 \begin{frame}{PKW fields and read/write semantics}
 
-  \begin{block}{Terms defined in the material}
+  \begin{block}{Terms defined}
   \begin{itemize}
     \item \textbf{PKW} = Parameter--Kennung--Wert (Parameter--Address--Value)
     \item \textbf{PKE} = Parameter--Kennung (parameter address / identifier)
@@ -1992,28 +1992,28 @@ Given a required cycle time and a plant layout, choose (i) baud rate, (ii) segme
 
 %=========================================================
 
-\begin{frame}{INTERBUS at a Glance: What Problem Does It Solve?}
-\justifying
-    \begin{block}{Core idea (process automation perspective)}
-      \begin{itemize}
-        \item \textbf{Deterministic cyclic I/O scanning}: periodic exchange of sensor inputs and actuator outputs with bounded latency.
-        \item \textbf{Single master / many slaves}: a master orchestrates communication; field devices behave as slaves (stations).
-        \item \textbf{Two data classes in one system}:
-              \begin{itemize}
-                \item \textbf{Cyclic process data} for real-time control.
-                \item \textbf{Acyclic parameter/diagnostic data} for commissioning, maintenance, and service.
-              \end{itemize}
-        \item \textbf{Engineering goal}: predictable scan time, simple I/O mapping, scalable distributed wiring.
-      \end{itemize}
-    \end{block}
+% \begin{frame}{INTERBUS at a Glance: What Problem Does It Solve?}
+% \justifying
+%     \begin{block}{Core idea (process automation perspective)}
+%       \begin{itemize}
+%         \item \textbf{Deterministic cyclic I/O scanning}: periodic exchange of sensor inputs and actuator outputs with bounded latency.
+%         \item \textbf{Single master / many slaves}: a master orchestrates communication; field devices behave as slaves (stations).
+%         \item \textbf{Two data classes in one system}:
+%               \begin{itemize}
+%                 \item \textbf{Cyclic process data} for real-time control.
+%                 \item \textbf{Acyclic parameter/diagnostic data} for commissioning, maintenance, and service.
+%               \end{itemize}
+%         \item \textbf{Engineering goal}: predictable scan time, simple I/O mapping, scalable distributed wiring.
+%       \end{itemize}
+%     \end{block}
 
-    \begin{block}{Where it fits in an automation architecture}
-      \begin{itemize}
-        \item Typical stack: \textbf{PLC/Controller} $\rightarrow$ \textbf{Fieldbus} $\rightarrow$ \textbf{Remote I/O, sensors, actuators}.
-        \item Key design metric: \textbf{cycle time} (scan time) vs. \textbf{network size} (devices, I/O words).
-      \end{itemize}
-    \end{block}
-\end{frame}
+%     \begin{block}{Where it fits in an automation architecture}
+%       \begin{itemize}
+%         \item Typical stack: \textbf{PLC/Controller} $\rightarrow$ \textbf{Fieldbus} $\rightarrow$ \textbf{Remote I/O, sensors, actuators}.
+%         \item Key design metric: \textbf{cycle time} (scan time) vs. \textbf{network size} (devices, I/O words).
+%       \end{itemize}
+%     \end{block}
+% \end{frame}
 %=========================================================
 \begin{frame}{INTERBUS- history and ecosystem}
       \begin{center}
@@ -2113,7 +2113,7 @@ Given a required cycle time and a plant layout, choose (i) baud rate, (ii) segme
   \begin{column}{0.56\textwidth}
     \centering
     \includegraphics[width=0.8\linewidth]{fig/lec05/interbus_pcp.pdf}
-    \begin{block}{Extracted key points (from provided slide)}
+    \begin{block}{Extracted key points}
       \begin{itemize}
         \item Acyclic data is transmitted using \textbf{PCP}
         \item \textcolor{red}{PCP = Peripherals Communication Protocol}
@@ -2234,7 +2234,7 @@ MODBUS Ethernet TCP/IP uses TCP/IP and Ethernet 10 Mbps or 100 Mbps to carry the
 %========================================================
 % Slide 2: RS485 physical layer – what it implies for Modbus serial
 %========================================================
-\begin{frame}{Modbus on RS485: Physical Layer Essentials (What Students Must Remember)}
+\begin{frame}{Modbus on RS485: Physical Layer Essentials}
   \begin{itemize}
     \item \textbf{Medium:} \alert{Shielded twisted pair} (differential signalling $\Rightarrow$ noise immunity).
     \item \textbf{Topology:} \alert{Bus type} with tap links and \textbf{line terminators}
