@@ -1,0 +1,530 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Digital Signal Processing}
+% \newif%\ifshowsolutions
+% \showsolutionsfalse % <-- change to \showsolutionstrue to show
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Sampling}
+
+An analog signal composed of three sinusoidal components is given by
+\[
+x(t) = 3\sin(7\Omega_0 t) + 5\sin(5\Omega_0 t) + 7\sin(11\Omega_0 t).
+\]
+The signal is sampled to form a discrete-time signal.
+
+
+
+\subtask{What is the recommended sampling frequency for the given signal?}
+\begin{solutionblock}
+The given signal contains the angular frequencies
+\[
+5\Omega_0,\; 7\Omega_0,\; \text{and } 11\Omega_0.
+\]
+The highest angular frequency component is $11\Omega_0$.  
+According to the Nyquist sampling theorem, the sampling angular frequency must satisfy
+\[
+\Omega_s \geq 2 \times f_{\max} = 2 \times 11\Omega_0 = 22\Omega_0.
+\]
+Hence, the recommended sampling frequency is
+\[\Omega_s = 22\Omega_0 \text{ or higher}.\]
+\end{solutionblock}
+
+\subtask{Derive an expression for the discrete-time signal obtained after sampling.}
+\begin{solutionblock}
+Sampling the signal with sampling period $T_s = \frac{2\pi}{\Omega_s}$ gives the discrete-time signal
+\[
+x[n] = x(nT_s).
+\]
+Substituting $t = nT_s$ into $x(t)$,
+\[
+x[n] = 3\sin(7\Omega_0 nT_s) + 5\sin(5\Omega_0 nT_s) + 7\sin(11\Omega_0 nT_s).
+\]
+Equivalently, in terms of discrete-time angular frequencies,
+\[
+x[n] = 3\sin(\omega_1 n) + 5\sin(\omega_2 n) + 7\sin(\omega_3 n),
+\]
+where
+\[
+\omega_k = \Omega_k T_s.
+\]
+\end{solutionblock}
+
+\subtask{Explain the consequence of sampling the signal at a frequency of $10\Omega_0$.}
+\begin{solutionblock}
+If the signal is sampled at $\Omega_s = 10\Omega_0$, the sampling frequency is below the Nyquist rate since
+\[
+10\Omega_0 < 22\Omega_0.
+\]
+As a result, the frequency components above $\frac{\Omega_s}{2} = 5\Omega_0$ will alias into lower frequencies.
+In particular, the components at $7\Omega_0$ and $11\Omega_0$ will overlap with lower-frequency components in the discrete-time spectrum.
+This causes irreversible distortion, and the original analog signal cannot be perfectly reconstructed from the samples.
+
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{DFT and FFT Frequency Analysis}
+
+Consider the discrete-time signal
+\[
+x[n] = \sin\Big(\frac{2\pi}{8} n\Big) + 0.5 \sin\Big(\frac{4\pi}{8} n\Big), \quad n=0,1,\dots,7
+\]
+
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{task_6_2.pdf}
+\end{center}
+
+\subtask{Compute the Discrete Fourier Transform (DFT) \(X[k]\) of \(x[n]\) for \(k=0,1,\dots,7\), and identify the frequency components present in the signal.}
+\begin{solutionblock}
+    
+    The DFT is defined as
+\[
+X[k] = \sum_{n=0}^{7} x[n] e^{-j \frac{2\pi}{8} k n}, \quad k=0,1,\dots,7
+\]
+
+\textbf{Step 1: Compute signal samples}
+
+\[
+x[n] = \sin\Big(\frac{\pi}{4} n\Big) + 0.5 \sin\Big(\frac{\pi}{2} n\Big)
+\]
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$n$ & $\sin\left(\frac{\pi n}{4}\right)$ & $0.5 \sin\left(\frac{\pi n}{2}\right)$ & $x[n]$ \\
+\hline
+0 & 0       & 0     & 0       \\
+1 & 0.7071  & 0.5   & 1.2071  \\
+2 & 1       & 0     & 1       \\
+3 & 0.7071  & -0.5  & 0.2071  \\
+4 & 0       & 0     & 0       \\
+5 & -0.7071 & 0.5   & -0.2071 \\
+6 & -1      & 0     & -1      \\
+7 & -0.7071 & -0.5  & -1.2071 \\
+\hline
+\end{tabular}
+\caption{Discrete-time signal components and sum}
+\end{table}
+
+
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{task_6_2_solution_1.pdf}
+\end{center}
+
+
+\textbf{Step 2: Compute each DFT coefficient}
+
+\[
+\begin{aligned}
+X[0] &= \sum_{n=0}^{7} x[n] = 0 \\
+X[1] &\approx -4j \\
+X[2] &\approx -2.4142j \\
+X[3] &\approx 0 \\
+X[4] &= 0 \\
+X[5] &\approx 0 \\
+X[6] &\approx 2.4142j \\
+X[7] &\approx 4j
+\end{aligned}
+\]
+
+
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{task_6_2_solution_2.pdf}
+\end{center}
+
+\textbf{Step 3: Identify frequencies}
+
+Each DFT index corresponds to the discrete-time frequency
+\[
+\omega_k = \frac{2\pi}{N} k, \quad N=8
+\]
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$k$ & $X[k]$ & $\omega_k = \frac{2\pi k}{8}$ & Interpretation \\
+\hline
+0 & 0         & 0       & DC component \\
+1 & $-4j$     & $\pi/4$ & sinusoid at $\pi/4$ rad/sample (2$\pi$/8) \\
+2 & $-2.4142j$ & $\pi/2$ & sinusoid at $\pi/2$ rad/sample (4$\pi$/8) \\
+3 & $\sim 0$  & $3\pi/4$ & negligible \\
+4 & 0         & $\pi$   & Nyquist \\
+5 & 0         & $5\pi/4$ & negligible \\
+6 & $2.4142j$ & $3\pi/2$ & negative frequency of $\pi/2$ \\
+7 & $4j$      & $7\pi/4$ & negative frequency of $\pi/4$ \\
+\hline
+\end{tabular}
+\caption{DFT of $x[n]$ and interpretation of frequency components}
+\end{table}
+
+Note: The value of X[k] (e.g., -4j) gives amplitude and phase, 
+while k determines the frequency.
+
+\end{solutionblock}
+
+\subtask{FFT Computation of the 8-Point Signal}\\
+\begin{solutionblock}
+
+\[
+x = [0, 1.2071, 1, 0.2071, 0, -0.2071, -1, -1.2071].
+\]
+\\
+\textbf{Step 1: Split into even and odd indices}
+
+\[
+\begin{aligned}
+x_{\text{even}} &= [x[0], x[2], x[4], x[6]] = [0, 1, 0, -1] \\
+x_{\text{odd}}  &= [x[1], x[3], x[5], x[7]] = [1.2071, 0.2071, -0.2071, -1.2071]
+\end{aligned}
+\]
+\\
+\textbf{Step 2: Compute 4-point DFTs of even and odd parts}
+
+\[
+X_{\text{even}}[k] = \sum_{n=0}^{3} x_{\text{even}}[n] e^{-j2\pi kn/4}, \quad k=0,1,2,3
+\]
+
+\[
+\begin{aligned}
+X_{\text{even}}[0] &= 0 + 1 + 0 -1 = 0 \\
+X_{\text{even}}[1] &= -2j \\
+X_{\text{even}}[2] &= -2 \\
+X_{\text{even}}[3] &= 2j
+\end{aligned}
+\]
+
+\[
+X_{\text{odd}}[k] = \sum_{n=0}^{3} x_{\text{odd}}[n] e^{-j2\pi kn/4}, \quad k=0,1,2,3
+\]
+
+\[
+\begin{aligned}
+X_{\text{odd}}[0] &= 0 \\
+X_{\text{odd}}[1] &\approx -2j \\
+X_{\text{odd}}[2] &\approx 2 \\
+X_{\text{odd}}[3] &\approx 2j
+\end{aligned}
+\]
+\\
+\textbf{Step 3: Combine using twiddle factors}
+
+\[
+X[k] = X_{\text{even}}[k] + W_8^k X_{\text{odd}}[k], \quad k=0,1,2,3, \quad W_8 = e^{-j2\pi/8} = e^{-j\pi/4}
+\]
+
+\[
+\begin{aligned}
+X[0] &= 0 + 1\cdot 0 = 0 \\
+X[1] &\approx -2j + e^{-j\pi/8}(-2j) \approx -4j \\
+X[2] &\approx -2 + (e^{-j\pi/4})\cdot 2 = -4 \\
+X[3] &\approx 2j + (e^{-j3\pi/8})\cdot 2j \approx 0.2071 + \dots
+\end{aligned}
+\]
+\\
+\textbf{Step 4: Use symmetry for k = 4..7}
+
+\[
+X[k+4] = X_{\text{even}}[k] - W_8^k X_{\text{odd}}[k], \quad k=0,1,2,3
+\]
+\\
+
+\textbf{Step 5: Summary Table (Magnitude and Phase)}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+k & X[k] & $|X[k]|$ & Phase (rad) \\
+\hline
+0 & 0 & 0 & 0 \\
+1 & -4j & 4 & $-\pi/2$ \\
+2 & -2.4142j & 2.4142 & $-\pi/2$ \\
+3 & ~0 & 0 & 0 \\
+4 & 0 & 0 & 0 \\
+5 & 0 & 0 & 0 \\
+6 & 2.4142j & 2.4142 & $\pi/2$ \\
+7 & 4j & 4 & $\pi/2$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Observation:} FFT efficiently computes the same DFT as direct computation using divide-and-conquer and twiddle factors, reducing operations from $N^2 = 64$ to $N \log_2 N = 24$.
+    
+\end{solutionblock}
+\subtask{Draw FFT Flow Graph.}
+
+\begin{solutionblock}
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{Flow_graph_FFT.pdf}
+\end{center}
+\end{solutionblock}
+
+
+\subtask{Explain how the Fast Fourier Transform (FFT) could be used to compute the same DFT more efficiently and compare the number of operations.}
+
+\begin{solutionblock}
+
+- Direct DFT computation requires \(N^2 = 8^2 = 64\) complex multiplications.\\
+- Using the FFT reduces the operations to \(N \log_2 N = 8 \cdot 3 = 24\) complex multiplications.\\
+- The FFT exploits symmetry and periodicity of the DFT to compute the same frequency components much faster.\\
+The DFT identifies frequencies present in the signal by 
+projecting onto complex exponentials, and the FFT allows this 
+computation efficiently for larger signals.
+
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.3 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Discrete Time Systems}
+Develop an expression between the input and output of the
+following discrete-time systems. Also mention the type of system 
+and its order.
+\subtask{}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_6_3_1.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\begin{solutionblock}
+    First-Order Feedback System:\\
+    This is a recursive system where the output is fed back into the input.
+
+\begin{itemize}
+    \item \textbf{Summing Junction}: The output \( y[n] \) is the sum of the input \( x[n] \) and the feedback signal.
+    \item \textbf{Feedback Path}: The output \( y[n] \) is delayed by one unit to produce \( y[n-1] \), which is then multiplied by a gain \( a \).
+\end{itemize}
+
+The resulting difference equation is
+\[
+y[n] = x[n] + \alpha\,y[n-1].
+\]
+\end{solutionblock}
+
+
+\subtask{}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_6_3_2.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\begin{solutionblock}
+The system can be analyzed entirely in the time domain by tracing the signals through the block diagram.
+
+Let \( v[n] \) denote the signal immediately after the first summing junction.\\
+
+\subsubsection*{Step 1: Internal Signal}
+
+The signal \( v[n] \) is formed by summing the input and the feedback signal.  
+The feedback signal is obtained by delaying \( v[n] \) by one sample and multiplying by the gain \( a \).
+
+\[
+\boxed{v[n] = x[n] + \alpha\,v[n-1]}
+\]
+\hfill (Equation A)
+
+\subsubsection*{Step 2: Output Signal}
+
+The output \( y[n] \) is formed by summing the current value of \( v[n] \) and a feedforward term consisting of a delayed version of \( v[n] \) multiplied by the gain \( b \).
+
+\[
+\boxed{y[n] = v[n] + \beta\,v[n-1]}
+\]
+\hfill (Equation B)
+\subsubsection*{Step 3: Elimination of the Internal Signal}
+
+To obtain a direct relationship between \( y[n] \) and \( x[n] \), we eliminate \( v[n] \).
+
+From Equation B, shift by one time step:
+\[
+y[n-1] = v[n-1] + \beta\,v[n-2]
+\]
+Multiplying by $\alpha$:
+\[
+\alpha\,y[n-1] = \alpha\,v[n-1] + \alpha\,\beta\,v[n-2]
+\]
+
+Subtracting the above two equations we get:
+\[
+y[n] - \alpha\,y[n-1]= v[n] + \beta\,v[n-1] - \alpha\,v[n-1] - \alpha\,\beta\,v[n-2]
+\]
+Rearranging,
+\[
+y[n] - \alpha\,y[n-1]= v[n] - \alpha\,v[n-1] + \beta\,(v[n-1]  - \alpha\,v[n-2])
+\]
+
+
+Using Equation A, the delayed internal signal is:
+\[
+v[n-1] = x[n-1] + \alpha\,v[n-2]
+\]
+
+Substituting and rearranging terms leads to the input--output difference equation:
+\[
+\boxed{y[n] - \alpha\,y[n-1] = x[n] + \beta\,x[n-1]}
+\]
+
+\end{solutionblock}
+
+
+\subtask{}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{task_6_3_3.pdf}
+    % \caption{Logic Circuit}
+\end{figure}
+\begin{solutionblock}
+    Second Order FIR System.\\
+    This is a feedforward (Finite Impulse Response) system, where the output depends only on the current and past values of the input.
+
+\begin{itemize}
+    \item \textbf{Path 1}: The current input \( x[n] \) is multiplied by \( b_0 \).
+    \item \textbf{Path 2}: The input is delayed once to obtain \( x[n-1] \) and multiplied by \( b_1 \).
+    \item \textbf{Path 3}: The input is delayed twice to obtain \( x[n-2] \) and multiplied by \( b_2 \).
+\end{itemize}
+
+The resulting difference equation is
+\[
+y[n] = b_0 x[n] + b_1 x[n-1] + b_2 x[n-2].
+\]
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.4 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Discrete-Time Fourier Transform (DTFT)}
+
+Compute the DTFTs of the following discrete-time signals using the Fourier transform analysis equation
+\[
+X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n] e^{-j \omega n}.
+\]
+
+\subtask{$x[n] = \left(\frac{1}{2}\right)^{n-1} u[n-1]$}
+\begin{solutionblock}
+
+\[
+x[n] =
+\begin{cases}
+\left(\frac{1}{2}\right)^{n-1}, & n \ge 1 \\
+0, & n < 1
+\end{cases}
+\]
+
+Apply the DTFT definition:
+\[
+X_a(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n] e^{-j \omega n} = \sum_{n=1}^{\infty} \left(\frac{1}{2}\right)^{n-1} e^{-j \omega n}.
+\]
+
+Factor out $2 = \left(\frac{1}{2}\right)^{-1}$:
+\[
+X_a(e^{j\omega}) = 2 \sum_{n=1}^{\infty} \left(\frac{1}{2} e^{-j\omega}\right)^n.
+\]
+
+Geometric Series:
+\[
+\sum_{n=1}^{\infty} r^n = \frac{r}{1-r}, \quad |r|<1, \quad r = \frac{1}{2} e^{-j\omega}.
+\]
+
+Thus,
+\[
+X_a(e^{j\omega}) = 2 \cdot \frac{\frac{1}{2} e^{-j \omega}}{1 - \frac{1}{2} e^{-j\omega}} = \frac{e^{-j\omega}}{1 - \frac{1}{2} e^{-j\omega}}.
+\]
+
+\[
+\boxed{X_a(e^{j\omega}) = \frac{e^{-j\omega}}{1 - \frac{1}{2} e^{-j\omega}}}
+\]
+\end{solutionblock}
+
+\subtask{$x[n] = \left(\frac{1}{2}\right)^{|n|}$}
+\begin{solutionblock}
+
+\[
+x[n] =
+\begin{cases}
+\left(\frac{1}{2}\right)^n, & n \ge 0 \\
+2^n, & n < 0
+\end{cases}
+\]
+
+Apply the DTFT definition:
+\[
+X_b(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n] e^{-j \omega n} 
+= \sum_{n=0}^{\infty} \left(\frac{1}{2}\right)^n e^{-j \omega n} + \sum_{n=-\infty}^{-1} 2^n e^{-j \omega n}.
+\]
+
+Compute each sum.
+
+\textit{Positive $n \ge 0$:}
+\[
+\sum_{n=0}^{\infty} \left(\frac{1}{2} e^{-j\omega}\right)^n = \frac{1}{1 - \frac{1}{2} e^{-j\omega}}, \quad \left| \frac{1}{2} e^{-j\omega} \right| < 1.
+\]
+
+\textit{Negative $n < 0$, let $m = -n$:}
+\[
+\sum_{n=-\infty}^{-1} 2^n e^{-j \omega n} = \sum_{m=1}^{\infty} 2^{-m} e^{j\omega m} = \sum_{m=1}^{\infty} \left(\frac{1}{2} e^{j\omega}\right)^m = \frac{\frac{1}{2} e^{j\omega}}{1 - \frac{1}{2} e^{j\omega}}.
+\]
+
+Combine sums:
+\[
+X_b(e^{j\omega}) = \frac{1}{1 - \frac{1}{2} e^{-j\omega}} + \frac{\frac{1}{2} e^{j\omega}}{1 - \frac{1}{2} e^{j\omega}}.
+\]
+
+\[
+\boxed{X_b(e^{j\omega}) = \frac{1}{1 - \frac{1}{2} e^{-j\omega}} + \frac{\frac{1}{2} e^{j\omega}}{1 - \frac{1}{2} e^{j\omega}}}
+\]
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.5 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{FIR Filter Design Analysis}
+
+A digital communication system requires a low-pass FIR filter to isolate a baseband signal. The design specifications are:
+
+\begin{itemize}
+    \item \textbf{Passband Edge Frequency:} $f_p = 4~\text{kHz}$
+    \item \textbf{Stopband Begin Frequency:} $f_c = 6~\text{kHz}$
+    \item \textbf{Sampling Frequency:} $f_s = 20~\text{kHz}$
+    \item \textbf{Maximum Passband Ripple:} $\delta_1 = 0.01$
+    \item \textbf{Minimum Stopband Attenuation:} $\delta_2 = 0.001$
+\end{itemize}
+
+\subtask{Transition Band Width}
+\begin{solutionblock}
+The transition band is the frequency region between $f_p$ and $f_c$.
+
+\begin{itemize}
+    \item \textbf{Frequency width:} 
+    \[
+    \Delta f = f_c - f_p = 6~\text{kHz} - 4~\text{kHz} = 2~\text{kHz}
+    \]
+    
+    \item \textbf{Normalized width (radians/sample):} 
+    \[
+    \Delta \omega = 2\pi \frac{\Delta f}{f_s} = 2\pi \frac{2000}{20000} = 0.2\pi~\text{rad/sample}
+    \]
+    
+\end{itemize}
+\end{solutionblock}
+
+\subtask{Ripple Ratio Calculation}
+\begin{solutionblock}
+The ripple ratio is determined from the maximum passband ripple $\delta_1$ and the minimum stopband attenuation $\delta_2$:
+
+\[
+\text{Ripple Ratio} = \frac{\delta_2}{\delta_1} = \frac{0.001}{0.01} = 0.1
+\]
+
+\end{solutionblock}
+

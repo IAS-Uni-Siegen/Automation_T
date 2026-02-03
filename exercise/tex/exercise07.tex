@@ -1,0 +1,232 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Industrial Communication}
+% \newif%\ifshowsolutions
+% \showsolutionsfalse % <-- change to \showsolutionstrue to show
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{RS 232 Serial Link}
+
+Two digital automation devices communicate via an asynchronous
+serial link according to RS 232 (CCITT V.24) with a transmission
+speed of 19.2 kBaud. The interface chips in both devices (UART
+= Universal Asynchronous Receiver/Transmitter) produce an interrupt
+to the CPU after receipt of a character (not of a bit!), so
+that the CPU can read the character from the receive buffer. 
+Afterwards the chip receives the next character.\\
+
+Data of the transmission link:\\
+\[
+v_\text{kom} = 19,2~\text{kBaud}; \quad \text{UART character format: 8 Data bits, Parity even, 1 Stop bit}
+\]
+
+
+\subtask{In which time interval is the CPU interrupted by the serial interface?}
+\begin{solutionblock}
+
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{task_7_1_1.pdf}
+\end{center}
+
+    Number of bits per character:
+\[
+1~\text{Start bit} + 8~\text{Data bits} + 1~\text{Parity bit} + 1~\text{Stop bit} = 11~\text{bits}
+\]
+
+\medskip
+\[
+\text{Number of bits per character: } 11 \text{ bits}
+\]
+\[
+T_s = \frac{1}{v_\text{kom}} = \frac{1}{19,200} \approx 52.08~\mu\text{s per bit}
+\]
+\[
+\text{Time per character } = 11 \cdot T_s \approx 573~\mu\text{s}
+\]
+
+\end{solutionblock}
+
+
+\subtask{Please draw the logical state of the transmission channel as a function of time for the transmission of the characters "5" and "A" in ASCII representation (Hex 35 and 41).}
+
+\begin{solutionblock}
+    \begin{center}
+    \includegraphics[width=0.6\textwidth]{task_7_1_2.pdf}
+\end{center}
+    
+\end{solutionblock}
+\subtask{How does the voltage on the transmit line look like as a function of time in this data transmission?}
+\begin{solutionblock}
+    \begin{center}
+    \includegraphics[width=0.6\textwidth]{task_7_1_3.pdf}
+\end{center}
+    
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{RS485 Transmission}
+
+On a RS-485 transmission network the text string ``Automation exercise run'' 
+is transmitted with a transmission speed of $500~\text{kBaud}$ asynchronously 
+using UART characters.\\
+\textbf{Definition of the characters:} 
+8 Data bits, parity even, 1 stop bit (PROFIBUS conform).
+Telegram propagation delay as well as software processing time 
+are not to be considered.\\
+
+\subtask{No protocol overhead is to be assumed, i.e., exclusively user 
+data are transmitted. How long does the transmission of a string last? 
+How often can this text string be transmitted continuously in one second?}
+\begin{solutionblock}
+
+Number of bits per character (UART format: 8 data bits, parity even, 1 stop bit): 
+\[
+11~\text{bits per character}.
+\]
+
+The string ``Automation exercise run'' has 23 characters.  
+
+Transmission speed: $R = 500{,}000~\text{bits/sec}$.
+
+Time per string:
+\[
+T_s = \frac{\text{Total bits}}{R} = \frac{23 \cdot 11}{500{,}000} = \frac{253}{500{,}000} \approx 0.000506~\text{sec} = 506~\mu\text{s}.
+\]
+
+Number of transmissions per second:
+\[
+f_\text{transmit} = \frac{1}{T_s} \approx \frac{1}{0.000506} \approx 1976~\text{times/sec}.
+\]
+\end{solutionblock}
+
+\subtask{Now the PROFIBUS telegram SD2 is used. Before the send telegram 
+the SYN time has to be awaited. As response a short acknowledge is to be 
+taken into account. Per text string one such communication cycle is used. 
+How many telegrams can be transmitted in one second?}
+\begin{solutionblock}
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{telegram_SD2.pdf}
+\end{center}
+
+We have:  
+- 23 payload characters,\\  
+- 9 level 2 protocol characters,\\
+- 33 bits for SYN,\\
+- 1 short acknowledge character.\\
+
+Total bits per transmission:
+\[
+N_\text{bits} = (23+9)\cdot 11 + 33 + 11
+\]
+
+Transmission time:
+\[
+R_{SD2} = \frac{500,000 bits}{N_\text{bits}} = \frac{500{,}000}{(23+9)\cdot 11 + 33 + 11} \approx 1262~\mathrm{{s}^{-1}}.
+\]
+\end{solutionblock}
+
+\subtask{Now assume that a PROFIBUS master requests the telegram by 
+polling with a SD1 telegram from a slave. The slave responds with a 
+SD2 telegram. How many response telegrams can be transmitted in one 
+second?}
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{telegram_SD1.pdf}
+\end{center}
+\begin{solutionblock}
+
+We have:  
+- 33 bits SYN,  
+- 611 bits for SD1+SD2 headers,  
+- (23+9) characters payload.  
+
+Total bits per transmission:
+\[
+N_\text{bits} = 33 + 6\cdot11 + (23+9)\cdot 11
+\]
+
+Transmission time:
+\[
+R = \frac{500,000 bits}{N_\text{bits}} \approx 1108.7~\mathrm{s}^{-1}.
+\]
+\end{solutionblock}
+
+\subtask{How big is the protocol overhead in the cases 2 and 3?}
+\begin{solutionblock}
+\textbf{Case 2 (SD2 only):}  
+\[
+\text{Overhead fraction} = \frac{9+3+1}{23+9+3+1} \approx 36.1\%
+\]
+
+\textbf{Case 3 (SD1 request + SD2 response):}  
+\[
+\text{Overhead fraction} = \frac{3+6+9}{3+6+(23+9)} \approx 43.9\%
+\]
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6.3 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Calculation of Delay and Offset for Synchronization of Real Time Clocks}
+A slave clock is $50~\mu\text{s}$ later compared to a master clock. When
+the master has $T_{M1} = 1051~\mu\text{s}$ on his clock, he sends a Sync telegram
+to the slave. When the slave is reading $T_{S1} = 1002~\mu\text{s}$ on his clock,
+he receives the Sync telegram. The master reports the exact
+sending time with a Follow Up telegram, namely $T_{M1} = 1051~\mu\text{s}$. The
+slave now sets his clock ahead by the difference $T_{M1} - T_{S1} = 49~\mu\text{s}.$
+
+
+\subtask{Are the clocks synchronized now or is there still an error existing?}\\
+Shortly later the master sends a new Sync telegram at $T_{M2} = 1063~\mu\text{s}.$
+\begin{solutionblock}
+    No, clocks are not syncronized. Slave was originally behind the master clock by
+    $50\mu s$ and it corrected $49\mu s$. There is still $1\mu s$ error left.
+\end{solutionblock}
+\subtask{At which time on the slave clock $T_{S2}$ is the slave receiving
+the telegram?}\\
+Now the slave is sending a Delay Request to the master. Sending
+time is $T_{S3} = 1080~\mu\text{s}.$ Symmetry is assumed.
+\begin{solutionblock}
+    Propogation delay: Time taken for Sync to travel from master to slave.
+    \[\text{delay} = T_{S1} - \left(T_{M1} - \text{Offset} \right)\]
+    \[\text{delay} = 1 \mu s\]
+
+    \[T_{S2} = T_{M2} + \text{delay} - \text{Corrected\_Offset}\]
+    \[T_{S2} = 1063 + 1 - 1\]
+    \[T_{S2} = 1063 \mu s\]
+
+\end{solutionblock}
+
+\subtask{At which time $T_{M3}$ does the master receive the request?}\\
+\begin{solutionblock}
+
+
+    \[T_{S3} = T_{M2} + \text{delay} + \text{Corrected\_Offset}\]
+    \[T_{S3} = 1080 + 1 1 1\]
+    \[T_{S3} = 1082 \mu s\]
+
+\end{solutionblock}
+
+\subtask{What can be calculated by the slave after receiving the
+Delay Response?}\\
+\begin{solutionblock}
+    Slave calculates the network delay from the DelayReq. and DelayResp.
+\end{solutionblock}
+
+\subtask{Why is no Follow Up telegram needed after the Delay Request?}\\
+\begin{solutionblock}
+    No Follow-Up needed after the delay request because after the DelayResp. 
+    clocks are synchronized as network delay is also corrected by the slave 
+    clock.\\
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{task_7_3.pdf}
+\end{center}
+\end{solutionblock}
