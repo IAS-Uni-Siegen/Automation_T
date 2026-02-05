@@ -30,7 +30,8 @@
 lecture/*.pdf
 exercise/*.pdf
 exam/summer2024/*.pdf
-exam/files/
+exam/files/*.pdf
+exam/files/*.docx
 Calender_and_plan
 Books_and_references
 lecture\fig\TB_11_oct
