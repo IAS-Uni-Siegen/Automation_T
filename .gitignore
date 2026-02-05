@@ -24,7 +24,7 @@
 # *.pdf
 
 ## Exclude folder
-exam/files/
+exam/files
 
 
 ## Generated lecture slide PDFs
