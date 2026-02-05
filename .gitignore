@@ -24,7 +24,7 @@
 # *.pdf
 
 ## Exclude folder
-exam/
+exam/winter2025_26_BS
 
 ## Generated lecture slide PDFs
 lecture/*.pdf
