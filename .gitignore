@@ -23,6 +23,9 @@
 # *.eps
 # *.pdf
 
+## Exclude folder
+exam
+
 ## Generated lecture slide PDFs
 lecture/*.pdf
 exercise/*.pdf
