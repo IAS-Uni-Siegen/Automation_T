@@ -1,1705 +1,2051 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Processor Technologies in Automation Systems %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Processor Technologies in Automation Systems}
 \title[Processor Technologies in Automation Systems]{Processor Technologies in Automation Systems}  
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Programmable Logic Controllers (PLCs)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[plain]
-    \titlepage
-\end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Types of Processors used in Automation Systems %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Types of Processors used in Automation Systems}
-    What is a Processor?
-    \begin{itemize}
-        \item A processor is an electronic component that executes instructions to perform tasks.
-        \item It serves as the "brain" of an automation system, processing data and controlling operations.
-        \item Processors can vary in complexity, speed, and functionality depending on the application.
-        \item They are essential for executing control algorithms, managing communication, and interfacing with sensors and actuators.
-    \end{itemize}
-Types of Processors:
-    \begin{itemize}
-        \item Microcontrollers (MCUs)
-        \item Digital Signal Processors (DSPs)
-        \item Field-Programmable Gate Arrays (FPGAs)
-        \item Application-Specific Integrated Circuits (ASICs)
-        \item Programmable Logic Controllers (PLCs)
-    \end{itemize}
-
+	What is a Processor?
+	\begin{itemize}
+		\item A processor is an electronic component that executes instructions to perform tasks.
+		\item It serves as the "brain" of an automation system, processing data and controlling operations.
+		\item Processors can vary in complexity, speed, and functionality depending on the application.
+		\item They are essential for executing control algorithms, managing communication, and interfacing with sensors and actuators.
+	\end{itemize}
+	Types of Processors:
+	\begin{itemize}
+		\item Microcontrollers (MCUs)
+		\item Digital Signal Processors (DSPs)
+		\item Field-Programmable Gate Arrays (FPGAs)
+		\item Application-Specific Integrated Circuits (ASICs)
+		\item Programmable Logic Controllers (PLCs)
+	\end{itemize}
 \end{frame}
 
-
-\begin{frame}
-    \begin{center}
-            \Large{Programmable Logic Controllers (PLCs)}
-    \end{center}
-\end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Interface of Automation Device - Process %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Interface of Automation Device - Process}
-\centering
-\includegraphics[scale=0.4]{fig/lec04/Interface_Automation_Device-Process.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.4]{fig/lec04/Interface_Automation_Device-Process.pdf}
+		\caption{Interface Automation Device - Process}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Introduction to basics of Industrial Automation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Introduction to basics of Industrial Automation}
-\textbf{Terms}
-\begin{enumerate}
-    \item \textbf{Logic Control} -  assigns certain logic states of the output signals to certain states of the
- input signals with the help of boolean operations.
-    \item \textbf{Sequence Control} - a control method with an inevitably stepwise sequence, in which the
- transition from one step to the following step(s) according to the program takes place
- depending of transition conditions.
-    \item \textbf{Program of a Control} - Complete set of instructions and declarations to process signals and 
-control a system (or plant) so it behaves as required.
-\end{enumerate}
-\textit{Remark}: This definition is valid independently of the signal processing being
- connection oriented or memory programmed.
+	\textbf{Terms}
+	\begin{enumerate}
+		\item \textbf{Logic Control} -  assigns certain logic states of the output signals to certain states of the
+		input signals with the help of boolean operations.
+		\item \textbf{Sequence Control} - a control method with an inevitably stepwise sequence, in which the
+		transition from one step to the following step(s) according to the program takes place
+		depending of transition conditions.
+		\item \textbf{Program of a Control} - Complete set of instructions and declarations to process signals and 
+		control a system (or plant) so it behaves as required.
+	\end{enumerate}
+	\textit{Remark}: This definition is valid independently of the signal processing being
+	connection oriented or memory programmed.
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Different Possibilities of Program Realization %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Different Possibilities of Program Realization}
-\centering
-\includegraphics[scale=0.5]{fig/lec04/program_realization.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/program_realization.pdf}
+		\caption{Classification of Automation System}  
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definitions regarding program implementation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Definitions regarding program implementation}
-\begin{enumerate}
-    \item \textbf{Connection oriented control} - control program is defined by the
-    type of the functional units and by their  connections.
-    \begin{itemize}
-        \item \textbf{Control with fixed program} - a connection oriented control, where program
-        modifications are not planned.
-        \item \textbf{Reprogrammable control} - a connection oriented control, where program
-        modifications are provided for and are easy to carry out.
-    \end{itemize}
-
-    \item \textbf{Programmable logic control} - control program is stored in a
-    program memory.
-    \begin{itemize}
-        \item \textbf{Freely programmable control} - a programmable logic control with read/write
-        memory (RAM) as programm memory, whose entire content can be modified even in
-        arbitrarily small extent without mechanical intervention into the control device.
-        \item \textbf{Control with replaceable program} - a programmable logic control with read-only
-        memory (ROM) as program memory, whose content can be modified after programming being once completed 
-        only by a mechanical intervention into the control device.
-    \end{itemize}
-\end{enumerate}
+	\begin{enumerate}
+		\item \textbf{Connection oriented control} - control program is defined by the
+		type of the functional units and by their  connections.
+		\begin{itemize}
+			\item \textbf{Control with fixed program} - a connection oriented control, where program
+			modifications are not planned.
+			\item \textbf{Reprogrammable control} - a connection oriented control, where program
+			modifications are provided for and are easy to carry out.
+		\end{itemize}
+		\item \textbf{Programmable logic control} - control program is stored in a
+		program memory.
+		\begin{itemize}
+			\item \textbf{Freely programmable control} - a programmable logic control with read/write
+			memory (RAM) as programm memory, whose entire content can be modified even in
+			arbitrarily small extent without mechanical intervention into the control device.
+			\item \textbf{Control with replaceable program} - a programmable logic control with read-only
+			memory (ROM) as program memory, whose content can be modified after programming being once completed 
+			only by a mechanical intervention into the control device.
+		\end{itemize}
+	\end{enumerate}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hierarchical arrangement of an Automation System %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Hierarchical arrangement of an Automation System}
-\centering
-\includegraphics[scale=0.4]{fig/lec04/hierarchical_arrangement.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.4]{fig/lec04/hierarchical_arrangement.pdf}
+		\caption{Hierarchical arrangement of an Automation System}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definitions regarding control hierarchy %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Definitions regarding control hierarchy}
-\begin{enumerate}
-    \item \textbf{Individual control, drive control} – a functional unit for the control of a 
-    single control element or a drive.
-    \begin{itemize}
-        \item \textbf{Individual control level, drive control level} – summarizes all parts 
-        of a control system that act directly on the process 
-        by means of final control elements or drives.
-    \end{itemize}
-
-    \item \textbf{Group control} – a functional unit for the control of a 
-    coherent process part, which is above associated individual or drive controls.
-    \begin{itemize}
-        \item \textbf{Group control level} – summarizes all parts of 
-        the control unit that act on certain partitions of the individual control level.  
-    \end{itemize}
-
-    \item \textbf{Process control} – a functional unit above the 
-    the group controls responsible for the control of the entire process.
-    \begin{itemize}
-        \item \textbf{Process control level} – summarizes all parts of 
-        the control unit that act on the group control level.
-    \end{itemize}
-\end{enumerate}
+	\begin{enumerate}
+		\item \textbf{Individual control, drive control} – a functional unit for the control of a 
+		single control element or a drive.
+		\begin{itemize}
+			\item \textbf{Individual control level, drive control level} – summarizes all parts 
+			of a control system that act directly on the process 
+			by means of final control elements or drives.
+		\end{itemize}
+		\item \textbf{Group control} – a functional unit for the control of a 
+		coherent process part, which is above associated individual or drive controls.
+		\begin{itemize}
+			\item \textbf{Group control level} – summarizes all parts of 
+			the control unit that act on certain partitions of the individual control level.  
+		\end{itemize}
+		\item \textbf{Process control} – a functional unit above the 
+		the group controls responsible for the control of the entire process.
+		\begin{itemize}
+			\item \textbf{Process control level} – summarizes all parts of 
+			the control unit that act on the group control level.
+		\end{itemize}
+	\end{enumerate}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Software of PLC devices %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Software of PLC devices}
-    \textbf{Organization of operational software}\\
-    For structuring of the software in PLC devices so called blocks or program organization
-    entities (POEs) are employed. 
-    The block types are separated into
-    \begin{itemize}
-        \item  Organizational blocks (OB)
-        \item Function blocks (FB) and functions (FC)
-        \item Data blocks (DB)
-        \item System functions (SFC) and system function blocks (SFB)
-    \end{itemize}
-    A block is a part of the application program grouped by function, structure, 
-    or purpose. There are:
-    \begin{itemize}
-      \item Code blocks (OBs, FCs, FBs) that contain instructions for data processing
-      \item Data blocks (DBs) that store data
-    \end{itemize}
-    Some organizational blocks (OBs) form the interface between the application program and 
-    the system program. They are triggered by the system and contain user-written code. 
-    By placing code in specific OBs, the user determines whether it runs cyclically, on a 
-    timer, or in response to an alarm.
+	\textbf{Organization of operational software}\\
+	For structuring of the software in PLC devices so called blocks or program organization
+	entities (POEs) are employed. 
+	The block types are separated into
+	\begin{itemize}
+		\item  Organizational blocks (OB)
+		\item Function blocks (FB) and functions (FC)
+		\item Data blocks (DB)
+		\item System functions (SFC) and system function blocks (SFB)
+	\end{itemize}
+	A block is a part of the application program grouped by function, structure, 
+	or purpose. There are:
+	\begin{itemize}
+		\item Code blocks (OBs, FCs, FBs) that contain instructions for data processing
+		\item Data blocks (DBs) that store data
+	\end{itemize}
+	Some organizational blocks (OBs) form the interface between the application program and 
+	the system program. They are triggered by the system and contain user-written code. 
+	By placing code in specific OBs, the user determines whether it runs cyclically, on a 
+	timer, or in response to an alarm.
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Program Blocks Overview %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Program Blocks Overview}
-\begin{enumerate}
-    \item \textbf{Organizational Blocks (OBs)}  
-    Interface between system program and application program. They are called by the operating system and determine:
-    cyclical and alarm-controlled execution, startup behavior, error handling.
-    OBs are divided into:
-    \begin{itemize}
-        \item \textbf{System-called OBs}: control program flow, startup, and error response; user programs these.
-        \item \textbf{Integrated special functions}: built-in system functions called when needed by the application.
-    \end{itemize}
-
-    \item \textbf{Functions (FCs)}  
-    Code blocks \emph{without memory}. They are parameterizable and return a value to the calling block.
-
-    \item \textbf{Function Blocks (FBs)}  
-    Code blocks \emph{with memory}. Used for recurring or complex tasks (e.g., digital logic, sequences, closed-loop control). They can be called multiple times with different parameters.
-
-    \item \textbf{Data Blocks (DBs)}  
-    Contain fixed or variable data used by the program. They hold no executable code. Data may include:
-    bit patterns, numeric values, text, various data types.
-
-    \item \textbf{System Functions (SFCs) and System Function Blocks (SFBs)}  
-    Prefabricated operating-system blocks for tasks such as communication or built-in system operations.
-\end{enumerate}
+	\begin{enumerate}
+		\item \textbf{Organizational Blocks (OBs)}  
+		Interface between system program and application program. They are called by the operating system and determine:
+		cyclical and alarm-controlled execution, startup behavior, error handling.
+		OBs are divided into:
+		\begin{itemize}
+			\item \textbf{System-called OBs}: control program flow, startup, and error response; user programs these.
+			\item \textbf{Integrated special functions}: built-in system functions called when needed by the application.
+		\end{itemize}
+		\item \textbf{Functions (FCs)}  
+		Code blocks \emph{without memory}. They are parameterizable and return a value to the calling block.
+		\item \textbf{Function Blocks (FBs)}  
+		Code blocks \emph{with memory}. Used for recurring or complex tasks (e.g., digital logic, sequences, closed-loop control). They can be called multiple times with different parameters.
+		\item \textbf{Data Blocks (DBs)}  
+		Contain fixed or variable data used by the program. They hold no executable code. Data may include:
+		bit patterns, numeric values, text, various data types.
+		\item \textbf{System Functions (SFCs) and System Function Blocks (SFBs)}  
+		Prefabricated operating-system blocks for tasks such as communication or built-in system operations.
+	\end{enumerate}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Raw structuring of programs %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Raw structuring of programs}
-    \centering
-    \includegraphics[scale=0.6]{fig/lec04/program_structure.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/program_structure.pdf}
+		\caption{Raw Structuring of the User Program Following to the Program Structure}
+	\end{figure}    
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Process Image Table %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Process Image Table}
-    \textbf{Process Image of Inputs (PII)}
-    \begin{itemize}
-        \item At the start of every cycle, all input states are scanned.
-        \item These values are stored in the Process Image Input table.
-        \item During program execution, the PLC uses the stored values.
-        \item Ensures consistent input data throughout the cycle.
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \textbf{Process Image of Outputs (PIO)}
-    \begin{itemize}
-        \item Output values written by the program are stored in the PIO table.
-        \item At the end of the cycle, the table is copied to actual outputs.
-        \item Then a new cycle begins.
-    \end{itemize}
+	\textbf{Process Image of Inputs (PII)}
+	\begin{itemize}
+		\item At the start of every cycle, all input states are scanned.
+		\item These values are stored in the Process Image Input table.
+		\item During program execution, the PLC uses the stored values.
+		\item Ensures consistent input data throughout the cycle.
+	\end{itemize}
+	\vspace{0.3cm}
+	\textbf{Process Image of Outputs (PIO)}
+	\begin{itemize}
+		\item Output values written by the program are stored in the PIO table.
+		\item At the end of the cycle, the table is copied to actual outputs.
+		\item Then a new cycle begins.
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Cyclic Processing in PLC}
-    \begin{columns}
-    \column{0.5\textwidth}
-    In a programmable logic controller (PLC), the program usually runs in a cycle (loop).
-    \begin{itemize}
-        \item PLC programs normally run in a \textbf{cyclic loop}.
-        \item After switching on, the PLC executes a \textbf{start-up block} once.
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \textbf{Cyclic Program Scan}
-    \begin{enumerate}
-        \item Start at the \textbf{top of the main program} (e.g., Siemens: OB1).
-        \item Execute each instruction \textbf{sequentially} to the end.
-        \item Run internal \textbf{system routines}.
-        \item Restart from the \textbf{top of the program}.
-    \end{enumerate}
-
-    \vspace{0.3cm}
-
-    \column{0.5\textwidth}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/cyclical_processing.pdf}
-    \end{columns}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cyclic Processing in PLC (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cyclic Processing in PLC (1)}
+	\begin{columns}
+		\column{0.5\textwidth}
+			In a programmable logic controller (PLC), the program usually runs in a cycle (loop).
+			\begin{itemize}
+				\item PLC programs normally run in a \textbf{cyclic loop}.
+				\item After switching on, the PLC executes a \textbf{start-up block} once.
+			\end{itemize}
+			\vspace{0.3cm}
+			\textbf{Cyclic Program Scan}
+			\begin{enumerate}
+				\item Start at the \textbf{top of the main program} (e.g., Siemens: OB1).
+				\item Execute each instruction \textbf{sequentially} to the end.
+				\item Run internal \textbf{system routines}.
+				\item Restart from the \textbf{top of the program}.
+			\end{enumerate}
+			\vspace{0.3cm}
+		\column{0.5\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[scale=0.5]{fig/lec04/cyclical_processing.pdf}
+				\caption{Cyclical Processing}
+			\end{figure}
+	\end{columns}
 \end{frame}
 
-
-\begin{frame}{Cyclic Processing in PLC}
-    \textbf{Program Blocks}
-    \begin{itemize}
-        \item Functions and function blocks can be called inside the main block.
-        \item Nested calls are possible (depth depends on the PLC manufacturer).
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \textbf{Processing Time (Scan Time)}
-    \begin{itemize}
-        \item Total cycle time = sum of processing times of all called blocks. \\
-        $T_{cyc} = T_{read\_PII} + T_{exec\_prog} + T_{write\_PIO} + T_{overhead}$ \\
-        where, $T_{exec\_prog}$ = sum of execution times of all blocks called in the cycle, $T_{read\_PII}$ = time to read process image of inputs, $T_{write\_PIO}$ = time to write process image of outputs, $T_{overhead}$ = additional overhead time.
-        \item If a block is called $n$ times, its time is counted $n$ times.
-    \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cyclic Processing in PLC (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cyclic Processing in PLC (2)}
+	\textbf{Program Blocks}
+	\begin{itemize}
+		\item Functions and function blocks can be called inside the main block.
+		\item Nested calls are possible (depth depends on the PLC manufacturer).
+	\end{itemize}
+	\vspace{0.3cm}
+	\textbf{Processing Time (Scan Time)}
+	\begin{itemize}
+		\item Total cycle time = sum of processing times of all called blocks. \\
+		$T_{cyc} = T_{read\_PII} + T_{exec\_prog} + T_{write\_PIO} + T_{overhead}$ \\
+		where, $T_{exec\_prog}$ = sum of execution times of all blocks called in the cycle, $T_{read\_PII}$ = time to read process image of inputs, $T_{write\_PIO}$ = time to write process image of outputs, $T_{overhead}$ = additional overhead time.
+		\item If a block is called $n$ times, its time is counted $n$ times.
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Interrupts in Cyclical Processing %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Interrupts in Cyclical Processing}
-    \textbf{Cyclical program processing can be interrupted by:}
-        \begin{itemize}
-            \item \textbf{Alarm processing}
-                  \begin{itemize}
-                  \item The normal cycle is interrupted by an external or internal interrupt signal.
-                  \item The PLC executes a special block (Interrupt Service Routine).
-                  \item Allows immediate reaction to important process events.
-                  \item After finishing, the PLC returns to the point where it was interrupted.
-                  \end{itemize}
-            \item \textbf{Time-controlled processing}
-                  \begin{itemize}
-                  \item An internal clock triggers an interrupt at defined time intervals.
-                  \item The PLC runs a specific time-controlled program block.
-                  \item After execution, the PLC returns to the normal cycle.
-                  \item Often used in closed-loop control tasks requiring precise timing.
-                  \end{itemize}
-            \item \textbf{Programming failures and device failures}
-            \item \textbf{Signals from the hardware}
-            \item \textbf{Change of mode of operation} 
-            \begin{itemize}
-                \item Caused by the device's mode switch
-                \item Or by the programming tool
-            \end{itemize}
-        \end{itemize}
+	\textbf{Cyclical program processing can be interrupted by:}
+	\begin{itemize}
+		\item \textbf{Alarm processing}
+		\begin{itemize}
+			\item The normal cycle is interrupted by an external or internal interrupt signal.
+			\item The PLC executes a special block (Interrupt Service Routine).
+			\item Allows immediate reaction to important process events.
+			\item After finishing, the PLC returns to the point where it was interrupted.
+		\end{itemize}
+		\item \textbf{Time-controlled processing}
+		\begin{itemize}
+			\item An internal clock triggers an interrupt at defined time intervals.
+			\item The PLC runs a specific time-controlled program block.
+			\item After execution, the PLC returns to the normal cycle.
+			\item Often used in closed-loop control tasks requiring precise timing.
+		\end{itemize}
+		\item \textbf{Programming failures and device failures}
+		\item \textbf{Signals from the hardware}
+		\item \textbf{Change of mode of operation} 
+		\begin{itemize}
+			\item Caused by the device's mode switch
+			\item Or by the programming tool
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Boolean Operations %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Boolean Operations}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/bool.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/bool.pdf}
+		\caption{Boolean Operations}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Building blocks of PLC: RS Flip-Flop}
-
-\textbf{RS Flip-Flop:}
-    \begin{columns}
-    \column{0.55\textwidth}
-    A R/S flip flop is a storing function with two input variables R and S and an output variable
-    Q, where the value Q = 1  belongs to the input states R = 0 and S = 1 and Q = 0 belongs to
-    the input states R = 1 and S = 0
-
-    \vspace{0.3cm}
-    \centering
-          \begin{tabular}{c c c}
-          \hline
-          R & S & $Q_{k+1}$ \\
-          \hline
-          0 & 0 & $Q_k$ \\
-          0 & 1 & 1 \\
-          1 & 0 & 0 \\
-          1 & 1 & 0 (R has priority) \\
-          \hline
-        \end{tabular}
-
-    \column{0.5\textwidth}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/RS_flip_flop.pdf}
-  \end{columns}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: RS Flip-Flop (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Building blocks of PLC: RS Flip-Flop (1)}
+	\textbf{RS Flip-Flop:}
+	\begin{columns}
+		\column{0.6\textwidth}
+			A R/S flip flop is a storing function with two input variables R and S and an output variable
+			Q, where the value Q = 1  belongs to the input states R = 0 and S = 1 and Q = 0 belongs to
+			the input states R = 1 and S = 0
+			\vspace{0.3cm}
+			\begin{table}
+				\centering
+				\begin{tabular}{@{}ccc@{}}
+					\toprule
+					$R$ & $S$ & $Q_{k+1}$ \\
+					\midrule
+					0 & 0 & $Q_k$ \\
+					0 & 1 & 1 \\
+					1 & 0 & 0 \\
+					1 & 1 & 0 (R has priority) \\
+					\bottomrule
+				\end{tabular}
+				\caption{Truth table of an RS latch with reset priority}
+				\label{tab:rs_latch_truth_table}
+			\end{table}
+		\column{0.4\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[scale=0.5]{fig/lec04/RS_flip_flop.pdf}
+				\caption{RS Flip-Flop}
+			\end{figure}
+	\end{columns}
 \end{frame}
 
-
-\begin{frame}{Building blocks of PLC: RS Flip-Flop}
-    \begin{columns}
-    \column{0.55\textwidth}
-    \textbf{Priority rules:}
-    \begin{itemize}
-        \item If \textbf{R has priority}: $R=1$ dominates and forces $Q=0$.
-        \item If \textbf{S has priority}: $S=1$ dominates and forces $Q=1$.
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \textbf{In PLC software:}
-    \begin{itemize}
-        \item Priority is determined by the \textbf{order of instructions}.
-        \item The instruction processed \textbf{last} determines the final result.
-    \end{itemize}
-
-    \column{0.5\textwidth}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/reset_set_dominant.pdf}
-  \end{columns}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: RS Flip-Flop (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Building blocks of PLC: RS Flip-Flop (2)}
+	\begin{columns}
+		\column{0.55\textwidth}
+			\textbf{Priority rules:}
+			\begin{itemize}
+				\item If \textbf{R has priority}: $R=1$ dominates and forces $Q=0$.
+				\item If \textbf{S has priority}: $S=1$ dominates and forces $Q=1$.
+			\end{itemize}
+			\vspace{0.3cm}
+			\textbf{In PLC software:}
+			\begin{itemize}
+				\item Priority is determined by the \textbf{order of instructions}.
+				\item The instruction processed \textbf{last} determines the final result.
+			\end{itemize}
+		\column{0.45\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[scale=0.5]{fig/lec04/reset_set_dominant.pdf}
+				\caption{RS Flip-Flop (Priority)}
+			\end{figure}
+	\end{columns}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS Flip-Flop Application Example (Level Control) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{RS Flip-Flop Application Example (Level Control)}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/RS_application.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/RS_application.pdf}
+		\caption{Level Control - RS Flip-Flop Application}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Timer Characteristics %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Timer Characteristics}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \begin{table}[h!]
-      \centering
-      \resizebox{0.8\textwidth}{!}{
-      \begin{tabular}{|c|l|}
-      \hline
-      \textbf{Syntax} & \textbf{Meaning} \\
-      \hline
-      SI T & Start a timer as a pulse timer \\
-      SE T & Start a timer as an on-delay timer \\
-      SA T & Start a timer as an off-delay timer \\
-      \hline
-      \end{tabular}
-      }
-      \end{table}
-
-    \column{0.5\textwidth}
-      \centering
-      \includegraphics[scale=0.4]{fig/lec04/timer_characteristics.pdf}
-  \end{columns}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{table}
+				\centering
+				\resizebox{0.8\textwidth}{!}{
+				\begin{tabular}{@{}cl@{}}
+					\toprule
+					\textbf{Syntax} & \textbf{Meaning} \\
+					\midrule
+					SI T & Start a timer as a pulse timer \\
+					SE T & Start a timer as an on-delay timer \\
+					SA T & Start a timer as an off-delay timer \\
+					\bottomrule
+				\end{tabular}
+				}
+				\caption{PLC timer instructions and their meanings}
+				\label{tab:plc_timer_instructions}
+			\end{table}
+		\column{0.5\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[scale=0.4]{fig/lec04/timer_characteristics.pdf}
+				\caption{Timer Characteristics}
+			\end{figure}
+	\end{columns}
 \end{frame}
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Data Types (elementary e.g. from SIEMENS) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Data Types (elementary e.g. from SIEMENS)}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{4pt} % reduce column spacing
-\resizebox{0.8\textwidth}{!}{
-\begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm} 
-                >{\raggedright\arraybackslash}p{6cm} 
-                >{\raggedright\arraybackslash}p{4.5cm}}
-\toprule
-\textbf{Data Type} & \textbf{Description (Width)} & \textbf{Example} \\
-\midrule
-BYTE & Byte, 8-bit hexadecimal number, 8 Bits & B\#16\#01 \\
-CHAR & One character (ASCII), 8 Bits & 'A' \\
-WORD & 16-bit hexadecimal, 16-bit binary, count value, 3 decades BCD, 2x8-bit unsigned decimal numbers & W\#16\#F100, 2\#1100\_0011\_1001\_0110, C\#250, B\#(20,103) \\
-DWORD & 32-bit hexadecimal, 32-bit binary, 4x8-bit unsigned decimal numbers, 32 Bits & DW\#16\#E800\_0054, 2\#00111100\_11000011\_10010110\_11110000, B\#(1,55,3,0) \\
-INT & Fixed-point number, 16 Bits, -32768 to +32767 & 1234 \\
-DINT & Fixed-point number, 32 Bits, -2\,147\,483\,648 to +2\,147\,483\,647 & 12345678 \\
-REAL & Floating-point number, 32 Bits, decimal or exponential & +1.234567E-01 \\
-S5TIME & Time value in S5-format, 16 Bits & S5T\#0ms, S5TIME\#2h46m30s \\
-TIME & Time value in IEC format, 32 Bits & T\#0ms, TIME\#24d20h31m23s647ms \\
-DATE & Date, 16 Bits & D\#1990-01-01, DATE\#2168-12-31 \\
-TIME\_OF\_DAY & Time of day, 32 Bits & TOD\#00:00:00, TIME\_OF\_DAY\#23:59:59.999 \\
-\bottomrule
-\end{tabular}
-}
+	\centering
+	\footnotesize
+	\begin{table}
+		\setlength{\tabcolsep}{4pt} % reduce column spacing
+		\centering
+		\resizebox{0.7\textwidth}{!}{
+		\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.5cm}
+						>{\raggedright\arraybackslash}p{6cm}
+						>{\raggedright\arraybackslash}p{4.5cm}@{}}
+			\toprule
+			\textbf{Data Type} & \textbf{Description (Width)} & \textbf{Example} \\
+			\midrule
+			BYTE        & Byte, 8-bit hexadecimal number, 8 Bits & B\#16\#01 \\
+			CHAR        & One character (ASCII), 8 Bits & 'A' \\
+			WORD        & 16-bit hexadecimal, 16-bit binary, count value, 3 decades BCD, 2$\times$8-bit unsigned decimal numbers & W\#16\#F100, 2\#1100\_0011\_1001\_0110, C\#250, B\#(20,103) \\
+			DWORD       & 32-bit hexadecimal, 32-bit binary, 4$\times$8-bit unsigned decimal numbers, 32 Bits & DW\#16\#E800\_0054, 2\#00111100\_11000011\_10010110\_11110000, B\#(1,55,3,0) \\
+			INT         & Fixed-point number, 16 Bits, -32768 to +32767 & 1234 \\
+			DINT        & Fixed-point number, 32 Bits, -2\,147\,483\,648 to +2\,147\,483\,647 & 12345678 \\
+			REAL        & Floating-point number, 32 Bits, decimal or exponential & +1.234567E-01 \\
+			S5TIME      & Time value in S5-format, 16 Bits & S5T\#0ms, S5TIME\#2h46m30s \\
+			TIME        & Time value in IEC format, 32 Bits & T\#0ms, TIME\#24d20h31m23s647ms \\
+			DATE        & Date, 16 Bits & D\#1990-01-01, DATE\#2168-12-31 \\
+			TIME\_OF\_DAY & Time of day, 32 Bits & TOD\#00:00:00, TIME\_OF\_DAY\#23:59:59.999 \\
+			\bottomrule
+		\end{tabular}
+		}
+		\caption{Common PLC data types, descriptions, and example values}
+		\label{tab:plc_data_types}
+	\end{table}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Extended Data Types %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Extended Data Types}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-
-\begin{tabular}{>{\raggedright\arraybackslash}p{4cm} 
-                >{\raggedright\arraybackslash}p{7cm}}
-\toprule
-\textbf{Data Type} & \textbf{Description / Example} \\
-\midrule
-DATE\_AND\_TIME & Date and time, 64 Bits \newline Examples: DT\#1990-01-01-00:00.000, DATE\_AND\_TIME\#2168-12-31:23:59:59.999 \\
-STRING & String of ASCII characters, variable length \newline Example: 'String 1' \\
-ARRAY & Array of components with same data type \newline Example: ARRAY[10] OF INT \\
-STRUCT & Structure of components with arbitrary data types \newline Example: STRUCT \{ INT x; REAL y; \} \\
-\bottomrule
-\end{tabular}
+	\centering
+	\footnotesize
+	\begin{table}
+		\setlength{\tabcolsep}{4pt}
+		\centering
+		\setlength{\tabcolsep}{4pt}
+		\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4cm}
+						>{\raggedright\arraybackslash}p{7cm}@{}}
+			\toprule
+			\textbf{Data Type} & \textbf{Description / Example} \\
+			\midrule
+			DATE\_AND\_TIME & Date and time, 64 Bits \newline Examples: DT\#1990-01-01-00:00.000, DATE\_AND\_TIME\#2168-12-31:23:59:59.999 \\
+			STRING          & String of ASCII characters, variable length \newline Example: 'String 1' \\
+			ARRAY           & Array of components with the same data type \newline Example: ARRAY[10] OF INT \\
+			STRUCT          & Structure of components with arbitrary data types \newline Example: STRUCT \{ INT x; REAL y; \} \\
+			\bottomrule
+		\end{tabular}
+		\caption{Additional PLC data types and their descriptions}
+		\label{tab:plc_data_types_extended}
+	\end{table}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Operand Types %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Operand Types}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{4pt} % reduce column spacing
-
-\begin{tabular}{>{\raggedright\arraybackslash}p{5cm} >{\raggedright\arraybackslash}p{6cm}}
-\toprule
-\textbf{Type} & \textbf{Indicator / Description} \\
-\midrule
-Constants & *) \\
-Inputs & E, \%I *) \\
-Outputs & A, \%Q *) \\
-Memory data & M, \%M *) \\
-Local data & L \\
-Periphery inputs & PE \\
-Periphery outputs & *) \\
-Timers & T \\
-Counters & C \\
-Data & D *) \\
-System data & SM *) \\
-\midrule
-\multicolumn{2}{p{11cm}}{Note: The indicator '*)' can be supplemented by a second character (e.g., W for WORD or D for DOUBLE WORD) to determine the type exactly.} \\
-\bottomrule
-\end{tabular}
-
+	\centering
+	\footnotesize
+	\begin{table}
+		\setlength{\tabcolsep}{4pt} % reduce column spacing
+		\centering
+		\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5cm}
+						>{\raggedright\arraybackslash}p{6cm}@{}}
+			\toprule
+			\textbf{Type} & \textbf{Indicator / Description} \\
+			\midrule
+			Constants          & *) \\
+			Inputs             & E, \%I *) \\
+			Outputs            & A, \%Q *) \\
+			Memory data        & M, \%M *) \\
+			Local data         & L \\
+			Periphery inputs   & PE \\
+			Periphery outputs  & *) \\
+			Timers             & T \\
+			Counters           & C \\
+			Data               & D *) \\
+			System data        & SM *) \\
+			\midrule
+			\multicolumn{2}{@{}p{11cm}@{}}{Note: The indicator '*)' can be supplemented by a second character (e.g., W for WORD or D for DOUBLE WORD) to determine the type exactly.} \\
+			\bottomrule
+		\end{tabular}
+		\caption{PLC address types and corresponding memory indicators}
+		\label{tab:plc_address_types}
+	\end{table}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Compare and Arithmetic Operations %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Compare and Arithmetic Operations}
-\footnotesize
-\begin{itemize}
-    \item \textbf{Compare operations:} $<$, $>$, $\leq$, $\geq$, ==, $\neq$
-    \begin{itemize}
-        \item Result: Boolean variable
-        \item Can be used in binary operations or control program flow
-    \end{itemize}
-    \item \textbf{Basic arithmetic:} ADD, SUB, MUL, DIV
-    \begin{itemize}
-        \item SIEMENS: $+$, $-$, $*$, $/$ with type specifier: I (INT), D (DINT), R (REAL)
-        \item Fixed-point multiplication: width doubles (INT 16-bit $\times$ INT 16-bit $\rightarrow$ DINT 32-bit)
-        \item Division: result type = Dividend type
-        \item Floating point: watch exponent overflow
-        \item Always handle division by 0
-    \end{itemize}
-\end{itemize}
+	\footnotesize
+	\begin{itemize}
+		\item \textbf{Compare operations:} $<$, $>$, $\leq$, $\geq$, ==, $\neq$
+		\begin{itemize}
+			\item Result: Boolean variable
+			\item Can be used in binary operations or control program flow
+		\end{itemize}
+		\item \textbf{Basic arithmetic:} ADD, SUB, MUL, DIV
+		\begin{itemize}
+			\item SIEMENS: $+$, $-$, $*$, $/$ with type specifier: I (INT), D (DINT), R (REAL)
+			\item Fixed-point multiplication: width doubles (INT 16-bit $\times$ INT 16-bit $\rightarrow$ DINT 32-bit)
+			\item Division: result type = Dividend type
+			\item Floating point: watch exponent overflow
+			\item Always handle division by 0
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Load, Assignment and Organizational Functions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Load, Assignment and Organizational Functions}
-\footnotesize
-\begin{itemize}
-    \item \textbf{Load operations:} L or LD
-    \begin{itemize}
-        \item Provides input variable for an operation
-    \end{itemize}
-    \item \textbf{Assignment / Transfer:} T or ST
-    \begin{itemize}
-        \item Assign value to a variable, e.g., accumulator
-        \item Can also be implemented with `=`
-    \end{itemize}
-    \item \textbf{Organizational functions:} Branching
-    \begin{itemize}
-        \item Conditional/unconditional based on RLO or internal status
-        \item Syntax examples: SPA [label], SPB [label], SPO [label]
-    \end{itemize}
-\end{itemize}
+	\footnotesize
+	\begin{itemize}
+		\item \textbf{Load operations:} L or LD
+		\begin{itemize}
+			\item Provides input variable for an operation
+		\end{itemize}
+		\item \textbf{Assignment / Transfer:} T or ST
+		\begin{itemize}
+			\item Assign value to a variable, e.g., accumulator
+			\item Can also be implemented with `=`
+		\end{itemize}
+		\item \textbf{Organizational functions:} Branching
+		\begin{itemize}
+			\item Conditional/unconditional based on RLO or internal status
+			\item Syntax examples: SPA [label], SPB [label], SPO [label]
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Shift Functions and Type Conversions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Shift Functions and Type Conversions}
-\footnotesize
-\begin{itemize}
-    \item \textbf{Shift and rotate operations:}
-    \begin{itemize}
-        \item Shift left/right, rotate left/right on accumulator or memory
-        \item Examples: SLW 3 (shift left word by 3 bits), SRW 5 (shift right words by 5 bits), RLD 6 (rotate left word by 6 bits)
-    \end{itemize}
-    \item \textbf{Type conversions:}
-    \begin{itemize}
-        \item BTI: BCD $\rightarrow$ INT
-        \item ITB: INT $\rightarrow$ BCD
-        \item DTR: Fixed-point $\rightarrow$ Floating-point
-        \item RND: Floating-point $\rightarrow$ Fixed-point
-    \end{itemize}
-\end{itemize}
+	\footnotesize
+	\begin{itemize}
+		\item \textbf{Shift and rotate operations:}
+		\begin{itemize}
+			\item Shift left/right, rotate left/right on accumulator or memory
+			\item Examples: SLW 3 (shift left word by 3 bits), SRW 5 (shift right words by 5 bits), RLD 6 (rotate left word by 6 bits)
+		\end{itemize}
+		\item \textbf{Type conversions:}
+		\begin{itemize}
+			\item BTI: BCD $\rightarrow$ INT
+			\item ITB: INT $\rightarrow$ BCD
+			\item DTR: Fixed-point $\rightarrow$ Floating-point
+			\item RND: Floating-point $\rightarrow$ Fixed-point
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Statement List (STL) - Control Statements %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Statement List (STL) - Control Statements}
-\footnotesize
-\begin{itemize}
-    \item A statement list consists of multiple control statements.
-    \item Each control statement:
-    \begin{itemize}
-        \item Starts on a new line
-        \item Contains an \textbf{operator} (optionally with a modifier)
-        \item May contain one or more operands, separated by commas
-        \item May include a preceding label followed by a colon (:)
-        \item May include a comment at the end of the line
-    \end{itemize}
-    \item Blank lines can be inserted between statements
-    \item For binary operands, the pre-occupation of Result of Logic Operation (RLO) can be done by the first statement of an AND or OR operation
-    \item \textbf{Note:} Nested logic (use of `(` and `)`) requires a stack of RLOs
-\end{itemize}
+	\footnotesize
+	\begin{itemize}
+		\item A statement list consists of multiple control statements.
+		\item Each control statement:
+		\begin{itemize}
+			\item Starts on a new line
+			\item Contains an \textbf{operator} (optionally with a modifier)
+			\item May contain one or more operands, separated by commas
+			\item May include a preceding label followed by a colon (:)
+			\item May include a comment at the end of the line
+		\end{itemize}
+		\item Blank lines can be inserted between statements
+		\item For binary operands, the pre-occupation of Result of Logic Operation (RLO) can be done by the first statement of an AND or OR operation
+		\item \textbf{Note:} Nested logic (use of `(` and `)`) requires a stack of RLOs
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Structure and Example of STL %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Structure and Example of STL}
-  \begin{columns}
-    \centering
-    \column{0.5\textwidth}
-    \textbf{Example Statement Fields:}
-    \resizebox{0.9\textwidth}{!}{
-    \begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{1cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{3cm}}
-    \toprule
-    Label & Operator & Operand & Comment \\
-    \midrule
-    START: & L & I0.1 & Pushbutton \\
-    & AN & M0.5 & Not locked \\
-    & S & Q0.2 & Fan on \\
-    \bottomrule
-    \end{tabular}
-    }
-  
-  \column{0.5\textwidth}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/STL_structure.pdf}
-  \end{columns}
+	\centering
+		\begin{table}
+			\centering
+			\resizebox{0.5\textwidth}{!}{
+			\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.5cm}
+							>{\raggedright\arraybackslash}p{2.5cm}
+							>{\raggedright\arraybackslash}p{2.5cm}
+							>{\raggedright\arraybackslash}p{3cm}@{}}
+				\toprule
+				\textbf{Label} & \textbf{Operator} & \textbf{Operand} & \textbf{Comment} \\
+				\midrule
+				START: & L  & I0.1 & Pushbutton \\
+					   & AN & M0.5 & Not locked \\
+					   & S  & Q0.2 & Fan on \\
+				\bottomrule
+			\end{tabular}
+			}
+			\caption{Example of a PLC ladder logic instruction sequence}
+			\label{tab:plc_ladder_example}
+		\end{table}
+		\begin{figure}
+			\includegraphics[scale=0.7]{fig/lec04/STL_structure.pdf}
+			\caption{Structure of an STL statement}
+		\end{figure}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Building blocks of PLC: Operations, Modifiers, and Operands %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Building blocks of PLC: Operations, Modifiers, and Operands}
-\footnotesize
-\begin{itemize}
-    \item Default semantics: 
-    \[
-    \text{RLO} = \text{RLO OP Operand}
-    \]
-    where RLO = result of the preceding logic operation.
-    \item Example: 
-    \begin{itemize}
-        \item Statement: \texttt{A "Value"}  
-        \item Interpreted as: \texttt{RLO = RLO AND "Value"}
-    \end{itemize}
-    \item Modifier \texttt{N}: boolean negation of the operand
-    \begin{itemize}
-        \item Statement: \texttt{AN "INPUT\_1"}  
-        \item Interpreted as: \texttt{RLO = RLO AND NOT("INPUT\_1")}
-    \end{itemize}
-    \item Modifier \texttt{(}: suspend processing until \texttt{)} occurs
-    \begin{itemize}
-        \item Statements: \\
-        \texttt{A(} \newline
-        \texttt{O "INPUT\_2"} \newline
-        \texttt{O "INPUT\_3"} \newline
-        \texttt{)}
-        \item Interpreted as: \texttt{RLO = RLO AND ("INPUT\_2" OR "INPUT\_3")}
-    \end{itemize}
-    \item Modifier \texttt{C} (conditionally): statement processed only if previous RLO = 1 (or 0 if combined with N-modifier)
-\end{itemize}
+	\footnotesize
+	\begin{itemize}
+		\item Default semantics: 
+		\begin{equation}
+		\text{RLO} = \text{RLO OP Operand}
+		\end{equation}
+		where RLO = result of the preceding logic operation.
+		\item Example: 
+		\begin{itemize}
+			\item Statement: \texttt{A "Value"}  
+			\item Interpreted as: \texttt{RLO = RLO AND "Value"}
+		\end{itemize}
+		\item Modifier \texttt{N}: boolean negation of the operand
+		\begin{itemize}
+			\item Statement: \texttt{AN "INPUT\_1"}  
+			\item Interpreted as: \texttt{RLO = RLO AND NOT("INPUT\_1")}
+		\end{itemize}
+		\item Modifier \texttt{(}: suspend processing until \texttt{)} occurs
+		\begin{itemize}
+			\item Statements: \\
+			\texttt{A(} \newline
+			\texttt{O "INPUT\_2"} \newline
+			\texttt{O "INPUT\_3"} \newline
+			\texttt{)}
+			\item Interpreted as: \texttt{RLO = RLO AND ("INPUT\_2" OR "INPUT\_3")}
+		\end{itemize}
+		\item Modifier \texttt{C} (conditionally): statement processed only if previous RLO = 1 (or 0 if combined with N-modifier)
+	\end{itemize}
 \end{frame}
 
-
-\begin{frame}{Operators - Part 1}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3pt} % reduce column spacing
-\begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{5cm}}
-\toprule
-\textbf{Operator} & \textbf{Modifier} & \textbf{Operand} & \textbf{Semantics} \\
-\midrule
-A & N, ( & Boole & Boolean AND \\
-O & N, ( & Boole & Boolean OR \\
-N & ( & Boole & Boolean NOT \\
-XOR & N, ( & Boole & Boolean EXCLUSIVE OR \\
-=, ST, T & N, see Rem. 3 & All variable types & Assignment \\
-S & see Rem. 1 & Boole & Sets boolean operand to "1" \\
-R & see Rem. 1 & Boole & Sets boolean operand to "0" \\
-) &  &  & Evaluation of suspended operation \\
-CF &  & Counter value & Count forward \\
-CB &  & Counter value & Count backward \\
-ADD, + &  & Integer, Real & Addition \\
-SUB, - &  & Integer, Real & Subtraction \\
-MUL, * &  & Integer, Real & Multiplication \\
-DIV, : &  & Integer, Real & Division \\
-GT, > & see Rem. 2 & Integer, Real & Comparison: > \\
-GTE, >= & see Rem. 2 & Integer, Real & Comparison: >= \\
-EQ, = & see Rem. 2 & Integer, Real & Comparison: = \\
-\bottomrule
-\end{tabular}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Operators (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Operators (1)}
+	\centering
+	\footnotesize
+	\begin{table}
+		\setlength{\tabcolsep}{3pt} % reduce column spacing
+		\centering
+		\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.5cm}
+						>{\raggedright\arraybackslash}p{2cm}
+						>{\raggedright\arraybackslash}p{2.5cm}
+						>{\raggedright\arraybackslash}p{5cm}@{}}
+			\toprule
+			\textbf{Operator} & \textbf{Modifier} & \textbf{Operand} & \textbf{Semantics} \\
+			\midrule
+			A        & N, (          & Boole              & Boolean AND \\
+			O        & N, (          & Boole              & Boolean OR \\
+			N        & (             & Boole              & Boolean NOT \\
+			XOR      & N, (          & Boole              & Boolean EXCLUSIVE OR \\
+			=, ST, T & N, see Rem. 3 & All variable types & Assignment \\
+			S        & see Rem. 1    & Boole              & Sets boolean operand to "1" \\
+			R        & see Rem. 1    & Boole              & Sets boolean operand to "0" \\
+			)        &               &                    & Evaluation of suspended operation \\
+			CF       &               & Counter value      & Count forward \\
+			CB       &               & Counter value      & Count backward \\
+			ADD, +   &               & Integer, Real      & Addition \\
+			SUB, -   &               & Integer, Real      & Subtraction \\
+			MUL, *   &               & Integer, Real      & Multiplication \\
+			DIV, :   &               & Integer, Real      & Division \\
+			GT, >    & see Rem. 2    & Integer, Real      & Comparison: > \\
+			GTE, >=  & see Rem. 2    & Integer, Real      & Comparison: >= \\
+			EQ, =    & see Rem. 2    & Integer, Real      & Comparison: = \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
 \end{frame}
 
-
-\begin{frame}{Operators - Part 2}
-\begin{center}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-
-\begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{5cm}}
-\toprule
-\textbf{Operator} & \textbf{Modifier} & \textbf{Operand} & \textbf{Semantics} \\
-\midrule
-LT, < & see Rem. 2 & Integer, Real & Comparison: < \\
-LTE, <= & see Rem. 2 & Integer, Real & Comparison: <= \\
-BTI &  & Integer & Code converter Decimal/Binary \\
-ITB &  & Integer & Code converter Binary/Decimal \\
-NOP &  &  & Null operation \\
-L &  & All variable types & Load (provides operands for subsequent operations) \\
-SP & C & Label & Jump to label \\
-BA &  & Name & Invocation of a block \\
-CALL &  & Name & Invocation of a block \\
-BE &  & C & Block end \\
-C &  &  & These operations are only processed when RLO = "1" \\
-\bottomrule
-\end{tabular}\\
-\end{center}
-Rem. 1: Only processed if RLO = "1". \\
-Rem. 2: Result is of Type "Bool". \\
-Rem. 3: Only with binary operand. \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Operators (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Operators (2)}
+	\footnotesize
+	\begin{center}
+		\begin{table}
+			\setlength{\tabcolsep}{3pt}
+			\centering
+			\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.5cm}
+							>{\raggedright\arraybackslash}p{2cm}
+							>{\raggedright\arraybackslash}p{2.5cm}
+							>{\raggedright\arraybackslash}p{5cm}@{}}
+				\toprule
+				\textbf{Operator} & \textbf{Modifier} & \textbf{Operand} & \textbf{Semantics} \\
+				\midrule
+				LT, <    & see Rem. 2 & Integer, Real      & Comparison: < \\
+				LTE, <=  & see Rem. 2 & Integer, Real      & Comparison: <= \\
+				BTI      &            & Integer            & Code converter Decimal/Binary \\
+				ITB      &            & Integer            & Code converter Binary/Decimal \\
+				NOP      &            &                    & Null operation \\
+				L        &            & All variable types & Load (provides operands for subsequent operations) \\
+				SP       & C          & Label              & Jump to label \\
+				BA       &            & Name               & Invocation of a block \\
+				CALL     &            & Name               & Invocation of a block \\
+				BE       &            & C                  & Block end \\
+				C        &            &                    & These operations are only processed when RLO = "1" \\
+				\bottomrule
+			\end{tabular}
+			\caption{PLC instruction set: operators, modifiers, operands, and semantics}
+			\label{tab:plc_operators}
+		\end{table}
+	\end{center}
+	\begin{columns}
+		\column{0.35\textwidth}
+			\textbf{Rem. 1:}Only processed if RLO = "1"
+		\column{0.33\textwidth}
+			\textbf{Rem. 2:}Result is of Type "Bool"
+		\column{0.33\textwidth}
+			\textbf{Rem. 3:}Only with binary operand
+	\end{columns}
 \end{frame}
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LAD (Ladder Diagram) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{LAD (Ladder Diagram)}
-\begin{itemize}
-    \item A \textbf{LAD program} provides processing, testing, and modification of data using standardized graphical symbols.
-    \item These symbols are arranged in \textbf{networks} that resemble the rungs of a relay logic diagram.
-    \item LAD networks are bounded on the left and right by \textbf{conductor rails}.
-\end{itemize}
+	\begin{itemize}
+		\item A \textbf{LAD program} provides processing, testing, and modification of data using standardized graphical symbols.
+		\item These symbols are arranged in \textbf{networks} that resemble the rungs of a relay logic diagram.
+		\item LAD networks are bounded on the left and right by \textbf{conductor rails}.
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Conductor Rails and Connection Elements %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Conductor Rails and Connection Elements}
-\begin{itemize}
-    \item A LAD network is bounded by vertical lines called \textbf{conductor rails}:
-    \begin{itemize}
-        \item \textbf{Left conductor rail}: mandatory, state is \textbf{ON} unless connected to an inactive step
-        \item \textbf{Right conductor rail}: optional, no defined state
-    \end{itemize}
-    \item \textbf{Connection elements} are horizontal or vertical lines:
-    \begin{itemize}
-        \item States: \textbf{ON} (1) or \textbf{OFF} (0)
-        \item \textbf{Horizontal lines}: transfer state from left to right
-        \item \textbf{Vertical lines}: state = OR of all connected left horizontal lines
-        \begin{itemize}
-            \item \textbf{OFF}: all left lines OFF
-            \item \textbf{ON}: at least one left line ON
-        \end{itemize}
-        \item Vertical line state determines all horizontal lines on the right
-        \item States are \textbf{not copied} to lines on the left
-    \end{itemize}
-\end{itemize}
+	\begin{itemize}
+		\item A LAD network is bounded by vertical lines called \textbf{conductor rails}:
+		\begin{itemize}
+			\item \textbf{Left conductor rail}: mandatory, state is \textbf{ON} unless connected to an inactive step
+			\item \textbf{Right conductor rail}: optional, no defined state
+		\end{itemize}
+		\item \textbf{Connection elements} are horizontal or vertical lines:
+		\begin{itemize}
+			\item States: \textbf{ON} (1) or \textbf{OFF} (0)
+			\item \textbf{Horizontal lines}: transfer state from left to right
+			\item \textbf{Vertical lines}: state = OR of all connected left horizontal lines
+			\begin{itemize}
+				\item \textbf{OFF}: all left lines OFF
+				\item \textbf{ON}: at least one left line ON
+			\end{itemize}
+			\item Vertical line state determines all horizontal lines on the right
+			\item States are \textbf{not copied} to lines on the left
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Scan Operations and Assignment Operations %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Scan Operations and Assignment Operations}
-\begin{itemize}
-    \item \textbf{Scan Operations (Contacts)}:
-    \begin{itemize}
-        \item Pass the state of the horizontal connection on the left to the right.
-        \item Only passes the state if the associated boolean input, output, or memory variable is \textbf{ON}.
-        \item Does \textbf{not} change the state of the boolean variable itself.
-    \end{itemize}
-    \item \textbf{Assignment Operations (Coils)}:
-    \begin{itemize}
-        \item Copy the state of the left-hand connection to the right-hand connection.
-        \item Update the associated boolean variable with the left-hand connection state.
-        \item No modification to the signal occurs; the coil reflects the left-hand state.
-    \end{itemize}
-\end{itemize}
+	\begin{itemize}
+		\item \textbf{Scan Operations (Contacts)}:
+		\begin{itemize}
+			\item Pass the state of the horizontal connection on the left to the right.
+			\item Only passes the state if the associated boolean input, output, or memory variable is \textbf{ON}.
+			\item Does \textbf{not} change the state of the boolean variable itself.
+		\end{itemize}
+		\item \textbf{Assignment Operations (Coils)}:
+		\begin{itemize}
+			\item Copy the state of the left-hand connection to the right-hand connection.
+			\item Update the associated boolean variable with the left-hand connection state.
+			\item No modification to the signal occurs; the coil reflects the left-hand state.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
-
-\begin{frame}{LAD Symbols}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/LAD_1.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LAD Symbols (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{LAD Symbols (1)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.45]{fig/lec04/LAD_1.pdf}
+		\caption{LAD Symbols (1)}
+	\end{figure}
 \end{frame}
 
-\begin{frame}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/LAD_2.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LAD Symbols (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{LAD Symbols (2)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.45]{fig/lec04/LAD_2.pdf}
+		\caption{LAD Symbols (2)}
+	\end{figure}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function Block Diagram (FBD): Bit Logic Instructions and Comparison Instructions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Function Block Diagram (FBD): Bit Logic Instructions and Comparison Instructions}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/bit_logic_and_comparison.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/bit_logic_and_comparison.pdf}
+		\caption{FBD - Instructions}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Counter Instructions and Integer Math Instructions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Counter Instructions and Integer Math Instructions}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/counter_and_math.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/counter_and_math.pdf}
+		\caption{Counter and Integer Math Instructions}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Timer Instructions and Conversion Instructions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Timer Instructions and Conversion Instructions}
-  \centering
-  \includegraphics[scale=0.5]{fig/lec04/timer_and_conversion.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/timer_and_conversion.pdf}
+		\caption{Timer and Conversion Instructions}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Display of Functions in statement list (STL) and FBD - 1}
-  \centering
-  \includegraphics[scale=0.35]{fig/lec04/FBD_1.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Display of Functions in STL and FBD (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Display of Functions in STL and FBD (1)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/FBD_1.pdf}
+		\caption{Functions in STL and FBD (1)}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Display of Functions in STL and FBD - 2}
-  \centering
-  \includegraphics[scale=0.3]{fig/lec04/FBD_2.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Display of Functions in STL and FBD (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Display of Functions in STL and FBD (2)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/FBD_2.pdf}
+		\caption{Functions in STL and FBD (2)}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Display of Functions in STL and FBD - 3}
-  \centering
-  \includegraphics[scale=0.3]{fig/lec04/FBD_3.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Display of Functions in STL and FBD (3) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Display of Functions in STL and FBD (3)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/FBD_3.pdf}
+		\caption{Functions in STL and FBD (3)}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Display of Functions in STL and FBD - 4}
-  \centering
-  \includegraphics[scale=0.35]{fig/lec04/FBD_4.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Display of Functions in STL and FBD (4) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Display of Functions in STL and FBD (4)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/FBD_4.pdf}
+		\caption{Functions in STL and FBD (4)}
+	\end{figure}
 \end{frame}
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sequential Function Chart (SFC) Overview %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Sequential Function Chart (SFC) Overview}
-\begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-        \item SFC subdivides a PLC program into \textbf{Steps} and \textbf{Transitions}.
-        \item Steps and transitions are connected by \textbf{directional connections}.
-        \item Each step has a set of \textbf{Actions}; each transition has a \textbf{Transition Condition}.
-    \end{itemize}
-    \column{0.5\textwidth}
-    \begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.35]{fig/lec04/SFC_chart_1.pdf}
-    \caption*{SFC Step and Initial step in S7 Graph}
-    \end{figure}
-\end{columns}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item SFC subdivides a PLC program into \textbf{Steps} and \textbf{Transitions}.
+				\item Steps and transitions are connected by \textbf{directional connections}.
+				\item Each step has a set of \textbf{Actions}; each transition has a \textbf{Transition Condition}.
+			\end{itemize}
+		\column{0.5\textwidth}
+			\centering
+			\begin{figure}[h]
+				\includegraphics[scale=0.35]{fig/lec04/SFC_chart_1.pdf}
+				\caption{SFC Step and Initial step in S7 Graph}
+			\end{figure}
+	\end{columns}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Different Notations of Transition in S7 Graph %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Different Notations of Transition in S7 Graph}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/SFC_transition_notation.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/SFC_transition_notation.pdf}
+		\caption{Transitions in S7 Graph}
+	\end{figure}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Steps %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Steps}
-\begin{itemize}
-    \item A step defines behavior of the program for given inputs/outputs via its \textbf{actions}.
-    \item A step is either \textbf{active} or \textbf{inactive}.
-    \item Step representation:
-    \begin{itemize}
-        \item Symbol containing the Step name
-        \item Incoming directional connection at the top
-        \item Outgoing directional connections at the bottom
-    \end{itemize}
-    \item Step flag: boolean variable (\textbf{1 = active}, \textbf{0 = inactive}).
-    \item Initial steps determine the program's starting state (may be marked with twin lines).
-\end{itemize}
+	\begin{itemize}
+		\item A step defines behavior of the program for given inputs/outputs via its \textbf{actions}.
+		\item A step is either \textbf{active} or \textbf{inactive}.
+		\item Step representation:
+		\begin{itemize}
+			\item Symbol containing the Step name
+			\item Incoming directional connection at the top
+			\item Outgoing directional connections at the bottom
+		\end{itemize}
+		\item Step flag: boolean variable (\textbf{1 = active}, \textbf{0 = inactive}).
+		\item Initial steps determine the program's starting state (may be marked with twin lines).
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transitions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Transitions}
-\begin{itemize}
-    \item A transition specifies the condition for moving from preceding steps to following steps.
-    \item Represented by a horizontal line crossing vertical directional connections.
-    \item Associated with a boolean variable or expression (transition condition).
-    \item Control moves from the bottom of predecessor steps to the top of follower steps.
-    \item Transition conditions:
-    \begin{itemize}
-        \item Always true: symbol \textbf{1}
-        \item Can be connected via LAD/FBD networks, STL statements, or transition labels.
-    \end{itemize}
-\end{itemize}
+	\begin{itemize}
+		\item A transition specifies the condition for moving from preceding steps to following steps.
+		\item Represented by a horizontal line crossing vertical directional connections.
+		\item Associated with a boolean variable or expression (transition condition).
+		\item Control moves from the bottom of predecessor steps to the top of follower steps.
+		\item Transition conditions:
+		\begin{itemize}
+			\item Always true: symbol \textbf{1}
+			\item Can be connected via LAD/FBD networks, STL statements, or transition labels.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
-
-\begin{frame}{Syntax and Semantics of Possible Combinations of Steps
- and Transitions in Sequential Function Chart (1)}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/syntax_1.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Syntax and Semantics of Possible Combinations of Steps and Transitions in Sequential Function Chart (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Syntax and Semantics of Possible Combinations of Steps and Transitions in Sequential Function Chart (1)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/syntax_1.pdf}
+		\caption{Semantics in SFC (1)}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Syntax and Semantics of Possible Combinations of Steps
- and Transitions in Sequential Function Chart (2)}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/syntax_2.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Syntax and Semantics of Possible Combinations of Steps and Transitions in Sequential Function Chart (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Syntax and Semantics of Possible Combinations of Steps and Transitions in Sequential Function Chart (2)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/syntax_2.pdf}
+		\caption{Semantics in SFC (2)}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Syntax and Semantics of Possible Combinations of Steps
- and Transitions in Sequential Function Chart (3)}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/syntax_3.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Syntax and Semantics of Possible Combinations of Steps and Transitions in Sequential Function Chart (3) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Syntax and Semantics of Possible Combinations of Steps and Transitions in Sequential Function Chart (3)}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/syntax_3.pdf}
+		\caption{Semantics in SFC (3)}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Actions and Action Blocks %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Actions and Action Blocks}
-\begin{itemize}
-    \item \textbf{Actions:} Operations executed while the associated step is active.
-    \item Steps with no actions act as \textbf{Waiting} steps.
-    \item Action connections:
-    \begin{itemize}
-        \item LAD left conductor rail
-        \item FBD networks
-        \item Action blocks
-        \item STL control statements
-    \end{itemize}
-    \item \textbf{Action blocks:} Concisely represent complex actions and may provide a boolean feedback variable.
-    \item Multiple action blocks can be connected; one boolean input controls all simultaneously.
-\end{itemize}
+		\begin{itemize}
+		\item \textbf{Actions:} Operations executed while the associated step is active.
+		\item Steps with no actions act as \textbf{Waiting} steps.
+		\item Action connections:
+		\begin{itemize}
+			\item LAD left conductor rail
+			\item FBD networks
+			\item Action blocks
+			\item STL control statements
+		\end{itemize}
+		\item \textbf{Action blocks:} Concisely represent complex actions and may provide a boolean feedback variable.
+		\item Multiple action blocks can be connected; one boolean input controls all simultaneously.
+	\end{itemize}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Action Block %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Action Block}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/action_block.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/action_block.pdf}
+		\caption{Action Block}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Action Types %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Action Types}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/action_types.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/action_types.pdf}
+		\caption{Action Types}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Example of Action (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Example of Action (1)}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/actions_1.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/actions_1.pdf}
+		\caption{Example of Action (1)}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Example of Action (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Example of Action (2)}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/actions_2.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.45]{fig/lec04/actions_2.pdf}
+		\caption{Example of Action (2)}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sequence Rules %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Sequence Rules}
-\begin{itemize}
-    \item Initial state defined by active initial steps and initial variable values.
-    \item Transition switching:
-    \begin{itemize}
-        \item Enabled if all preceding steps are active
-        \item Occurs when transition condition is fulfilled
-    \end{itemize}
-    \item Switching activates following steps and resets preceding steps.
-    \item Rules:
-    \begin{itemize}
-        \item Steps never connected directly; always separated by a transition
-        \item Transitions never connected directly; always separated by a step
-    \end{itemize}
-    \item Simultaneous chains: multiple steps activated at the same time, indicated by twin horizontal lines.
-\end{itemize}
+	\begin{itemize}
+		\item Initial state defined by active initial steps and initial variable values.
+		\item Transition switching:
+		\begin{itemize}
+			\item Enabled if all preceding steps are active
+			\item Occurs when transition condition is fulfilled
+		\end{itemize}
+		\item Switching activates following steps and resets preceding steps.
+		\item Rules:
+		\begin{itemize}
+			\item Steps never connected directly; always separated by a transition
+			\item Transitions never connected directly; always separated by a step
+		\end{itemize}
+		\item Simultaneous chains: multiple steps activated at the same time, indicated by twin horizontal lines.
+	\end{itemize}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transition not enabled %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Transition not enabled}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/SFC_transition_1.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/SFC_transition_1.pdf}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transition enabled %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Transition enabled}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/SFC_transition_2.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/SFC_transition_2.pdf}
+	\end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transition has switched %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Transition has switched}
-    \centering
-    \includegraphics[scale=0.5]{fig/lec04/SFC_transition_3.pdf}
+	\centering
+	\begin{figure}
+		\includegraphics[scale=0.5]{fig/lec04/SFC_transition_3.pdf}
+	\end{figure}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Summary %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Summary}
-    \begin{itemize}
-        \item PLC programs are structured into various program blocks (OBs, FCs, FBs, DBs, SFCs, SFBs).
-        \item The main program runs in a cyclic loop, with possible interruptions for alarms or timed events.
-        \item The Process Image Table ensures consistent input/output states during program execution.
-        \item Boolean operations, flip-flops, timers, and data types are fundamental building blocks in PLC programming.
-        \item Statement List (STL), Ladder Diagram (LAD), Function Block Diagram (FBD), and Sequential Function Chart (SFC) are key programming languages used in PLCs.
-    \end{itemize}
-\end{frame}
+	\begin{itemize}
+		\item PLC programs are structured into various program blocks (OBs, FCs, FBs, DBs, SFCs, SFBs).
+		\item The main program runs in a cyclic loop, with possible interruptions for alarms or timed events.
+		\item The Process Image Table ensures consistent input/output states during program execution.
+		\item Boolean operations, flip-flops, timers, and data types are fundamental building blocks in PLC programming.
+		\item Statement List (STL), Ladder Diagram (LAD), Function Block Diagram (FBD), and Sequential Function Chart (SFC) are key programming languages used in PLCs.
+	\end{itemize}
+	\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Digital Signal Processing (DSPs)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}
+%     \begin{center}
+%             \Large{Digital Signal Processing (DSPs)}
+%     \end{center}
+% \end{frame}
 
-\begin{frame}
-    \begin{center}
-            \Large{Digital Signal Processing (DSPs)}
-    \end{center}
-\end{frame}
-
-
-%------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Digital Signal Processing: Overview %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Digital Signal Processing: Overview}
-  \begin{itemize}
-    \item \textbf{Goal of DSP:} Process real–world signals (speech, audio, images, biomedical, radar, etc.) after converting them into discrete–time, discrete–amplitude sequences.
-    \item In early electronics, processing was done in the \textbf{analogue} domain:
-          \begin{itemize}
-            \item Direct amplification, filtering, modulation using RLC circuits, op-amps, etc.
-            \item Performance limited by component tolerances, ageing, temperature drift and noise.
-          \end{itemize}
-    \item \textbf{Digital implementation}:
-          \begin{itemize}
-            \item Signals are converted to digital form via A/D conversion.
-            \item Processing is carried out using algorithms on DSP processors, microprocessors or FPGAs.
-            \item Advantages: programmability, reproducibility, ease of design changes, robustness to ageing and environmental variations.
-          \end{itemize}
-    \item Target: introduce DSP concepts that affect hardware implementation and prepare ground for FPGA-based realizations.
-  \end{itemize}
+	\begin{itemize}
+		\item \textbf{Goal of DSP:} Process real–world signals (speech, audio, images, biomedical, radar, etc.) after converting them into discrete–time, discrete–amplitude sequences.
+		\item In early electronics, processing was done in the \textbf{analogue} domain:
+			\begin{itemize}
+				\item Direct amplification, filtering, modulation using RLC circuits, op-amps, etc.
+				\item Performance limited by component tolerances, ageing, temperature drift and noise.
+			\end{itemize}
+		\item \textbf{Digital implementation}:
+			\begin{itemize}
+				\item Signals are converted to digital form via A/D conversion.
+				\item Processing is carried out using algorithms on DSP processors, microprocessors or FPGAs.
+				\item Advantages: programmability, reproducibility, ease of design changes, robustness to ageing and environmental variations.
+			\end{itemize}
+		\item Target: introduce DSP concepts that affect hardware implementation and prepare ground for FPGA-based realizations.
+	\end{itemize}
 \end{frame}
 
-%------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DSP Hardware Platforms %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{DSP Hardware Platforms}
-  \begin{itemize}
-    \item \textbf{General-purpose microprocessors}
-          \begin{itemize}
-            \item Flexible, but not optimized for real-time multiply–accumulate intensive tasks.
-          \end{itemize}
-    \item \textbf{Dedicated DSP microprocessors}
-          \begin{itemize}
-            \item Special hardware: MAC units, hardware loop controllers, addressing modes for circular buffers.
-            \item Ideal for audio, communications, control applications.
-          \end{itemize}
-    \item \textbf{FPGAs}
-          \begin{itemize}
-            \item Highly parallel, reconfigurable fabric; can implement custom datapaths and pipelines.
-            \item Particularly suited for high-throughput, low-latency applications (e.g. baseband processing, image processing).
-          \end{itemize}
-    \item For FPGA implementation we must understand:
-          \begin{itemize}
-            \item Sampling rates and throughput requirements.
-            \item Wordlength / number representation (fixed vs floating point).
-            \item Algorithmic complexity (number of multiplications/additions).
-          \end{itemize}
-  \end{itemize}
+	\begin{itemize}
+		\item \textbf{General-purpose microprocessors}
+		\begin{itemize}
+			\item Flexible, but not optimized for real-time multiply–accumulate intensive tasks.
+		\end{itemize}
+		\item \textbf{Dedicated DSP microprocessors}
+		\begin{itemize}
+			\item Special hardware: MAC units, hardware loop controllers, addressing modes for circular buffers.
+			\item Ideal for audio, communications, control applications.
+		\end{itemize}
+		\item \textbf{FPGAs}
+		\begin{itemize}
+			\item Highly parallel, reconfigurable fabric; can implement custom datapaths and pipelines.
+			\item Particularly suited for high-throughput, low-latency applications (e.g. baseband processing, image processing).
+		\end{itemize}
+		\item For FPGA implementation we must understand:
+		\begin{itemize}
+			\item Sampling rates and throughput requirements.
+			\item Wordlength / number representation (fixed vs floating point).
+			\item Algorithmic complexity (number of multiplications/additions).
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Basic DSP System %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Basic DSP System}
-  \begin{columns}
-    \column{0.55\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/Digitalisation_analogue.pdf} % Figure 2.1
-    \column{0.45\textwidth}
-      \begin{itemize}
-        \item Analogue input is first \textbf{sampled} and \textbf{quantized} by an A/D converter.
-        \item Result is a discrete-time, discrete-amplitude sequence $x(n)$.
-        \item The \textbf{DSP system} applies algorithms:
-              \begin{itemize}
-                \item Filtering, spectral analysis.
-                \item Compression / coding.
-                \item Detection, estimation, equalisation, etc.
-              \end{itemize}
-        \item Output sequence $y(n)$ is converted back to analogue via a D/A converter and reconstruction filter.
-      \end{itemize}
-  \end{columns}
-  \vspace{0.2cm}
-  \begin{itemize}
-    \item Key design question: what signal processing must occur in the digital domain, and what sampling rate / resolution are required to meet system specifications?
-  \end{itemize}
+	\begin{columns}
+		\column{0.45\textwidth}
+			\begin{itemize}
+				\item Analogue input is first \textbf{sampled} and \textbf{quantized} by an A/D converter.
+				\item Result is a discrete-time, discrete-amplitude sequence $x(n)$.
+				\item The \textbf{DSP system} applies algorithms:
+				\begin{itemize}
+					\item Filtering, spectral analysis.
+					\item Compression / coding.
+					\item Detection, estimation, equalisation, etc.
+				\end{itemize}
+			\item Output sequence $y(n)$ is converted back to analogue via a D/A converter and reconstruction filter.
+			\end{itemize}
+		\column{0.55\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{fig/lec04/Digitalisation_analogue.pdf}
+				\caption{Basic DSP System \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+	\end{columns}
+	\vspace{0.2cm}
+	\begin{itemize}
+		\item Key design question: what signal processing must occur in the digital domain, and what sampling rate / resolution are required to meet system specifications?
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Digitisation of Analogue Signals %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Digitisation of Analogue Signals}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/dsp_digitalisation.pdf} % Figure 2.2
-    \column{0.5\textwidth}
-      \begin{itemize}
-        \item \textbf{Sampling}: capture signal amplitude at uniform time instants $t = nT$.
-        \item \textbf{Quantisation}: map continuous amplitude to discrete levels (integers).
-        \item Typical digital representation:
-              \[
-                x(n) \in \mathbb{Z},\quad n = \ldots,-1,0,1,\ldots
-              \]
-        \item Trade-off:
-              \begin{itemize}
-                \item Higher sampling rate $\Rightarrow$ better temporal resolution, higher data rate.
-                \item More quantisation bits $\Rightarrow$ higher SNR, more hardware cost.
-              \end{itemize}
-      \end{itemize}
-  \end{columns}
-  \vspace{0.2cm}
-  \begin{itemize}
-    \item DSP algorithms operate on these numeric sequences; the quality of digitisation sets a fundamental limit on achievable performance.
-  \end{itemize}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item \textbf{Sampling}: capture signal amplitude at uniform time instants $t = nT$.
+				\item \textbf{Quantisation}: map continuous amplitude to discrete levels (integers).
+				\item Typical digital representation:
+				\begin{equation}
+					x(n) \in \mathbb{Z},\quad n = \ldots,-1,0,1,\ldots
+				\end{equation}
+				\item Trade-off:
+				\begin{itemize}
+					\item Higher sampling rate $\Rightarrow$ better temporal resolution, higher data rate.
+					\item More quantisation bits $\Rightarrow$ higher SNR, more hardware cost.
+				\end{itemize}
+			\end{itemize}
+		\column{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{fig/lec04/dsp_digitalisation.pdf}
+				\caption{Digitization of analogue signals \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}      
+			\end{figure}
+	\end{columns}
+	\vspace{0.2cm}
+	\begin{itemize}
+		\item DSP algorithms operate on these numeric sequences; the quality of digitisation sets a fundamental limit on achievable performance.
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sampling of Continuous-Time Signals %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Sampling of Continuous-Time Signals}
-  \begin{itemize}
-    \item Let $x_a(t)$ be a continuous-time analogue signal.
-    \item Uniform sampling with sampling period $T$ produces discrete-time sequence
-          \[
-            x(n) = x_a(nT), \quad -\infty < n < \infty.
-          \]
-    \item The sequence $\{x(n)\}$ can be viewed as:
-          \begin{itemize}
-            \item A list of measurements at equally spaced instants.
-            \item A representation of $x_a(t)$ suitable for digital processing.
-          \end{itemize}
-    \item The \textbf{sampling rate} (or sampling frequency) is
-          \[
-            f_s = \frac{1}{T} \quad \text{[samples/second]}.
-          \]
-    \item Key issue: how large must $f_s$ be so that $x_a(t)$ can be reconstructed (approximately) from $x(n)$?
-  \end{itemize}
+	\begin{itemize}
+		\item Let $x_a(t)$ be a continuous-time analogue signal.
+		\item Uniform sampling with sampling period $T$ produces discrete-time sequence
+		\begin{equation}
+			x(n) = x_a(nT), \quad -\infty < n < \infty.
+		\end{equation}
+		\item The sequence $\{x(n)\}$ can be viewed as:
+		\begin{itemize}
+			\item A list of measurements at equally spaced instants.
+			\item A representation of $x_a(t)$ suitable for digital processing.
+		\end{itemize}
+		\item The \textbf{sampling rate} (or sampling frequency) is
+		\begin{equation}
+			f_s = \frac{1}{T} \quad \text{[samples/second]}.
+		\end{equation}
+		\item Key issue: how large must $f_s$ be so that $x_a(t)$ can be reconstructed (approximately) from $x(n)$?
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Nyquist–Shannon Sampling Theorem %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Nyquist–Shannon Sampling Theorem}
-  \begin{itemize}
-    \item Assume $x_a(t)$ is bandlimited: its continuous-time Fourier transform $X_a(f)=0$ for $|f| > f_m$.
-    \item \textbf{Sampling theorem:}
-          \begin{block}{}
-            Perfect reconstruction of $x_a(t)$ from uniform samples is possible if
-            \[
-              f_s \geq 2 f_m.
-            \]
-            The minimum sampling rate $f_s = 2 f_m$ is the \textbf{Nyquist rate}.
-          \end{block}
-    \item If $f_s < 2 f_m$, high-frequency components fold back into low frequencies (\textbf{aliasing}).
-    \item Practical implication:
-          \begin{itemize}
-            \item Use analogue \emph{anti-aliasing filters} before the ADC to limit bandwidth to $f_m$.
-            \item Select $f_s$ taking into account non-ideal filter roll-off and system margins.
-          \end{itemize}
-  \end{itemize}
+	\begin{itemize}
+		\item Assume $x_a(t)$ is bandlimited: its continuous-time Fourier transform $X_a(f)=0$ for $|f| > f_m$.
+		\item \textbf{Sampling theorem:}
+		\begin{block}{}
+			Perfect reconstruction of $x_a(t)$ from uniform samples is possible if
+			\begin{equation}
+				f_s \geq 2 f_m.
+			\end{equation}
+			The minimum sampling rate $f_s = 2 f_m$ is the \textbf{Nyquist rate}.
+		\end{block}
+		\item If $f_s < 2 f_m$, high-frequency components fold back into low frequencies (\textbf{aliasing}).
+		\item Practical implication:
+		\begin{itemize}
+			\item Use analogue \emph{anti-aliasing filters} before the ADC to limit bandwidth to $f_m$.
+			\item Select $f_s$ taking into account non-ideal filter roll-off and system margins.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sampling Rates in Practice %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Sampling Rates in Practice}
-  \begin{columns}
-    \column{0.6\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/sampling_DSP.pdf} % Figure 2.4
-    \column{0.4\textwidth}
-      \begin{itemize}
-        \item Sampling rates span orders of magnitude:
-              \begin{itemize}
-                \item \textbf{Medical measurements}: Hz range (e.g. slow temperature signals, some biosignals).
-                \item \textbf{Audio / speech}: kHz range (e.g. 8 kHz telephony, 44.1 kHz CD audio).
-                \item \textbf{Radar / image processing}: MHz range for high spatial/temporal resolution.
-              \end{itemize}
-        \item Horizontal axis is logarithmic; highlights that DSP techniques must be scalable across very different data rates.
-      \end{itemize}
-  \end{columns}
-  \vspace{0.2cm}
-  \begin{itemize}
-    \item Sampling rate selection is driven by:
-          \begin{itemize}
-            \item Signal bandwidth and Nyquist theorem.
-            \item Application requirements (perceptual quality, diagnostic content).
-            \item Hardware capabilities and data storage / transmission limits.
-          \end{itemize}
-  \end{itemize}
+	\begin{columns}
+		\column{0.4\textwidth}
+			\begin{itemize}
+				\item Sampling rates span orders of magnitude:
+				\begin{itemize}
+					\item \textbf{Medical measurements}: Hz range (e.g. slow temperature signals, some biosignals).
+					\item \textbf{Audio / speech}: kHz range (e.g. 8 kHz telephony, 44.1 kHz CD audio).
+					\item \textbf{Radar / image processing}: MHz range for high spatial/temporal resolution.
+				\end{itemize}
+				\item Horizontal axis is logarithmic; highlights that DSP techniques must be scalable across very different data rates.
+			\end{itemize}
+		\column{0.6\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{fig/lec04/sampling_DSP.pdf}
+				\caption{Sampling rates \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+	\end{columns}
+	\vspace{0.2cm}
+	\begin{itemize}
+		\item Sampling rate selection is driven by:
+		\begin{itemize}
+			\item Signal bandwidth and Nyquist theorem.
+			\item Application requirements (perceptual quality, diagnostic content).
+			\item Hardware capabilities and data storage / transmission limits.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sampling Examples: Speech, Music, EEG %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Sampling Examples: Speech, Music, EEG}
-  \begin{itemize}
-    \item \textbf{Speech}
-          \begin{itemize}
-            \item Most energy below $\approx 4$ kHz; standardized sampling at 8 kHz.
-            \item Higher harmonics above $\approx 4$ kHz contribute little to intelligibility.
-          \end{itemize}
-    \item \textbf{Music}
-          \begin{itemize}
-            \item Human hearing up to $\approx 20$ kHz.
-            \item CD audio uses 44.1 kHz $\Rightarrow$ Nyquist $\approx 22.05$ kHz, covering audible spectrum.
-          \end{itemize}
-    \item \textbf{Biomedical signals (EEG, ABR)}
-          \begin{itemize}
-            \item EEG bandwidth of interest often tens of Hz to a few kHz.
-            \item Example: auditory brainstem response (ABR) in 100–3000 Hz range.
-            \item EEG may be sampled at 20 kHz, giving Nyquist of 10 kHz for capturing fine temporal features and allowing digital filtering.
-          \end{itemize}
-    \item These examples illustrate how sampling rate is chosen not only from theory but also from the physics and perceptual/diagnostic needs of the application.
-  \end{itemize}
+	\begin{itemize}
+		\item \textbf{Speech}
+		\begin{itemize}
+			\item Most energy below $\approx 4$ kHz; standardized sampling at 8 kHz.
+			\item Higher harmonics above $\approx 4$ kHz contribute little to intelligibility.
+		\end{itemize}
+		\item \textbf{Music}
+		\begin{itemize}
+			\item Human hearing up to $\approx 20$ kHz.
+			\item CD audio uses 44.1 kHz $\Rightarrow$ Nyquist $\approx 22.05$ kHz, covering audible spectrum.
+		\end{itemize}
+		\item \textbf{Biomedical signals (EEG, ABR)}
+		\begin{itemize}
+			\item EEG bandwidth of interest often tens of Hz to a few kHz.
+			\item Example: auditory brainstem response (ABR) in 100–3000 Hz range.
+			\item EEG may be sampled at 20 kHz, giving Nyquist of 10 kHz for capturing fine temporal features and allowing digital filtering.
+		\end{itemize}
+		\item These examples illustrate how sampling rate is chosen not only from theory but also from the physics and perceptual/diagnostic needs of the application.
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DSP Transformations: Time vs Frequency Domain %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{DSP Transformations: Time vs Frequency Domain}
-  \begin{itemize}
-    \item Many DSP tasks are easier in the \textbf{frequency domain}:
-          \begin{itemize}
-            \item Filtering, spectral analysis, modulation, compression, feature extraction.
-          \end{itemize}
-    \item Core transforms used:
-          \begin{itemize}
-            \item \textbf{Discrete Fourier Transform (DFT)} and its efficient implementation, the \textbf{FFT}.
-            \item \textbf{Discrete Cosine Transform (DCT)} – real-valued transform heavily used in image/video compression.
-            \item \textbf{Wavelet transforms} – multi-resolution analysis for non-stationary signals.
-          \end{itemize}
-    \item Hardware implications:
-          \begin{itemize}
-            \item These transforms are computation–intensive (many multiplications/additions).
-            \item Efficient FPGA or DSP implementations rely on exploiting symmetry, periodicity and pipeline/parallel architectures.
-          \end{itemize}
-  \end{itemize}
+	\begin{itemize}
+		\item Many DSP tasks are easier in the \textbf{frequency domain}:
+		\begin{itemize}
+			\item Filtering, spectral analysis, modulation, compression, feature extraction.
+		\end{itemize}
+		\item Core transforms used:
+		\begin{itemize}
+			\item \textbf{Discrete Fourier Transform (DFT)} and its efficient implementation, the \textbf{FFT}.
+			\item \textbf{Discrete Cosine Transform (DCT)} – real-valued transform heavily used in image/video compression.
+			\item \textbf{Wavelet transforms} – multi-resolution analysis for non-stationary signals.
+		\end{itemize}
+		\item Hardware implications:
+		\begin{itemize}
+			\item These transforms are computation–intensive (many multiplications/additions).
+			\item Efficient FPGA or DSP implementations rely on exploiting symmetry, periodicity and pipeline/parallel architectures.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Discrete Fourier Transform (DFT) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Discrete Fourier Transform (DFT)}
-  \begin{itemize}
-    \item For a finite-length sequence $x(n)$, $n = 0,\ldots,N-1$, the $N$-point DFT is
-          \[
-            X(k) = \sum_{n=0}^{N-1} x(n) W_N^{nk}, \quad k = 0,\ldots,N-1,
-          \]
-          where the \textbf{twiddle factor} is
-          \[
-            W_N = e^{-j2\pi/N}.
-          \]
-    \item Interpretation:
-          \begin{itemize}
-            \item $X(k)$ are samples of the discrete-time Fourier transform on the unit circle.
-            \item Each $X(k)$ corresponds to a complex sinusoid of frequency $2\pi k/N$.
-          \end{itemize}
-    \item Inverse DFT:
-          \[
-            x(n) = \frac{1}{N}\sum_{k=0}^{N-1} X(k) W_N^{-nk}.
-          \]
-    \item Direct computation requires $N^2$ complex multiplications and a similar number of additions – expensive for large $N$.
-  \end{itemize}
+	\begin{itemize}
+		\item For a finite-length sequence $x(n)$, $n = 0,\ldots,N-1$, the $N$-point DFT is
+		\begin{equation}
+			X(k) = \sum_{n=0}^{N-1} x(n) W_N^{nk}, \quad k = 0,\ldots,N-1,
+		\end{equation}
+		where the \textbf{twiddle factor} is
+		\begin{equation}
+			W_N = e^{-j2\pi/N}.
+		\end{equation}
+		\item Interpretation:
+		\begin{itemize}
+			\item $X(k)$ are samples of the discrete-time Fourier transform on the unit circle.
+			\item Each $X(k)$ corresponds to a complex sinusoid of frequency $2\pi k/N$.
+		\end{itemize}
+		\item Inverse DFT:
+		\begin{equation}
+			x(n) = \frac{1}{N}\sum_{k=0}^{N-1} X(k) W_N^{-nk}.
+		\end{equation}
+		\item Direct computation requires $N^2$ complex multiplications and a similar number of additions – expensive for large $N$.
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fast Fourier Transform (FFT) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Fast Fourier Transform (FFT)}
-  \begin{columns}
-    \column{0.4\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FFT_structure.pdf} % Figure 2.5
-    \column{0.55\textwidth}
-      \begin{itemize}
-        \item FFT algorithms exploit \textbf{symmetry} and \textbf{periodicity} in $W_N^{nk}$.
-        \item Basic idea (radix-2, $N=2^m$):
-              \begin{itemize}
-                \item Decompose $N$-point DFT into smaller DFTs of size $N/2$, $N/4$, …, 2.
-                \item Reuse intermediate results via "butterfly" computations.
-              \end{itemize}
-        \item Computational complexity reduced from $O(N^2)$ to $O(N\log_2 N)$.
-        \item Essential for real-time spectrum analysis, OFDM communication, and many other high-speed applications.
-      \end{itemize}
-  \end{columns}
-  \vspace{0.1cm}
-  \begin{itemize}
-    \item In OFDM (e.g. IEEE 802.11a), FFT/IFFT (inverse) are used to map data symbols onto many orthogonal subcarriers and recover them at the receiver.
-  \end{itemize}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item FFT algorithms exploit \textbf{symmetry} and \textbf{periodicity} in $W_N^{nk}$.
+				\item Basic idea (radix-2, $N=2^m$):
+				\begin{itemize}
+					\item Decompose $N$-point DFT into smaller DFTs of size $N/2$, $N/4$, …, 2.
+					\item Reuse intermediate results via "butterfly" computations.
+				\end{itemize}
+				\item Computational complexity reduced from $O(N^2)$ to $O(N\log_2 N)$.
+				\item Essential for real-time spectrum analysis, OFDM communication \textsuperscript{\textit{a}}, and many other high-speed applications.
+			\end{itemize}
+			\footnotetext[1]{In OFDM (e.g. IEEE 802.11a), FFT/IFFT (inverse) are used to map data symbols onto many orthogonal subcarriers and recover them at the receiver.}
+		\column{0.5\textwidth}
+		\vspace{-0.5cm}
+			\begin{figure}
+				\includegraphics[width=1.0\textwidth]{fig/lec04/FFT_structure.pdf}
+				\caption{8-point radix-2 FFT structure \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+	\end{columns}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Radix-2 DIT FFT: Even--Odd Decomposition %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Radix-2 DIT FFT: Even--Odd Decomposition}
-  \begin{itemize}
-    \item Start from the $N$-point DFT:
-          \[
-            X(k) = \sum_{n=0}^{N-1} x(n) W_N^{nk}.
-          \]
-    \item Split the sum into even and odd indices, $x_e(n)=x(2n)$, $x_o(n)=x(2n+1)$:
-          \[
-            X(k) = \sum_{n=0}^{N/2-1} x_e(n) W_N^{2nk}
-                 + W_N^{k} \sum_{n=0}^{N/2-1} x_o(n) W_N^{2nk}.
-          \]
-    \item Use $W_N^{2nk} = W_{N/2}^{nk}$ to obtain
-          \[
-            X(k) = E(k) + W_N^{k} O(k),
-          \]
-          where $E(k)$ and $O(k)$ are $N/2$-point DFTs of $x_e$ and $x_o$.
-    \item For $k+N/2$:
-          \[
-            X(k+N/2) = E(k) - W_N^{k} O(k), \text{giving a pair of outputs from one butterfly.}
-          \]
-          
-    \item Recursively applying this decomposition $m=\log_2 N$ times yields the full radix-2 FFT.
-  \end{itemize}
+	\begin{itemize}
+		\item Start from the $N$-point DFT:
+		\begin{equation}
+			X(k) = \sum_{n=0}^{N-1} x(n) W_N^{nk}.
+		\end{equation}
+		\item Split the sum into even and odd indices, $x_e(n)=x(2n)$, $x_o(n)=x(2n+1)$:
+		\begin{equation}
+			X(k) = \sum_{n=0}^{N/2-1} x_e(n) W_N^{2nk}
+					+ W_N^{k} \sum_{n=0}^{N/2-1} x_o(n) W_N^{2nk}.
+		\end{equation}
+		\item Use $W_N^{2nk} = W_{N/2}^{nk}$ to obtain
+		\begin{equation}
+			X(k) = E(k) + W_N^{k} O(k),
+		\end{equation}
+		where $E(k)$ and $O(k)$ are $N/2$-point DFTs of $x_e$ and $x_o$.
+		\item For $k+N/2$:
+		\begin{equation}
+			X(k+N/2) = E(k) - W_N^{k} O(k), \text{giving a pair of outputs from one butterfly.}
+		\end{equation}
+		\item Recursively applying this decomposition $m=\log_2 N$ times yields the full radix-2 FFT.
+	\end{itemize}
 \end{frame}
 
-%------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FFT Butterfly and Implementation Notes %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{FFT Butterfly and Implementation Notes}
-  \begin{itemize}
-    \item A radix-2 \textbf{butterfly} computes
-          \[
-            X_1 = A + W B, \qquad X_2 = A - W B,
-          \]
-          where $A$ and $B$ are intermediate values and $W$ is a twiddle factor.
-    \item Data-flow organisation:
-          \begin{itemize}
-            \item \textbf{Decimation-in-time (DIT)}: split in time domain, outputs appear in bit-reversed order.
-            \item \textbf{Decimation-in-frequency (DIF)}: split in frequency domain, inputs in bit-reversed order.
-          \end{itemize}
-    \item Hardware aspects:
-          \begin{itemize}
-            \item Each stage has $N/2$ butterflies; total of $(N/2)\log_2 N$ butterflies.
-            \item Fixed-point implementations require careful scaling to avoid overflow.
-            \item Pipeline and systolic FFT architectures exploit concurrency for high throughput.
-          \end{itemize}
-    \item Practical design choices:
-          \begin{itemize}
-            \item Power-of-two sizes for radix-2; mixed-radix FFTs for composite $N$.
-            \item Use of in-place algorithms to minimise memory.
-          \end{itemize}
-  \end{itemize}
+	\begin{itemize}
+		\item A radix-2 \textbf{butterfly} computes
+		\begin{equation}
+			X_1 = A + W B, \qquad X_2 = A - W B,
+		\end{equation}
+		where $A$ and $B$ are intermediate values and $W$ is a twiddle factor.
+		\item Data-flow organisation:
+		\begin{itemize}
+			\item \textbf{Decimation-in-time (DIT)}: split in time domain, outputs appear in bit-reversed order.
+			\item \textbf{Decimation-in-frequency (DIF)}: split in frequency domain, inputs in bit-reversed order.
+		\end{itemize}
+		\item Hardware aspects:
+		\begin{itemize}
+			\item Each stage has $N/2$ butterflies; total of $(N/2)\log_2 N$ butterflies.
+			\item Fixed-point implementations require careful scaling to avoid overflow.
+			\item Pipeline and systolic FFT architectures exploit concurrency for high throughput.
+		\end{itemize}
+		\item Practical design choices:
+		\begin{itemize}
+			\item Power-of-two sizes for radix-2; mixed-radix FFTs for composite $N$.
+			\item Use of in-place algorithms to minimise memory.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Discrete Cosine Transform (DCT) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Discrete Cosine Transform (DCT)}
-  \begin{itemize}
-    \item The 1-D DCT of a length-$N$ sequence $x(n)$ is
-          \[
-            X(k) = \sum_{n=0}^{N-1} x(n)\cos\left[\frac{\pi}{N}\left(n + \frac{1}{2}\right)k\right],
-            \quad k = 0,\ldots,N-1.
-          \]
-          (Only cosine terms, so $X(k)$ is real-valued.)
-    \item Widely used in image and video compression (JPEG, MPEG):
-          \begin{itemize}
-              \item The DCT can be viewed as the DFT of an \textbf{even extension} of $x(n)$:
-                        \begin{itemize}
-                          \item Reflect the sequence around the boundaries to avoid artificial discontinuities.
-                          \item This leads to purely real, cosine-only basis functions.
-                        \end{itemize}
-            \item Enables effective \textbf{quantization} and \textbf{compression} by discarding high-frequency coefficients.
-          \end{itemize}
-  \end{itemize}
+	\begin{itemize}
+		\item The 1-D DCT of a length-$N$ sequence $x(n)$ is
+		\begin{equation}
+			X(k) = \sum_{n=0}^{N-1} x(n)\cos\left[\frac{\pi}{N}\left(n + \frac{1}{2}\right)k\right],
+			\quad k = 0,\ldots,N-1.
+		\end{equation}
+		(Only cosine terms, so $X(k)$ is real-valued.)
+		\item Widely used in image and video compression (JPEG, MPEG):
+		\begin{itemize}
+			\item The DCT can be viewed as the DFT of an \textbf{even extension} of $x(n)$:
+			\begin{itemize}
+				\item Reflect the sequence around the boundaries to avoid artificial discontinuities.
+				\item This leads to purely real, cosine-only basis functions.
+			\end{itemize}
+			\item Enables effective \textbf{quantization} and \textbf{compression} by discarding high-frequency coefficients.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DCT: Relation to DFT and Energy Compaction %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{DCT: Relation to DFT and Energy Compaction}
-%   \begin{itemize}
-%     \item Basis functions:
-%           \begin{itemize}
-%             \item For fixed $k$, $\cos\!\left[\frac{\pi}{N}(n+\tfrac{1}{2})k\right]$ has $k$ half-cycles over the block.
-%             \item Low $k$ $\Rightarrow$ slowly varying patterns; high $k$ $\Rightarrow$ fine detail and edges.
-%           \end{itemize}
-%     \item \textbf{Energy compaction}: for many natural signals/images,
-%           \begin{itemize}
-%             \item Most of the signal energy is captured in a few low-$k$ coefficients.
-%             \item High-$k$ coefficients are often small and can be coarsely quantized or set to zero.
-%           \end{itemize}
-%     \item JPEG pipeline (simplified):
-%           \begin{enumerate}
-%             \item Convert RGB to YCbCr, possibly subsample chroma.
-%             \item Apply 2-D DCT to each $8\times8$ block.
-%             \item Divide by a quantization matrix and round.
-%             \item Reorder coefficients in a zig-zag scan and apply run-length + entropy coding.
-%           \end{enumerate}
-%   \end{itemize}
+% 	\begin{itemize}
+% 		\item Basis functions:
+% 		\begin{itemize}
+% 			\item For fixed $k$, $\cos\!\left[\frac{\pi}{N}(n+\tfrac{1}{2})k\right]$ has $k$ half-cycles over the block.
+% 			\item Low $k$ $\Rightarrow$ slowly varying patterns; high $k$ $\Rightarrow$ fine detail and edges.
+% 		\end{itemize}
+% 		\item \textbf{Energy compaction}: for many natural signals/images,
+% 		\begin{itemize}
+% 			\item Most of the signal energy is captured in a few low-$k$ coefficients.
+% 			\item High-$k$ coefficients are often small and can be coarsely quantized or set to zero.
+% 		\end{itemize}
+% 		\item JPEG pipeline (simplified):
+% 		\begin{enumerate}
+% 			\item Convert RGB to YCbCr, possibly subsample chroma.
+% 			\item Apply 2-D DCT to each $8\times8$ block.
+% 			\item Divide by a quantization matrix and round.
+% 			\item Reorder coefficients in a zig-zag scan and apply run-length + entropy coding.
+% 		\end{enumerate}
+% 	\end{itemize}
 % \end{frame}
-   
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Discrete Cosine Transform (DCT) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Wavelet Transform and DWT}
-  \begin{itemize}
-    \item Wavelets are short-duration oscillatory functions that provide \textbf{time–frequency} localization.
-    \item Wavelet decomposition:
-          \begin{itemize}
-            \item Decomposes a signal into shifted and scaled versions of a prototype wavelet.
-            \item Very suitable for non-stationary signals where classical FFT (fixed frequency resolution) is inadequate.
-          \end{itemize}
-    \item \textbf{Discrete Wavelet Transform (DWT)} via filter banks:
-          \begin{itemize}
-            \item Input $x(n)$ is passed through a \textbf{low-pass} filter $g(n)$ and a \textbf{high-pass} filter $h(n)$.
-            \item Outputs are down-sampled by 2 to produce approximation and detail coefficients:
-                  \[
-                    y_{\text{low}}(n) = \sum_{k=-\infty}^{\infty} x(k) g(2n-k),
-                  \]
-                  \[
-                    y_{\text{high}}(n) = \sum_{k=-\infty}^{\infty} x(k) h(2n-k).
-                  \]
-            \item Process can be iterated on the low-pass branch to obtain multi-resolution representations.
-          \end{itemize}
-    \item Applications: image compression and denoising, biomedical signal analysis, transient detection.
-  \end{itemize}
+	\begin{itemize}
+		\item Wavelets are short-duration oscillatory functions that provide \textbf{time–frequency} localization.
+		\item Wavelet decomposition:
+		\begin{itemize}
+			\item Decomposes a signal into shifted and scaled versions of a prototype wavelet.
+			\item Very suitable for non-stationary signals where classical FFT (fixed frequency resolution) is inadequate.
+		\end{itemize}
+		\item \textbf{Discrete Wavelet Transform (DWT)} via filter banks:
+		\begin{itemize}
+			\item Input $x(n)$ is passed through a \textbf{low-pass} filter $g(n)$ and a \textbf{high-pass} filter $h(n)$.
+			\item Outputs are down-sampled by 2 to produce approximation and detail coefficients:
+			\begin{equation}
+				y_{\text{low}}(n) = \sum_{k=-\infty}^{\infty} x(k) g(2n-k),
+			\end{equation}
+			\begin{equation}
+				y_{\text{high}}(n) = \sum_{k=-\infty}^{\infty} x(k) h(2n-k).
+			\end{equation}
+			\item Process can be iterated on the low-pass branch to obtain multi-resolution representations.
+		\end{itemize}
+		\item Applications: image compression and denoising, biomedical signal analysis, transient detection.
+	\end{itemize}
 \end{frame}
 
-% %------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DWT: Multiresolution Decomposition %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{DWT: Multiresolution Decomposition}
-%   \begin{itemize}
-%     \item The low-pass branch can be iterated to obtain multiple resolution levels:
-%           \[
-%             x(n) \rightarrow
-%             \begin{cases}
-%               A_1(n), D_1(n) \\
-%               A_2(n), D_2(n) \\
-%               \vdots \\
-%               A_J(n), D_J(n)
-%             \end{cases}
-%           \]
-%           where $A_j$ are approximations and $D_j$ are details at scale $j$.
-%     \item Time–frequency tiling:
-%           \begin{itemize}
-%             \item Fine time resolution / coarse frequency resolution at high frequencies.
-%             \item Coarse time resolution / fine frequency resolution at low frequencies.
-%             \item Better matches many real-world signals (e.g. bursts, edges) than the fixed resolution of the FFT/STFT.
-%           \end{itemize}
-%     \item Perfect reconstruction:
-%           \begin{itemize}
-%             \item With suitable analysis and synthesis filters, the original signal can be exactly reconstructed from $\{A_J, D_J,\ldots,D_1\}$.
-%             \item This underpins wavelet-based compression schemes (e.g. JPEG2000).
-%           \end{itemize}
-%     \item Design choices:
-%           \begin{itemize}
-%             \item Orthogonal vs biorthogonal wavelets (Daubechies, Symmlet, Coiflet, etc.).
-%             \item Support length and regularity trade off localisation versus smoothness.
-%           \end{itemize}
-%   \end{itemize}
+% 	\begin{itemize}
+% 		\item The low-pass branch can be iterated to obtain multiple resolution levels:
+% 		\begin{equation}
+% 			x(n) \rightarrow
+% 			\begin{cases}
+% 				A_1(n), D_1(n) \\
+% 				A_2(n), D_2(n) \\
+% 				\vdots \\
+% 				A_J(n), D_J(n)
+% 			\end{cases}
+% 		\end{equation}
+% 		where $A_j$ are approximations and $D_j$ are details at scale $j$.
+% 		\item Time–frequency tiling:
+% 		\begin{itemize}
+% 			\item Fine time resolution / coarse frequency resolution at high frequencies.
+% 			\item Coarse time resolution / fine frequency resolution at low frequencies.
+% 			\item Better matches many real-world signals (e.g. bursts, edges) than the fixed resolution of the FFT/STFT.
+% 		\end{itemize}
+% 		\item Perfect reconstruction:
+% 		\begin{itemize}
+% 			\item With suitable analysis and synthesis filters, the original signal can be exactly reconstructed from $\{A_J, D_J,\ldots,D_1\}$.
+% 			\item This underpins wavelet-based compression schemes (e.g. JPEG2000).
+% 		\end{itemize}
+% 		\item Design choices:
+% 		\begin{itemize}
+% 			\item Orthogonal vs biorthogonal wavelets (Daubechies, Symmlet, Coiflet, etc.).
+% 			\item Support length and regularity trade off localisation versus smoothness.
+% 		\end{itemize}
+% 	\end{itemize}
 % \end{frame}
 
-%------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Digital Filters: Overview %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Digital Filters: Overview}
-  \begin{itemize}
-    \item A \textbf{filter} shapes the spectral content of a signal:
-          \begin{itemize}
-            \item Low-pass, high-pass, band-pass, band-stop, etc.
-          \end{itemize}
-    \item \textbf{Analogue filters}:
-          \begin{itemize}
-            \item Implemented using resistors, capacitors, inductors, op-amps.
-            \item Continuous-time, continuous-amplitude.
-          \end{itemize}
-    \item \textbf{Digital filters}:
-          \begin{itemize}
-            \item Implemented as algorithms operating on discrete-time sequences.
-            \item Use arithmetic operations (add, multiply, delay).
-            \item Very precise and stable; easily reconfigurable in software or hardware (DSP, FPGA).
-          \end{itemize}
-    \item Two main classes:
-          \begin{itemize}
-            \item Finite Impulse Response (FIR) – impulse response of finite duration.
-            \item Infinite Impulse Response (IIR) – involves feedback, theoretically infinite impulse response.
-          \end{itemize}
-  \end{itemize}
+	\begin{itemize}
+		\item A \textbf{filter} shapes the spectral content of a signal:
+		\begin{itemize}
+			\item Low-pass, high-pass, band-pass, band-stop, etc.
+		\end{itemize}
+		\item \textbf{Analogue filters}:
+		\begin{itemize}
+			\item Implemented using resistors, capacitors, inductors, op-amps.
+			\item Continuous-time, continuous-amplitude.
+		\end{itemize}
+		\item \textbf{Digital filters}:
+		\begin{itemize}
+			\item Implemented as algorithms operating on discrete-time sequences.
+			\item Use arithmetic operations (add, multiply, delay).
+			\item Very precise and stable; easily reconfigurable in software or hardware (DSP, FPGA).
+		\end{itemize}
+		\item Two main classes:
+		\begin{itemize}
+			\item Finite Impulse Response (FIR) – impulse response of finite duration.
+			\item Infinite Impulse Response (IIR) – involves feedback, theoretically infinite impulse response.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Finite Impulse Response (FIR) Filters %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Finite Impulse Response (FIR) Filters}
-  \begin{columns}
-    \column{0.55\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FIR.pdf} % Figure 2.8 or 2.7
-    \column{0.45\textwidth}
-      \begin{itemize}
-        \item General FIR filter of length $N$:
-              \[
-                y(n) = \sum_{i=0}^{N-1} a_i x(n-i).
-              \]
-        \item Realized using:
-              \begin{itemize}
-                \item Delay elements $z^{-1}$ (registers / memory).
-                \item Multipliers implementing coefficients $a_i$.
-                \item Adders accumulating partial sums.
-              \end{itemize}
-      \end{itemize}
-  \end{columns}
-  \vspace{0.1cm}
-  \begin{itemize}
-    \item FIR filters are always \textbf{bounded input bounded outout (BIBO) stable} since their impulse response is finite.
-    \item With symmetric coefficients ($a_i = a_{N-1-i}$), FIR filters exhibit \textbf{linear phase}: they delay all frequency components equally, avoiding waveform distortion.
-  \end{itemize}
+	\begin{columns}
+		\column{0.45\textwidth}
+			\begin{itemize}
+				\item General FIR filter of length $N$:
+				\begin{equation}
+					y(n) = \sum_{i=0}^{N-1} a_i x(n-i).
+				\end{equation}
+				\item Realized using:
+				\begin{itemize}
+					\item Delay elements $z^{-1}$ (registers / memory).
+					\item Multipliers implementing coefficients $a_i$.
+					\item Adders accumulating partial sums.
+				\end{itemize}
+			\end{itemize}	
+		\column{0.5\textwidth}
+		\vspace{-0.5cm}
+			\begin{figure}
+				\includegraphics[width=0.8\textwidth]{fig/lec04/FIR.pdf}
+				\caption{Original FIR filter SFG \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+	\end{columns}
+	\begin{itemize}
+		\item FIR filters are always \textbf{bounded input bounded outout (BIBO) stable} since their impulse response is finite.
+		\item With symmetric coefficients ($a_i = a_{N-1-i}$), FIR filters exhibit \textbf{linear phase}: they delay all frequency components equally, avoiding waveform distortion.
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LTI Properties and FIR Structures %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{LTI Properties and FIR Structures}
-    \begin{columns}
-    \column{0.6\textwidth}
-  \begin{itemize}
-    \item An FIR filter (or any digital filter) is \textbf{linear} and \textbf{time-invariant} if it satisfies:
-          \begin{itemize}
-            \item \textbf{Superposition}: response to $x_1(n)+x_2(n)$ is $y_1(n)+y_2(n)$.
-            \item \textbf{Homogeneity}: response to $c\,x(n)$ is $c\,y(n)$.
-            \item \textbf{Shift invariance}: shift in input produces equal shift in output.
-          \end{itemize}
-    \item These properties enable:
-          \begin{itemize}
-            \item Convolution description of filtering.
-            \item Use of frequency response $H(e^{j\omega})$ to characterise behavior.
-          \end{itemize}
-    \item FIR filters can be combined:
-          \begin{itemize}
-            \item \textbf{Cascade} structure: output of one filter is input to the next.
-            \item \textbf{Parallel} structure: inputs processed by multiple filters, then summed.
-          \end{itemize}
-  \end{itemize}
-    \column{0.4\textwidth}
-      \includegraphics[width=0.7\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(a)
-
-      \includegraphics[width=0.7\textwidth]{fig/lec04/FIR_config.pdf} % Figure 2.9(b)
-  \end{columns}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item An FIR filter (or any digital filter) is \textbf{linear} and \textbf{time-invariant} if it satisfies:
+				\begin{itemize}
+					\item \textbf{Superposition}: response to $x_1(n)+x_2(n)$ is $y_1(n)+y_2(n)$.
+					\item \textbf{Homogeneity}: response to $c\,x(n)$ is $c\,y(n)$.
+					\item \textbf{Shift invariance}: shift in input produces equal shift in output.
+				\end{itemize}
+				\item These properties enable:
+				\begin{itemize}
+					\item Convolution description of filtering.
+					\item Use of frequency response $H(e^{j\omega})$ to characterise behavior.
+				\end{itemize}
+				\item FIR filters can be combined:
+				\begin{itemize}
+					\item \textbf{Cascade} structure: output of one filter is input to the next.
+					\item \textbf{Parallel} structure: inputs processed by multiple filters, then summed.
+				\end{itemize}
+			\end{itemize}
+		\column{0.45\textwidth}
+			\begin{figure}
+				\includegraphics[width=1.0\textwidth]{fig/lec04/FIR_config.pdf}
+				\caption{FIR Filter configurations \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+	\end{columns}
 \end{frame}
-%------------------------------------------------
 
-%------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Low-Pass FIR Filter Specifications %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Low-Pass FIR Filter Specifications}
-  \begin{columns}
-    \column{0.45\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/FIR_spec.pdf} % Figure 2.10
-    \column{0.55\textwidth}
-      \small
-      \begin{itemize}
-        \item Design starts from a \textbf{desired magnitude response}:
-              \begin{itemize}
-                \item Passband with nearly constant gain.
-                \item Stopband with strong attenuation.
-              \end{itemize}
-        \item Key parameters:
-              \begin{itemize}
-                \item Passband edge frequency $f_p$.
-                \item Stopband begin frequency $f_c$.
-                \item Passband ripple $\delta_1$.
-                \item Stopband ripple / attenuation $\delta_2$.
-                \item \textbf{Transition band}: region between $f_p$ and $f_c$.
-              \end{itemize}
-        \item Ripple ratio: $\displaystyle \text{Ripple ratio} = \frac{\delta_2}{\delta_1}$.
-        \item Example plot shows the ripples in both passband and stopband and the ideal gain level.
-      \end{itemize}
-  \end{columns}
-  \small
-  \begin{itemize}
-    \item Specifications $(\delta_1,\delta_2,f_p,f_c)$ directly determine filter length and window choice.
-  \end{itemize}
+	\begin{columns}
+		\column{0.45\textwidth}
+			\small
+			\vspace{-0.25cm}
+			\begin{itemize}
+				\item Design starts from a \textbf{desired magnitude response}:
+				\begin{itemize}
+					\item Passband with nearly constant gain.
+					\item Stopband with strong attenuation.
+				\end{itemize}
+				\item Key parameters:
+				\begin{itemize}
+					\item Passband edge frequency $f_p$.
+					\item Stopband begin frequency $f_c$.
+					\item Passband ripple $\delta_1$.
+					\item Stopband ripple / attenuation $\delta_2$.
+					\item \textbf{Transition band}: region between $f_p$ and $f_c$.
+				\end{itemize}
+				\item $\displaystyle \text{Ripple ratio} = \frac{\delta_2}{\delta_1}$.
+				\item Example plot shows the ripples in both passband and stopband and the ideal gain level.
+			\end{itemize}
+		\column{0.55\textwidth}
+			\vspace{-0.5cm}
+			\small
+			\begin{figure}
+				\includegraphics[width=\textwidth]{fig/lec04/FIR_spec.pdf}
+				\caption{Filter specification features \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+			\vspace{-0.5cm}
+			\begin{itemize}
+				\item Specifications $(\delta_1,\delta_2,f_p,f_c)$ directly determine filter length and window choice.
+			\end{itemize}
+	\end{columns}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% From Ideal Response to Practical FIR Filter %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{From Ideal Response to Practical FIR Filter}
-  \small
-  \begin{itemize}
-    \item Start with an \textbf{ideal} (infinite-length) low-pass response:
-          \begin{itemize}
-            \item Sharp transition; zero passband/stopband ripple.
-            \item Impulse response $h_\text{ideal}(n)$ extends to $\pm\infty$.
-          \end{itemize}
-    \item \textbf{Design idea}:
-          \begin{enumerate}
-            \item Specify desired magnitude response $|H_d(\omega)|$ with given $f_p,f_c,\delta_1,\delta_2$.
-            \item Compute corresponding \emph{inverse transform} to obtain $h_\text{ideal}(n)$.
-            \item Truncate to a finite length $N$ and shift to make it causal.
-          \end{enumerate}
-    \item Simple truncation $\Rightarrow$ multiply $h_\text{ideal}(n)$ by a \textbf{rectangular window}.
-          \begin{itemize}
-            \item This introduces oscillations (ripples) near discontinuities in the frequency domain
-                  $\Rightarrow$ \textbf{Gibbs phenomenon}.
-            \item Ripples occur in both passband and stopband.
-          \end{itemize}
-    \item Practical design uses alternative windows (Hamming, Hann, Kaiser, Dolph–Chebyshev, …) to control ripple and transition width.
-  \end{itemize}
+	\small
+		\begin{itemize}
+		\item Start with an \textbf{ideal} (infinite-length) low-pass response:
+		\begin{itemize}
+			\item Sharp transition; zero passband/stopband ripple.
+			\item Impulse response $h_\text{ideal}(n)$ extends to $\pm\infty$.
+		\end{itemize}
+		\item \textbf{Design idea}:
+		\begin{enumerate}
+			\item Specify desired magnitude response $|H_d(\omega)|$ with given $f_p,f_c,\delta_1,\delta_2$.
+			\item Compute corresponding \emph{inverse transform} to obtain $h_\text{ideal}(n)$.
+			\item Truncate to a finite length $N$ and shift to make it causal.
+		\end{enumerate}
+		\item Simple truncation $\Rightarrow$ multiply $h_\text{ideal}(n)$ by a \textbf{rectangular window}.
+		\begin{itemize}
+			\item This introduces oscillations (ripples) near discontinuities in the frequency domain
+				$\Rightarrow$ \textbf{Gibbs phenomenon}.
+			\item Ripples occur in both passband and stopband.
+		\end{itemize}
+		\item Practical design uses alternative windows (Hamming, Hann, Kaiser, Dolph–Chebyshev, …) to control ripple and transition width.
+	\end{itemize}
 \end{frame}
 
-%------------------------------------------------
-\begin{frame}{Why Window and Filter Length Matter (FIR Low-Pass)}
-
-  \begin{block}{The message to remember (industrial relevance)}
-  \textbf{Two design knobs} (window type, filter length $N$) determine \textbf{three outcomes} that directly impact
-  \textbf{control/measurement quality} and \textbf{embedded implementation cost}.
-  \end{block}
-
-
-  \begin{block}{Two knobs you can tune}
-  \begin{itemize}
-  \item \textbf{Window type} (e.g., Hamming vs Dolph--Chebyshev)
-  \begin{itemize}
-  \item sets \textbf{sidelobes / ripple} (leakage, stopband attenuation)
-  \item influences \textbf{transition sharpness} (mainlobe width)
-  \end{itemize}
-  \item \textbf{Filter length $N$} (number of taps)
-  \begin{itemize}
-  \item larger $N$ $\Rightarrow$ \textbf{narrower transition band}
-  \item larger $N$ $\Rightarrow$ \textbf{lower ripple} (for same window)
-  \end{itemize}
-  \end{itemize}
-  \end{block}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Why Window and Filter Length Matter (FIR Low-Pass) (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Why Window and Filter Length Matter (FIR Low-Pass) (1)}
+	\begin{block}{The message to remember (industrial relevance)}
+		\textbf{Two design knobs} (window type, filter length $N$) determine \textbf{three outcomes} that directly impact
+		\textbf{control/measurement quality} and \textbf{embedded implementation cost}.
+	\end{block}
+	\begin{block}{Two knobs you can tune}
+		\begin{itemize}
+			\item \textbf{Window type} (e.g., Hamming vs Dolph--Chebyshev)
+			\begin{itemize}
+				\item sets \textbf{sidelobes / ripple} (leakage, stopband attenuation)
+				\item influences \textbf{transition sharpness} (mainlobe width)
+			\end{itemize}
+			\item \textbf{Filter length $N$} (number of taps)
+			\begin{itemize}
+				\item larger $N$ $\Rightarrow$ \textbf{narrower transition band}
+				\item larger $N$ $\Rightarrow$ \textbf{lower ripple} (for same window)
+			\end{itemize}
+		\end{itemize}
+	\end{block}
 \end{frame}
 
-
-\begin{frame}
-
-  \begin{block}{Three outcomes to practice}
-  \begin{itemize}
-  \item \textbf{Signal quality:} noise rejection vs distortion
-  \begin{itemize}
-  \item ripple/leakage $\Rightarrow$ residual noise, spectral leakage
-  \item too-wide transition $\Rightarrow$ poor selectivity
-  \end{itemize}
-  \item \textbf{System behavior:} delay and closed-loop impact
-  \begin{itemize}
-  \item FIR group delay $\approx \frac{N-1}{2}$ samples (linear phase)
-  \end{itemize}
-  \item \textbf{Compute and memory:} feasibility on MCU/FPGA/PLC
-  \begin{itemize}
-  \item cost $\propto N$ multiplies/adds per sample (+ coefficient memory)
-  \end{itemize}
-  \end{itemize}
-  \end{block}
-
-  \begin{alertblock}{Rule-of-thumb decision}
-  \begin{itemize}
-  \item Need \textbf{sharper cutoff}? \ \textbf{Increase $N$} (most reliable).
-  \item Need \textbf{more stopband attenuation}? \ \textbf{Change window} (then adjust $N$ if needed).
-  \item Need \textbf{lower cost/latency}? \ \textbf{Reduce $N$} and accept wider transition / less attenuation.
-  \end{itemize}
-  \end{alertblock}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Why Window and Filter Length Matter (FIR Low-Pass) (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Why Window and Filter Length Matter (FIR Low-Pass) (2)}
+	\begin{block}{Three outcomes to practice}
+		\begin{itemize}
+			\item \textbf{Signal quality:} noise rejection vs distortion
+			\begin{itemize}
+				\item ripple/leakage $\Rightarrow$ residual noise, spectral leakage
+				\item too-wide transition $\Rightarrow$ poor selectivity
+			\end{itemize}
+			\item \textbf{System behavior:} delay and closed-loop impact
+			\begin{itemize}
+				\item FIR group delay $\approx \frac{N-1}{2}$ samples (linear phase)
+			\end{itemize}
+			\item \textbf{Compute and memory:} feasibility on MCU/FPGA/PLC
+			\begin{itemize}
+				\item cost $\propto N$ multiplies/adds per sample (+ coefficient memory)
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+	\begin{alertblock}{Rule-of-thumb decision}
+		\begin{itemize}
+			\item Need \textbf{sharper cutoff}? \ \textbf{Increase $N$} (most reliable).
+			\item Need \textbf{more stopband attenuation}? \ \textbf{Change window} (then adjust $N$ if needed).
+			\item Need \textbf{lower cost/latency}? \ \textbf{Reduce $N$} and accept wider transition / less attenuation.
+		\end{itemize}
+	\end{alertblock}
 \end{frame}
 
-% %------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Effect of Window Type on Low-Pass FIR Response %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{Effect of Window Type on Low-Pass FIR Response}
-%   \begin{columns}
-%     \column{0.5\textwidth}
-%       \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (a)
-%     \column{0.5\textwidth}
-%   \small
-%   \begin{itemize}
-%     \item Example: $N=100$-tap low-pass FIR designed with:
-%           \begin{itemize}
-%             \item \textbf{Hamming window} – relatively wide mainlobe, low sidelobe level ($\approx -40$ dB).
-%             \item \textbf{Dolph–Chebyshev window} – narrower mainlobe (sharper transition) but higher sidelobes for same length.
-%           \end{itemize}
-%     \item For fixed $N$:
-%           \begin{itemize}
-%             \item Choice of window trades \textbf{transition width} vs \textbf{ripple level}.
-%             \item Chebyshev: better frequency selectivity, more pronounced ripple pattern.
-%             \item Hamming: smoother response, weaker stopband attenuation at some frequencies.
-%           \end{itemize}
-%   \end{itemize}
-%    \end{columns}
+% 	\begin{columns}
+% 		\column{0.5\textwidth}
+% 			\includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (a)
+% 		\column{0.5\textwidth}
+% 			\small
+% 			\begin{itemize}
+% 				\item Example: $N=100$-tap low-pass FIR designed with:
+% 				\begin{itemize}
+% 					\item \textbf{Hamming window} – relatively wide mainlobe, low sidelobe level ($\approx -40$ dB).
+% 					\item \textbf{Dolph–Chebyshev window} – narrower mainlobe (sharper transition) but higher sidelobes for same length.
+% 				\end{itemize}
+% 				\item For fixed $N$:
+% 				\begin{itemize}
+% 					\item Choice of window trades \textbf{transition width} vs \textbf{ripple level}.
+% 					\item Chebyshev: better frequency selectivity, more pronounced ripple pattern.
+% 					\item Hamming: smoother response, weaker stopband attenuation at some frequencies.
+% 				\end{itemize}
+% 			\end{itemize}
+% 	\end{columns}
 % \end{frame}
-% %------------------------------------------------
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Effect of Filter Length on Low-Pass FIR Response %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{Effect of Filter Length on Low-Pass FIR Response}
-%   \begin{columns}
-%     \column{0.45\textwidth}
-%       \includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (b) / 2.12
-%     \column{0.6\textwidth}
-%   \small
-%   \begin{itemize}
-%     \item Increasing the number of taps to $N=400$:
-%           \begin{itemize}
-%             \item \textbf{Narrower transition band} between passband and stopband.
-%             \item \textbf{Reduced ripple} (for same window) because the approximation to the ideal response improves.
-%           \end{itemize}
-%     \item Cost:
-%           \begin{itemize}
-%             \item 4$\times$ more multiplications and additions per output sample compared with $N=100$.
-%             \item More memory for storing coefficients and previous samples.
-%           \end{itemize}
-%     \item Design trade-off:
-%           \begin{itemize}
-%             \item Meet specs $(\delta_1,\delta_2,f_p,f_c)$ with \emph{minimum} $N$ and appropriate window.
-%             \item For FPGA/ASIC, this directly impacts area, power and achievable sampling rate.
-%           \end{itemize}
-%   \end{itemize}
-%     \end{columns}
+% 	\begin{columns}
+% 		\column{0.45\textwidth}
+% 			\includegraphics[width=0.8\textwidth]{fig/lec04/FIR_LP_100tap.pdf} % Figure 2.11 (b) / 2.12
+% 		\column{0.6\textwidth}
+% 			\small
+% 			\begin{itemize}
+% 				\item Increasing the number of taps to $N=400$:
+% 				\begin{itemize}
+% 					\item \textbf{Narrower transition band} between passband and stopband.
+% 					\item \textbf{Reduced ripple} (for same window) because the approximation to the ideal response improves.
+% 				\end{itemize}
+% 				\item Cost:
+% 				\begin{itemize}
+% 					\item 4$\times$ more multiplications and additions per output sample compared with $N=100$.
+% 					\item More memory for storing coefficients and previous samples.
+% 				\end{itemize}
+% 				\item Design trade-off:
+% 				\begin{itemize}
+% 					\item Meet specs $(\delta_1,\delta_2,f_p,f_c)$ with \emph{minimum} $N$ and appropriate window.
+% 					\item For FPGA/ASIC, this directly impacts area, power and achievable sampling rate.
+% 				\end{itemize}
+% 			\end{itemize}
+% 	\end{columns}
 % \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Motivation for IIR Filters %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Motivation for IIR Filters}
-  \small
-  \begin{itemize}
-    \item FIR filters are simple and robust, but:
-          \begin{itemize}
-            \item Require many taps to achieve very sharp cut-off.
-            \item Computational cost increases linearly with filter length.
-          \end{itemize}
-    \item \textbf{Infinite Impulse Response (IIR) filters} introduce feedback (recursive structure):
-          \begin{itemize}
-            \item Can approximate analogue filter characteristics (Butterworth, Chebyshev, Elliptic) with far fewer coefficients.
-            \item Sharper transition for a given order compared to FIR.
-          \end{itemize}
-    \item Main trade-offs:
-          \begin{itemize}
-            \item Possible \textbf{non-linear phase} (phase distortion).
-            \item Susceptible to \textbf{stability} and \textbf{quantisation} issues due to feedback.
-          \end{itemize}
-    \item Design approach:
-          \begin{itemize}
-            \item Often start from a well-known analogue prototype $H_A(s)$.
-            \item Transform into digital $H_D(z)$ using mappings such as impulse invariance, $z$-transform, or bilinear transform.
-          \end{itemize}
-  \end{itemize}
+	\small
+	\begin{itemize}
+		\item FIR filters are simple and robust, but:
+		\begin{itemize}
+			\item Require many taps to achieve very sharp cut-off.
+			\item Computational cost increases linearly with filter length.
+		\end{itemize}
+		\item \textbf{Infinite Impulse Response (IIR) filters} introduce feedback (recursive structure):
+		\begin{itemize}
+			\item Can approximate analogue filter characteristics (Butterworth, Chebyshev, Elliptic) with far fewer coefficients.
+			\item Sharper transition for a given order compared to FIR.
+		\end{itemize}
+		\item Main trade-offs:
+		\begin{itemize}
+			\item Possible \textbf{non-linear phase} (phase distortion).
+			\item Susceptible to \textbf{stability} and \textbf{quantisation} issues due to feedback.
+		\end{itemize}
+		\item Design approach:
+		\begin{itemize}
+			\item Often start from a well-known analogue prototype $H_A(s)$.
+			\item Transform into digital $H_D(z)$ using mappings such as impulse invariance, $z$-transform, or bilinear transform.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Direct-Form IIR Structure %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Direct-Form IIR Structure}
-  \begin{columns}
-    \column{0.55\textwidth}
-      \includegraphics[width=\textwidth]{fig/lec04/IIR_direct.pdf} % Figure 2.12
-    \column{0.45\textwidth}
-      \small
-      \begin{itemize}
-        \item General IIR difference equation:
-              \[
-                y(n) = \sum_{i=0}^{N-1} a_i x(n-i) + \sum_{j=1}^{M-1} b_j y(n-j).
-              \]
-        \item Corresponding transfer function:
-              \[
-                H(z) = \frac{\sum_{i=0}^{N-1} a_i z^{-i}}{1 - \sum_{j=1}^{M-1} b_j z^{-j}}.
-              \]
-        \item Realisation:
-              \begin{itemize}
-                \item Feedforward path: FIR-like part with coefficients $a_i$.
-                \item Feedback path: uses previous outputs scaled by $b_j$.
-              \end{itemize}
-      \end{itemize}
-  \end{columns}
-  \vspace{0.1cm}
-  \small
-  \begin{itemize}
-    \item Direct-form structures are straightforward but can be sensitive to coefficient quantisation and round-off noise, especially for high-order filters.
-  \end{itemize}
+	\begin{columns}
+		\column{0.45\textwidth}
+			\small
+			\begin{itemize}
+				\item General IIR difference equation:
+				\begin{equation}
+					y(n) = \sum_{i=0}^{N-1} a_i x(n-i) + \sum_{j=1}^{M-1} b_j y(n-j).
+				\end{equation}
+				\item Corresponding transfer function:
+				\begin{equation}
+					H(z) = \frac{\sum_{i=0}^{N-1} a_i z^{-i}}{1 - \sum_{j=1}^{M-1} b_j z^{-j}}.
+				\end{equation}
+				\item Realisation:
+				\begin{itemize}
+					\item Feedforward path: FIR-like part with coefficients $a_i$.
+					\item Feedback path: uses previous outputs scaled by $b_j$.
+				\end{itemize}
+			\end{itemize}
+		\column{0.55\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{fig/lec04/IIR_direct.pdf}
+				\caption{Direct form IIR Filter \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+	\end{columns}
+	\vspace{0.1cm}
+	\small
+	\begin{itemize}
+		\item Direct-form structures are straightforward but can be sensitive to coefficient quantisation and round-off noise, especially for high-order filters.
+	\end{itemize}
 \end{frame}
-% %------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% From Analogue to Digital: Bilinear Transform %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{From Analogue to Digital: Bilinear Transform}
-%   \small
-%   \begin{itemize}
-%     \item Start with an analogue prototype $H_A(s)$.
-%     \item Apply \textbf{bilinear transform}:
-%           \[
-%             s = \frac{2}{T}\,\frac{1 - z^{-1}}{1 + z^{-1}},
-%           \]
-%           leading to a digital transfer function $H_D(z) = H_A(s)\big|_{s = \frac{2}{T}\frac{1 - z^{-1}}{1 + z^{-1}}}$.
-%     \item Properties:
-%           \begin{itemize}
-%             \item Maps the \textbf{left-half $s$-plane} onto the \textbf{interior of the unit circle} in the $z$-plane:
-%                   \begin{itemize}
-%                     \item Stability of analogue filter $\Rightarrow$ stability of digital filter.
-%                   \end{itemize}
-%             \item Frequency axis is \textbf{warped}: linear frequency $\omega$ in analogue domain maps nonlinearly to digital frequency $\Omega$ (Figure 2.13).
-%           \end{itemize}
-%     \item To compensate, critical analogue frequencies are \textbf{pre-warped} before transformation.
-%   \end{itemize}
+% 	\small
+% 	\begin{itemize}
+% 		\item Start with an analogue prototype $H_A(s)$.
+% 		\item Apply \textbf{bilinear transform}:
+% 		\begin{equation}
+% 			s = \frac{2}{T}\,\frac{1 - z^{-1}}{1 + z^{-1}},
+% 		\end{equation}
+% 		leading to a digital transfer function $H_D(z) = H_A(s)\big|_{s = \frac{2}{T}\frac{1 - z^{-1}}{1 + z^{-1}}}$.
+% 		\item Properties:
+% 		\begin{itemize}
+% 			\item Maps the \textbf{left-half $s$-plane} onto the \textbf{interior of the unit circle} in the $z$-plane:
+% 			\begin{itemize}
+% 				\item Stability of analogue filter $\Rightarrow$ stability of digital filter.
+% 			\end{itemize}
+% 			\item Frequency axis is \textbf{warped}: linear frequency $\omega$ in analogue domain maps nonlinearly to digital frequency $\Omega$ (Figure 2.13).
+% 		\end{itemize}
+% 		\item To compensate, critical analogue frequencies are \textbf{pre-warped} before transformation.
+% 	\end{itemize}
 % \end{frame}
-% %------------------------------------------------
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Frequency Warping and IIR Distortion %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}{Frequency Warping and IIR Distortion}
-%   \begin{columns}
-%     \column{0.4\textwidth}
-%       \includegraphics[width=0.8\textwidth]{fig/lec04/IIR_dist.pdf} % Figure 2.13 or 2.14
-%     \column{0.6\textwidth}
-%       \small
-%       \begin{itemize}
-%         \item Plot shows relation between analogue frequency $\omega$ and digital frequency $\Omega$.
-%         \item At low frequencies the mapping is nearly linear; at higher frequencies, the spacing becomes compressed.
-%         \item Result: passband/stopband edges in the digital filter are \emph{shifted} relative to analogue specifications.
-%         \item Pre-warping ensures that important band edges (e.g. passband cutoff) line up after transformation.
-%       \end{itemize}
-%   \end{columns}
-%   \vspace{0.1cm}
-%   \small
-%   \begin{itemize}
-%     \item For implementation and numerical robustness, high-order IIR filters are usually decomposed into cascaded \textbf{second-order sections}:
-%           \[
-%             y(n) = a_0 x(n) + a_1 x(n-1) + a_2 x(n-2) + b_1 y(n-1) + b_2 y(n-2).
-%           \]
-%   \end{itemize}
+% 	\begin{columns}
+% 		\column{0.4\textwidth}
+% 			\includegraphics[width=0.8\textwidth]{fig/lec04/IIR_dist.pdf} % Figure 2.13 or 2.14
+% 		\column{0.6\textwidth}
+% 			\small
+% 			\begin{itemize}
+% 				\item Plot shows relation between analogue frequency $\omega$ and digital frequency $\Omega$.
+% 				\item At low frequencies the mapping is nearly linear; at higher frequencies, the spacing becomes compressed.
+% 				\item Result: passband/stopband edges in the digital filter are \emph{shifted} relative to analogue specifications.
+% 				\item Pre-warping ensures that important band edges (e.g. passband cutoff) line up after transformation.
+% 			\end{itemize}
+% 	\end{columns}
+% 	\vspace{0.1cm}
+% 	\small
+% 	\begin{itemize}
+% 		\item For implementation and numerical robustness, high-order IIR filters are usually decomposed into cascaded \textbf{second-order sections}:
+% 		\begin{equation}
+% 			y(n) = a_0 x(n) + a_1 x(n-1) + a_2 x(n-2) + b_1 y(n-1) + b_2 y(n-2).
+% 		\end{equation}
+% 	\end{itemize}
 % \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Wave Digital Filters (WDFs): Concept %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Wave Digital Filters (WDFs): Concept}
-  \small
-  \begin{itemize}
-    \item WDFs form a special class of digital filters derived from classical analogue \textbf{lattice/ladder} networks.
-    \item Basic idea:
-          \begin{itemize}
-            \item Express analogue circuit in terms of \emph{wave variables} (incident and reflected waves at ports).
-            \item Map each analogue element (resistor, capacitor, inductor) to a corresponding digital adaptor.
-          \end{itemize}
-    \item Advantages:
-          \begin{itemize}
-            \item Very \textbf{low sensitivity} to coefficient quantisation and round-off.
-            \item Good control of losses and passband/stopband attenuation.
-            \item Structures are well suited for fixed-point implementation with limited wordlength.
-          \end{itemize}
-    \item Frequency response of WDFs preserves key properties of the original analogue network, while also benefiting from digital flexibility.
-  \end{itemize}
+	\small
+	\begin{itemize}
+		\item WDFs form a special class of digital filters derived from classical analogue \textbf{lattice/ladder} networks.
+		\item Basic idea:
+		\begin{itemize}
+			\item Express analogue circuit in terms of \emph{wave variables} (incident and reflected waves at ports).
+			\item Map each analogue element (resistor, capacitor, inductor) to a corresponding digital adaptor.
+		\end{itemize}
+		\item Advantages:
+		\begin{itemize}
+			\item Very \textbf{low sensitivity} to coefficient quantisation and round-off.
+			\item Good control of losses and passband/stopband attenuation.
+			\item Structures are well suited for fixed-point implementation with limited wordlength.
+		\end{itemize}
+		\item Frequency response of WDFs preserves key properties of the original analogue network, while also benefiting from digital flexibility.
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Frequency Impact of Warping in WDFs %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Frequency Impact of Warping in WDFs}
-  \begin{columns}
-    \column{0.5\textwidth}
-      \includegraphics[width=0.8\textwidth]{fig/lec04/IIR_warp.pdf} % Figure 2.14
-    \column{0.5\textwidth}
-      \small
-      \begin{itemize}
-        \item Figure compares loss / attenuation vs frequency for:
-              \begin{itemize}
-                \item Analogue prototype filter.
-                \item Corresponding digital WDF implementation.
-              \end{itemize}
-        \item Due to frequency warping, some shift between analogue and digital curves occurs, especially near band edges.
-        \item Nevertheless, WDF structure keeps:
-              \begin{itemize}
-                \item Low sensitivity to coefficient errors.
-                \item Close match to desired attenuation characteristics.
-              \end{itemize}
-      \end{itemize}
-  \end{columns}
-  \vspace{0.1cm}
-  \small
-  \begin{itemize}
-    \item In DSP hardware design, WDFs enable efficient, robust realizations for applications requiring stringent filter specs and fixed-point arithmetic.
-  \end{itemize}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\small
+			\begin{itemize}
+				\item Figure compares loss / attenuation vs frequency for:
+				\begin{itemize}
+					\item Analogue prototype filter.
+					\item Corresponding digital WDF implementation.
+				\end{itemize}
+				\item Due to frequency warping, some shift between analogue and digital curves occurs, especially near band edges.
+				\item Nevertheless, WDF structure keeps:
+				\begin{itemize}
+					\item Low sensitivity to coefficient errors.
+					\item Close match to desired attenuation characteristics.
+				\end{itemize}
+				\item In DSP hardware design, WDFs enable efficient, robust realizations for applications requiring stringent filter specs and fixed-point arithmetic.
+			\end{itemize}
+		\column{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=0.95\textwidth]{fig/lec04/IIR_warp.pdf}
+				\caption{Frequency Impact of Warping \href{https://doi.org/10.1002/9781119079231.index}{FPGA‐based Implementation of Signal Processing Systems, Second Edition}}
+			\end{figure}
+	\end{columns}
 \end{frame}
 
-%------------------------------------------------
-\begin{frame}{DSP in a Nutshell: From Signals to Implementations}
-  \begin{itemize}
-    \item \textbf{Start: real-world signals}
-          \begin{itemize}
-            \item Continuous-time, continuous-amplitude (speech, audio, images, biomedical, radar).
-            \item Sampled and quantised $\Rightarrow$ discrete-time sequences $x(n)$ for digital processing.
-          \end{itemize}
-
-    \item \textbf{Analyse in the transform domain}
-          \begin{itemize}
-            \item DFT/FFT: complex exponential basis, efficient $O(N\log N)$ spectrum computation.
-            \item DCT: cosine-only basis with strong energy compaction (JPEG/MPEG).
-            \item Wavelet/DWT: multi-resolution time–frequency analysis for non-stationary signals.
-          \end{itemize}
-
-    \item \textbf{Shape spectra using digital filters}
-          \begin{itemize}
-            \item FIR filters: convolution with finite $h(n)$, always bounded input, bounded output stability (BIBO) stable, linear phase with symmetric taps.
-            \item IIR filters: recursive structures with poles/zeros; sharp responses with low order but care needed for stability and quantisation.
-            \item Design from specifications $(\delta_1,\delta_2,f_p,f_c)$ via windows, analogue prototypes, bilinear transform, etc.
-          \end{itemize}
-  \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DSP in a Nutshell: From Signals to Implementations (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DSP in a Nutshell: From Signals to Implementations (1)}
+	\begin{itemize}
+		\item \textbf{Start: real-world signals}
+		\begin{itemize}
+			\item Continuous-time, continuous-amplitude (speech, audio, images, biomedical, radar).
+			\item Sampled and quantised $\Rightarrow$ discrete-time sequences $x(n)$ for digital processing.
+		\end{itemize}
+		\item \textbf{Analyse in the transform domain}
+		\begin{itemize}
+			\item DFT/FFT: complex exponential basis, efficient $O(N\log N)$ spectrum computation.
+			\item DCT: cosine-only basis with strong energy compaction (JPEG/MPEG).
+			\item Wavelet/DWT: multi-resolution time–frequency analysis for non-stationary signals.
+		\end{itemize}
+		\item \textbf{Shape spectra using digital filters}
+		\begin{itemize}
+			\item FIR filters: convolution with finite $h(n)$, always bounded input, bounded output stability (BIBO) stable, linear phase with symmetric taps.
+			\item IIR filters: recursive structures with poles/zeros; sharp responses with low order but care needed for stability and quantisation.
+			\item Design from specifications $(\delta_1,\delta_2,f_p,f_c)$ via windows, analogue prototypes, bilinear transform, etc.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-%------------------------------------------------
 
-\begin{frame}{DSP in a Nutshell: From Signals to Implementations}          \begin{itemize}
-\item \textbf{Map mathematics to hardware/software}
-          \begin{itemize}
-            \item Realisation as structures of adds, multiplies and delays on DSPs, FPGAs or ASICs.
-            \item FFT pipelines, FIR/IIR direct forms, second-order sections, and wave digital filters for robust fixed-point implementation.
-          \end{itemize}
-
-    \item \textbf{Big picture}
-          \begin{itemize}
-            \item DSP provides a toolbox: \emph{sample} $\rightarrow$ \emph{transform} $\rightarrow$ \emph{filter / modify} $\rightarrow$ \emph{reconstruct}.
-            \item Design choices (transform, filter type, structure) are driven by application constraints: accuracy, complexity, latency and implementation platform.
-          \end{itemize}
-\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DSP in a Nutshell: From Signals to Implementations (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DSP in a Nutshell: From Signals to Implementations (2)}          
+	\begin{itemize}
+		\item \textbf{Map mathematics to hardware/software}
+		\begin{itemize}
+			\item Realisation as structures of adds, multiplies and delays on DSPs, FPGAs or ASICs.
+			\item FFT pipelines, FIR/IIR direct forms, second-order sections, and wave digital filters for robust fixed-point implementation.
+		\end{itemize}
+		\item \textbf{Big picture}
+		\begin{itemize}
+			\item DSP provides a toolbox: \emph{sample} $\rightarrow$ \emph{transform} $\rightarrow$ \emph{filter / modify} $\rightarrow$ \emph{reconstruct}.
+			\item Design choices (transform, filter type, structure) are driven by application constraints: accuracy, complexity, latency and implementation platform.
+		\end{itemize}
+	\end{itemize}
 \end{frame}

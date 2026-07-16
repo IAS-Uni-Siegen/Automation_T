@@ -1,0 +1,238 @@
+{
+    "4_bit_ADC": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "4_bit_R_2R": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "air_speed_measurement": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "air_speed_measurement_2": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "anti_alia": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "basic_op_amp": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "bridge_amp": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "buffer": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "cap_measurement": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "complex_representation": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "counter_ramp": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "CR_High_Pass": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "current_to_voltage": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "data_domains": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "del_sig_ADC": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "differential": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "differentiator": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "first_CR_filter": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "flash_ADC": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "four_active_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "freq_mag": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "gain_phase_first_low_pass": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "half_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "hay_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "integrator": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "intro_ADC_DAC": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "invert_op_amp": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "inv_filter": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "LCR_Band_Pass": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "LCR_Low_pass": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "LCR_Notch": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "linear_ckts": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "maxwell": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "measurement_loop": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "modi_wheatstone_DC_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "noise": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "noise2": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "noise3": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "noise4": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "non_invert_op_amp": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "op_amp_high_pass": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "op_amp_sym": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "phase": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "quant_noise": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "res_meas": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "sample_hold": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "sampling": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "schering_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "Sec_order_active": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "sec_order_CR_filter": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "sec_order_high_pass": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "succ_approx_ADC": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "succ_approx_ADC_out": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "summing_amplifier": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "two_sensitive_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "volt_to_current": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "weight_res_DAC": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "wein_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    },
+    "wheatstone_DC_bridge": {
+        "caption": "CAPTION",
+        "source_id": "Newby"
+    }
+}
