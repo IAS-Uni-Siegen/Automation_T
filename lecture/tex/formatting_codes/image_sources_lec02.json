@@ -1,0 +1,183 @@
+{
+    "cap1b": {
+        "caption": "Parameters influencing capacitance: (a) plate distance, (b) active area, (c) dielectric permittivity",
+        "source_id": "sensors_book"
+    },
+    "cap1c": {
+        "caption": "Differential capacitor for acceleration measurement",
+        "source_id": "sensors_book"
+    },
+    "cap1d": {
+        "caption": "Capacitive sensor detecting material presence via dielectric change",
+        "source_id": "sensors_book"
+    },
+    "cap_1a": {
+        "caption": "Parallel plate capacitor schematic",
+        "source_id": "none"
+    },
+    "cap_2": {
+        "caption": "Capacitive proximity sensor circuit",
+        "source_id": "sensors_book"
+    },
+    "Eddy_Current": {
+        "caption": "Eddy current sensors",
+        "source_id": "none"
+    },
+    "gauss_1": {
+        "caption": "Origin of Gaussian effect: electron deflection in magnetic field",
+        "source_id": "sensors_book"
+    },
+    "gauss_2": {
+        "caption": "Variation of resistance with magnetic flux density due to Gaussian effect",
+        "source_id": "sensors_book"
+    },
+    "hall_1": {
+        "caption": "Hall effect: charge carrier deflection and Hall voltage generation",
+        "source_id": "sensors_book"
+    },
+    "ind_1": {
+        "caption": "Inductive Effect: Changing Magnetic Flux Induces Voltage",
+        "source_id": "sensors_book"
+    },
+    "ind_2": {
+        "caption": "Inductive speed sensor with toothed wheel modulating magnetic flux",
+        "source_id": "none"
+    },
+    "ind_3": {
+        "caption": "Inductive sensor",
+        "source_id": "sensors_book"
+    },
+    "Laminated_core_eddy_currents": {
+        "caption": "Eddy current formations in solid and laminated steel cores",
+        "source_id": "sensors_book"
+    },
+    "Magnetic_actuator_example": {
+        "caption": "Simple magnetic actuator",
+        "source_id": "none"
+    },
+    "Magnetic_actuator_example_reluctance_network": {
+        "caption": "Magnetic network representation of the actuator",
+        "source_id": "none"
+    },
+    "mag_1": {
+        "caption": "Classification of Magnetoresistive Effects",
+        "source_id": "sensors_book"
+    },
+    "mag_3": {
+        "caption": "Explanation of magnetostriction by the change in length",
+        "source_id": "sensors_book"
+    },
+    "mag_4": {
+        "caption": "Effects of magnetostriction",
+        "source_id": "sensors_book"
+    },
+    "mag_5": {
+        "caption": "Measurable quantities with magnetostrictive effect",
+        "source_id": "sensors_book"
+    },
+    "NTC": {
+        "caption": "NTC symbol and R-T curve (NTC resistors to DIN 44070)",
+        "source_id": "sensors_book_3"
+    },
+    "opto_1": {
+        "caption": "Wave and particle characteristics of light",
+        "source_id": "sensors_book"
+    },
+    "opto_2": {
+        "caption": "Refraction and reflection of light at an interface",
+        "source_id": "sensors_book"
+    },
+    "opto_3": {
+        "caption": "Absorption, spontaneous emission, and laser principle",
+        "source_id": "sensors_book"
+    },
+    "photoelec_1": {
+        "caption": "Types of photoelectric effect: outer, inner, and photoionization",
+        "source_id": "sensors_book"
+    },
+    "photoelec_2": {
+        "caption": "Outer photoelectric effect: photon absorption and electron emission",
+        "source_id": "sensors_book"
+    },
+    "photoelec_2b": {
+        "caption": "Outer photoelectric effect: photon absorption and electron emission",
+        "source_id": "sensors_book"
+    },
+    "photoelec_3": {
+        "caption": "Inner photoelectric effect: photon absorption and electron excitation in semiconductors",
+        "source_id": "sensors_book"
+    },
+    "piezo_1": {
+        "caption": "The three principles of the piezoelectric effect",
+        "source_id": "sensors_book"
+    },
+    "piezo_2": {
+        "caption": "Axes and polarization direction",
+        "source_id": "sensors_book"
+    },
+    "piezo_3": {
+        "caption": "Principle: force $\rightarrow$ voltage (longitudinal)",
+        "source_id": "sensors_book"
+    },
+    "piezo_4": {
+        "caption": "Typical measurement tasks enabled by the piezoelectric effect",
+        "source_id": "sensors_book"
+    },
+    "pt": {
+        "caption": "Coding of Pt sensors",
+        "source_id": "sensor_book_4"
+    },
+    "PTC": {
+        "caption": "PTC symbol and R-T curve (PTC resistors to DIN 44080)",
+        "source_id": "sensors_book_3"
+    },
+    "res_1": {
+        "caption": "Conductor under mechanical stress",
+        "source_id": "sensors_book"
+    },
+    "res_2": {
+        "caption": "Quarter,  half or full bridges: combine gauges to boost signal, cancel temperature, and measure bending, axial, torsion selectively",
+        "source_id": "sensors_book"
+    },
+    "RT_char": {
+        "caption": "Resistance vs. Temperature for Pt, PTC, and NTC sensors",
+        "source_id": "sensors_book_2"
+    },
+    "sensor_intro": {
+        "caption": "Operating principle of a sensor system",
+        "source_id": "sensors_book"
+    },
+    "wiedemann": {
+        "caption": "Wiedemann Effect in a level sensor",
+        "source_id": "nohken_book"
+    },
+
+    "piezo_book": {
+        "link": "https://example.com/piezo",
+        "source": "Shetty \\& Kolk (1997)"
+    },
+    "sensors_book": {
+        "link": "https://doi.org/10.1007/978-3-658-34920-2",
+        "source": "Hering \\& Schönfelder"
+    },
+    "nohken_book": {
+        "link": "https://www.nohken.com/en/products/198/",
+        "source": "Nohken Automation, Products"
+    },
+    "sensors_book_2": {
+        "link": "https://doi.org/10.1007/978-3-658-21173-8",
+        "source": "Hesse, Schnell: Sensors for process and factory automation, Vieweg+Teubner, 2009"
+    },
+    "sensors_book_3": {
+        "link": "https://link.springer.com/book/10.1007/978-3-8348-8635-4",
+        "source": "Ekbert, H., et al.: Sensoren und Messsysteme, 4th ed., Springer Vieweg, 2016"
+    },
+    "sensors_book_4": {
+        "link": "none",
+        "source": "Heraeus Sensor Technology GmbH"
+    },
+    "none": {
+        "link": "",
+        "source": ""
+    }
+}
