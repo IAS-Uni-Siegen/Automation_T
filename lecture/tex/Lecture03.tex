@@ -2568,13 +2568,13 @@
 	\begin{block}{Nyquist Sampling Theorem}
 		If the highest frequency present in the analogue signal is $f_{\max}$, then:
 		\begin{equation}
-			f_s \ge 2 f_{\max}
+			f_s > 2 f_{\max}
 		\end{equation}
 		is sufficient to reconstruct the signal exactly (in the absence of noise and with ideal filtering).
 	\end{block}
 	\begin{itemize}
 		\item $f_s$ = sampling frequency, period $T_s = 1/f_s$.
-		\item At least \textbf{two samples per cycle} of the highest frequency component are required.
+		\item More than \textbf{two samples per cycle} of the highest frequency component are required.
 		\item In practice:
 		\begin{itemize}
 			\item often choose $f_s \gg 2 f_{\max}$ to simplify anti-alias filtering and to allow for non-idealities,
@@ -2964,6 +2964,6 @@
 		\item \textbf{Operational amplifiers} (ideal: $U_+ = U_-$, no input current) realise scaling, summing, conversion, integration and differentiation; the gain--bandwidth product limits the closed-loop bandwidth.
 		\item \textbf{Noise}: external noise is reduced by shielding, layout and avoiding earth loops; internal noise (thermal, shot, flicker) sets the detection limit.
 		\item \textbf{Filters}: passive RC/LCR filters only attenuate; active filters add gain, buffering and well-defined responses (e.g., Butterworth).
-		\item \textbf{A/D and D/A conversion}: sample at $f_s \geq 2 f_{\max}$ (in practice $f_s \gg 2 f_{\max}$) behind an anti-aliasing filter; $N$-bit quantisation sets resolution and quantisation noise; flash, SAR, integrating and delta--sigma converters trade speed, resolution and cost.
+		\item \textbf{A/D and D/A conversion}: sample at $f_s > 2 f_{\max}$ (in practice $f_s \gg 2 f_{\max}$) behind an anti-aliasing filter; $N$-bit quantisation sets resolution and quantisation noise; flash, SAR, integrating and delta--sigma converters trade speed, resolution and cost.
 	\end{itemize}
 \end{frame}
