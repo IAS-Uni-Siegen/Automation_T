@@ -9,6 +9,13 @@
 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % ragged-right paragraph column (summary tables)
 
+% Structured Text (IEC 61131-3) listings (listings is loaded via tcolorbox)
+\lstdefinelanguage{ST}{
+	morekeywords={IF,THEN,ELSIF,ELSE,END_IF,CASE,OF,END_CASE,FOR,TO,BY,DO,END_FOR,WHILE,END_WHILE,REPEAT,UNTIL,END_REPEAT,RETURN,EXIT,AND,OR,XOR,NOT,MOD,TRUE,FALSE,VAR,VAR_INPUT,VAR_OUTPUT,END_VAR,FUNCTION_BLOCK,END_FUNCTION_BLOCK,PROGRAM,END_PROGRAM,BOOL,INT,REAL,TIME,RS,SR,TON,TOF,CTU},
+	sensitive=true, morecomment=[l]{//}, morecomment=[s]{(*}{*)}, morestring=[b]"
+}
+\lstdefinestyle{st}{language=ST, basicstyle=\ttfamily\scriptsize, keywordstyle=\color{uniblue}\bfseries, commentstyle=\color{gray}\itshape, stringstyle=\color{black}, columns=fixed, keepspaces=true, frame=single, framerule=0.3pt, rulecolor=\color{gray}, xleftmargin=3pt, xrightmargin=3pt, aboveskip=2pt, belowskip=2pt}
+
 %\includeonly{tex/Lecture01} % build only selected sections
 
 \begin{document}
