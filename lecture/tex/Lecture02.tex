@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sensor Technologies %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sensor Technologies}
-\title[Sensor Technologies]{Sensor Technologies}  
+\title[Sensor Technologies]{Sensor Technologies}
+\section{Sensor Technologies}  
 
 % \begin{frame}[plain]
 %     \titlepage
@@ -1338,40 +1338,35 @@
             \end{figure}
     \end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Mathematical Description of Hall Voltage %%
+%% Mathematical description of Hall voltage %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Mathematical Description of Hall Voltage}
-    \small
-    \textbf{Current density relation:}
-    \begin{equation}
-        j_x = n e v_x
-    \end{equation}
-    where:
-    \begin{itemize}
-        \item $n$ – number of charge carriers per unit volume,
-        \item $e$ – elementary charge,
-        \item $v_x$ – carrier velocity in $x$-direction.
-    \end{itemize}
-    \textbf{Hall voltage:}
-    \begin{equation}
-        U_H = \frac{1}{n e} j_x B_z b
-    \end{equation}
-    Defining the \textbf{Hall coefficient:}
-    \begin{equation}
-        A_H = \frac{1}{n e}
-    \end{equation}
-    Then:
-    \begin{equation}
-        U_H = A_H j_x B_z b
-    \end{equation}
-    \textbf{Hall resistance:}
-    \begin{equation}
-        R_H = \frac{A_H B_z}{d} \quad \Rightarrow \quad U_H = R_H I_x
-    \end{equation}
-    \textbf{Interpretation:} $U_H$ increases linearly with $B_z$ and decreases with carrier density $n$.
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.48\textwidth}
+		\textbf{Current density relation:}
+		\begin{equation}
+			j_x = n e v_x
+		\end{equation}
+		with $n$ -- number of charge carriers per unit volume, $e$ -- elementary charge, $v_x$ -- carrier velocity in $x$-direction.\\[2mm]
+		\textbf{Hall voltage:}
+		\begin{equation}
+			U_H = \frac{1}{n e} j_x B_z b
+		\end{equation}
+		\column{0.5\textwidth}
+		Defining the \textbf{Hall coefficient}:
+		\begin{equation}
+			A_H = \frac{1}{n e} \quad \Rightarrow \quad U_H = A_H j_x B_z b
+		\end{equation}
+		\textbf{Hall resistance} (with $I_x = j_x b d$):
+		\begin{equation}
+			R_H = \frac{A_H B_z}{d} \quad \Rightarrow \quad U_H = R_H I_x
+		\end{equation}
+	\end{columns}
+	\vspace{2mm}
+	\textbf{Interpretation:} $U_H$ increases linearly with $B_z$ and decreases with the carrier density $n$ $\Rightarrow$ semiconductors (low $n$) give much larger Hall voltages than metals.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
