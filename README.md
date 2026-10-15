@@ -9,7 +9,7 @@
 
 
 This work is licensed under a
-[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by].
+[Creative Commons Attribution 4.0 International License][cc-by].
 
 [![CC BY 4.0][cc-by-image]][cc-by]
 
@@ -21,15 +21,13 @@ This work is licensed under a
 <a href="https://ias-uni-siegen.github.io/Automation_T/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
 
 The covered topics are:
-- Module I: Introduction to Automation Technologies.
-- Module II: Sensor Technologies.
-- Module III: Signal Conditioning.
-- Module IV: Processors in Automation Systems.
-- Module V: Controllers and Communication.
-- Module VI: Industrial communication systems.
-- Module VI: Actuators and Motion Systems.
-- Module VII: Testing and Validation.
-- Module VIII: Industrial Case Studies.
+- Module I: Introduction to Automation Technologies (technical systems, automata, control structures, mechatronics and functional safety).
+- Module II: Sensor Technologies (physical effects used in sensors).
+- Module III: Signal Processing and Conditioning (bridges, operational amplifiers, noise, filters, A/D and D/A conversion).
+- Module IV: Processor Technologies in Automation Systems (PLC programming according to IEC 61131-3, digital signal processing).
+- Module V: Industrial Communication in Automation Systems (ISO/OSI model, fieldbuses, Modbus, outlook on Industrial Ethernet, OPC UA and TSN).
+
+An English-German dictionary of the technical terms is included in the appendix of the lecture slides.
 
 
 
