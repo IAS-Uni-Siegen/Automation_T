@@ -1,49 +1,137 @@
+\section{An initial overview of automation technologies}
+\title[Initial overview]{Initial Overview}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Introduction to Automation Technologies %%
+%% Course overview %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Course Overview}
-The course will be in 5 modules.
+	The course consists of five modules:
+	\begin{itemize}
+		\item Module I: Introduction to Automation Technologies.
+		\item Module II: Sensor Technologies.
+		\item Module III: Signal Processing and Conditioning.
+		\item Module IV: Processor Technologies in Automation Systems.
+		\item Module V: Industrial Communication in Automation Systems.
+	\end{itemize}
+	\vspace{2mm}
+	\textbf{Pattern of class (WS 2026/27)}\\
+	Day: Tuesday, every week\\
+	Time: 08:00--10:00 (lecture) and 10:00--12:00 (tutorial), subject to change\\
+	No classes: 22 Dec 2026, 29 Dec 2026 and 5 Jan 2027 (Christmas break)
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Learning objectives %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Learning Objectives}
+	After this course, you will be able to \ldots
+	\begin{itemize}
+		\item explain the structure of automated systems: technical process, automaton, automation system, open-/closed-loop control and functional safety;
+		\item explain the physical effects used in sensors and select a suitable sensing principle for a measurement task;
+		\item design analogue signal conditioning (bridges, operational-amplifier circuits, filters) and assess noise, sampling and A/D--D/A conversion;
+		\item program PLCs according to IEC 61131-3 (LAD, FBD, STL/ST, SFC) and apply basic digital signal processing (DFT/FFT, FIR/IIR filters);
+		\item explain the layers of industrial communication and compare fieldbuses (ASi, CANopen, PROFIBUS-DP, INTERBUS, Modbus) and Industrial Ethernet.
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Teaching Support Team %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{The teaching team}
+	\vspace{-0.5cm}
+	\begin{columns}[t]
+\centering
+		\column[T]{0.33\textwidth}
+		\begin{figure}
+			\centering
+				\includegraphics[height=2.5cm]{fig/lec01/Bikash.png}
+				\caption*{Bikash Sah}
+		\end{figure}
+	
+		\column[T]{0.33\textwidth}
+		\begin{figure}
+			\centering
+				\includegraphics[height=2.5cm]{fig/lec01/Tatsat.jpg}
+				\caption*{Tatsat Baldaniya}
+		\end{figure}
+		\column[T]{0.33\textwidth}
+		\begin{figure}
+			\centering
+				\includegraphics[height=2.5cm]{fig/lec01/pawel.jpg}
+				\caption*{Pawel Malicki}
+		\end{figure}		
+	\end{columns}
+	\vspace{-0.5cm}
+	\begin{varblock}{Contact}
 		\begin{itemize}
-		  \item Module I: Introduction to Automation Technologies.
-		  \item Module II: Sensor Technologies.
-		  \item Module III: Signal Processing and Conditioning.
-		  \item Module IV: Processor Technologies in Automation Systems.
-		  \item Module V: Industrial Communication in Automation Systems.
-%		  \item Module VI: Industrial communication systems.
-%		  \item Module VI: Actuators and Motion Systems.
-%		  \item Module VII: Testing and Validation.
-%		  \item Module VIII: Industrial Case Studies.
+			\item Email: see chair's homepage \href{https://www.uni-siegen.de/ias}{www.uni-siegen.de/ias}
+			\item Offices: H-A building, 4th floor
+			\item Individual appointments on request (remote or personally)
+            \item Multiple relevant courses are offered by the Chair.  \href{https://www.uni-siegen.de/ias-lehre-fak-iv/eti/vernetzte-automatisierungssysteme}{Check link!}
 		\end{itemize}
-\textbf{Pattern of class}: \\ Day: Tuesday, every week \\ 
-Time: 8 am to 10 am (theory) and 10 am to 12 am (tutorial) (ideally but it can change) \\
-Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be rescheduled. 
+	\end{varblock}
+	\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Necessary Prior Knowledge for this Course %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Necessary Prior Knowledge for this Course}
+  \textbf{Students are expected to have a basic understanding of:}
+  \begin{itemize}
+    \item \textbf{Basic physics and laws governing systems:} for example, Newton's law of motion, electricity, dimensional consistency, etc.
+    \item \textbf{Mathematical background:} algebra, complex numbers (phasors), basic calculus and elementary differential equations.
+    \item \textbf{Basic signal theory:} Fourier series, Laplace transform, transfer functions, step/impulse response.
+    \item \textbf{General systems thinking:} reading block diagrams, input-output viewpoints, feedback/feedforward concepts.
+    \item \emph{No advanced programming is required -- any code used will be introduced as needed and tied to real automation tasks.}
+  \end{itemize}
+
+  \textbf{Topics not covered (addressed in other courses):}
+  \begin{itemize}
+    \item Machine learning in automation.
+    \item Advanced control theory (e.g., optimal, robust, nonlinear control), robotics, etc.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Recommended reading}
+	\begin{itemize}
+		\item Weyrich, Michael. Industrial Automation and Information Technology. Berlin, Germany: Springer, 2024.
+		\item Daniel E.. Kandray. Programmable Automation Technologies: An Introduction to CNC, Robotics and PLCs. Industrial Press, 2010.
+		\item Hering, Ekbert, and Gert Schönfelder. Sensors in Science and Technology. Springer Fachmedien Wiesbaden, 2022.
+		\item Woods, Roger, John McAllister, Gaye Lightbody, and Ying Yi. FPGA-based implementation of signal processing systems. John Wiley \& Sons, 2008.
+		\item Bartelt, Terry LM. Industrial automated systems: instrumentation and motion control. Delmar Learning, 2010.
+	\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is Automation? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{What is Automation?}
-  \textbf{Working definition for this course}\\[2mm]
-  \emph{Automation is the purposeful application of mechanical, electrical, and computer technologies to reduce human involvement in task performance-without necessarily removing humans from the loop.}\\
-  Highly interdisciplinary, it encompasses: combine elements of sensor technology, actuator technology, control technology, communication technology, real-time software, and data science, among other things. \\
-  \vspace{2mm}
-  \textbf{Key nuances}
-  \begin{itemize}
-    \item \textbf{Displace vs. replace:} automation often reallocates human effort to higher-value tasks rather than eliminating it.
-    \item \textbf{Hardware and software co-design:} improvement may be purely software (e.g., CAD workflows) or mechatronic (robotic cells).
-    \item \textbf{Beyond factories:} retail checkout, medical devices, energy systems, mobility-all are automation domains.
-  \end{itemize}
+\begin{frame}
+	\frametitle{What is Automation?}
+	\textbf{Working definition for this course}\\[1mm]
+	\emph{Automation is the purposeful application of mechanical, electrical, and computer technologies to reduce human involvement in task performance -- without necessarily removing humans from the loop.}\\[1mm]
+	It combines sensor, actuator, control and communication technology with real-time software and data science.\\[1mm]
+	\textbf{Key nuances}
+	\begin{itemize}
+		\item \textbf{Displace vs.\ replace:} automation often reallocates human effort to higher-value tasks rather than eliminating it.
+		\item \textbf{Hardware and software co-design:} improvement may be purely software (e.g., CAD workflows) or mechatronic (robotic cells).
+		\item \textbf{Scope:} wherever humans perform structured tasks -- production, retail checkout, offices, medical devices, energy systems, mobility.
+		\item \textbf{Hierarchy:} machines contain smaller automated subsystems; modern systems are hybrid and interlinked.
+	\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Examples of Automation (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Examples of Automation (1)}
+\begin{frame}
+	\frametitle{Examples of Automation (1)}
 	\begin{columns}
 		\begin{column}{0.25\textwidth}
 			\begin{itemize}
@@ -63,7 +151,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Examples of Automation (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Examples of Automation (2)}
+\begin{frame}
+	\frametitle{Examples of Automation (2)}
 	\begin{columns}
 		\begin{column}{0.25\textwidth}
 			\begin{itemize}
@@ -79,31 +168,34 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 		\end{column}
 \end{columns}
 \end{frame}
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Why Now? Value, Impact, and Trends (1) %%
+%% Why now? Value, impact, and trends %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Why Now? Value, Impact, and Trends (1)}
-  \textbf{What automation accomplishes today}
-  \begin{itemize}
-    \item Enables \textbf{flexible value networks}: rapid changeovers, mass customization, and supply-chain visibility.
-    \item Integrates \textbf{heterogeneous technologies} across disciplines; links physical assets to \textbf{digital representations}.
-    \item Improves \textbf{quality, safety, and energy efficiency}; turns data into decisions.
-  \end{itemize}
-  \textbf{Where it is going}
-  \begin{itemize}
-    \item From real-time control of single machines to \textbf{orchestration} of whole cells/lines and ecosystems.
-    \item \textbf{Autonomous capabilities}: perception, context understanding, and bounded autonomy with human oversight.
-    \item \textbf{Sustainability and circularity}: traceability, footprint accounting, and lifecycle optimization.
-  \end{itemize}
+\begin{frame}
+	\frametitle{Why Now? Value, Impact, and Trends (1)}
+	\small
+	\textbf{What automation accomplishes today} (VDI/VDE-GMA outlook\footnotemark)
+	\begin{itemize}
+		\item Enables \textbf{flexible value networks}: rapid changeovers, mass customization, and supply-chain visibility.
+		\item Integrates mechanical, electrical, and information technologies; links physical assets to their \textbf{digital representations}.
+		\item Improves \textbf{quality, safety, and energy efficiency}; turns data into decisions.
+		\item Engineers act as \textbf{system integrators} -- coordinating diverse components into a coherent whole.
+	\end{itemize}
+	\textbf{Where it is going}
+	\begin{itemize}
+		\item From real-time control of single machines to \textbf{orchestration} of whole cells/lines and ecosystems.
+		\item \textbf{Autonomous capabilities}: intelligent, networked products that perceive, decide, and act -- with bounded autonomy.
+		\item \textbf{Sustainability and circularity}: traceability, footprint accounting, and lifecycle optimization.
+		\item Clear \textbf{standards and security} and qualified human oversight -- humans remain central for supervision and ethical responsibility.
+	\end{itemize}
+	\footnotetext[1]{Adamczyk et al., \textit{Automation 2025 -- Thesen und Handlungsfelder} (in German). VDI/VDE-GMA, 2015. \href{https://blog.iosb.fraunhofer.de/wp-content/uploads/2015/06/VDI-Publikation__Automation2025_Thesen-und-Handlungsfelder.pdf}{[PDF]}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Why Now? Value, Impact, and Trends (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Why Now? Value, Impact, and Trends (2)}
+\begin{frame}
+	\frametitle{Why Now? Value, Impact, and Trends (2)}
 	\begin{columns}
 		\begin{column}{0.25\textwidth}
 			\textbf{Practical life example}\\
@@ -117,69 +209,6 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 			\end{figure}
 		\end{column}
 \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Nature and Scope of Automation %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Nature and Scope of Automation}
-  \textbf{Automation can occur anywhere humans perform structured tasks.}
-  \begin{itemize}
-    \item Includes entertainment (remote controls), offices (data entry), transportation, and healthcare.
-    \item Combines mechanical, electrical, and computer elements-modern systems are hybrid and interlinked.
-    \item Machines themselves can contain smaller automated subsystems, leading to hierarchical automation.
-  \end{itemize}
-
-  \vspace{3mm}
-  \textbf{Essence:}  
-  Automation evolves continually, driven by technology that reduces human effort, improves precision, and enhances reliability across diverse applications.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Nature and Scope of Automation %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Automation Technology Today and Tomorrow}
-  \textbf{Current accomplishments:} as per the Society for Measurement and Automation Technology within the Association of German Engineers (VDI/VDE) outlook\footnotemark:
-  \begin{itemize}
-    \item Enables \textbf{flexible value networks} and digital connectivity.
-    \item Makes technology more accessible and user-friendly.
-    \item Integrates mechanical, electrical, and information technologies.
-    \item Connects \textbf{real-world physical elements} with their \textbf{digital representations}.
-  \end{itemize}
-
-  \vspace{3mm}
-  \textbf{Emerging directions}
-  \begin{itemize}
-    \item Intelligent, networked products capable of autonomous action.
-    \item Sustainability and circular economy supported by digital transparency.
-    \item Need for clear standards, security, and qualified human oversight.
-  \end{itemize}
-  \footnotetext[1]{Adamczyk et al., \textit{Automation 2025 -- Thesen und Handlungsfelder} 
-  (in German). VDI/VDE-GMA, 2015. 
-  \href{https://blog.iosb.fraunhofer.de/wp-content/uploads/2015/06/VDI-Publikation__Automation2025_Thesen-und-Handlungsfelder.pdf}{[PDF]}}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Self-Perception of Automation Technology %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Self-Perception of Automation Technology}
-  \textbf{A multidisciplinary field:}
-  \begin{itemize}
-    \item Integrates \textbf{mechanical, electrical, computer, and information engineering}.
-    \item Engineers act as \textbf{system integrators}-coordinating diverse components into a coherent whole.
-  \end{itemize}
-  \vspace{3mm}
-  \textbf{Historical evolution:}
-  \begin{itemize}
-    \item From mechanical aids to networked, software-defined systems.
-    \item Increased productivity and flexibility through information technology.
-  \end{itemize}
-  \vspace{3mm}
-  \textbf{Future perspective:}
-  \begin{itemize}
-    \item Toward \textbf{autonomous systems} that perceive, decide, and act.
-    \item Humans remain central-for supervision, creativity, and ethical responsibility.
-  \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -259,7 +288,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Automation - example case of manufacturing systems %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Automation - example case of manufacturing systems}
+\begin{frame}
+	\frametitle{Automation - example case of manufacturing systems}
   \textbf{Automation in manufacturing} can appear in:
   \begin{itemize}
     \item \textbf{Manufacturing support systems} - e.g., Computer aided design (CAD), computer aided manufacturing (CAM), computer-integrated manufacturing (CIM)\footnotemark, and material requirement planning (MRP).
@@ -281,7 +311,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fixed Automation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Fixed Automation}
+\begin{frame}
+	\frametitle{Fixed Automation}
   \textbf{Definition:}  
   Equipment designed to perform a specific sequence of operations for one product or family of products.\\
   \vspace{2mm}
@@ -307,7 +338,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Programmable Automation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Programmable Automation}
+\begin{frame}
+	\frametitle{Programmable Automation}
   \textbf{Definition:}  
   Automation that allows the operating sequence or equipment configuration to be changed through program modification.
   \vspace{2mm}\\
@@ -323,7 +355,7 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
   \begin{itemize}
     \item \textbf{CNC (Computer Numerical Control)} - programmable motion and tool paths.
     \item \textbf{Robotic technology} - reprogrammable manipulators for various tasks.
-    \item \textbf{PLC (Programmable Logic Control)} - discrete logic sequencing and interlocks.
+    \item \textbf{PLC (Programmable Logic Controller)} - discrete logic sequencing and interlocks.
   \end{itemize}
   \vspace{3mm}
   \textbf{Used in:} Machining, welding, assembly, and process industries.
@@ -332,7 +364,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Flexible Automation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Flexible Automation}
+\begin{frame}
+	\frametitle{Flexible Automation}
   \textbf{Definition:}  
   An extension of programmable automation with \textbf{no lost time for changeover} between products.\\
   \vspace{2mm}
@@ -341,7 +374,7 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
     \item Capable of producing different parts in any order with little or no manual intervention.
     \item Combines features of fixed and programmable automation.
     \item Uses integrated computer control, sensors, and communication networks to recognize and adjust to part variations automatically.
-    \item Supports \textbf{high product variety} and \textbf{moderate to high production rates}.
+    \item Supports \textbf{soft product variety} (similar variants) at \textbf{moderate to high production rates}.
   \end{itemize}
   \vspace{3mm}
   \textbf{Examples:}
@@ -351,47 +384,32 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
     \item Robotized assembly lines with vision feedback.
   \end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Comparison of Automation Types %%
+%% Comparison of automation types %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Comparison of Automation Types}
-  \begin{table}[ht]
-    \centering
-    \resizebox{\linewidth}{!}{
-    \begin{tabular}{lcccc}
-    \toprule
-    \textbf{Type} & \textbf{Product Complexity} & \textbf{Product Variety} & \textbf{Production Volume} & \textbf{System Type}\\
-    \midrule
-    Fixed        & Low–High & None      & High       & Flow-line\\
-    Programmable & High     & Hard      & Moderate   & All types\\
-    Flexible     & Low      & Hard      & High       & Flow-line\\
-    \bottomrule
-    \end{tabular}
-    }
-    \caption{Comparison of Fixed, Programmable, and Flexible Automation}\label{tab:automation_types}
-  \end{table}
-  \vspace{4mm}
-  \textbf{Observations:}
-  \begin{itemize}
-    \item Boundaries between categories are \textbf{not rigid}.
-    \item Modern plants often combine all three types.
-    \item \textbf{Programmable automation} has become the \emph{core enabler} of flexibility across manufacturing domains.
-  \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Key Takeaways %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Key Takeaways}
-  \begin{itemize}
-    \item Automation types differ primarily in \textbf{variety}, \textbf{volume}, and \textbf{changeover capability}.
-    \item \textbf{Fixed} $\rightarrow$ highest rate, least flexibility.\\
-          \textbf{Programmable} $\rightarrow$ moderate rate, adaptable via reprogramming.\\
-          \textbf{Flexible} $\rightarrow$ high variety, minimal setup delay.
-    \item Programmable and flexible automation underpin \textbf{modern Industry 4.0} and \textbf{reconfigurable manufacturing}.
-    \item Engineers must select the automation type based on economic trade-offs between productivity, product mix, and lifecycle adaptability.
-  \end{itemize}
+\begin{frame}
+	\frametitle{Comparison of Automation Types}
+	\begin{table}[ht]
+		\centering
+		\resizebox{\linewidth}{!}{
+			\begin{tabular}{lcccc}
+				\toprule
+				\textbf{Type} & \textbf{Product Complexity} & \textbf{Product Variety} & \textbf{Production Volume} & \textbf{System Type}\\
+				\midrule
+				Fixed        & Low--High & None & High     & Flow-line\\
+				Programmable & High      & Hard & Moderate & All types\\
+				Flexible     & Low       & Soft & High     & Flow-line\\
+				\bottomrule
+			\end{tabular}
+		}
+		\caption{Comparison of Fixed, Programmable, and Flexible Automation (after Kandray, 2010)}\label{tab:automation_types}
+	\end{table}
+	\footnotesize\textbf{Soft} product variety: variants share many common parts; \textbf{hard} product variety: substantially different products.\normalsize\\[3mm]
+	\textbf{Observations:}
+	\begin{itemize}
+		\item Boundaries between categories are \textbf{not rigid}; modern plants often combine all three types.
+		\item \textbf{Programmable automation} has become the \emph{core enabler} of flexibility across manufacturing domains.
+	\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -401,7 +419,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Technical System -- Definition and Structure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Technical System -- Definition and Structure}
+\begin{frame}
+	\frametitle{Technical System -- Definition and Structure}
   \textbf{Definition}\\
   A \textbf{technical system} is characterized by its \textbf{inputs}, \textbf{outputs}, \textbf{function}, and \textbf{structure}. It comprises several \textbf{subsystems} arranged hierarchically and interacting with each other.\\
   \vspace{-1.5mm}
@@ -432,7 +451,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Technical Facility -- Concrete Realization %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Technical Facility -- Concrete Realization}
+\begin{frame}
+	\frametitle{Technical Facility -- Concrete Realization}
   \textbf{Definition: }
   A \textbf{technical facility} is a concrete collection of equipment, devices, and machinery that work together to achieve a purpose. It is a physical implementation of one or more technical systems.\\
   \vspace{1.5mm}
@@ -461,7 +481,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Technical Process -- Functional Abstraction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Technical Process -- Functional Abstraction}
+\begin{frame}
+	\frametitle{Technical Process -- Functional Abstraction}
   \textbf{Definition (DIN IEC 60050-351 / VDI Glossary): }\\
   A \textbf{technical process} is the complete set of interacting operations by which \textbf{matter, energy, or information} is transformed, transported, or stored.
   \begin{columns}[T,onlytextwidth]
@@ -480,8 +501,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
     \column{0.5\textwidth}
       \begin{figure}
         \includegraphics[width=\linewidth]{fig/lec01/example_tech_process.pdf}
-        \caption{Example of a technical facility (adapted from 
-        \href{https://doi.org/10.1007/978-3-662-69243-1_2}{M.~Weyrich, 
+        \caption{Example of a technical process (adapted from
+\href{https://doi.org/10.1007/978-3-662-69243-1_2}{M.~Weyrich, 
         \textit{Industrial Automation and Information Technology: 
         IT Architectures, Communication and Software for System Design}, 
         Springer Vieweg, Berlin, Heidelberg, 2024, pp.~1--8.})}
@@ -492,7 +513,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Relating the Terms in Practice %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Relating the Terms in Practice}
+\begin{frame}
+	\frametitle{Relating the Terms in Practice}
   \textbf{From concrete to abstract and back}
   \begin{enumerate}
     \item \textbf{Technical system} -- abstract structure of subsystems and functions (what maps to what).
@@ -510,112 +532,77 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
   \textbf{Takeaway}\\
   Use \emph{system} to reason about structure, \emph{facility} to reason about hardware, and \emph{process} to reason about operations and signals--then connect all three with software and communication to realize automation.
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% What is an Automaton? %%
+%% What is an automaton? Terminology %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{What is an \textit{Automaton}?}
-  \textbf{Definition(DIN IEC 60050-351 - concise): }\\
-  \emph{A self-acting artificial system whose behaviour is governed by given decision rules (discretely or continuously). Its output variables are generated from its input and state variables.}\\
-  \vspace{2mm}
-  \textbf{Implications}
-  \begin{itemize}
-    \item Autonomy arises from \textbf{rules/relationships} linking inputs, states, and outputs.
-    \item Can operate in discrete-event fashion (sequencing) or continuous-time regulation.
-    \item An \textbf{automaton} is the basic building block of automation technology.
-  \end{itemize}
-  \vspace{1mm}
-  \textbf{From devices to systems}
-  \begin{itemize}
-    \item Modern automation focuses on \textbf{orchestrating subsystems} that cooperate to perform tasks.
-    \item Interest shifts from isolated functions to \textbf{how functions are connected}.
-  \end{itemize}
+\begin{frame}
+	\frametitle{What is an \textit{Automaton}? -- Terminology Used in This Course}
+	\footnotesize
+	\renewcommand{\arraystretch}{1.1}
+	\begin{tabular}{@{}p{0.2\textwidth}p{0.77\textwidth}@{}}
+		\toprule
+		\textbf{Term} & \textbf{Meaning (source)}\\
+		\midrule
+		Automation & Purposeful application of technology to reduce human involvement in task performance (working definition, see above).\\
+		\textbf{Automaton} & \emph{Self-acting artificial system whose behaviour is governed either discretely by given decision rules or continuously by defined relationships; its output variables are created from its input and state variables} (DIN IEC 60050-351).\\
+		Automation system & Sensors, controller(s), actuators, communication and software that implement these decision rules.\\
+		Structure & \textbf{Automaton = technical process + automation system}, monitored by the \textbf{user} (Weyrich, 2024) $\rightarrow$ next slide.\\
+		Degree of automation & Proportion of automatic functions in the entire set of functions of a system or facility (DIN IEC 60050-351).\\
+		Autonomous system & Automaton extended by perception, reflection, goal management and planning $\rightarrow$ ``Autonomous System'' slide.\\
+		\bottomrule
+	\end{tabular}\\[2mm]
+	\small Automata are the \textbf{basic building blocks} of automation technology; the focus is shifting from isolated automata to the \textbf{orchestration} of cooperating subsystems.
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Automaton = Technical Process + Automation System + User %%
+%% Structure of an automaton %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Automaton = Technical Process + Automation System + User}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.62\textwidth}
-      \textbf{Constituent parts}
-      \begin{itemize}
-        \item \textbf{Technical process}: the physical/chemical/information transformation (process step $n$ and neighbours).
-        \item \textbf{Automation system}: sensors, controllers, actuators implementing the decision rules.
-        \item \textbf{User (human operator)}: activates/deactivates, monitors, and intervenes in exceptions.
-      \end{itemize}
-      \textbf{Signal view}
-      \begin{itemize}
-        \item \emph{Signals from sensors} $\rightarrow$ internal state/measurement.
-        \item \emph{Signals to actuators} $\rightarrow$ commands to influence the process.
-      \end{itemize}
-    \column{0.35\textwidth}
-      %\centering
-      \begin{figure}
-        \includegraphics[width=\linewidth]{fig/lec01/automation_human_user.pdf}\\
-        \caption{Technical system with automation and human in the loop (source: 
-        \href{https://doi.org/10.1007/978-3-662-69243-1_2}{Weyrich, M., 2024. Industrial Automation and Information Technology. 
-        Berlin, Germany: Springer.})}
-      \end{figure}
-  \end{columns}
-  \textbf{Role of the human}\\
-  A special \textbf{monitoring} function remains; the user decides \textbf{when/where} to employ the automaton within a defined context.
+\begin{frame}
+	\frametitle{Structure of an Automaton: Technical Process + Automation System}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.62\textwidth}
+		\textbf{Constituent parts}
+		\begin{itemize}
+			\item \textbf{Technical process}: the physical/chemical/information transformation (process step $n$ and neighbours).
+			\item \textbf{Automation system}: sensors, controllers, actuators implementing the decision rules.
+		\end{itemize}
+		\textbf{Signal view}
+		\begin{itemize}
+			\item \emph{Signals from sensors} $\rightarrow$ internal state/measurement.
+			\item \emph{Signals to actuators} $\rightarrow$ commands to influence the process.
+		\end{itemize}
+		\textbf{Role of the user (outside the automaton)}\\
+		Activates/deactivates the automaton, \textbf{monitors} it and intervenes in exceptional situations; decides \textbf{when/where} it is employed within a defined context.
+		\column{0.35\textwidth}
+		\begin{figure}
+			\includegraphics[width=\linewidth]{fig/lec01/automation_human_user.pdf}
+			\caption{Structure of an automaton in relation to the technical process, the automation system and the human user (adapted from \href{https://doi.org/10.1007/978-3-662-69243-1_2}{Weyrich, M., \textit{Industrial Automation and Information Technology}, Springer, 2024})}
+		\end{figure}
+	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Degree of Automation and Taylorian Background %%
+%% Degree of automation: from Taylorism to flexible automata %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Degree of Automation and Taylorian Background}
-  \textbf{Degree of automation (DIN IEC 60050-351)}\\
-  \emph{Proportion of automatic functions relative to the entire set of functions of a system or facility.}\\
-  \vspace{2mm}
-  \textbf{Taylorism and early industrial automation}
-  \begin{itemize}
-    \item Production decomposed into \textbf{detailed tasks} via labour studies and management.
-    \item Enables direct comparison of human vs machine for \textbf{time, quality, and cost}.
-    \item Example: \textbf{welding robot} executes a specified seam; quality becomes more reproducible, but setup/programming costs arise.
-  \end{itemize}
-  \vspace{1mm}
-  \textbf{Limits: Taylor's ``vicious circle''}
-  \begin{itemize}
-    \item Increasingly specialized subprocesses $\Rightarrow$ complex dependencies and inflexibility.
-    \item Changing functions requires significant \textbf{engineering effort}.
-  \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Towards Flexible Automata %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Towards Flexible Automata}
-  \textbf{Raising applicability without full reprogramming}
-  \begin{itemize}
-    \item Add \textbf{sensing} to compensate disturbances (e.g., thermal distortion during welding).
-    \item Use feedback to adapt within the \textbf{dedicated function} while avoiding time-consuming reprogramming.
-  \end{itemize}
-  \vspace{2mm}
-  \textbf{Modern direction}
-  \begin{itemize}
-    \item Combine \textbf{software} with \textbf{standardized and modular systems} to increase \textbf{flexibility and applicability}.
-    \item Move from isolated automata to \textbf{integrated automated systems} with coordinated functions.
-  \end{itemize}
-  \vspace{2mm}
-  \textbf{Design takeaway}
-  \begin{itemize}
-    \item Specify the \emph{context of use}, the \emph{degree of automation}, and the \emph{intervention rules} for the human.
-    \item Architect sensor-decision-actuation loops that allow \textbf{bounded autonomy} and graceful user override.
-  \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary for Practice %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary for Practice}
-  \begin{itemize}
-    \item An \textbf{automaton} = automation system + technical process, supervised by a \textbf{user}.
-    \item \textbf{Degree of automation} quantifies how much is automatic; it varies by task and context.
-    \item Historical Taylorism enabled productivity but also rigidity; modern systems target \textbf{flexibility} through sensing, software, and modularity.
-    \item Effective automation design balances \textbf{autonomy} with \textbf{human oversight} and clear exception handling.
-  \end{itemize}
+\begin{frame}
+	\frametitle{Degree of Automation: From Taylorism to Flexible Automata}
+	\textbf{Degree of automation (DIN IEC 60050-351):} \emph{proportion of automatic functions relative to the entire set of functions of a system or facility.}\\[2mm]
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.49\textwidth}
+		\textbf{Taylorism and early industrial automation}
+		\begin{itemize}
+			\item Production decomposed into \textbf{detailed tasks} via labour studies.
+			\item Human vs.\ machine compared for \textbf{time, quality, and cost}.
+			\item Example: a \textbf{welding robot} executes a specified seam -- reproducible quality, but setup/programming costs.
+			\item \textbf{Taylor's ``vicious circle''}: ever more specialised subprocesses $\Rightarrow$ complex dependencies, inflexibility and high engineering effort for every change.
+		\end{itemize}
+		\column{0.49\textwidth}
+		\textbf{Towards flexible automata}
+		\begin{itemize}
+			\item Add \textbf{sensing} and feedback to compensate disturbances (e.g., thermal distortion during welding) -- without time-consuming reprogramming.
+			\item Combine software with \textbf{standardised, modular systems}; move from isolated automata to \textbf{integrated automated systems}.
+			\item Specify the \emph{context of use}, the \emph{degree of automation}, and the \emph{intervention rules} for the human (bounded autonomy, graceful override).
+		\end{itemize}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -625,7 +612,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fundamental Components of Automation Systems %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Fundamental Components of Automation Systems}
+\begin{frame}
+	\frametitle{Fundamental Components of Automation Systems}
   \textbf{Core concept:}  
   Automation systems acquire information from the technical process, process it, and influence the process again--closing the feedback loop.
   \begin{itemize}
@@ -647,7 +635,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The Feedback Control Loop %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The Feedback Control Loop}
+\begin{frame}
+	\frametitle{The Feedback Control Loop}
   \textbf{Operating principle}
   \begin{itemize}
     \item \textbf{Reference signal:} desired setpoint from operator or automation program.
@@ -667,7 +656,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Actuators: Converting Signals into Action %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Actuators: Converting Signals into Action}
+\begin{frame}
+	\frametitle{Actuators: Converting Signals into Action}
   \textbf{Definition:}  
   Actuators transform control signals into mechanical or other physical process variables.
   \vspace{1mm}
@@ -685,63 +675,50 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
     \item Specialized actuators: piezo, magnetostrictive, or shape-memory drives.
   \end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Sensors: The Sensory Organs of Automation Systems %%
+%% Sensors: the sensory organs of automation systems %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Sensors: The Sensory Organs of Automation Systems}
-  \textbf{Role:}
-  Sensors detect the state of elements in a technical process and convert physical or chemical quantities into signals.\\
-  \begin{table}
-    \centering
-    \begin{tabular}{lll}
-      \toprule
-      \textbf{Sense} & \textbf{Perception} & \textbf{Examples} \\
-      \midrule
-      Vision    & Light, contours       & Camera, optical systems \\
-      Hearing   & Sound                 & Microphone, ultrasound \\
-      Smell     & Fragrance             & Gas or chemical analyzer \\
-      Taste     & Ingredients           & Chromatograph \\
-      Touch     & Force, shape, heat    & Probe, strain gauge, thermometer \\
-      \bottomrule
-    \end{tabular}
-    \caption{Classification by perception principle}
-  \end{table}
-  \textbf{Key trends:}
-  \begin{itemize}
-    \item Self-calibration and diagnostic features.
-    \item Data fusion from multiple sensing principles.
-    \item Integration into sensor networks with edge intelligence.
-  \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Advanced Sensor Concepts and Data Fusion %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Advanced Sensor Concepts and Data Fusion}
-  \textbf{Modern enhancements:}
-  \begin{itemize}
-    \item \textbf{Intelligent sensors:} perform preprocessing, self-diagnosis, and error correction.
-    \item \textbf{Data fusion:} combine multiple measurement principles to improve robustness and accuracy.
-    \item \textbf{Human–machine integration:} intuitive visualization and configuration interfaces for non-experts.
-  \end{itemize}
-  \vspace{2mm}
-  \textbf{Emerging technologies}
-  \begin{itemize}
-    \item \textbf{Sensor networks:} distributed measurement and shared data processing.
-    \item \textbf{Cognitive sensors:} capable of perception and context-aware decision making.
-  \end{itemize}
-  \vspace{2mm}
-  \textbf{Outlook:}
-  \begin{itemize}
-    \item Sensors are evolving toward \textbf{autonomous subsystems} that enable perception, reasoning, and adaptation -- key enablers of \textbf{Industry 4.0}.
-  \end{itemize}
+\begin{frame}
+	\frametitle{Sensors: The Sensory Organs of Automation Systems}
+	\textbf{Role:} Sensors detect the state of elements in a technical process and convert physical or chemical quantities into signals.
+	\begin{table}
+		\centering
+		\footnotesize
+		\begin{tabular}{lll}
+			\toprule
+			\textbf{Sense} & \textbf{Perception} & \textbf{Examples} \\
+			\midrule
+			Vision  & Light, contours    & Camera, optical systems \\
+			Hearing & Sound              & Microphone, ultrasound \\
+			Smell   & Fragrance          & Gas or chemical analyzer \\
+			Taste   & Ingredients        & Chromatograph \\
+			Touch   & Force, shape, heat & Probe, strain gauge, thermometer \\
+			\bottomrule
+		\end{tabular}
+		\caption{Classification by perception principle}
+	\end{table}
+	\small
+	\vspace{-2mm}
+	\textbf{Trends}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.49\textwidth}
+		\begin{itemize}
+			\item \textbf{Intelligent sensors}: preprocessing, self-calibration, self-diagnosis.
+			\item \textbf{Data fusion}: several measurement principles improve robustness and accuracy.
+		\end{itemize}
+		\column{0.49\textwidth}
+		\begin{itemize}
+			\item \textbf{Sensor networks} with edge intelligence; cognitive, context-aware sensors.
+			\item Physical sensing principles $\rightarrow$ Section~2 (Sensor Technologies).
+		\end{itemize}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Control at the Center of Automation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Control at the Center of Automation}
+\begin{frame}
+	\frametitle{Control at the Center of Automation}
   \textbf{Terminology (used precisely in this course)}
   \begin{itemize}
     \item \textbf{Open-loop control:} controller output does \emph{not} use the measured process output.
@@ -755,7 +732,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Feedforward Control with Disturbance Detection %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Feedforward Control with Disturbance Detection}
+\begin{frame}
+	\frametitle{Feedforward Control with Disturbance Detection}
   \begin{columns}[T,onlytextwidth]
     \column{0.65\textwidth}
       \textbf{Structure and assumptions}
@@ -781,7 +759,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Closed-Loop (Feedback) Control and Practical Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Closed-Loop (Feedback) Control and Practical Example}
+\begin{frame}
+	\frametitle{Closed-Loop (Feedback) Control and Practical Example}
   \textbf{Closed-loop principle}
   \begin{itemize}
     \item Measure output \(\rightarrow\) compare with reference \(\rightarrow\) control action reduces error.
@@ -798,7 +777,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Closed-Loop (Feedback) Control and Practical Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Choosing Between Control Types}
+\begin{frame}
+	\frametitle{Choosing Between Control Types}
   \begin{table}
     \small
     \centering
@@ -826,7 +806,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Autonomous System: Architecture at a Glance %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Autonomous System: Architecture at a Glance}
+\begin{frame}
+	\frametitle{Autonomous System: Architecture at a Glance}
   \begin{columns}[T,onlytextwidth]
     \column{0.55\textwidth}
       \textbf{Main parts (contrasted with an automaton)}
@@ -851,7 +832,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Roles of the Cognitive Components %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Roles of the Cognitive Components}
+\begin{frame}
+	\frametitle{Roles of the Cognitive Components}
   \begin{itemize}
     \item \textbf{Perception} -- interprets sensor data, extracts relevant information from complex/partial observations.
     \item \textbf{Reflection} -- maintains a realistic runtime model; feeds planning with up-to-date context.
@@ -866,41 +848,37 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
     \item Many real deployments are \textbf{supervised autonomy}: the system recognizes limits and prompts human intervention when needed.
   \end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Levels of Driving Automation (SAE) -- Analogy for Autonomy %%
+%% Levels of driving automation (SAE J3016) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Levels of Driving Automation (SAE) -- Analogy for Autonomy}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.5\textwidth}
-      \small
-      \begin{itemize}
-        \item \textbf{L0-L2:} No/partial automation; driver assistance.
-        \item \textbf{L3 “Highly Automated”:} System handles certain use cases; requests human takeover if necessary (commercially available).
-        \item \textbf{L4 “Fully Automated”:} System manages all situations within a \emph{clear use case}; human may intervene via teleoperation in exceptions (active research/prototypes).
-        \item \textbf{L5 “Autonomous”:} System handles all tasks and acts in case of errors/faults -- long-term research goal.
-      \end{itemize}
-    \column{0.5\textwidth}
-      \centering
-      \begin{figure}
-        \includegraphics[width=\linewidth]{fig/lec01/level_auto.pdf}\\
-        \caption{The five levels: from manual operation to autonomous system (according to 
-        \href{https://doi.org/10.4271/J3016_202104}{SAE, 2021}, \textit{Taxonomy and Definitions
-        for Terms Related to Driving Automation Systems for On-Road Motor Vehicles}, 
-        ISO/SAE PAS 22736:2021).}
-      \end{figure}
-  \end{columns}
-  \vspace{-5mm}
-  \footnotesize
-  \textbf{Transfer to industry}\\
-  Best near-term fit is in \textbf{specialized, well-structured applications}
-  (e.g., mining vehicles, harvesting, intralogistics cells).
+\begin{frame}
+	\frametitle{Levels of Driving Automation (SAE J3016) -- Analogy for Autonomy}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.5\textwidth}
+		\footnotesize
+		\begin{itemize}
+			\item \textbf{L0--L2} (no, assisted, partial automation): the driver drives and monitors at all times.
+			\item \textbf{L3 conditional:} the system drives within its operational design domain (ODD); the driver must take over on request -- commercially available.
+			\item \textbf{L4 high:} no takeover needed within the ODD (system reaches a minimal-risk condition) -- first driverless services in geofenced areas.
+			\item \textbf{L5 full:} all conditions a human driver could manage -- long-term research goal.
+		\end{itemize}
+		\column{0.5\textwidth}
+		\centering
+		\begin{figure}
+			\includegraphics[width=\linewidth]{fig/lec01/level_auto.pdf}
+			\caption{The levels of driving automation (adapted from \href{https://doi.org/10.4271/J3016_202104}{SAE J3016:2021}; ISO/SAE PAS 22736:2021).}
+		\end{figure}
+	\end{columns}
+	\footnotesize
+	\textbf{Transfer to industry:} best near-term fit in \textbf{specialized, well-structured applications} (e.g., mining vehicles, harvesting, intralogistics cells).\\
+	\scriptsize Note: older German usage calls L3/L4 ``highly''/``fully'' automated (hoch-/vollautomatisiert); SAE J3016 discourages the term ``autonomous''.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Opportunities, Limits, and Responsibilities %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Opportunities, Limits, and Responsibilities}
+\begin{frame}
+	\frametitle{Opportunities, Limits, and Responsibilities}
   \textbf{Why autonomy in industry}
   \begin{itemize}
     \item Addresses labor shortages; increases availability; copes with unforeseen events; supports productivity and safety.
@@ -918,13 +896,14 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Safety and open source tools}
+\subsection{Mechatronics, Functional Safety and Open-Source Tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is Mechatronics? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{What is Mechatronics?}
+\begin{frame}
+	\frametitle{What is Mechatronics?}
   \textbf{Origin and sense of the term}
   \begin{itemize}
     \item “Mecha” (mechanism) + “tronics” (electronics): products integrate electronics/software \emph{intimately} with mechanisms--boundaries blur.
@@ -939,54 +918,40 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
   \end{itemize}
   \textbf{Modern view}: mechatronics is a \emph{holistic} system-design activity, not just “add electronics to mechanics.”
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Generic Mechatronic System Design %%
+%% Generic mechatronic system design %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Generic Mechatronic System Design}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.5\textwidth}
-      \textbf{Block perspective}
-      \begin{itemize}
-        \item Mechanical system \(\leftrightarrow\) Sensors/Actuators
-        \item Electrical/electronic system (power + interface)
-        \item A/D and D/A conversion around the control computer
-        \item Computer system executes control/software functions
-      \end{itemize}
-      \textbf{Implication}
-      \begin{itemize}
-        \item Co-design across mechanics–electronics–software is mandatory; signals bridge domains.
-      \end{itemize}
-    \column{0.5\textwidth}
-      \centering
-      \begin{figure}
-        \includegraphics[width=0.8\linewidth]{fig/lec01/AT_design_process.pdf}\\
-        \caption{Generic Mechatronic System Design (adapted from 
-        D.~Shetty and R.~A.~Kolk, \textit{Mechatronics System Design}, 
-        PWS Publishing Company, 1997).}
-      \end{figure}
-  \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Mechatronic Design Process (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mechatronic Design Process (1)}
-  \textbf{Main lanes}
-  \begin{itemize}
-    \item \textbf{Modelling/Simulation}: recognize need \(\rightarrow\) concept and functions \(\rightarrow\) first-principle modular models \(\rightarrow\) sensor/actuator selection \(\rightarrow\) detailed models \(\rightarrow\) control design \(\rightarrow\) optimisation.
-    \item \textbf{Prototyping}: HIL (hardware-in-the-loop) simulation \(\rightarrow\) design optimisation.
-    \item \textbf{Deployment/Lifecycle}: embedded software deployment \(\rightarrow\) lifecycle optimisation \(\rightarrow\) info for future modules/upgrades.
-  \end{itemize}
-  \vspace{1mm}
-  \textbf{What the figure emphasizes}\\
-  Prominent role of modelling and simulation; translation of control models into embedded software follows in deployment.
+\begin{frame}
+	\frametitle{Generic Mechatronic System Design}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.52\textwidth}
+		\footnotesize
+		\textbf{Block perspective}
+		\begin{itemize}
+			\item Mechanical system $\leftrightarrow$ sensors/actuators $\leftrightarrow$ electrical/electronic system (power + interface).
+			\item A/D and D/A conversion around the control computer, which executes the control/software functions.
+		\end{itemize}
+		\textbf{Design process (lanes in the figure)}
+		\begin{itemize}
+			\item \textbf{Modelling/simulation:} need $\rightarrow$ concept $\rightarrow$ modular first-principle models $\rightarrow$ sensor/actuator selection $\rightarrow$ control design $\rightarrow$ optimisation.
+			\item \textbf{Prototyping:} hardware-in-the-loop (HIL) simulation $\rightarrow$ design optimisation.
+			\item \textbf{Deployment/life cycle:} embedded software $\rightarrow$ life-cycle optimisation $\rightarrow$ information for future upgrades.
+		\end{itemize}
+		\textbf{Implication:} co-design across mechanics, electronics and software is mandatory.
+		\column{0.46\textwidth}
+		\centering
+		\begin{figure}
+			\includegraphics[width=0.78\linewidth]{fig/lec01/AT_design_process.pdf}
+			\caption{Generic Mechatronic System Design (adapted from D.~Shetty and R.~A.~Kolk, \textit{Mechatronics System Design}, PWS Publishing Company, 1997).}
+		\end{figure}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mechatronic Design Process (from the text) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mechatronic Design Process (2 -- from the text)}
+\begin{frame}
+	\frametitle{Mechatronic Design Process Including Safety Activities}
   \centering
   \begin{figure}
     \includegraphics[width=\linewidth]{fig/lec01/AT_design_Safety.pdf}\\
@@ -1000,7 +965,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% System-Level Modelling and Systems Engineering Notes %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{System-Level Modelling and Systems Engineering Notes}
+\begin{frame}
+	\frametitle{System-Level Modelling and Systems Engineering Notes}
   \textbf{Why systems engineering matters}
   \begin{itemize}
     \item Mechatronic design integrates multiple engineering disciplines from \emph{concept} stage--beyond traditional siloed flows.
@@ -1014,97 +980,38 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
   \textbf{Takeaway:}
   Start with system-level models; iterate models \(\rightarrow\) HIL \(\rightarrow\) deployment; carry forward information for upgrades.
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Hierarchy of Safety Requirements %%
+%% Hierarchy of safety requirements and safety concepts %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hierarchy of Safety Requirements}
-  \textbf{Motivation:}
-  \begin{itemize}
-    \item To develop a \textbf{safety argument} for a \emph{mechatronic system} that integrates both mechanical and electrical/electronic (E/E) subsystems.
-    \item Based on the ISO 26262 hierarchy, safety requirements are cascaded through several levels of abstraction.
-  \end{itemize}
-  \textbf{Safety hierarchy (ISO 26262):}
-  \begin{itemize}
-    \item \textbf{Safety Goals} -- derived from \emph{item definition}.
-    \item \textbf{Functional Safety Requirements} -- applied to the \emph{preliminary architecture}.
-    \item \textbf{Technical Safety Requirements} -- mapped to \emph{system design}.
-    \item \textbf{Hardware Safety Requirements} -- assigned to hardware design.
-    \item \textbf{Software Safety Requirements} -- assigned to software design.
-  \end{itemize}
-  \textbf{Challenge:}  
-  No universally accepted equivalent hierarchy yet exists for \emph{mechatronic or mechanical} systems -- motivating the need for a unified model.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Functional Safety Concept %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Functional Safety Concept}
-  \textbf{Definition:}
-  \begin{itemize}
-    \item Derived from ISO 26262 -- ensures that the system maintains a safe state even under foreseeable faults.
-    \item In a \textbf{mechatronic context}, this extends beyond E/E components to include mechanical subsystems.
-  \end{itemize}
-  \textbf{In Mechatronic Systems:}
-  \begin{itemize}
-    \item The \textbf{Mechatronic Functional Safety Concept} includes both control logic and the physical plant (mechanical system).
-    \item Mechanical aspects formerly referred to as \emph{external measures} are now internalized into the concept.
-    \item The concept remains independent of detailed E/E and mechanical designs but defines required safe states and control strategies.
-  \end{itemize}
-  \textbf{Purpose:}  
-  Provide a unified architecture that integrates \emph{mechanical and electrical safety assumptions} early in design.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Technical Safety Concept %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Technical Safety Concept}
-  \textbf{Definition:}
-  \begin{itemize}
-    \item Refines functional safety requirements into detailed, implementable \emph{technical requirements}.
-    \item Establishes how the safety goals are realized through both E/E and mechanical design decisions.
-  \end{itemize}
-  \textbf{In Mechatronic Systems:}
-  \begin{itemize}
-    \item The \textbf{Mechatronic Technical Safety Concept} links the functional concept with physical system implementation.
-    \item It includes mappings between:
-      \begin{itemize}
-        \item Mechanical design parameters
-        \item E/E subsystem performance limits
-        \item Interfaces at the \textbf{Mechanical-E/E boundary}
-      \end{itemize}
-    \item These relationships define how both domains interact to achieve required safety integrity.
-  \end{itemize}
-  \textbf{Purpose:}  
-  Ensure traceability from high-level safety goals down to specific mechanical and E/E design choices.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Hardware Safety and Integration %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hardware Safety and Integration}
-  \textbf{Hardware Safety Requirements:}
-  \begin{itemize}
-    \item Derived from the technical safety concept; specify measurable reliability and fault tolerance targets.
-    \item Include quantitative metrics such as fault rates, diagnostic coverage, and safe failure fraction.
-  \end{itemize}
-  \textbf{Integration challenges in mechatronic systems:}
-  \begin{itemize}
-    \item Hardware safety applies not only to electronic hardware but also to:
-      \begin{itemize}
-        \item Electromechanical interfaces (e.g., actuators, sensors, converters)
-        \item Mechanical structures critical to safe operation
-      \end{itemize}
-    \item Co-validation of mechanical and E/E subsystems is essential to verify safe performance.
-  \end{itemize}
-  \textbf{Takeaway:}  
-  Mechatronic safety demands a \textbf{unifying design ontology} linking functional, technical, and hardware domains -- ensuring traceability from system goals down to component implementation.
+\begin{frame}
+	\frametitle{Hierarchy of Safety Requirements and Safety Concepts}
+	\small
+	\textbf{Motivation:} a \textbf{safety argument} for a mechatronic system must cover mechanical \emph{and} electrical/electronic (E/E) subsystems; ISO 26262 cascades safety requirements over several levels of abstraction.
+	\begin{columns}[T,onlytextwidth]
+		\column{0.48\textwidth}
+		\textbf{Safety requirements (ISO 26262)}
+		\begin{itemize}
+			\item \textbf{Safety goals} -- from the \emph{item definition} and HARA.
+			\item \textbf{Functional safety requirements} -- \emph{preliminary architecture}.
+			\item \textbf{Technical safety requirements} -- \emph{system design}.
+			\item \textbf{Hardware/software safety requirements} -- HW/SW design.
+		\end{itemize}
+		\column{0.5\textwidth}
+		\textbf{Safety concepts (mechatronic extension)}
+		\begin{enumerate}
+			\item \textbf{Functional safety concept} (Pars 2) -- safe behaviour and responses.
+			\item \textbf{Technical safety concept} (Pars 3) -- allocation to system elements.
+			\item \textbf{E/E technical safety concept} (Pars 4) -- hardware, software and interfaces.
+		\end{enumerate}
+	\end{columns}
+	\textbf{Challenge:} no generally accepted hierarchy exists yet for mechanical systems $\Rightarrow$ mechanical and E/E domains are unified in \emph{one} safety argument; the flow functional $\rightarrow$ technical $\rightarrow$ hardware gives traceability from hazard to implementation.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introduction to HARA for Mechatronic Systems %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Introduction to HARA for Mechatronic Systems}
+\begin{frame}
+	\frametitle{Introduction to HARA for Mechatronic Systems}
   \textbf{Purpose of HARA- Hazard Analysis and Risk Assessment:}
   \begin{itemize}
     \item Identify and evaluate potential hazards that can lead to unsafe conditions in a mechatronic system.
@@ -1127,7 +1034,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% System Architecture Context - 4CAS %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{System Architecture Context - 4CAS}
+\begin{frame}
+	\frametitle{System Architecture Context - 4CAS}
   \begin{columns}[T,onlytextwidth]
     \column{0.65\textwidth}
       \textbf{System Components:}
@@ -1154,41 +1062,40 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
       \end{figure}
   \end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% HARA Framework for Mechatronic Systems (1) %%
+%% HARA framework for mechatronic systems %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{HARA Framework for Mechatronic Systems (1)}
-  \textbf{Pars 1: Mechatronic Item definition and HARA}
-  \begin{itemize}
-    \item Defines system boundaries and operational context.
-    \item Identifies hazards and operational scenarios.
-    \item Evaluates hazardous events to establish \textbf{Mechatronic Safety Goals}.
-  \end{itemize}
-  \textbf{Key Steps:}
-  \begin{enumerate}
-    \item \textbf{Initial System description} -- captures mechanical and E/E domains.
-    \item \textbf{Mechatronic Item definition} -- functional behavior, interfaces, and assumptions.
-    \item \textbf{Mechatronic HARA documentation} -- hazards, operational situations, and hazardous events.
-  \end{enumerate}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% HARA Framework for Mechatronic Systems (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{HARA Framework for Mechatronic Systems (2)}
-	\centering
-  \begin{figure}
-    \includegraphics[width=0.5\linewidth]{fig/lec01/HARA.pdf}\\
-    \caption{HARA Design Description (adapted from 
-    \href{https://etheses.whiterose.ac.uk/id/eprint/22612/}{R.~S.~Rivett, EngD thesis, University of York, 2018}).}
-  \end{figure}
+\begin{frame}
+	\frametitle{HARA Framework for Mechatronic Systems [Pars 1]}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.52\textwidth}
+		\small
+		\textbf{Mechatronic item definition and HARA}
+		\begin{itemize}
+			\item Defines system boundaries and operational context.
+			\item Identifies hazards and operational situations.
+			\item Evaluates hazardous events to establish \textbf{mechatronic safety goals}.
+		\end{itemize}
+		\textbf{Key steps}
+		\begin{enumerate}
+			\item \textbf{Initial system description} -- mechanical and E/E domains.
+			\item \textbf{Mechatronic item definition} -- functional behaviour, interfaces, and assumptions.
+			\item \textbf{Mechatronic HARA documentation} -- hazards, operational situations, and hazardous events.
+		\end{enumerate}
+		\column{0.46\textwidth}
+		\centering
+		\begin{figure}
+			\includegraphics[width=0.9\linewidth]{fig/lec01/HARA.pdf}
+			\caption{HARA design description (adapted from \href{https://etheses.whiterose.ac.uk/id/eprint/22612/}{R.~S.~Rivett, EngD thesis, University of York, 2018}).}
+		\end{figure}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Hazard Identification and Safety Goal Derivation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hazard Identification and Safety Goal Derivation}
+\begin{frame}
+	\frametitle{Hazard Identification and Safety Goal Derivation}
   \textbf{Conceptual Flow (from the figure and text)}
   \begin{itemize}
     \item Hazards arise from both \textbf{mechanical} (e.g., over-pressure, spring failure) and \textbf{E/E} (e.g., sensor fault, ECU error) domains.
@@ -1204,109 +1111,87 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
   \textbf{Outcome:}
   The HARA provides the foundational safety reasoning upon which functional, technical, and hardware safety concepts are built.
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Safety Concepts in Mechatronic Systems %%
+%% Functional safety concept %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Safety Concepts in Mechatronic Systems}
-  \textbf{Hierarchy of Safety Concepts (ISO 26262-inspired):}
-  \begin{enumerate}
-    \item \textbf{Functional Safety Concept (Pars 2)} -- defines system-level safe behavior and responses.
-    \item \textbf{Technical Safety Concept (Pars 3)} -- allocates safety requirements to system elements.
-    \item \textbf{Hardware/E/E Technical Safety Concept (Pars 4)} -- addresses hardware, software, and interface implementation.
-  \end{enumerate}
-  \textbf{Integration Challenge:}
-  \begin{itemize}
-    \item Mechanical and E/E systems must be unified under one safety argument.
-    \item Functional $\rightarrow$ Technical $\rightarrow$ Hardware flow ensures traceability from hazard to implementation.
-  \end{itemize}
-  \textbf{4CAS Context Example:}  
-  Air suspension must maintain vehicle height even if a sensor or valve fails -- this defines the top-level \emph{Functional Safety Goal}.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Functional Safety Concept [Pars 2] (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Functional Safety Concept [Pars 2] (1)}
-  \textbf{Objective:}
-  Translate the \emph{Mechatronic Safety Goals} from HARA into concrete \emph{functional behaviors} that guarantee safety.
-  \textbf{Key Components:}
-  \begin{itemize}
-    \item \textbf{Mechatronic System Architecture} = Mechanical + E/E Architecture.
-    \item \textbf{Functional Safety Requirements} are assigned to both mechanical and electronic elements.
-    \item \textbf{External Measures} still exist for effects outside system scope (e.g., backup mechanical stops).
-  \end{itemize}
-  \textbf{Example (4CAS):}  
-  If an air-pressure sensor fails, the ECU must detect the fault and switch to a safe mode -- e.g., lock ride height until service.
+\begin{frame}
+	\frametitle{Functional Safety Concept [Pars 2]}
+	\textbf{Objective:} translate the \emph{mechatronic safety goals} from the HARA into \emph{functional behaviour} that maintains a \textbf{safe state} under foreseeable faults (ISO 26262).\\[2mm]
+	\textbf{In mechatronic systems}
+	\begin{itemize}
+		\item \textbf{Mechatronic system architecture} = mechanical + E/E architecture; functional safety requirements are assigned to \emph{both} mechanical and electronic elements.
+		\item Mechanical aspects formerly treated as \emph{external measures} are internalised; external measures remain only for effects outside the system scope (e.g., mechanical end stops).
+		\item The concept is independent of detailed E/E and mechanical designs, but defines the required \textbf{safe states} and control strategies.
+	\end{itemize}
+	\textbf{Example (4CAS):} if an air-pressure sensor fails, the ECU must detect the fault and switch to a safe mode -- e.g., lock the ride height until service.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Functional Safety Concept (Pars 2) (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Functional Safety Concept [Pars 2] (2)}
+\begin{frame}
+	\frametitle{Functional Safety Concept [Pars 2] -- Structure}
 \centering
   \begin{figure}
-    \includegraphics[width=0.65\linewidth]{fig/lec01/mech_func_safety.pdf}\\
+    \includegraphics[width=0.6\linewidth]{fig/lec01/mech_func_safety.pdf}\\
     \caption{Mechatronic Functional Safety Concept Diagram (adapted from 
     \href{https://etheses.whiterose.ac.uk/id/eprint/22612/}{R.~S.~Rivett, EngD thesis, University of York, 2018}).}
   \end{figure}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Technical Safety Concept [Pars 3] (1) %%
+%% Technical safety concept %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Technical Safety Concept [Pars 3] (1)}
-  \textbf{Objective:}
-  Refine functional requirements into implementable, verifiable \textbf{technical safety requirements}.
-  \textbf{Key Aspects:}
-  \begin{itemize}
-    \item Extends design to explicit \textbf{mechanical elements} (e.g., actuators, springs).
-    \item Defines \textbf{interfaces} between E/E and mechanical subsystems.
-    \item Allocates safety requirements across:
-      \begin{itemize}
-        \item \textbf{E/E System Elements:} controllers, sensors, software.
-        \item \textbf{Mechanical System Elements:} valves, cylinders, mounts.
-      \end{itemize}
-  \end{itemize}
-  \textbf{Example (4CAS):}  
-  Ensure valve response time and ECU actuation timing meet defined limits so that pressure adjustments remain stable under faults.
+\begin{frame}
+	\frametitle{Technical Safety Concept [Pars 3]}
+	\textbf{Objective:} refine the functional safety requirements into implementable, verifiable \textbf{technical safety requirements} -- i.e., \emph{how} the safety goals are realised by E/E \emph{and} mechanical design decisions.\\[2mm]
+	\textbf{Key aspects}
+	\begin{itemize}
+		\item Extends the design to explicit \textbf{mechanical elements} (e.g., valves, springs, cylinders, mounts).
+		\item Defines the \textbf{interfaces at the mechanical--E/E boundary} and maps mechanical design parameters to E/E performance limits.
+		\item Allocates safety requirements to \textbf{E/E system elements} (controllers, sensors, software) and \textbf{mechanical system elements}.
+		\item Ensures \textbf{traceability} from the safety goals down to specific design choices.
+	\end{itemize}
+	\textbf{Example (4CAS):} valve response time and ECU actuation timing must meet defined limits so that pressure adjustments remain stable under faults.
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Technical Safety Concept [Pars 3] (1) %%
+%% Technical safety concept -- structure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Technical Safety Concept [Pars 3] (2)}
-  \centering
-  \begin{figure}
-    \includegraphics[width=0.65\linewidth]{fig/lec01/mech_func_safety.pdf}\\
-    \caption{Mechatronic Technical Safety Concept Diagram (adapted from 
-    \href{https://etheses.whiterose.ac.uk/id/eprint/22612/}{R.~S.~Rivett, EngD thesis, University of York, 2018}).}
-  \end{figure}
+\begin{frame}
+	\frametitle{Technical Safety Concept [Pars 3] -- Structure}
+	\centering
+	\begin{figure}
+		\includegraphics[height=0.7\textheight]{fig/lec01/mech_tech_safety.pdf}
+		\caption{Mechatronic Technical Safety Concept Diagram (adapted from \href{https://etheses.whiterose.ac.uk/id/eprint/22612/}{R.~S.~Rivett, EngD thesis, University of York, 2018}).}
+	\end{figure}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Hardware / E/E Technical Safety Concept [Pars 4] (1) %%
+%% Hardware / E/E technical safety concept %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hardware / E/E Technical Safety Concept [Pars 4] (1)}
-  \textbf{Objective:}
-  Detail how E/E and software components implement and verify technical safety requirements.
-  \textbf{Elements:}
-  \begin{itemize}
-    \item \textbf{Hardware Software Interface Specification} -- defines signal, timing, and fault-reaction behavior.
-    \item \textbf{Design Targets:} fault tolerance, diagnostic coverage, random failure rates.
-    \item \textbf{Physically Realised System:} Hardware + Embedded Executable + Mechanical Interface.
-  \end{itemize}
-  \textbf{Example (4CAS):}  
-  ECU performs real-time diagnostics of height sensors; if the sensor drifts, the controller uses redundant input or holds last safe pressure.
+\begin{frame}
+	\frametitle{Hardware / E/E Technical Safety Concept [Pars 4]}
+	\small
+	\textbf{Objective:} detail how E/E hardware and software implement -- and verify -- the technical safety requirements.\\[1mm]
+	\textbf{Elements}
+	\begin{itemize}
+		\item \textbf{Hardware safety requirements:} quantitative targets such as random hardware failure rates, \textbf{diagnostic coverage} and single-point/latent-fault metrics (ISO 26262; cf.\ safe failure fraction in IEC 61508).
+		\item \textbf{Hardware--software interface specification:} signals, timing, and fault reactions.
+		\item \textbf{Physically realised system:} hardware + embedded executable + mechanical interface.
+	\end{itemize}
+	\textbf{Integration in mechatronic systems}
+	\begin{itemize}
+		\item Hardware safety also covers electromechanical interfaces (actuators, sensors, converters) and safety-critical mechanical structures $\Rightarrow$ \textbf{co-validation} of mechanical and E/E subsystems.
+	\end{itemize}
+	\textbf{Example (4CAS):} the ECU diagnoses the height sensors in real time; if a sensor drifts, it uses a redundant input or holds the last safe pressure.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Hardware / E/E Technical Safety Concept [Pars 4] (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hardware / E/E Technical Safety Concept [Pars 4] (2)}
+\begin{frame}
+	\frametitle{Hardware / E/E Technical Safety Concept [Pars 4] -- Structure}
 \centering
 \begin{figure}
-  \includegraphics[width=0.6\linewidth]{fig/lec01/mech_EE_safety.pdf}\\
+  \includegraphics[width=0.55\linewidth]{fig/lec01/mech_EE_safety.pdf}\\
   \caption{E/E Technical Safety Concept Diagram (adapted from 
   \href{https://etheses.whiterose.ac.uk/id/eprint/22612/}{R.~S.~Rivett, EngD thesis, University of York, 2018}).}
 \end{figure}
@@ -1315,7 +1200,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Relationship Between Concepts %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Relationship Between Concepts}
+\begin{frame}
+	\frametitle{Relationship Between Concepts}
   \textbf{Cascading Structure:}
   \begin{enumerate}
     \item \textbf{Functional Safety Concept} defines “\emph{what}” must be safe.
@@ -1336,7 +1222,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Open-Source Automation: Tools and Benefits (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Open-Source Automation: Tools and Benefits (1)}
+\begin{frame}
+	\frametitle{Open-Source Automation: Tools and Benefits (1)}
   \textbf{What is Open-Source Automation?}
   \begin{itemize}
       \item \textbf{Definition:} Use of freely available, community-driven hardware and software for automation, control, and data management.
@@ -1365,7 +1252,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Open-Source Automation: Tools and Benefits (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Open-Source Automation: Tools and Benefits (2)}
+\begin{frame}
+	\frametitle{Open-Source Automation: Tools and Benefits (2)}
   \vspace{2mm}
   \textbf{Benefits for Students}
   \begin{itemize}
@@ -1379,7 +1267,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Reproducibility in Automation Systems (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Reproducibility in Automation Systems (1)}
+\begin{frame}
+	\frametitle{Reproducibility in Automation Systems (1)}
   \textbf{Why it matters}
   \begin{itemize}
     \item Modern automation projects combine hardware, software, and data -- making reproducibility essential for verification and scalability.
@@ -1391,7 +1280,8 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Reproducibility in Automation Systems (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Reproducibility in Automation Systems (2)}
+\begin{frame}
+	\frametitle{Reproducibility in Automation Systems (2)}
   \vspace{2mm}
   \textbf{Core principles of reproducibility}
   \begin{itemize}
@@ -1403,4 +1293,18 @@ Holidays: 23 Dec 2026, 30 Dec 2026, and 6 Jan 2026. %As required classes will be
   \vspace{2mm}
   \textbf{Example:}\\
   A student replicates a temperature-control experiment from another group by cloning the GitHub repo and launching an identical OpenPLC + Node-RED + InfluxDB Docker stack.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Section summary %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Section Summary}
+	\begin{itemize}
+		\item \textbf{Automation} reallocates human effort; fixed, programmable and flexible automation differ in product variety, volume and changeover capability.
+		\item An \textbf{automaton} (technical process + automation system, monitored by the user) is the basic building block; the \textbf{degree of automation} quantifies the share of automatic functions.
+		\item Automation systems close the loop \textbf{sensor $\rightarrow$ controller $\rightarrow$ actuator}; feedback is the backbone, feedforward anticipates known disturbances.
+		\item \textbf{Autonomous systems} add perception, reflection and planning -- within guard rails and under human supervision.
+		\item \textbf{Functional safety} cascades from hazards and safety goals (HARA) via functional, technical and hardware safety concepts -- traceable across mechanical and E/E domains.
+		\item \textbf{Open-source tools and reproducibility} (version control, defined environments) make automation projects verifiable and maintainable.
+	\end{itemize}
 \end{frame}

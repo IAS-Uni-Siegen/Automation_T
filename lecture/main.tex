@@ -1,17 +1,20 @@
 \documentclass{../course_template/lectureClass}
-%\usepackage{hyperref}
-%\usepackage{svg}
-%\usepackage{amsmath} % you need amsmath as the demo includes a use of \eqref
+
+
+\title[Automation Technologies]{Automation Technologies}
+\author{Dr Bikash Sah}
+\date{}
+
 \makeglossaries
+
+%\includeonly{tex/Lecture01} % build only selected sections
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Cover slide %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title[Automation Technologies]{Automation Technologies}
-\author{Dr Bikash Sah}
-\date{}
 \begin{frame}[plain]
     \titlepage
 \end{frame}
@@ -19,7 +22,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Outline / table of content %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Content}
+\begin{frame}{Table of contents}
     \tableofcontents[hideallsubsections]
 \end{frame}
 
@@ -27,12 +30,14 @@
 %% Lecture sections %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%\includeonly{tex/Lecture01} % build only the specified file
-
-\include{tex/Lecture00} % Overview 
-\include{tex/Lecture01} % Introduction
+\include{tex/Lecture01} % Initial overview of automation technologies
 \include{tex/Lecture02} % Sensor technologies
-\include{tex/Lecture03} % Signal Processing and Conditioning
-\include{tex/Lecture04} % Processor Technologies in Automation Systems
-\include{tex/Lecture05} % Industrial communication systems
-\end{document} 
+\include{tex/Lecture03} % Signal processing and conditioning
+\include{tex/Lecture04} % Processor technologies in automation systems
+\include{tex/Lecture05} % Industrial communication in automation systems
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix} % Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{tex/dict} % English-German dictionary (subsection)
+\end{document}
