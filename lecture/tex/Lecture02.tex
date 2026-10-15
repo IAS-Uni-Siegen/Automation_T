@@ -15,7 +15,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introduction to Sensor Systems %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Introduction to Sensor Systems}
+\begin{frame}
+	\frametitle{Introduction to Sensor Systems}
     \begin{itemize}
         \item Sensors are essential to observe and influence physical, chemical, or biological processes.
         \item They enable control of systems by providing information about the \textbf{current state}.
@@ -29,7 +30,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Definition and Mode of Operation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Definition and Mode of Operation}
+\begin{frame}
+	\frametitle{Definition and Mode of Operation}
     \begin{block}{Definition}
         The term \textbf{sensor} originates from the Latin \textit{sensus} (sense, feeler).  
         A sensor is a device that converts a physical, chemical, or biological quantity into an \textbf{electrical output signal}.
@@ -53,7 +55,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Operating Principle of Sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Operating Principle of Sensors}
+\begin{frame}
+	\frametitle{Operating Principle of Sensors}
     \begin{itemize}
         \item The sensor receives \textbf{input variables} (physical or non-electrical quantities).
         \item It produces an \textbf{electrical output signal} proportional to the input.
@@ -69,7 +72,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Classification of Sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Classification of Sensors}
+\begin{frame}
+	\frametitle{Classification of Sensors}
     \textbf{1. Based on Power Source}
     \begin{itemize}
         \item \textbf{Active sensors:} Generate an electrical signal directly from the measured variable (e.g., piezoelectric, thermoelectric).
@@ -87,57 +91,33 @@
         \item \textbf{Digital sensors:} Include A/D conversion and provide discrete signals or data streams.
     \end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Classification of Sensors %%
+%% Digital and virtual sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Digital and Virtual Sensors}
-    \textbf{Digital Sensors}
-    \begin{itemize}
-        \item Integrate \textbf{analog-to-digital converters (ADCs)} within the evaluation electronics.
-        \item Output is a \textbf{digital signal} directly usable by controllers or microprocessors.
-        \item Example: Digital accelerometer (I\textsuperscript{2}C/SPI interface).
-    \end{itemize}
-    \vspace{3mm}
-    \textbf{Virtual Sensors}
-    \begin{itemize}
-        \item Derive the desired variable \textbf{computationally} using software models.
-        \item Based on mathematical models or empirical correlations.
-        \item Used when:
-        \begin{itemize}
-            \item Real sensors are expensive or prone to wear (e.g., nuclear plants, harsh environments).
-            \item Quantities can be inferred indirectly (e.g., estimated torque from current and speed).
-        \end{itemize}
-    \end{itemize}
-    \begin{block}{Example}
-        In automotive systems, a virtual tire pressure sensor can estimate pressure from wheel-speed variations and temperature.
-    \end{block}
+\begin{frame}
+	\frametitle{Digital and Virtual Sensors}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.45\textwidth}
+		\textbf{Digital sensors}
+		\begin{itemize}
+			\item Integrate \textbf{analog-to-digital converters (ADCs)} within the evaluation electronics.
+			\item Output is a \textbf{digital signal} directly usable by controllers or microprocessors.
+			\item Example: digital accelerometer (I\textsuperscript{2}C/SPI interface).
+		\end{itemize}
+		\column{0.52\textwidth}
+		\textbf{Virtual sensors}
+		\begin{itemize}
+			\item Derive the desired variable \textbf{computationally} using software models (mathematical models or empirical correlations).
+			\item Used when real sensors are expensive or prone to wear (e.g., nuclear plants, harsh environments), or when quantities can be inferred indirectly (e.g., torque from current and speed).
+		\end{itemize}
+	\end{columns}
+	\vspace{1mm}
+	\textbf{Example:} in automotive systems, a virtual tire pressure sensor can estimate pressure from wheel-speed variations and temperature.\\[2mm]
+	\textbf{Classroom question:} why might a virtual sensor be preferred over a physical one in a battery management or air suspension system?
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary and Discussion %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary and Discussion}
-    \begin{itemize}
-        \item Sensors are the foundation of automation and control.
-        \item Each sensor has a sensing element and signal-conditioning electronics.
-        \item Classification helps select the right sensor for a given task:
-            \begin{itemize}
-                \item Active vs Passive
-                \item Analog vs Digital
-                \item Real vs Virtual
-            \end{itemize}
-        \item Emerging trends: miniaturization, MEMS, IoT-ready smart sensors.
-    \end{itemize}
-    \vspace{3mm}
-    \textbf{Classroom Question:}
-    \begin{quote}
-        Why might a virtual sensor be preferred over a physical sensor in a battery management or air suspension system?
-    \end{quote}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Piezoelectric Effect}
+\subsection{Piezoelectric and (Piezo)resistive Effects}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %--------------------------------
@@ -148,7 +128,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is the Piezoelectric Effect? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{What is the Piezoelectric Effect?}
+\begin{frame}
+	\frametitle{What is the Piezoelectric Effect?}
     \textbf{Direct effect:} When certain solids are \emph{deformed} by force/pressure, internal charge centers shift $\Rightarrow$ an \textbf{electrical voltage} appears at the surfaces (electric polarization $P$).\\[2mm]
     \textbf{Inverse effect:} Applied voltage causes a \emph{mechanical strain/oscillation}.\\[2mm]
     \textbf{Key ideas from the text}
@@ -162,7 +143,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Principle of Operation (Direct) and Modes %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Principle of Operation (Direct) and Modes}
+\begin{frame}
+	\frametitle{Principle of Operation (Direct) and Modes}
     \begin{columns}[T,onlytextwidth]
         \column{0.65\textwidth}
             \textbf{Operating chain}\\
@@ -190,7 +172,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Coordinate Description and Basic Relations %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Coordinate Description and Basic Relations}
+\begin{frame}
+	\frametitle{Coordinate Description and Basic Relations}
     \begin{columns}[T,onlytextwidth]
         \column{0.48\textwidth}
             \textbf{Coordinate system}\\
@@ -216,7 +199,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Materials %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Materials}
+\begin{frame}
+	\frametitle{Materials}
     \textbf{Requirement:} Nonconductive, non-centrosymmetric structure (no inversion symmetry).\\[1mm]
     \textbf{Groups:}
     \begin{itemize}
@@ -246,7 +230,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applications %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications}
+\begin{frame}
+	\frametitle{Applications}
     \textbf{Sensing (direct effect)}
     \begin{itemize}
         \item Force, torque, pressure, acceleration, vibration and modal analysis.
@@ -267,7 +252,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Design and Measurement Tips %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Design and Measurement Tips}
+\begin{frame}
+	\frametitle{Design and Measurement Tips}
     \begin{itemize}
         \item \textbf{Dynamic quantity:} best for varying loads; use charge or IEPE amplifiers for low-frequency work.
         \item \textbf{Calibration:} temperature and preload affect sensitivity; account for nonlinearity at high fields.
@@ -277,13 +263,14 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Resistive and Piezoresistive Effect}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Operating Principle (Resistive Effect) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Operating Principle (Resistive Effect)}
+\begin{frame}
+	\frametitle{Operating Principle (Resistive Effect)}
     \textbf{Specific resistivity $\rho$} of a metal is (to first order) \emph{independent of voltage}.\\
     Electrical resistance of a conductor of length $l_0$ and cross-section $A_0$:
     \begin{columns}
@@ -313,7 +300,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% From Strain to Resistance Change %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{From Strain to Resistance Change}
+\begin{frame}
+	\frametitle{From Strain to Resistance Change}
     \begin{columns}
         \begin{column}{0.55\textwidth}
             Under axial load, the effective resistance becomes
@@ -341,7 +329,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Foil Strain Gauges (SGs) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Foil Strain Gauges (SGs)}
+\begin{frame}
+	\frametitle{Foil Strain Gauges (SGs)}
     \textbf{Construction:}
     \begin{itemize}
         \item Meandered metallic grid (e.g., Constantan, Karma) on polyimide carrier; protective film.
@@ -358,7 +347,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Wheatstone Bridge Readout %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Wheatstone Bridge Readout}
+\begin{frame}
+	\frametitle{Wheatstone Bridge Readout}
     \begin{columns}[T,onlytextwidth]
         \column{0.56\textwidth}
             \textbf{General bridge:}
@@ -373,11 +363,12 @@
                 +\frac{\Delta R_3}{R_3}- \frac{\Delta R_4}{R_4}\right) \\
                 &=\frac{k}{4}\left(\varepsilon_1-\varepsilon_2+\varepsilon_3-\varepsilon_4\right)
             \end{align*}
-        \column{0.42\textwidth}
+{\footnotesize Notation in Section~3: $U_B \,\hat{=}\, u_i$, $U_A \,\hat{=}\, u_o$; bridge circuits in detail $\rightarrow$ Section~3.2.}
+\column{0.42\textwidth}
             \centering
             \begin{figure}
-                \includegraphics[width=\linewidth]{fig/lec02/res_2.pdf}
-                \caption{Quarter,  half or full bridges: combine gauges to boost signal, cancel temperature, and measure bending, axial, torsion selectively (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
+                \includegraphics[width=0.85\linewidth]{fig/lec02/res_2.pdf}
+                \caption{Quarter, half or full bridges: more active gauges boost the signal and cancel temperature effects (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
             \end{figure}
     \end{columns}
 \end{frame}
@@ -385,7 +376,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Gauge Factor ($k$) by Material %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Gauge Factor ($k$) by Material}
+\begin{frame}
+	\frametitle{Gauge Factor ($k$) by Material}
     \begin{columns}[T,onlytextwidth]
         \column{0.55\textwidth}
             \begin{table}
@@ -416,7 +408,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applications and Practical Tips %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications and Practical Tips}
+\begin{frame}
+	\frametitle{Applications and Practical Tips}
     \textbf{Applications}
     \begin{itemize}
         \item Transducers for \textbf{force, mass, torque, pressure}; accelerometers.
@@ -431,195 +424,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Magnetoresistive Effect: Principle of Operation %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Magnetoresistive Effect: Principle of Operation}
-    \small
-    \textbf{Concept:} When a magnetic field is applied to a conducting material through which current flows, the electrical resistance changes. This is known as the \textbf{magnetoresistive effect (MR)}.\\
-    \medskip
-    \textbf{Mathematical Definition:}
-    \begin{equation}
-        \frac{\Delta R}{R} = \frac{R(H) - R(0)}{R(0)}
-    \end{equation}
-    where $R(H)$ is the resistance in magnetic field $H$ and $R(0)$ is resistance without magnetic field.
-    \medskip
-    \textbf{Physical Principle:}
-    \begin{itemize}
-        \item In presence of $H$, charge carriers experience a Lorentz force:
-        \begin{equation}
-            F_L = Q (\mathbf{v} \times \mathbf{B})
-        \end{equation}
-        \item This deflects electrons, increasing their path length and hence resistance.
-        \item Effect depends on material type (magnetic or non-magnetic) and electron mobility.
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Classification of Magnetoresistive Effects (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Classification of Magnetoresistive Effects (1)}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.8\linewidth]{fig/lec02/mag_1.pdf}
-        \caption{Classification of Magnetoresistive Effects (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
-    \end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Classification of Magnetoresistive Effects (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Classification of Magnetoresistive Effects (2)}
-    \textbf{Overview of Magnetoresistive (MR) Effects:}
-    \begin{columns}[T]
-        \column{0.4\textwidth}
-            \textbf{Non-magnetic materials (MR):}
-            \begin{itemize} \small
-                \item \textbf{OMR - Ordinary Magnetoresistance:}
-                Caused by Lorentz-force deflection of charge carriers in a magnetic field.\\
-                Effect is small ($<1\%$) in most metals, but large in semimetals like Bi (up to 100\%).
-                \item \textbf{EMR - Extraordinary Magnetoresistance:}
-                Observed in hybrid metal/semiconductor structures (e.g., InSb).\\
-                Large resistance change due to field-induced current redistribution.
-            \end{itemize}
-        \column{0.6\textwidth}
-            \textbf{Magnetic materials (XMR):}
-            \begin{itemize} \small
-                \item \textbf{AMR - Anisotropic MR:}
-                Change of 3-4 \% depending on angle between current and magnetization. Caused by spin-orbit interaction in ferromagnets (e.g., NiFe alloys).
-                \item \textbf{GMR - Giant MR:}
-                6-100 \% change in multilayer structures (FM/NM/FM). Due to spin-dependent electron scattering at interfaces.
-                \item \textbf{CMR - Colossal MR:}
-                $>$100 \% change in perovskite manganites (e.g., La$_{1-x}$Sr$_x$MnO$_3$).\\
-                Linked to double-exchange interaction and phase transitions.
-                \item \textbf{TMR - Tunnel MR:}
-                Up to 50 \% change in magnetic tunnel junctions (FM/insulator/FM).\\
-                Arises from spin-polarized tunneling; depends on relative magnetization angle.
-            \end{itemize}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Classification of Magnetoresistive Effects (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Anisotropic Magnetoresistance (AMR): Fundamentals}
-    % \small
-    % \textbf{Principle:}
-    % In ferromagnetic materials, regions with uniform magnetization (\textit{Weiss domains}) interact with current flow. Resistance depends on the angle $\beta$ between the magnetization $\mathbf{M}$ and the current density $\mathbf{j}$.\\
-    % \begin{columns}
-        % \column{0.5\textwidth}
-            % \medskip
-            % \textbf{Electric Field Components:}
-            % \begin{equation}
-                % E = E_p \cos \beta + E_s \sin \beta, \quad j_p = j \cos \beta, \quad j_s = j \sin \beta
-            % \end{equation}
-            % index p: parallel and index s: vertical \\
-            % \medskip
-            % \textbf{Ohm's Law:}
-            % \begin{equation}
-                % E_p = \rho_p j_p, \quad E_s = \rho_s j_s
-            % \end{equation}
-            % Combining these gives:
-            % \begin{equation}
-                % E(\beta) = j\rho_s \left(1 + \frac{\rho_p - \rho_s}{\rho_s} \cos^2 \beta \right)
-            % \end{equation}
-        % \column{0.5\textwidth}
-            % \begin{figure}
-            %     \centering
-            %     \includegraphics[width=0.8\linewidth]{fig/lec02/mag_2.pdf}
-            %     \caption{Relation between $\mathbf{M}$, $\mathbf{E}$, and $\mathbf{j}$}
-            % \end{figure}
-    % \end{columns}
-% \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Classification of Magnetoresistive Effects (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Angle and Field Dependence of AMR}
-    % \small
-    % \textbf{Resistance vs. Magnetization Angle:}
-    % \begin{equation}
-        % R(\beta) = \frac{l}{bd}\rho_s + \frac{l}{bd}(\rho_p - \rho_s)\cos^2 \beta
-    % \end{equation}
-    % \textbf{Dependence on Applied Magnetic Field:}
-    % \begin{equation}
-        % R(H_y) = \frac{l}{bd}\rho_s \left(1 + \frac{\rho_p - \rho_s}{\rho_s} \left[1 - \left(\frac{H_y}{H_k}\right)^2\right]\right)
-        % \quad \text{for } |H_y| \leq H_k
-    % \end{equation}
-    % and
-    % \begin{equation}
-        % R(H_y) = \frac{l}{bd}\rho_s \quad \text{for } |H_y| > H_k
-    % \end{equation}
-    % \medskip
-    % Here $H_k$ is the \textbf{critical field} aligning Weiss domains with the external field.
-    % \begin{itemize}
-    %     \item Below $H_k$: quadratic dependence.
-    %     \item Above $H_k$: saturation of magnetization.
-    % \end{itemize}
-% \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Classification of Magnetoresistive Effects (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{AMR Sensor Design – Barber Pole Structure}
-    % \small
-    % \textbf{Motivation:} Linearize AMR characteristic for sensor use.
-    % \textbf{Barber Pole Structure:}
-    % \begin{itemize}
-    %     \item Conductive strips (e.g., Al) deposited at $45^\circ$ to current direction $I$.
-    %     \item Forces current to flow diagonally to magnetization axis.
-    %     \item Produces nearly linear response for $H_y \ll H_k$.
-    % \end{itemize}
-    % \medskip
-    % \textbf{Resulting Characteristic:}
-    % \begin{equation}
-        % R(H) = R_0 + \Delta R \frac{H_y}{H_k} \sqrt{1 - \left(\frac{H_y}{H_k}\right)^2}
-    % \end{equation}
-% \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Applications and Modern Extensions of Magnetoresistive Sensors (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications and Modern Extensions of Magnetoresistive Sensors (1)}
-\textbf{From Physical Effect to Engineering Application}
-    \begin{itemize}
-        \item \textbf{Anisotropic Magnetoresistance (AMR):}
-        \begin{itemize}
-            \item Used in \textbf{position, speed, and angle sensors}.
-            \item Common in automotive wheel speed and camshaft sensors.
-            \item Offers linear output (under certain conditions) and low cost.
-        \end{itemize}
-        \item \textbf{Giant Magnetoresistance (GMR):}
-        \begin{itemize}
-            \item Utilizes ferromagnetic/non-magnetic multilayers.
-            \item Found in \textbf{read heads of HDDs}, and \textbf{current and field sensors}.
-            \item Change in resistance up to 100\%.
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Applications and Modern Extensions of Magnetoresistive Sensors (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications and Modern Extensions of Magnetoresistive Sensors (2)}
-    \textbf{From Physical Effect to Engineering Application}
-    \begin{itemize}
-        \item \textbf{Tunnel Magnetoresistance (TMR):}
-        \begin{itemize}
-            \item Based on electron tunneling through thin insulator layers.
-            \item High sensitivity and temperature stability.
-            \item Used in \textbf{precision angle, torque, and robotics sensors}.
-        \end{itemize}
-    \end{itemize}
-    \textbf{Emerging Trends:}
-    \begin{itemize}
-        \item Integration with CMOS for miniaturized smart sensors.
-        \item Use in magnetic memory (MRAM) and biomedical field mapping.
-        \item Enhanced designs with spintronic materials for ultra-low field detection.
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Magnetostrictive Effect}
+\subsection{Magnetostrictive and Inductive Effects}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}
 % \textbf{\Large{Magnetostrictive Effect}}
@@ -628,7 +433,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostrictive Effect: Principle of Operation (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Magnetostrictive Effect: Principle of Operation (1)}
+\begin{frame}
+	\frametitle{Magnetostrictive Effect: Principle of Operation (1)}
     \begin{columns}
         \column{0.45\textwidth}
             \textbf{Concept:}
@@ -652,7 +458,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostrictive Effect: Principle of Operation (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Magnetostrictive Effect: Principle of Operation (2)}
+\begin{frame}
+	\frametitle{Magnetostrictive Effect: Principle of Operation (2)}
     \begin{columns}
         \column{0.45\textwidth}
             \textbf{Physical Description:}
@@ -674,7 +481,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of Magnetostrictive Effects (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of Magnetostrictive Effects (1)}
+\begin{frame}
+	\frametitle{Types of Magnetostrictive Effects (1)}
     \small
     \textbf{Classification of Magnetostrictive Effects:}
     \begin{columns}[T]
@@ -703,7 +511,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of Magnetostrictive Effects (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of Magnetostrictive Effects (2)}
+\begin{frame}
+	\frametitle{Types of Magnetostrictive Effects (2)}
     \small
     \textbf{Classification of Magnetostrictive Effects:}
     \begin{columns}[T]
@@ -732,7 +541,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostriction in Different Materials %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Magnetostriction in Different Materials}
+\begin{frame}
+	\frametitle{Magnetostriction in Different Materials}
     \small
     \textbf{Magnitude of Magnetostriction} depends on alloy composition and domain mobility.
     \begin{table}
@@ -763,7 +573,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostriction in Different Materials %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Advantages of Magnetostrictive Sensor Technology}
+\begin{frame}
+	\frametitle{Advantages of Magnetostrictive Sensor Technology}
     \small
     \textbf{Key Features:}
     \begin{itemize}
@@ -786,7 +597,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostriction in Different Materials %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications of Magnetostrictive Sensors}
+\begin{frame}
+	\frametitle{Applications of Magnetostrictive Sensors}
     \small
     \textbf{Physical Quantities Measured:}
     \begin{columns}[T]
@@ -841,7 +653,7 @@
 % \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Inductive Effect}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}
 % \textbf{\Large{Inductive Effect}}
@@ -850,7 +662,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostriction in Different Materials (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Inductive Effects: Principle of Operation (1)}
+\begin{frame}
+	\frametitle{Inductive Effects: Principle of Operation (1)}
     \begin{columns}
         \column{0.48\textwidth}
             \textbf{Key Inductive Phenomena in Sensors:}
@@ -879,7 +692,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostriction in Different Materials (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Inductive Effects: Principle of Operation (2)}
+\begin{frame}
+	\frametitle{Inductive Effects: Principle of Operation (2)}
     \begin{columns}
         \column{0.48\textwidth}
             \textbf{Interpretation:}
@@ -903,7 +717,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetostriction in Different Materials (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Magnetic Field and Coil Inductance}
+\begin{frame}
+	\frametitle{Magnetic Field and Coil Inductance}
     \small
     \textbf{Magnetic Field in a Coil:}
     \begin{equation}
@@ -925,7 +740,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Comparison: electric and magnetic network quantities %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Comparison: electric and magnetic network quantities}
+\begin{frame}
+	\frametitle{Comparison: electric and magnetic network quantities}
     \begin{table}
         \centering
         \begin{tabular}{@{}lcclcc@{}}
@@ -950,7 +766,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Magnetic network example: simple magnetic actuator %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Magnetic network example: simple magnetic actuator}
+\begin{frame}
+	\frametitle{Magnetic network example: simple magnetic actuator}
     \begin{figure}
 		\centering
 		\begin{subfigure}[b]{0.49\textwidth}
@@ -973,7 +790,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Eddy currents %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Eddy currents}
+\begin{frame}
+	\frametitle{Eddy currents}
     \begin{columns}
 		\begin{column}{0.5\textwidth}
             \begin{itemize}
@@ -998,7 +816,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Inductive Speed and Rotation Measurement %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Inductive Speed and Rotation Measurement}
+\begin{frame}
+	\frametitle{Inductive Speed and Rotation Measurement}
     \small
     \textbf{Principle:}  
     A rotating ferromagnetic toothed wheel modulates magnetic flux through a stationary coil or permanent magnet.  
@@ -1035,7 +854,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Eddy Current Based Inductive Sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Eddy Current Based Inductive Sensors}
+\begin{frame}
+	\frametitle{Eddy Current Based Inductive Sensors}
     \textbf{Generation of Eddy Currents:}
     \begin{itemize}
         \item Alternating magnetic field induces circulating eddy currents in conductive materials.
@@ -1066,7 +886,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Electromagnetic Oscillating Circuits (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Electromagnetic Oscillating Circuits (1)}
+\begin{frame}
+	\frametitle{Electromagnetic Oscillating Circuits (1)}
     \begin{figure}
         \centering
         \includegraphics[width=0.6\linewidth]{fig/lec02/ind_3.pdf}
@@ -1083,7 +904,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Electromagnetic Oscillating Circuits (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Electromagnetic Oscillating Circuits (2)}
+\begin{frame}
+	\frametitle{Electromagnetic Oscillating Circuits (2)}
     \begin{figure}
         \centering
         \includegraphics[width=0.6\linewidth]{fig/lec02/ind_3.pdf}
@@ -1104,7 +926,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Advantages of Inductive Sensor Technology %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Advantages of Inductive Sensor Technology}
+\begin{frame}
+	\frametitle{Advantages of Inductive Sensor Technology}
     \textbf{Main Advantages:}
     \begin{itemize}
         \item Fully \textbf{contactless}, wear- and maintenance-free.
@@ -1123,7 +946,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applications of Inductive Sensor Technology %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications of Inductive Sensor Technology}
+\begin{frame}
+	\frametitle{Applications of Inductive Sensor Technology}
     \textbf{Application Areas:}
     \begin{itemize}
         \item \textbf{Forming Technology:} Hammer stroke and forging press monitoring.
@@ -1149,7 +973,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Capacitor and Capacitance: Basic Principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Capacitor and Capacitance: Basic Principle}
+\begin{frame}
+	\frametitle{Capacitor and Capacitance: Basic Principle}
     \textbf{Definition:}
     A \textbf{capacitor} consists of two mutually insulated, oppositely charged conductor surfaces.  
     When a voltage $U$ is applied, charge $Q$ accumulates on the plates, defined by:
@@ -1183,7 +1008,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Parameters Influencing Capacitance %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Parameters Influencing Capacitance}
+\begin{frame}
+	\frametitle{Parameters Influencing Capacitance}
     \begin{columns}
         \column{0.48\textwidth}
             The capacitance of a plate capacitor can be altered through the following parameters:
@@ -1217,7 +1043,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Permittivity and Dielectric Materials %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Permittivity and Dielectric Materials}
+\begin{frame}
+	\frametitle{Permittivity and Dielectric Materials}
     \textbf{Permittivity ($\varepsilon_r$)} determines how well a material can store electric field energy.
     \begin{table}
         \small
@@ -1247,7 +1074,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Differential Capacitor Principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Differential Capacitor Principle}
+\begin{frame}
+	\frametitle{Differential Capacitor Principle}
     \textbf{Concept:}
     Two capacitors ($C_1$, $C_2$) share a common movable electrode.\\
     \textbf{Working:}
@@ -1275,7 +1103,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sensors Based on Dielectric Change %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Sensors Based on Dielectric Change}
+\begin{frame}
+	\frametitle{Sensors Based on Dielectric Change}
     Sensors that measure variations in \textbf{permittivity $\varepsilon_r$} are used for:
     \begin{columns}
         \column{0.6\textwidth}
@@ -1303,7 +1132,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Capacitive Level Measurement %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Capacitive Level Measurement}
+\begin{frame}
+	\frametitle{Capacitive Level Measurement}
     \textbf{Principle:}
     \begin{itemize}
         \item Capacitance changes with the \textbf{filling level} inside a vessel.
@@ -1325,7 +1155,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Conductive and Nonconductive Media Comparison %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Conductive and Nonconductive Media Comparison}
+\begin{frame}
+	\frametitle{Conductive and Nonconductive Media Comparison}
     \small
     \textbf{Nonconductive filling materials:}
     \begin{itemize}
@@ -1345,47 +1176,38 @@
         \item Level sensing of conductive liquids with high sensitivity.
     \end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Capacitance in the AC Circuit %%
+%% Capacitance in the AC circuit -- capacitive sensor %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Capacitance in the AC Circuit}
-    In an AC circuit, a capacitor introduces an \textbf{imaginary reactance} $X_C$ given by:
-    \begin{equation}
-        X_C = -j \frac{1}{\omega C}
-    \end{equation}
-    Substituting $C = \varepsilon_0 \varepsilon_r \frac{A}{d}$ gives:
-    \begin{equation}
-        X_C = -j \frac{d}{\omega \varepsilon_0 \varepsilon_r A}
-    \end{equation}
-    \textbf{Interpretation:}
-    \begin{itemize}
-        \item Reactance $X_C$ changes proportionally with plate distance $d$.
-        \item Thus, capacitance sensors can detect distance or approach of objects.
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Capacitance in the AC Circuit- Capacitive Sensor %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Capacitance in the AC Circuit- Capacitive Sensor}
-    \textbf{Sensor structure:}
-    \begin{itemize}
-        \item RC oscillator circuit with sensor electrodes.
-        \item Comparator and amplifier generate a switching output.
-    \end{itemize}
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.6\linewidth]{fig/lec02/cap_2.pdf}
-        \caption{Capacitive proximity sensor circuit (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
-    \end{figure}
+\begin{frame}
+	\frametitle{Capacitance in the AC Circuit -- Capacitive Sensor}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.5\textwidth}
+		In an AC circuit, a capacitor has the \textbf{imaginary impedance}
+		\begin{equation}
+			Z_C = \frac{1}{j\omega C} = -j \frac{d}{\omega \varepsilon_0 \varepsilon_r A}
+		\end{equation}
+		with $C = \varepsilon_0 \varepsilon_r A/d$ (reactance $X_C = -1/(\omega C)$).\\[1mm]
+		\textbf{Interpretation:} $|Z_C|$ changes proportionally with the plate distance $d$ $\Rightarrow$ distance or approach of objects can be detected.\\[1mm]
+		\textbf{Sensor structure:}
+		\begin{itemize}
+			\item RC oscillator circuit with sensor electrodes.
+			\item Comparator and amplifier generate a switching output.
+		\end{itemize}
+		\column{0.48\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec02/cap_2.pdf}
+			\caption{Capacitive proximity sensor circuit (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
+		\end{figure}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Principle of Capacitive Proximity Sensing %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Principle of Capacitive Proximity Sensing}
+\begin{frame}
+	\frametitle{Principle of Capacitive Proximity Sensing}
     When a metallic or non-metallic object (switching flag) enters the \textbf{active electric field zone}, it alters the effective capacitance, changing the RC oscillator amplitude.\\
     \textbf{Operation modes:}
     \begin{itemize}
@@ -1403,7 +1225,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Advantages and Limitations of Capacitive Sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Advantages and Limitations of Capacitive Sensors}
+\begin{frame}
+	\frametitle{Advantages and Limitations of Capacitive Sensors}
     \small
     \textbf{Advantages:}
     \begin{itemize}
@@ -1425,7 +1248,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applications of Capacitive Sensor Technology %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications of Capacitive Sensor Technology}
+\begin{frame}
+	\frametitle{Applications of Capacitive Sensor Technology}
     \begin{columns}[T]
         \small
         \column{0.55\textwidth}
@@ -1463,197 +1287,10 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Gaussian Effect}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}
-% \textbf{\Large{Gaussian Effect}}
-% \end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Gaussian Effect: Principle of Operation (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Gaussian Effect: Principle of Operation (1)}
-    \textbf{Definition:}
-    The \textbf{Gaussian Effect} is a \textit{galvanomagnetic effect} that occurs when a current-carrying conductor or semiconductor is placed in a magnetic field $\mathbf{B}$ that is \textbf{not parallel} to the current flow.\\
-    \begin{columns}
-        \column{0.48\textwidth}
-            \textbf{Physical basis:}
-            \begin{itemize}
-                \item A \textbf{Lorentz force} $\mathbf{F_L}$ acts on moving charge carriers.
-                \item This deflects electrons, causing them to follow a \textbf{zigzag path}.
-                \item The effective path length of electrons increases → \textbf{increased resistance}.
-            \end{itemize}
-        \column{0.52\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=1\linewidth]{fig/lec02/gauss_1.pdf}
-                \caption{Origin of Gaussian effect: electron deflection in magnetic field (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
-            \end{figure}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Gaussian Effect: Principle of Operation (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Gaussian Effect: Principle of Operation (2)}
-    \textbf{Lorentz Force:}
-    \begin{equation}
-        \mathbf{F_L} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})
-    \end{equation}
-    \textbf{Ohm's Law:} \quad $\mathbf{j} = \sigma \mathbf{E}$,  
-    where $\mathbf{j}$ is current density and $\sigma$ is electrical conductivity.
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.8\linewidth]{fig/lec02/gauss_1.pdf}
-        \caption{Origin of Gaussian effect: electron deflection in magnetic field (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
-    \end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Microscopic Description of the Gaussian Effect %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Microscopic Description of the Gaussian Effect}
-    \small
-    \textbf{Microscopic relations:}
-    \begin{equation}
-        \sigma = q n \mu
-    \end{equation}
-    where:
-    $q$ - charge of carrier, $n$ - carrier density, $\mu$ - mobility of charge carriers.\\
-    \textbf{Current density:}
-    \begin{equation}
-        \mathbf{j} = \rho \mathbf{v}, \quad \rho = q n
-    \end{equation}
-    \textbf{Drift velocity:}
-    \begin{equation}
-        \mathbf{v} = \mu \mathbf{E}
-    \end{equation}
-    \textbf{Force balance:}
-    \begin{equation}
-        \mathbf{F} = q \mathbf{E} \quad \Rightarrow \quad \mathbf{v} = \frac{\mu \mathbf{F}}{q}
-    \end{equation}
-    \textbf{Interpretation:}
-    Electron drift depends on both $\mathbf{E}$ and $\mathbf{B}$, leading to altered trajectories and measurable resistance variation.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Derivation of Conductivity Change in Magnetic Field %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Derivation of Conductivity Change in Magnetic Field}
-    When $\mathbf{B}$ is perpendicular to the electron motion:
-    \begin{columns}
-        \column{0.6\textwidth}
-            \begin{equation}
-                \mathbf{v} =
-                \begin{pmatrix}
-                v_x \\ v_y
-                \end{pmatrix}
-                = \mu
-                \begin{pmatrix}
-                E + v_y B \\
-                - v_x B
-                \end{pmatrix}
-            \end{equation}
-            Solving for $v_x$:
-            \begin{equation}
-                v_x = \frac{\mu E}{1 + \mu^2 B^2}
-            \end{equation}
-            \textbf{Implication:}
-            \begin{itemize}
-                \item Drift velocity \textbf{decreases} as $B$ increases.
-                \item Current density $j = \rho v_x$ also decreases.
-                \item Therefore, conductivity $\sigma$ decreases, and resistance increases.
-            \end{itemize}
-            \textbf{Resulting resistance relation:}
-            \begin{equation}
-                R(B) = R_0 \left(1 + \mu^2 B^2\right)
-            \end{equation}
-        \column{0.4\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.7\linewidth]{fig/lec02/gauss_2.pdf}
-                \caption{Variation of resistance with magnetic flux density due to Gaussian effect (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
-            \end{figure}
-            \vspace{-0.25cm}
-            \textbf{Conclusion:} Resistance increases quadratically with magnetic flux density.
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Application of the Gaussian Effect %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Application of the Gaussian Effect}
-    \small
-    \textbf{1. Magnetic Field Measurement:}
-    \begin{itemize}
-        \item Used in \textbf{Magneto-Resistive Sensors (MDRs)} and field plates.
-        \item Resistance $R$ varies with $\mathbf{B}$ → can be calibrated for field strength.
-    \end{itemize}
-    \textbf{2. Field Plate Construction:}
-    \begin{itemize}
-        \item A ceramic substrate with a thin semiconductor layer (e.g., InSb).
-        \item Embedded metallic needles (e.g., NiSb) guide current paths.
-        \item Magnetic flux density $B$ perpendicular to plate alters resistance.
-    \end{itemize}
-    \textbf{3. Typical properties of field plates (Table 2.13):}
-    \begin{itemize}
-        \item Output resistance $R_0$: 10 $\Omega$ - 10 k$\Omega$.
-        \item Temperature coefficient $\alpha \approx -0.004\,\text{K}^{-1}$.
-        \item Max operating temperature $\approx 95^\circ$C.
-        \item Max power $\approx$ 0.5 W.
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Working Mechanism Summary %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Working Mechanism Summary}
-    \small
-    \textbf{Electron motion:}
-    \begin{itemize}
-        \item Without magnetic field → straight-line conduction.
-        \item With magnetic field → Lorentz force causes zigzag trajectory.
-    \end{itemize}
-    \textbf{Effect on resistance:}
-    \begin{itemize}
-        \item Longer electron paths increase collision frequency.
-        \item Effective resistivity rises proportionally to $B^2$.
-    \end{itemize}
-    \textbf{Materials used:}
-    \begin{itemize}
-        \item High-mobility semiconductors: InSb, InAs, GaAs, Si.
-        \item Often doped with Te to adjust resistive response.
-        \item Typically exhibit \textbf{negative temperature coefficients.}
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: Gaussian Effect in Sensors %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary: Gaussian Effect in Sensors}
-    \small
-    \textbf{Key outcomes:}
-    \begin{itemize}
-        \item Magnetic field $\mathbf{B}$ increases resistance quadratically.
-        \item Based on Lorentz force and carrier deflection.
-        \item Enables non-contact magnetic field and current measurement.
-    \end{itemize}
-    \textbf{Applications:}
-    \begin{itemize}
-        \item Magnetic field and flux density measurement.
-        \item Current, angle, and rotational speed sensing.
-        \item Field plates and magneto-resistive devices.
-    \end{itemize}
-    \textbf{Advantages:}
-    \begin{itemize}
-        \item Compact and solid-state design.
-        \item Fast response and high sensitivity.
-        \item Suitable for DC and low-frequency magnetic field detection.
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Hall Effect}
+\subsection{Galvanomagnetic Effects: Hall and Magnetoresistive (Gauss)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}
 % \textbf{\Large{Hall Effect}}
@@ -1662,7 +1299,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Hall Effect: Principle of Operation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hall Effect: Principle of Operation}
+\begin{frame}
+	\frametitle{Hall Effect: Principle of Operation}
     \small
     The \textbf{Hall Effect}, like the Gaussian Effect, belongs to the \textit{galvanomagnetic effects}.
     \textbf{Concept:}
@@ -1704,7 +1342,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mathematical Description of Hall Voltage %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mathematical Description of Hall Voltage}
+\begin{frame}
+	\frametitle{Mathematical Description of Hall Voltage}
     \small
     \textbf{Current density relation:}
     \begin{equation}
@@ -1738,7 +1377,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Physical Interpretation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Physical Interpretation}
+\begin{frame}
+	\frametitle{Physical Interpretation}
     \small
     \textbf{Key points:}
     \begin{itemize}
@@ -1762,7 +1402,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Hall Coefficients for Different Materials %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hall Coefficients for Different Materials}
+\begin{frame}
+	\frametitle{Hall Coefficients for Different Materials}
     \small
     \begin{table}
         \centering
@@ -1793,7 +1434,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applications of the Hall Effect %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications of the Hall Effect}
+\begin{frame}
+	\frametitle{Applications of the Hall Effect}
     \small
     \textbf{Basic sensing principle:}
     \begin{itemize}
@@ -1817,7 +1459,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Automotive and Industrial Applications %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Automotive and Industrial Applications}
+\begin{frame}
+	\frametitle{Automotive and Industrial Applications}
     \small
     \textbf{In automotive systems:}
     \begin{itemize}
@@ -1841,41 +1484,176 @@
         \item 3D field simulations (FEM) used for optimal sensor layout and magnetic coupling.
     \end{itemize}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Magnetoresistive (Gauss) effect: principle of operation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Magnetoresistive (Gauss) Effect: Principle of Operation}
+	\small
+	\textbf{Definition:} the resistance of a current-carrying conductor or semiconductor changes in a magnetic field $\mathbf{B}$ that is \textbf{not parallel} to the current: $\Delta R/R = [R(B) - R(0)]/R(0)$ -- a \textit{galvanomagnetic} effect like the Hall effect (German: \emph{Gau\ss-Effekt}).
+	\begin{columns}[T,onlytextwidth]
+		\column{0.52\textwidth}
+		\textbf{Physical basis (non-magnetic materials):}
+		\begin{itemize}
+			\item The Lorentz force $\mathbf{F}_L = q(\mathbf{E} + \mathbf{v}\times\mathbf{B})$ deflects the charge carriers.
+			\item If the Hall field is short-circuited (metal needles), the carriers follow a \textbf{zigzag path} $\Rightarrow$ longer path, \textbf{higher resistance}.
+			\item The effect grows with the carrier \textbf{mobility} $\mu$ $\Rightarrow$ high-mobility semiconductors (InSb, InAs).
+		\end{itemize}
+		\footnotesize In \textbf{ferromagnets (XMR)} the resistance change has other causes (spin-dependent scattering/tunnelling) $\rightarrow$ classification below.
+		\column{0.46\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec02/gauss_1.pdf}
+			\caption{Origin of the Gauss effect: electron deflection in a magnetic field (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
+		\end{figure}
+	\end{columns}
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: Hall Effect Sensors %%
+%% Microscopic Description of the Gaussian Effect %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary: Hall Effect Sensors}
+\begin{frame}
+	\frametitle{Microscopic Description of the Gauss Effect}
     \small
-    \textbf{Operating principle:}
-    \begin{itemize}
-        \item Based on Lorentz-force-induced charge separation.
-        \item Generates measurable Hall voltage $U_H$ proportional to magnetic field $B_z$.
-    \end{itemize}
-    \textbf{Key relations:}
+    \textbf{Microscopic relations:}
     \begin{equation}
-        U_H = \frac{1}{n e} j_x B_z b = A_H j_x B_z b
+        \sigma = q n \mu
     \end{equation}
+    where:
+    $q$ - charge of carrier, $n$ - carrier density, $\mu$ - mobility of charge carriers.\\
+    \textbf{Current density:}
     \begin{equation}
-        A_H = \frac{1}{n e}, \quad R_H = \frac{A_H B_z}{d}
+        \mathbf{j} = \rho \mathbf{v}, \quad \rho = q n
     \end{equation}
-    \vspace{-0.25cm}
-    \textbf{Applications:}
-    \begin{itemize}
-        \item Magnetic field, current, and position sensing.
-        \item Motion and speed detection.
-        \item Integrated electronics for feedback and control systems.
-    \end{itemize}
-    \vspace{-0.15cm}
-    \textbf{Advantages:}
-    \begin{itemize}
-        \item Linear response, compact design, compatible with CMOS integration.
-        \item High sensitivity and robust operation in harsh environments.
-    \end{itemize}
+    \textbf{Drift velocity:}
+    \begin{equation}
+        \mathbf{v} = \mu \mathbf{E}
+    \end{equation}
+    \textbf{Force balance:}
+    \begin{equation}
+        \mathbf{F} = q \mathbf{E} \quad \Rightarrow \quad \mathbf{v} = \frac{\mu \mathbf{F}}{q}
+    \end{equation}
+    \textbf{Interpretation:}
+    Electron drift depends on both $\mathbf{E}$ and $\mathbf{B}$, leading to altered trajectories and measurable resistance variation.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Derivation of Conductivity Change in Magnetic Field %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Derivation of Conductivity Change in Magnetic Field}
+    When $\mathbf{B} \perp$ electron motion and the Hall field is short-circuited ($E_y = 0$):
+    \begin{columns}
+        \column{0.6\textwidth}
+            \begin{equation}
+                \mathbf{v} =
+                \begin{pmatrix}
+                v_x \\ v_y
+                \end{pmatrix}
+                = \mu
+                \begin{pmatrix}
+                E + v_y B \\
+                - v_x B
+                \end{pmatrix}
+            \end{equation}
+            Solving for $v_x$:
+            \begin{equation}
+                v_x = \frac{\mu E}{1 + \mu^2 B^2}
+            \end{equation}
+            \textbf{Implication:}
+            \begin{itemize}
+                \item Drift velocity \textbf{decreases} as $B$ increases.
+                \item Current density $j = \rho v_x$ also decreases.
+                \item Therefore, conductivity $\sigma$ decreases, and resistance increases.
+            \end{itemize}
+            \textbf{Resulting resistance relation:}
+            \begin{equation}
+                R(B) = R_0 \left(1 + \mu^2 B^2\right)
+            \end{equation}
+        \column{0.4\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.7\linewidth]{fig/lec02/gauss_2.pdf}
+                \caption{Variation of resistance with magnetic flux density due to the Gauss effect (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
+            \end{figure}
+            \vspace{-0.25cm}
+            \textbf{Conclusion:} Resistance increases quadratically with magnetic flux density.
+    \end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Thermoelectric Effect}
+%% Field plates: application of the Gauss effect %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Field Plates: Application of the Gauss Effect}
+	\small
+	\textbf{1. Magnetic field measurement:}
+	\begin{itemize}
+		\item Used in \textbf{magnetic-field-dependent resistors (MDR)}, i.e., field plates.
+		\item Resistance $R$ varies with $\mathbf{B}$ $\rightarrow$ can be calibrated for the field strength.
+	\end{itemize}
+	\textbf{2. Field plate construction:}
+	\begin{itemize}
+		\item A ceramic substrate with a thin semiconductor layer (e.g., InSb).
+		\item Embedded metallic needles (e.g., NiSb) short-circuit the Hall field and guide the current paths.
+		\item Magnetic flux density $B$ perpendicular to the plate alters the resistance.
+		\item High mobility is essential ($\Delta R/R_0 = \mu^2 B^2$): InSb has $\mu_n \approx 7.7\,\mathrm{m^2/(V\,s)}$ at room temperature; tellurium doping reduces the temperature dependence.
+	\end{itemize}
+	\textbf{3. Typical properties of field plates} (Hering \& Schönfelder, Table 2.13): $R_0$ = 10\,$\Omega$ -- 10\,k$\Omega$, temperature coefficient $\alpha \approx -0.004\,\text{K}^{-1}$, max.\ operating temperature $\approx 95^\circ$C, max.\ power $\approx$ 0.5\,W.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Classification of magnetoresistive effects %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Classification of Magnetoresistive Effects}
+	\footnotesize
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{@{}L{0.17\textwidth}L{0.24\textwidth}L{0.19\textwidth}L{0.36\textwidth}@{}}
+		\toprule
+		\textbf{Effect} & \textbf{Materials} & \textbf{$\Delta R/R$} & \textbf{Mechanism}\\
+		\midrule
+		\multicolumn{4}{@{}l}{\textit{Non-magnetic materials (MR)}}\\
+		OMR, Gauss effect & metals, Bi, InSb & $<1\,\%$ (metals), up to 100\,\% (Bi) & Lorentz-force deflection of carriers\\
+		EMR (extraordinary) & metal/semiconductor hybrids & very large & field-induced current redistribution\\
+		\multicolumn{4}{@{}l}{\textit{Magnetic materials (XMR)}}\\
+		AMR (anisotropic) & ferromagnets (NiFe) & 3--4\,\% & spin--orbit interaction; angle current/magnetisation\\
+		GMR (giant) & FM/NM/FM multilayers & 6--100\,\% & spin-dependent scattering at interfaces\\
+		TMR (tunnel) & FM/insulator/FM junctions & $\approx 50\,\%$ (Al$_2$O$_3$), $>200\,\%$ (MgO) & spin-polarised tunnelling\\
+		CMR (colossal) & manganites, e.g., La$_{1-x}$Sr$_x$MnO$_3$ & $>100\,\%$ & double exchange; low temperature, high fields\\
+		\bottomrule
+	\end{tabular}\\[1mm]
+	\scriptsize Adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder}; FM: ferromagnetic, NM: non-magnetic layer.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Magnetoresistive sensors in practice %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Magnetoresistive Sensors in Practice: AMR, GMR, TMR}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.49\textwidth}
+		\begin{itemize}
+			\item \textbf{AMR:} position, speed and angle sensors; common in automotive wheel-speed and camshaft sensors; low cost, linear output under certain conditions (e.g., barber-pole biasing).
+			\item \textbf{GMR:} ferromagnetic/non-magnetic multilayers; read heads of hard disk drives, current and field sensors; $\Delta R/R$ up to 100\,\%.
+		\end{itemize}
+		\column{0.49\textwidth}
+		\begin{itemize}
+			\item \textbf{TMR:} electron tunnelling through thin insulator layers; highest sensitivity, good temperature stability; precision angle, torque and robotics sensors.
+		\end{itemize}
+		\textbf{Emerging trends}
+		\begin{itemize}
+			\item Integration with CMOS for miniaturised smart sensors.
+			\item Magnetic memory (MRAM) and biomedical field mapping.
+			\item Spintronic materials for ultra-low-field detection.
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Thermal Effects: Thermoelectric and Thermoresistive}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}
 % \textbf{\Large{Thermoelectric Effect}}
@@ -1884,7 +1662,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Thermoelectric Effect -- Principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Thermoelectric Effect -- Principle}
+\begin{frame}
+	\frametitle{Thermoelectric Effect -- Principle}
     \small
     \textbf{Definition:}
     When two dissimilar conductors are joined at both ends and exposed to different temperatures
@@ -1904,7 +1683,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Seebeck Coefficient and Its Origin %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Seebeck Coefficient and Its Origin}
+\begin{frame}
+	\frametitle{Seebeck Coefficient and Its Origin}
     \small
     \textbf{Theoretical Seebeck coefficient of material A:}
     \begin{equation}
@@ -1931,7 +1711,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Thermoelectric Voltage Relation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Thermoelectric Voltage Relation}
+\begin{frame}
+	\frametitle{Thermoelectric Voltage Relation}
     \small
     When conductors A and B are connected at two points with different temperatures $T_{AB}$ and $T_{BA}$:
     \begin{equation}
@@ -1953,7 +1734,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Material Dependence of the Seebeck Effect %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Material Dependence of the Seebeck Effect}
+\begin{frame}
+	\frametitle{Material Dependence of the Seebeck Effect}
     \small
     \textbf{Typical thermoelectric voltages (relative to platinum, 0–100 °C):}
     \begin{itemize}
@@ -1976,7 +1758,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Standard Thermocouple Types (DIN EN 60584-1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Standard Thermocouple Types (DIN EN 60584-1)}
+\begin{frame}
+	\frametitle{Standard Thermocouple Types (DIN EN 60584-1)}
     \small
     \begin{table}
         \centering
@@ -2004,7 +1787,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applications of the Thermoelectric Effect %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications of the Thermoelectric Effect}
+\begin{frame}
+	\frametitle{Applications of the Thermoelectric Effect}
     \small
     \textbf{Temperature measurement:}
     \begin{itemize}
@@ -2031,7 +1815,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Thermopile Sensors and Heat Radiation Detection %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Thermopile Sensors and Heat Radiation Detection}
+\begin{frame}
+	\frametitle{Thermopile Sensors and Heat Radiation Detection}
     \small
     \textbf{Thermopile:}
     \begin{itemize}
@@ -2051,35 +1836,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: Thermoelectric (Seebeck) Effect %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary: Thermoelectric (Seebeck) Effect}
-    \small
-    \textbf{Fundamental relation:}
-    \begin{equation}
-        U_{th} = \int_{T_{AB}}^{T_{BA}} S_{AB}(T) \, dT
-    \end{equation}
-    \textbf{Key properties:}
-    \begin{itemize}
-        \item $S_{AB}$ depends on materials and temperature.
-        \item $U_{th}$ proportional to temperature difference $\Delta T$.
-        \item Positive for p-type, negative for n-type materials.
-    \end{itemize}
-    \textbf{Practical relevance:}
-    \begin{itemize}
-        \item Basis for thermocouples (K, J, T, E, etc.).
-        \item Enables temperature and material analysis.
-        \item Can be used in thermopiles for heat radiation sensing.
-    \end{itemize}
-    \textbf{Advantages:}
-    \begin{itemize}
-        \item Simple, robust, no external power supply required.
-        \item Wide temperature range, fast response, miniaturizable.
-    \end{itemize}
-\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Thermoresistance Effect}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}
 % \textbf{\Large{Thermoresistance Effect}}
@@ -2088,7 +1845,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Thermoresistance Effect -- Principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Thermoresistance Effect -- Principle}
+\begin{frame}
+	\frametitle{Thermoresistance Effect -- Principle}
     \small
     \textbf{Concept:}
     The electrical resistance of materials depends on:
@@ -2113,7 +1871,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Temperature Coefficient and Platinum Sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Temperature Coefficient and Platinum Sensors}
+\begin{frame}
+	\frametitle{Temperature Coefficient and Platinum Sensors}
     \small
     \textbf{Temperature coefficient:}
     \begin{equation}
@@ -2136,7 +1895,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Designs and Characteristics of Pt Resistors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Designs and Characteristics of Pt Resistors}
+\begin{frame}
+	\frametitle{Designs and Characteristics of Pt Resistors}
     \begin{figure}
         \centering
         \includegraphics[width=0.8\linewidth]{fig/lec02/pt.pdf}
@@ -2153,7 +1913,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Thermal Response and Self-Heating %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Thermal Response and Self-Heating}
+\begin{frame}
+	\frametitle{Thermal Response and Self-Heating}
     \small
     \textbf{Thermal response time:}
     \begin{itemize}
@@ -2180,7 +1941,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Temperature Effects in Semiconductors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Temperature Effects in Semiconductors}
+\begin{frame}
+	\frametitle{Temperature Effects in Semiconductors}
     \begin{columns}
         \column{0.6\textwidth}
             \textbf{Semiconducting ceramics (thermistors):}
@@ -2200,7 +1962,7 @@
         \column{0.4\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.9\linewidth]{fig/lec02/RT_char.png}
+                \includegraphics[width=0.72\linewidth]{fig/lec02/RT_char.png}
                 \caption{Resistance vs. Temperature for Pt, PTC, and NTC sensors (adapted from \href{https://doi.org/10.1007/978-3-658-21173-8}{Hesse, Schnell: Sensors for process and factory automation, Vieweg+Teubner, 2009})}
             \end{figure}
     \end{columns}
@@ -2209,7 +1971,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PTC Thermistors (Positive Temperature Coefficient) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{PTC Thermistors (Positive Temperature Coefficient)}
+\begin{frame}
+	\frametitle{PTC Thermistors (Positive Temperature Coefficient)}
     \begin{columns}
         \column{0.55\textwidth}
             \textbf{Material:} Titanate ceramics - BaTiO\textsubscript{3}, SrTiO\textsubscript{3}.
@@ -2239,7 +2002,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% NTC Thermistors (Negative Temperature Coefficient) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{NTC Thermistors (Negative Temperature Coefficient)}
+\begin{frame}
+	\frametitle{NTC Thermistors (Negative Temperature Coefficient)}
     \begin{columns}
         \column{0.55\textwidth}
             \textbf{Material:} Mixed oxide semiconductors (e.g., Fe\textsubscript{2}O\textsubscript{3}, MgCr\textsubscript{2}O\textsubscript{4}, Ba(NO\textsubscript{3})\textsubscript{2}).\\
@@ -2269,7 +2033,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Comparison Summary: Pt, PTC, and NTC Sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Comparison Summary: Pt, PTC, and NTC Sensors}
+\begin{frame}
+	\frametitle{Comparison Summary: Pt, PTC, and NTC Sensors}
     \small
     \begin{table}
         \centering
@@ -2296,46 +2061,41 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Photoelectric Effect}
+\subsection{Photoelectric and Optical Effects}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}
-% \textbf{\Large{Photoelectric Effect}}
-% \end{frame}
-
+%% Photoelectric effect -- overview %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Photoelectric Effect - Overview (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Photoelectric Effect - Overview (1)}
-    \textbf{Definition:}
-    The photoelectric effect occurs when a \textbf{photon (quantum of light)} is absorbed by an \textbf{electron}, releasing it from its bond.\\
-    \textbf{Key Principle:}
-    \begin{itemize}
-        \item A photon transfers its energy to an electron.
-        \item The photon's energy must exceed the electron’s \textbf{binding energy}.
-    \end{itemize}
-    \textbf{Types of Photoelectric Effect:}
-    \begin{itemize}
-        \item \textbf{Outer photoelectric effect:} Electron emission from metal surfaces.
-        \item \textbf{Inner photoelectric effect:} Electron excitation within semiconductors.
-        \item \textbf{Photoionization:} Complete removal of an electron from atoms or molecules.
-    \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Photoelectric Effect - Overview (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Photoelectric Effect – Overview (2)}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.75\linewidth]{fig/lec02/photoelec_1.pdf}
-        \caption{Types of photoelectric effect: outer, inner, and photoionization (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
-    \end{figure}
+\begin{frame}
+	\frametitle{Photoelectric Effect -- Overview}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.5\textwidth}
+		\small
+		\textbf{Definition:} a \textbf{photon} (quantum of light) is absorbed by an \textbf{electron} and releases it from its bond.\\[1mm]
+		\textbf{Key principle:}
+		\begin{itemize}
+			\item The photon transfers its energy $E = hf$ to an electron.
+			\item This energy must exceed the electron's \textbf{binding energy}.
+		\end{itemize}
+		\textbf{Types of photoelectric effect:}
+		\begin{itemize}
+			\item \textbf{Outer:} electron emission from (metal) surfaces.
+			\item \textbf{Inner:} electron excitation within semiconductors.
+			\item \textbf{Photoionisation:} complete removal of an electron from atoms or molecules.
+		\end{itemize}
+		\column{0.48\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec02/photoelec_1.pdf}
+			\caption{Types of photoelectric effect: outer, inner, and photoionization (adapted from \href{https://doi.org/10.1007/978-3-658-34920-2}{Hering \& Schönfelder})}
+		\end{figure}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Outer Photoelectric Effect – Principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Outer Photoelectric Effect – Principle}
+\begin{frame}
+	\frametitle{Outer Photoelectric Effect – Principle}
     \begin{columns}
         \column{0.5\textwidth}
             \textbf{Mechanism:}
@@ -2373,7 +2133,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Outer Photoelectric Effect – Characteristics %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Outer Photoelectric Effect – Characteristics}
+\begin{frame}
+	\frametitle{Outer Photoelectric Effect – Characteristics}
     \begin{columns}
         \column{0.6\textwidth}
             \textbf{Observations:}
@@ -2402,7 +2163,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Inner Photoelectric Effect – Photoconductivity %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Inner Photoelectric Effect – Photoconductivity}
+\begin{frame}
+	\frametitle{Inner Photoelectric Effect – Photoconductivity}
     \textbf{Mechanism:}
     \begin{itemize}
         \item In semiconductors, photons lift electrons from the \textbf{valence band} to the \textbf{conduction band}.
@@ -2435,7 +2197,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applications of Photoelectric Effect %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Applications of Photoelectric Effect}
+\begin{frame}
+	\frametitle{Applications of Photoelectric Effect}
     \textbf{Practical Uses:}
     \begin{itemize}
         \item \textbf{Photon detectors} (photomultipliers, photodiodes)
@@ -2452,7 +2215,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Optical Effect}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}
 % \textbf{\Large{Optical Effect}}
@@ -2461,7 +2224,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optical Effects – Physical Basis %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Optical Effects – Physical Basis}
+\begin{frame}
+	\frametitle{Optical Effects – Physical Basis}
     \begin{columns}
         \column{0.6\textwidth}
             \textbf{Light as an Electromagnetic Phenomenon:}
@@ -2493,7 +2257,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Wave and Particle Characteristics of Light %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Wave and Particle Characteristics of Light}
+\begin{frame}
+	\frametitle{Wave and Particle Characteristics of Light}
     \textbf{Wave Nature:}
     \begin{itemize}
         \item Involves reflection, refraction, diffraction, interference, and polarization.
@@ -2523,7 +2288,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Refraction and Reflection of Light %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Refraction and Reflection of Light}
+\begin{frame}
+	\frametitle{Refraction and Reflection of Light}
     \small
     \textbf{Refraction:}
     When light passes from one medium to another, its speed and direction change.
@@ -2557,7 +2323,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optical Sensors – Principle of Operation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Optical Sensors – Principle of Operation}
+\begin{frame}
+	\frametitle{Optical Sensors – Principle of Operation}
     \small
     \textbf{Basic Components:}
     \begin{itemize}
@@ -2583,7 +2350,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Laser Principle and Optical Emission %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Laser Principle and Optical Emission}
+\begin{frame}
+	\frametitle{Laser Principle and Optical Emission}
     \begin{figure}
         \centering
         \includegraphics[width=0.75\linewidth]{fig/lec02/opto_3.pdf}
@@ -2600,7 +2368,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Laser Principle and Optical Emission %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Laser Principle and Optical Emission}
+\begin{frame}
+	\frametitle{Laser Principle and Optical Emission}
     \textbf{Laser (Light Amplification by Stimulated Emission of Radiation):}
     \begin{itemize}
         \item Coherent and monochromatic light output.
@@ -2611,17 +2380,29 @@
         E_{\text{ph}} = h \cdot f
     \end{equation}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary of physical effects used in sensors %%
+%% Section summary: physical effects used in sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary of physical effects used in sensors}
-    \begin{itemize}
-        \item Lits of all the physical effects used in sensors were covered in this lecture series.
-        \item Each effect has unique principles, equations, and applications.
-        \item Understanding these effects is crucial for sensor design and application.
-        \item This knowledge enables the development of advanced sensing technologies across various fields.
-        \item Further reading and exploration of each effect can lead to innovative sensor solutions.
-        \item Try to visualize how these effects can be combined in multi-functional sensors. Maybe you come up with new ideas!
-    \end{itemize}
+\begin{frame}
+	\frametitle{Section Summary: Physical Effects Used in Sensors}
+	\scriptsize
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{@{}L{0.14\textwidth}L{0.22\textwidth}L{0.33\textwidth}L{0.27\textwidth}@{}}
+		\toprule
+		\textbf{Effect} & \textbf{Typical measurands} & \textbf{Key relation} & \textbf{Typical sensors}\\
+		\midrule
+		Piezoelectric & dynamic force, pressure, acceleration & $Q = d_{kl}\,F$ & force sensor, accelerometer\\
+		(Piezo)resistive & strain, force, pressure & $\Delta R/R = k\,\varepsilon$ & strain gauge, Si pressure sensor\\
+		Magnetostrictive & position, force, torque & Joule, Villari and Wiedemann effects & position/level sensor\\
+		Inductive & displacement, proximity, speed & $L = N^2/R_\mathrm{m}$; eddy currents & proximity switch, speed sensor\\
+		Capacitive & distance, level, proximity & $C = \varepsilon_0 \varepsilon_r A/d$ & level probe, proximity switch\\
+		Hall & magnetic field, current & $U_H = A_H\, j_x B_z\, b$ & current sensor, speed sensor\\
+		Magnetoresistive & magnetic field, angle & $R(B) = R_0(1 + \mu^2 B^2)$; AMR/GMR/TMR & field plate, angle sensor\\
+		Thermoelectric & temperature difference & $U_{th} = \int S_{AB}(T)\,\mathrm{d}T$ & thermocouple, thermopile\\
+		Thermoresistive & temperature & $R(T) = R_0[1 + a(T-T_0) + b(T-T_0)^2]$; NTC: exponential & Pt100, NTC, PTC\\
+		Photoelectric & light intensity & $hf \geq W_A$ (outer), $hf \geq E_g$ (inner) & photodiode, LDR\\
+		Optical & distance, presence & reflection, refraction, laser light & light barrier, laser distance sensor\\
+		\bottomrule
+	\end{tabular}\\[1mm]
+	\footnotesize \textbf{Active} sensors (piezo-, thermo-, photoelectric, induction-based) need no auxiliary power; all others are \textbf{passive}.
 \end{frame}
