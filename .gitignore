@@ -319,3 +319,11 @@ TSWLatexianTemp*
 # Python caches
 __pycache__/
 *.pyc
+
+# Spreadsheets (may contain grades / personal data)
+*.xls
+*.xlsx
+*.xlsm
+*.xlsb
+*.ods
+*.csv
