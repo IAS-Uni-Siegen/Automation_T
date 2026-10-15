@@ -7,47 +7,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Introduction to Measurement Systems and Signal Processing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%% Measurement and signal processing %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Measurement and Signal Processing %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Measurement and Signal Processing}
+\begin{frame}
+	\frametitle{Measurement and Signal Processing}
 	\small
-	\textbf{Goal:} Transform a physical phenomenon into a measurable and interpretable electrical signal.
+	\textbf{Goal:} transform a physical phenomenon into a measurable and interpretable electrical/digital signal.
 	\begin{itemize}
-		\item Measurement = objective assignment of numerical value to a property.
-		\item Signal processing ensures that sensor outputs are usable by controllers or digital systems.
-		\item Conditioning bridges the physical world and the information world.
+		\item Measurement = objective assignment of a numerical value to a property.
+		\item Sensors deliver low-level, often non-linear analogue outputs; signal processing and conditioning amplify, filter, linearise and standardise them for controllers and digital systems.
+		\item Calibration ensures accuracy and removes offset, drift and disturbances.
 	\end{itemize}
+	\textbf{Key challenges:} very small signal levels $\rightarrow$ amplification; disturbance variables (e.g., temperature); non-linear characteristics $\rightarrow$ linearisation and filtering.\\[1mm]
+	\textbf{Output types:} binary (on/off), pulse/frequency encoded, analogue continuous.
 	\begin{block}{Core Idea}
 		Sensors $\Rightarrow$ Signal Conditioning $\Rightarrow$ Data Conversion $\Rightarrow$ Processing $\Rightarrow$ Display/Control
 	\end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Elements of a Measurement System (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Elements of a Measurement System (1)}
-	\centering
-	\begin{figure}
-		\includegraphics[scale=0.45]{fig/lec03/measurement_loop.pdf}
-		\caption{Function and data flow in a measurement and control system. (adapted from Pall\`as-Areny, R. \& Webster, J.G.: Sensors and Signal Conditioning, 2nd ed., Wiley, 2001)}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Elements of a Measurement System (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Elements of a Measurement System (2)}
+\begin{frame}
+	\frametitle{Elements of a Measurement System}
 	\textbf{Subsystems:}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{enumerate}
-				\item \textbf{Sensor / Transducer} - converts physical to electrical signals.
+				\item \textbf{Sensor} (input transducer) -- converts a physical quantity into an electrical signal; always draws some energy from the measured system (\emph{loading effect}).
 				\item \textbf{Signal Conditioning} - amplifies, filters, linearizes.
 				\item \textbf{Data Transmission} - carries signals to control or display unit.
 				\item \textbf{Controller / Processor} - interprets and acts upon data.
-				\item \textbf{Actuator} - applies control action to the system or process.
+				\item \textbf{Actuator} (output transducer) -- applies the control action to the system or process.
 			\end{enumerate}
 		\column{0.5\textwidth}
 			\centering
@@ -59,26 +50,10 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Transducers, Sensors, and Actuators %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Transducers, Sensors, and Actuators}
-	\small
-	\textbf{Transducer:} Converts energy from one form to another. \\ 
-	\textbf{Sensor:} Input transducer--detects a physical variable and converts it to an electrical signal.  \\
-	\textbf{Actuator:} Output transducer--converts electrical signals into mechanical motion or other actions.
-	\begin{block}{Key Concepts}
-		\begin{itemize}
-			\item Always some energy flow from measured system to sensor $\Rightarrow$ avoid loading effect.
-			\item Six domains: mechanical, thermal, magnetic, electrical, chemical, radiation.
-			\item Sensors with electric outputs dominate modern systems.
-		\end{itemize}
-	\end{block}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Advantages of Electrical Measurement Systems %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Advantages of Electrical Measurement Systems}
+\begin{frame}
+	\frametitle{Advantages of Electrical Measurement Systems}
 	\small
 	\begin{enumerate}
 		\item Electric parameters vary with almost any physical quantity (temperature, strain, pressure).
@@ -95,33 +70,38 @@
 		\item The raw signal typically has low amplitude and needs conditioning.
 	\end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Signal Conditioning %%
+%% Signal conditioning: functions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Signal Conditioning}
-	\begin{columns}
-		\column{0.5\textwidth}
-			\textbf{Signal conditioning:} prepares sensor output for transmission, digitization, or display.
-			\begin{itemize}
-				\item Functions: amplification, filtering, impedance matching, level shifting, modulation/demodulation.
-				\item Converts weak analog signals (mV range) to standard ranges ($\pm 10$ V or 4–20 mA).
-				\item Analog-to-digital converters (ADCs) need well-conditioned inputs.
-				\item Final display may be analog (pointer, gauge) or digital (numeric, bar graph).
-			\end{itemize}
-		\column{0.5\textwidth}
-			\centering
-			\begin{figure}
-				\includegraphics[scale=0.35]{fig/lec03/measurement_loop.pdf}
-				\caption{Function and data flow in a measurement and control system. (adapted from Pall\`as-Areny, R. \& Webster, J.G.: Sensors and Signal Conditioning, 2nd ed., Wiley, 2001)}
-			\end{figure}
+\begin{frame}
+	\frametitle{Signal Conditioning: Functions}
+	\small
+	\textbf{Signal conditioning} prepares the sensor output for transmission, digitisation or display: weak analogue signals (mV range) are converted into standard ranges ($\pm 10$\,V or 4--20\,mA); ADCs need well-conditioned inputs.
+	\begin{columns}[T,onlytextwidth]
+		\column{0.49\textwidth}
+		\begin{itemize}
+			\item \textbf{Amplification:} boosts weak sensor signals to usable levels.
+			\item \textbf{Filtering:} removes noise and unwanted frequency components.
+			\item \textbf{Linearisation:} corrects non-linear sensor outputs.
+			\item \textbf{Impedance matching:} ensures proper signal transfer between stages.
+			\item \textbf{Level shifting:} adjusts the signal baseline for compatibility.
+		\end{itemize}
+		\column{0.49\textwidth}
+		\begin{itemize}
+			\item \textbf{Modulation/demodulation:} prepares signals for transmission or extraction.
+			\item \textbf{Isolation:} prevents ground loops and protects against high voltages.
+			\item \textbf{Calibration:} adjusts the system for accurate measurements.
+			\item \textbf{Conversion:} between analogue and digital domains.
+			\item \textbf{Data transmission:} over distances without degradation; final display analogue (pointer) or digital.
+		\end{itemize}
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Interfaces and Data Domains %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Interfaces and Data Domains}
+\begin{frame}
+	\frametitle{Interfaces and Data Domains}
 	\small
 	\textbf{Measurement systems involve multiple data domains:}
 	\begin{itemize}
@@ -133,14 +113,15 @@
 		\item \textbf{Analog:} signal amplitude represents information (voltage, current).
 		\item \textbf{Time:} information encoded in timing (frequency, phase, pulse width).
 		\item \textbf{Digital:} information represented numerically (binary codes, counts).
-		\item \textbf{Chemical/Physical:} domains prior to conversion to electrical form.
+		\item \textbf{Non-electrical:} mechanical, thermal, magnetic, chemical and radiation domains -- prior to conversion into electrical form.
 	\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Data Domain Representation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Data Domain Representation}
+\begin{frame}
+	\frametitle{Data Domain Representation}
 	\begin{columns}
 	\column{0.35\textwidth}
 		\textbf{Information carriers:}
@@ -162,7 +143,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Direct Adjustment Indirect Measurements %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Direct Adjustment Indirect Measurements}
+\begin{frame}
+	\frametitle{Direct Adjustment Indirect Measurements}
 	\small
 	\textbf{Direct measurement:}
 	\begin{itemize}
@@ -180,95 +162,33 @@
 	\vspace{4pt}
 	\textbf{Most modern measurements are indirect and require signal processing.}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary and Context for Next Topics %%
+%% Common signal conditioning techniques -- roadmap %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary and Context for Next Topics}
-	\small
-	\textbf{You have learned:}
+\begin{frame}
+	\frametitle{Common Signal Conditioning Techniques -- Roadmap}
 	\begin{itemize}
-		\item The structure of a measurement and control system.
-		\item Roles of transducers, sensors, actuators, and conditioners.
-		\item The flow of information through different domains.
-	\end{itemize}
-	\textbf{Next lectures:}
-	\begin{itemize}
-		\item Resistive and bridge circuits for signal generation.
-		\item Operational amplifiers in conditioning.
-		\item ADCs, DACs, sampling, and quantization.
+		\item \textbf{Bridge circuits:} convert resistance changes (e.g., strain gauges) into voltage signals $\rightarrow$ Section~3.2.
+		\item \textbf{Operational amplifiers:} amplification, filtering and buffering $\rightarrow$ Sections~3.3 and 3.4 (transducer amplifiers).
+		\item \textbf{Noise suppression:} shielding, layout and earthing $\rightarrow$ Section~3.5.
+		\item \textbf{Filters:} low-pass, high-pass, band-pass and notch filters to manage frequency content $\rightarrow$ Section~3.6.
+		\item \textbf{ADCs and DACs:} conversion between analogue and digital form $\rightarrow$ Section~3.7.
+		\item \textbf{Multiplexers:} several sensor signals share one conditioning circuit.
+		\item \textbf{Isolation amplifiers:} galvanic isolation between input and output.
+		\item \textbf{Temperature compensation circuits:} mitigate temperature effects on sensor outputs.
+		\item \textbf{Modulators/demodulators and data transmission protocols:} reliable transmission over long distances $\rightarrow$ Section~5.
 	\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Overview of Signal Processing and Calibration %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Overview of Signal Processing and Calibration}
-	\small
-	\textbf{Goal:} Convert a physical quantity/phenomenon into a usable electrical/digital signal decision
-	\begin{itemize}
-		\item Sensors generate low-level, often non-linear, analog outputs.
-		\item Signal processing and conditioning amplify, filter, linearize, and standardize them.
-		\item Calibration ensures accuracy and removes offset, drift, and disturbances.
-	\end{itemize}
-	\textbf{Key challenges:}
-	\begin{enumerate}
-		\item Very small signal levels $\rightarrow$ require amplification.
-		\item Influence of disturbance variables (e.g. temperature).
-		\item Nonlinear characteristic curves $\rightarrow$ need linearization and filtering.
-	\end{enumerate}
-	\textbf{Output types:}
-	\begin{itemize}
-		\item Binary (on/off)
-		\item Pulse / frequency encoded
-		\item Analog continuous signals
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Signal Conditioning Functions %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Signal Conditioning Functions}
-	\begin{itemize}
-		\item \textbf{Amplification:} Boosts weak sensor signals to usable levels.
-		\item \textbf{Filtering:} Removes noise and unwanted frequency components.
-		\item \textbf{Linearization:} Corrects nonlinear sensor outputs.
-		\item \textbf{Impedance Matching:} Ensures proper signal transfer between stages.
-		\item \textbf{Level Shifting:} Adjusts signal baseline for compatibility.
-		\item \textbf{Modulation/Demodulation:} Prepares signals for transmission or extraction.
-		\item \textbf{Isolation:} Prevents ground loops and protects against high voltages.
-		\item \textbf{Calibration:} Adjusts system to ensure accurate measurements.
-		\item \textbf{Conversion:} Transforms signals between analog and digital domains.
-		\item \textbf{Data Transmission:} Sends signals over distances without degradation.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Common Signal Conditioning Techniques %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Common Signal Conditioning Techniques}
-	\begin{itemize}
-		\item \textbf{Bridge Circuits:} Convert resistance changes (e.g., strain gauges) into voltage signals.
-		\item \textbf{Operational Amplifiers:} Used for amplification, filtering, and buffering.
-		\item \textbf{Filters:} Low-pass, high-pass, band-pass, and notch filters to manage frequency content.
-		\item \textbf{Analog-to-Digital Converters (ADCs):} Convert analog signals to digital form for processing.
-		\item \textbf{Digital-to-Analog Converters (DACs):} Convert digital signals back to analog form.
-		\item \textbf{Multiplexers:} Allow multiple sensor signals to be processed by a single conditioning circuit.
-		\item \textbf{Isolation Amplifiers:} Provide galvanic isolation between input and output.
-		\item \textbf{Temperature Compensation Circuits:} Mitigate effects of temperature variations on sensor outputs.
-		\item \textbf{Signal Modulators/Demodulators:} Prepare signals for transmission over long distances.
-		\item \textbf{Data Transmission Protocols:} Ensure reliable communication between sensors and processing units.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Introduction to D.C. and A.C. Bridges}
+\subsection{DC and AC Bridges}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introduction to D.C. and A.C. Bridges %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Introduction to D.C. and A.C. Bridges}
+\begin{frame}
+	\frametitle{Introduction to DC and AC Bridges}
 	\small
 	\textbf{Objective:} Bridge circuits are used to measure unknown resistance, capacitance, or inductance precisely by comparing with known components.
 	Conversion of tiny sensor variations (strain gauge, RTD, capacitive sensor) into measurable voltages and principles of null deflection help to curtain noise and improve accuracy.
@@ -289,7 +209,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introductory Example: Half-Bridge Measurement %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Introductory Example: Half-Bridge Measurement}
+\begin{frame}
+	\frametitle{Introductory Example: Half-Bridge Measurement}
 	\small
 	\begin{columns}
 	\column{0.5\textwidth}
@@ -324,7 +245,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Wheatstone DC Bridge %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Wheatstone DC Bridge}
+\begin{frame}
+	\frametitle{Wheatstone DC Bridge}
 	\small
 	\begin{columns}
 	\column{0.55\textwidth}
@@ -360,7 +282,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Practical Wheatstone Bridge with Zero and Sensitivity Adjustments %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Practical Wheatstone Bridge with Zero and Sensitivity Adjustments}
+\begin{frame}
+	\frametitle{Practical Wheatstone Bridge with Zero and Sensitivity Adjustments}
 	\small
 	\begin{columns}
 	\column{0.55\textwidth}
@@ -386,7 +309,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Double Active Arm Bridge (Two-Element Bridge) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Double Active Arm Bridge (Two-Element Bridge)}
+\begin{frame}
+	\frametitle{Double Active Arm Bridge (Two-Element Bridge)}
 	\small
 	\begin{columns}
 	\column{0.55\textwidth}
@@ -413,7 +337,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Full Bridge with Four Active Sensors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Full Bridge with Four Active Sensors}
+\begin{frame}
+	\frametitle{Full Bridge with Four Active Sensors}
 	\small
 	\textbf{Maximum sensitivity:}
 	\begin{equation}
@@ -431,7 +356,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General AC Bridge Theory %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{General AC Bridge Theory}
+\begin{frame}
+	\frametitle{General AC Bridge Theory}
 	\small
 	\begin{columns}
 	\column{0.5\textwidth}
@@ -462,7 +388,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maxwell Bridge (Inductance with Resistance) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Maxwell Bridge (Inductance with Resistance)}
+\begin{frame}
+	\frametitle{Maxwell Bridge (Inductance with Resistance)}
 	\small
 	\begin{columns}
 	\column{0.65\textwidth}
@@ -498,7 +425,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Hay Bridge (High-Q Inductance Measurement) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hay Bridge (High-Q Inductance Measurement)}
+\begin{frame}
+	\frametitle{Hay Bridge (High-Q Inductance Measurement)}
 	\small
 	\begin{columns}
 	\column{0.65\textwidth}
@@ -528,7 +456,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Schering Bridge (Capacitance + Loss Measurement) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Schering Bridge (Capacitance + Loss Measurement)}
+\begin{frame}
+	\frametitle{Schering Bridge (Capacitance + Loss Measurement)}
 	\small
 	\begin{columns}
 	\column{0.6\textwidth}
@@ -557,7 +486,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The Wien Frequency Bridge: Principle and Circuit %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The Wien Frequency Bridge: Principle and Circuit}
+\begin{frame}
+	\frametitle{The Wien Frequency Bridge: Principle and Circuit}
 	\small
 	\begin{columns}
 	\column{0.65\textwidth}
@@ -591,7 +521,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Wien Frequency Bridge: Balance Condition and Frequency (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Wien Frequency Bridge: Balance Condition and Frequency (1)}
+\begin{frame}
+	\frametitle{Wien Frequency Bridge: Balance Condition and Frequency (1)}
 	\small
 	\begin{columns}
 	\column{0.65\textwidth}
@@ -624,7 +555,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Wien Frequency Bridge: Balance Condition and Frequency (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Wien Frequency Bridge: Balance Condition and Frequency (2)}
+\begin{frame}
+	\frametitle{Wien Frequency Bridge: Balance Condition and Frequency (2)}
 	\small
 	\begin{columns}
 	\column{0.65\textwidth}
@@ -655,7 +587,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary Table: DC and AC Bridges %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary Table: DC and AC Bridges}
+\begin{frame}
+	\frametitle{Summary Table: DC and AC Bridges}
 	\small
 	\begin{table}
 		\centering
@@ -692,7 +625,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introduction to Operational Amplifiers %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Introduction to Operational Amplifiers}
+\begin{frame}
+	\frametitle{Introduction to Operational Amplifiers}
 	\small
 	\textbf{Why Op-Amps?}
 	\begin{itemize}
@@ -713,7 +647,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Operational Amplifier Terminals %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Operational Amplifier Terminals}
+\begin{frame}
+	\frametitle{Operational Amplifier Terminals}
 	\small
 	\begin{columns}
 		\column{0.5\textwidth}
@@ -743,7 +678,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Characteristics of the Ideal Operational Amplifier %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Characteristics of the Ideal Operational Amplifier}
+\begin{frame}
+	\frametitle{Characteristics of the Ideal Operational Amplifier}
 	\small
 	An ideal op-amp is defined by the following properties:
 	\begin{enumerate}
@@ -765,7 +701,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Characteristics of the Ideal Operational Amplifier %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Golden Rules of Ideal Op-Amps}
+\begin{frame}
+	\frametitle{Golden Rules of Ideal Op-Amps}
 	\small
 	\begin{columns}
 		\column{0.5\textwidth}
@@ -795,7 +732,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Inverting Operational Amplifier %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Inverting Operational Amplifier}
+\begin{frame}
+	\frametitle{Inverting Operational Amplifier}
 	\small
 	\begin{columns}
 		\column{0.55\textwidth}
@@ -834,7 +772,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Non-Inverting Operational Amplifier %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Non-Inverting Operational Amplifier}
+\begin{frame}
+	\frametitle{Non-Inverting Operational Amplifier}
 	\small
 	\begin{columns}
 		\column{0.5\textwidth}
@@ -872,7 +811,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Op-Amp as a Current-to-Voltage Converter %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Op-Amp as a Current-to-Voltage Converter}
+\begin{frame}
+	\frametitle{Op-Amp as a Current-to-Voltage Converter}
 	\small
 	\begin{columns}
 		\column{0.6\textwidth}
@@ -900,7 +840,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summing Amplifier (Current Summation) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summing Amplifier (Current Summation)}
+\begin{frame}
+	\frametitle{Summing Amplifier (Current Summation)}
 	\small
 	\vspace{0.5cm}
 	\begin{columns}
@@ -929,7 +870,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Voltage-to-Current Converter (V-I Converter) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Voltage-to-Current Converter (V-I Converter)}
+\begin{frame}
+	\frametitle{Voltage-to-Current Converter (V-I Converter)}
 	\small
 	\begin{columns}
 		\column{0.4\textwidth}
@@ -955,7 +897,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Op-Amp as a Buffer (Voltage Follower) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Op-Amp as a Buffer (Voltage Follower)}
+\begin{frame}
+	\frametitle{Op-Amp as a Buffer (Voltage Follower)}
 	\small
 	\begin{columns}
 		\column{0.4\textwidth}
@@ -980,7 +923,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ideal Op-Amp Differential Subtractor %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ideal Op-Amp Differential Subtractor}
+\begin{frame}
+	\frametitle{Ideal Op-Amp Differential Subtractor}
 	\small
 	\begin{columns}
 		\column{0.4\textwidth}
@@ -1021,7 +965,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ideal Op-Amp Differential Subtractor %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ideal Op-Amp Integrator}
+\begin{frame}
+	\frametitle{Ideal Op-Amp Integrator}
 	\small
 	\begin{columns}
 		\column{0.4\textwidth}
@@ -1064,7 +1009,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ideal Operational Amplifier as a Differentiator (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ideal Operational Amplifier as a Differentiator (1)}
+\begin{frame}
+	\frametitle{Ideal Operational Amplifier as a Differentiator (1)}
 	\small
 	\begin{columns}
 			\column{0.5\textwidth}
@@ -1098,7 +1044,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ideal Operational Amplifier as a Differentiator (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ideal Operational Amplifier as a Differentiator (2)}
+\begin{frame}
+	\frametitle{Ideal Operational Amplifier as a Differentiator (2)}
 	\small
 	\textbf{Characteristics:}
 	\begin{itemize}
@@ -1126,7 +1073,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary of Op-Amp Configurations %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary of Op-Amp Configurations}
+\begin{frame}
+	\frametitle{Summary of Op-Amp Configurations}
 	\small
 	\begin{table}
 		\centering
@@ -1155,7 +1103,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Operational Amplifier Frequency Response %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Operational Amplifier Frequency Response}
+\begin{frame}
+	\frametitle{Operational Amplifier Frequency Response}
 	\small
 	\textbf{Key idea:} The practical operational amplifier does \emph{not} respond instantaneously to an input signal.  
 	Finite internal compensation introduces a \textbf{delay} and \textbf{frequency-dependent gain}.
@@ -1183,7 +1132,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Voltage Gain in Decibels %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Voltage Gain in Decibels}
+\begin{frame}
+	\frametitle{Voltage Gain in Decibels}
 	\small
 	\begin{columns}
 		\column{0.5\textwidth}
@@ -1228,7 +1178,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Complex Gain Representation and Phase Lag %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Complex Gain Representation and Phase Lag}
+\begin{frame}
+	\frametitle{Complex Gain Representation and Phase Lag}
 	\small
 	\begin{columns}
 		\column{0.6\textwidth}
@@ -1253,38 +1204,39 @@
 			\end{figure}
 	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bode Plot for Op-Amp Magnitude Response %%
+%% Bode plot for op-amp magnitude response %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bode Plot for Op-Amp Magnitude Response}
+\begin{frame}
+	\frametitle{Bode Plot for Op-Amp Magnitude Response}
 	\small
-	\begin{columns}
-		\column{0.35\textwidth}
-			Open-loop magnitude response:
-			\begin{equation}
-				|A_{OL}(jf)| = \frac{A_{OL}}{\sqrt{1 + \left(\frac{f}{f_c}\right)^2}}
-			\end{equation}
-			\textbf{Key points:}
-			\begin{itemize}
-				\item For $f \ll f_c$: gain $\approx A_{OL}$
-				\item For $f = f_c$: gain drops by \textbf{3 dB}
-				\item For $f \gg f_c$: gain falls with slope \textbf{20 dB/decade}
-				\item At unity-gain frequency $f_1$: $|A| = 1$ or $0$ dB
-			\end{itemize}
-		\column{0.65\textwidth}
-			\begin{figure}[h]
+	\begin{columns}[T,onlytextwidth]
+		\column{0.4\textwidth}
+		Open-loop magnitude response:
+		\begin{equation}
+			|A_{OL}(jf)| = \frac{A_{OL}}{\sqrt{1 + \left(\frac{f}{f_c}\right)^2}}
+		\end{equation}
+		\textbf{Key points:}
+		\begin{itemize}
+			\item $f \ll f_c$: gain $\approx A_{OL}$.
+			\item $f = f_c$ (break frequency, set by the internal compensation, $f_c = 1/(2\pi RC)$): gain drops by \SI{3}{\decibel}.
+			\item $f \gg f_c$: gain falls by \textbf{20\,dB/decade}.
+			\item Unity-gain frequency $f_1$: $|A_{OL}(f_1)| = 1$ (0\,dB), $f_1 \approx A_{OL} \cdot f_c$ (gain--bandwidth product) -- limits the usable closed-loop bandwidth.
+		\end{itemize}
+		\column{0.58\textwidth}
+		\begin{figure}
 			\centering
-				\includegraphics[width=0.8\linewidth]{fig/lec03/freq_mag.pdf}
-				\caption{Variation of operational amplifier output with frequency: output magnitude (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
+			\includegraphics[width=0.85\linewidth]{fig/lec03/freq_mag.pdf}
+			\caption{Variation of operational amplifier output with frequency: output magnitude (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bode Plot for Op-Amp Phase Response %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bode Plot for Op-Amp Phase Response}
+\begin{frame}
+	\frametitle{Bode Plot for Op-Amp Phase Response}
 	\small
 	\begin{columns}
 		\column{0.35\textwidth}
@@ -1308,33 +1260,10 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Break Frequency and Unity-Gain Frequency %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Break Frequency and Unity-Gain Frequency}
-	\small
-	\textbf{Break frequency} $f_c$:  
-	Point where open-loop gain drops by \SI{3}{\decibel}.
-	\begin{equation}
-		f_c = \frac{1}{2\pi R C} \quad \text{(for internally compensated op-amp)}
-	\end{equation}
-	\textbf{Unity-gain frequency} $f_1$:
-	\begin{equation}
-		A_{OL}(f_1) = 1
-	\end{equation}
-	\begin{equation}
-		f_1 \approx A_{OL} \cdot f_c
-	\end{equation}
-	\textbf{Implications:}
-	\begin{itemize}
-		\item Sets maximum usable closed-loop bandwidth.
-		\item Determines speed/slew performance.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Why Frequency Response Matters in Practice %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Why Frequency Response Matters in Practice}
+\begin{frame}
+	\frametitle{Why Frequency Response Matters in Practice}
 	\small
 	\textbf{1. Stability considerations}
 	\begin{itemize}
@@ -1356,64 +1285,39 @@
 		\item Filtering and layout become critical.
 	\end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Linear Scaling Circuits %%
+%% Linear scaling circuits %%
+%% Author note: consider moving to the start of the op-amp subsection. %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Linear Scaling Circuits} %This should be moved in the start of the lecture of operational amplifiers.
+\begin{frame}
+	\frametitle{Linear Scaling Circuits}
 	\small
-	\begin{itemize}
-		\item Linear scaling circuits produce an output $u_o$ that is a linear function of input $u_i$:
+	\begin{columns}[T,onlytextwidth]
+		\column{0.56\textwidth}
+		Linear scaling circuits produce an output $u_o$ that is a linear function of the input $u_i$:
 		\begin{equation}
-			u_o = f(u_i) = m u_i + c
+			u_o = f(u_i) = m\,u_i + c, \qquad \frac{\Delta u_o}{\Delta u_i} = m
 		\end{equation}
-		where:
+		with the slope or gain $m$ (dimensionless) and the output offset $c$ at zero input (V).
 		\begin{itemize}
-			\item $m$ -- slope or gain (dimensionless)
-			\item $c$ -- output offset at zero input (V)
+			\item Straight-line $u_o$--$u_i$ relationship with positive or negative slope: proportional output change for a change in input.
+			\item No distortion or frequency dependence $\Rightarrow$ purely resistive networks.
+			\item \textbf{Applications:} voltage scaling (amplification/attenuation), impedance conversion, signal addition/subtraction, voltage-to-current and current-to-voltage conversion.
 		\end{itemize}
-		\item Linear behaviour implies:
-		\begin{itemize}
-			\item Proportional change in output for change in input.
-			\item No distortion or frequency dependence (requires purely resistive components).
-		\end{itemize}
-		\item Applications:
-		\begin{itemize}
-			\item Voltage scaling (amplification/attenuation)
-			\item Impedance conversion
-			\item Signal addition/subtraction
-			\item Voltage-to-current or current-to-voltage conversion
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Graphical Interpretation of Linearity %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Graphical Interpretation of Linearity}
-	\small
-	\begin{columns}
-		\column{0.4\textwidth}
-			\begin{itemize}
-				\item Linear circuits maintain a straight-line $u_o$–$u_i$ relationship.
-				\item Examples with positive and negative slopes.
-			\end{itemize}
-			\begin{equation}
-				\frac{\Delta u_o}{\Delta u_i} = m
-			\end{equation}
-		\column{0.6\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.65\linewidth]{fig/lec03/linear_ckts.pdf}
-				\caption{Linear $u_o$ vs. $u_i$ relationships (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
+		\column{0.42\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{fig/lec03/linear_ckts.pdf}
+			\caption{Linear $u_o$ vs.\ $u_i$ relationships (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Design Requirements %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Design Requirements}
+\begin{frame}
+	\frametitle{Design Requirements}
 	\small
 	\begin{itemize}
 		\item Circuit must behave identically over relevant frequency range $\rightarrow$ resistive components essential.
@@ -1432,20 +1336,7 @@
 			Z_{\text{in}} = R_1
 		\end{equation}
 		\item High-precision resistors (0.1\% tolerance or better) recommended for accuracy.
-		\item Common examples are: inverting/non-inverting amplifiers, summing amplifiers, voltage/current converters, buffers that we learnt in previous slides.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary}
-	\begin{itemize}
-		\item In summary, linear scaling circuits using op-amps provide precise control over signal amplitude and offset.
-		\item Proper design ensures minimal loading, high accuracy, and stable operation across the desired frequency range.
-		\item These circuits form the foundation for more complex signal conditioning and processing tasks in instrumentation systems.
-		\item There are topics related to non linear circuits and other advanced op-amp configurations that can be explored at your end based on interest.
-		\item This concludes our discussion on introduction of using operational amplifiers.
+		\item Typical realisations: inverting/non-inverting and summing amplifiers, V--I/I--V converters and buffers (previous slides) -- the basis of filters and transducer amplifiers; non-linear op-amp circuits are left for self-study.
 	\end{itemize}
 \end{frame}
 
@@ -1461,7 +1352,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transducer Amplifiers: Overview %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Transducer Amplifiers: Overview}
+\begin{frame}
+	\frametitle{Transducer Amplifiers: Overview}
 	\textbf{Transducers} convert one form of energy into another. In instrumentation systems, we often use transducers that convert a physical stimulus into an electrical quantity.
 	\vspace{0.2cm}
 	Common resistive transducers:
@@ -1481,7 +1373,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bridge Amplifier %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bridge Amplifier}
+\begin{frame}
+	\frametitle{Bridge Amplifier}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -1505,7 +1398,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bridge Amplifier: Solving for Output %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bridge Amplifier: Solving for Output}
+\begin{frame}
+	\frametitle{Bridge Amplifier: Solving for Output}
 	\begin{columns}
 		\column{0.5\textwidth}
 			At node Y:
@@ -1536,43 +1430,39 @@
 			\textbf{Thus the circuit behaves linearly for small transducer changes.}
 	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Resistance Measurement %%
+%% Resistance measurement %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Resistance Measurement}
-	\begin{columns}
-		\column{0.4\textwidth}
-			\textbf{Goal}: Measure an unknown resistance \(R_X\) in situ, without disturbing electrical environment.
-			\begin{itemize}
-				\item A known reference resistor \(R_s\) is fed from a reference source \(E_{ref}\).
-				\item Current through \(R_s\) is forced through the unknown resistor \(R_X\).
-				\item The op-amp holds point X at virtual earth (0 V), so all current must flow through \(R_X\).
-			\end{itemize}
-			\textbf{Key relationship:}
-			\begin{equation}
-				u_o = \frac{E_{ref} R_X}{R_s}
-			\end{equation}
-			Thus, the amplifier output voltage is \textbf{directly proportional} to the unknown resistance.
-		\column{0.65\textwidth}
-			\vspace{-0.5cm}
-			\begin{figure}
-				\includegraphics[width=0.45\linewidth]{fig/lec03/res_meas.pdf}
-				\caption{Resistance measurement circuit (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
-			\vspace{-0.5cm}
-			\textbf{Advantages}:
-			\begin{itemize}
-			\item Does not disturb existing circuitry connected to \(R_X\).
-			\item Virtual-earth node eliminates errors due to stray capacitances.
-			\end{itemize}
+\begin{frame}
+	\frametitle{Resistance Measurement}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.46\textwidth}
+		\textbf{Goal}: measure an unknown resistance $R_X$ in situ, without disturbing the electrical environment.
+		\begin{itemize}
+			\item A known reference resistor $R_s$ is fed from a reference source $E_{ref}$.
+			\item The op-amp holds point X at virtual earth (0\,V), so the current $E_{ref}/R_s$ must flow through $R_X$.
+		\end{itemize}
+		\textbf{Key relationship:}
+		\begin{equation}
+			u_o = -\frac{E_{ref}}{R_s}\,R_X
+		\end{equation}
+		The output voltage is \textbf{directly proportional} to the unknown resistance.
+		\column{0.52\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.5\linewidth]{fig/lec03/res_meas.pdf}
+			\caption{Resistance measurement circuit (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
+		\footnotesize\textbf{Advantages:} does not disturb existing circuitry connected to $R_X$; the virtual-earth node eliminates errors due to stray capacitances.
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Capacitance Measurement (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Capacitance Measurement (1)}
+\begin{frame}
+	\frametitle{Capacitance Measurement (1)}
 	\begin{columns}
 		\column{0.45\textwidth}
 			\textbf{Goal}: Measure small capacitances while eliminating errors due to stray capacitance to ground.
@@ -1593,7 +1483,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Capacitance Measurement (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Capacitance Measurement (2)}
+\begin{frame}
+	\frametitle{Capacitance Measurement (2)}
 	\textbf{AC gain expression:}
 	\begin{equation}
 		\frac{u_o}{u_i} = \frac{j \omega C_X R_f}{1 + j \omega C_s R_f}
@@ -1608,57 +1499,36 @@
 	\end{equation}
 	\textbf{Important:} Choose \(C_s\) of the same order as \(C_X\) for accuracy.
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Air Speed Measurement (1) %%
+%% Air speed measurement (constant-temperature anemometer) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Air Speed Measurement (1)}
-	\textbf{Principle}: Air flowing over a heated filament changes its resistance. This imbalance is sensed via a bridge and amplified.
-	\begin{columns}
-		\column{0.5\textwidth}
-			Process:
-			\begin{itemize}
-				\item A platinum filament (positive temperature coefficient) is heated by a bias current.
-				\item Cooling airflow reduces filament temperature, causing resistance \(R_f\) to decrease.
-				\item The op-amp adjusts output voltage \(U_{out}\) to restore bridge balance.
-				\item Thus: \textbf{output voltage is proportional to airflow speed}.
-			\end{itemize}
-		\column{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.8\linewidth]{fig/lec03/air_speed_measurement_2.pdf}
-				\caption{Air speed measurement using heated filament and bridge (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
-	\end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Air Speed Measurement (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Air Speed Measurement (2)}
-	\begin{columns}
-		\column{0.5\textwidth}
-			The bridge balance condition:
-			\begin{equation}
-				R_f = \frac{R_1 R_2}{R_3}
-			\end{equation}
-			\textbf{Advantages of constant-temperature anemometry}: 
-			\begin{itemize}
-				\item Rapid response (no thermal lag).
-				\item High sensitivity.
-				\item Good linearity around the operating point.
-			\end{itemize}
-		\column{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.8\linewidth]{fig/lec03/air_speed_measurement_2.pdf}
-				\caption{Air speed measurement using heated filament and bridge (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
+\begin{frame}
+	\frametitle{Air Speed Measurement (Constant-Temperature Anemometer)}
+	\footnotesize
+	\begin{columns}[T,onlytextwidth]
+		\column{0.52\textwidth}
+		\textbf{Principle:} air flowing over a heated filament cools it and changes its resistance; the bridge imbalance is sensed and amplified.
+		\begin{itemize}
+			\item A platinum filament (positive temperature coefficient) is heated by the bridge current.
+			\item Cooling airflow lowers the filament temperature, so $R_f$ decreases.
+			\item The op-amp raises the bridge voltage $U_{out}$ until balance is restored: $R_f = R_1 R_2/R_3$.
+			\item $U_{out}$ rises monotonically but \textbf{non-linearly} with the air speed $v$ (King's law: $U_{out}^2 \approx A + B\,v^{n}$, $n \approx 0.5$) $\Rightarrow$ linearisation/calibration needed.
+		\end{itemize}
+		\textbf{Advantages:} very fast response (the feedback keeps the filament temperature constant and compensates its thermal lag), high sensitivity, good linearity around the operating point.
+		\column{0.46\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.85\linewidth]{fig/lec03/air_speed_measurement_2.pdf}
+			\caption{Air speed measurement using heated filament and bridge (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional Analogue Processing Circuits %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Additional Analogue Processing Circuits}
+\begin{frame}
+	\frametitle{Additional Analogue Processing Circuits}
 	Beyond the circuits studied, many other analogue processing techniques exist:
 	\begin{itemize}
 		\item \textbf{Capacitance multiplication}: simulate large capacitors using small ones + op-amp.
@@ -1682,7 +1552,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is Noise? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{What is Noise?}
+\begin{frame}
+	\frametitle{What is Noise?}
 	\begin{columns}[T]
 		\column{0.5\textwidth}
 			\begin{block}{Definition}
@@ -1705,7 +1576,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Internal vs External Noise %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Internal vs External Noise}
+\begin{frame}
+	\frametitle{Internal vs External Noise}
 	\begin{columns}[T,onlytextwidth]
 		\column{0.45\textwidth}
 			\begin{block}{Internal Noise}
@@ -1725,13 +1597,14 @@
 			\end{block}
 	\end{columns}
 	\vspace{0.2cm}
-	\textbf{Key idea:} External noise can often be reduced by design; internal noise sets the ultimate sensitivity limit.
+	\textbf{Key idea:} external noise can often be reduced by design; internal noise (thermal, shot, flicker) remains even with perfect shielding and sets the ultimate sensitivity limit, i.e., the \textbf{minimum detectable signal}.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Signal-to-Noise Ratio (Linear Form) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Signal-to-Noise Ratio (Linear Form)}
+\begin{frame}
+	\frametitle{Signal-to-Noise Ratio (Linear Form)}
 	\begin{block}{Definition at a given frequency / bandwidth}
 		\begin{equation}
 			\mathrm{SNR} = \frac{S}{N}
@@ -1751,7 +1624,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SNR in Decibels (dB) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{SNR in Decibels (dB)}
+\begin{frame}
+	\frametitle{SNR in Decibels (dB)}
 	\begin{block}{Power ratio to decibels}
 		\begin{equation}
 			\boxed{\mathrm{SNR}_{\mathrm{dB}} = 10\log_{10}\!\left(\frac{S}{N}\right) \unit{dB}}
@@ -1773,7 +1647,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example of SNR Calculation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Example of SNR Calculation}
+\begin{frame}
+	\frametitle{Example of SNR Calculation}
 	Suppose an amplifier input has:
 	\begin{itemize}
 		\item wanted signal power: $S = 3\unit{mW}=3\times10^{-3}\unit{W}$,
@@ -1791,7 +1666,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overview of External Noise Sources %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Overview of External Noise Sources}
+\begin{frame}
+	\frametitle{Overview of External Noise Sources}
 	\begin{itemize}
 	\item External noise includes all unwanted signals \textbf{picked up} from the environment.
 	\item Coupling paths:
@@ -1813,7 +1689,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mains Interference (50/60 Hz Pick-up) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mains Interference (50/60 Hz Pick-up)}
+\begin{frame}
+	\frametitle{Mains Interference (50/60 Hz Pick-up)}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -1838,7 +1715,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Conductive Sheath / Shield Against Mains Pick-up %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Conductive Sheath / Shield Against Mains Pick-up}
+\begin{frame}
+	\frametitle{Conductive Sheath / Shield Against Mains Pick-up}
 	\begin{columns}
 		\column{0.45\textwidth}
 			\begin{itemize}
@@ -1859,7 +1737,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Other Man-made Noise Sources (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Other Man-made Noise Sources (1)}
+\begin{frame}
+	\frametitle{Other Man-made Noise Sources (1)}
 	\begin{itemize}
 		\item Generated by nearby electrical/electronic equipment.
 		\item Examples:
@@ -1883,7 +1762,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Other Man-made Noise Sources (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Other Man-made Noise Sources (2)}
+\begin{frame}
+	\frametitle{Other Man-made Noise Sources (2)}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\textbf{Adjacent Channel Interference}
@@ -1915,7 +1795,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Intermodulation Noise %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Intermodulation Noise}
+\begin{frame}
+	\frametitle{Intermodulation Noise}
 	\begin{itemize}
 		\item Two signals at $f_1$ and $f_2$ passing through a non-linear device produce new frequencies:
 		\begin{equation}
@@ -1934,7 +1815,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Natural Noise Sources %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Natural Noise Sources}
+\begin{frame}
+	\frametitle{Natural Noise Sources}
 	\begin{itemize}
 		\item Predominantly affects radio-frequency and long-distance sensing.
 		\item Two common types:
@@ -1950,67 +1832,37 @@
 		\end{itemize}
 	\end{block}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Suppression Strategies: Big Picture %%
+%% Suppression strategies: shielding %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Suppression Strategies: Big Picture}
-	\begin{itemize}
-		\item External noise suppression depends on:
-		\begin{itemize}
-			\item frequency content of the interference,
-			\item power level of the noise source,
-			\item sensitivity/bandwidth of the measurement chain.
-		\end{itemize}
-		\item Three practical levers:
-		\begin{enumerate}
-			\item \textbf{Shielding},
-			\item \textbf{Good circuit layout},
-			\item \textbf{Eliminating earth loops}.
-		\end{enumerate}
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Suppression Strategies %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Suppression Strategies}
+\begin{frame}
+	\frametitle{Suppression Strategies: Shielding}
+	\small
+	External noise suppression depends on the frequency content and power of the interference and on the sensitivity/bandwidth of the measurement chain. Three practical levers: \textbf{shielding}, \textbf{good circuit layout}, \textbf{eliminating earth loops}.
 	\begin{columns}[T]
 		\column{0.5\textwidth}
-			\begin{itemize}
-				\item \textbf{Electrostatic (capacitive) shielding}:
-				\begin{itemize}
-					\item Use a conductive enclosure tied to earth.
-					\item Provides low-impedance path for displacement currents.
-				\end{itemize}
-				\item \textbf{Magnetic shielding at low frequency}:
-				\begin{itemize}
-					\item Use high-permeability materials (e.g., mu-metal- nickel-iron soft alloy).
-					\item Offers a low-reluctance path to divert interfering flux.
-				\end{itemize}
-				\item \textbf{RF shielding (skin effect)}:
-				\begin{itemize}
-					\item A low-resistance metal shield (Al, Cu, brass).
-					\item Incident RF flux induces eddy currents; their opposing field cancels penetration.
-				\end{itemize}
-			\end{itemize}
+		\begin{itemize}
+			\item \textbf{Electrostatic (capacitive) shielding}: conductive enclosure tied to earth; low-impedance path for displacement currents.
+			\item \textbf{Magnetic shielding at low frequency}: high-permeability materials (e.g., mu-metal, a nickel--iron soft alloy) offer a low-reluctance path that diverts the interfering flux.
+			\item \textbf{RF shielding (skin effect)}: low-resistance metal shield (Al, Cu, brass); induced eddy currents oppose the incident field.
+		\end{itemize}
 		\column{0.45\textwidth}
-			\textbf{Practical Shielding Techniques}
-			\begin{itemize}
-				\item Braided shields or coaxial cables for signal lines.
-				\item Mesh shields can reduce electrostatic noise while staying lightweight.
-				\item Always maintain \textbf{continuous shield connection} to reference (avoid floating ends unless designed as such).
-			\end{itemize}
-			\begin{block}{Pitfall}
-				Multiple shield earth points can create circulating currents (earth loops), re-introducing noise.
-			\end{block}
+		\textbf{Practical shielding techniques}
+		\begin{itemize}
+			\item Braided shields or coaxial cables for signal lines; mesh shields reduce electrostatic noise while staying lightweight.
+			\item Maintain a \textbf{continuous shield connection} to the reference (avoid floating ends unless designed as such).
+		\end{itemize}
+		\begin{block}{Pitfall}
+			Multiple shield earth points can create circulating currents (earth loops), re-introducing noise.
+		\end{block}
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Good Circuit Layout %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Good Circuit Layout}
+\begin{frame}
+	\frametitle{Good Circuit Layout}
 	\begin{itemize}
 		\item Keep mains / high-current tracks \textbf{far from} low-level signal paths.
 		\item Avoid shared routing of power and signal through the same trunking or conduit.
@@ -2025,7 +1877,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Earth Loops (Ground Loops) Concept and Mitigation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Earth Loops (Ground Loops) Concept and Mitigation}
+\begin{frame}
+	\frametitle{Earth Loops (Ground Loops) Concept and Mitigation}
 	\begin{columns}
 		\column{0.6\textwidth}
 			\begin{itemize}
@@ -2052,25 +1905,10 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Why Internal Noise Matters %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Why Internal Noise Matters}
-	\begin{itemize}
-		\item Even with perfect shielding, every resistor, semiconductor, and amplifier generates noise.
-		\item Internal noise sets the ultimate \textbf{minimum detectable signal}.
-		\item We focus on three core types:
-		\begin{enumerate}
-			\item thermal (Johnson) noise,
-			\item shot noise,
-			\item flicker (1/f) noise.
-		\end{enumerate}
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Thermal (Johnson) Noise in Resistors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Thermal (Johnson) Noise in Resistors}
+\begin{frame}
+	\frametitle{Thermal (Johnson) Noise in Resistors}
 	\begin{itemize}
 		\item Caused by random thermal motion of charge carriers.
 		\item Produces a noise voltage with zero mean but non-zero RMS.
@@ -2094,7 +1932,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Thermal Noise: Key Design Insights %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Thermal Noise: Key Design Insights}
+\begin{frame}
+	\frametitle{Thermal Noise: Key Design Insights}
 	\begin{itemize}
 		\item Noise scales with \textbf{temperature}: cooling reduces $E_n$.
 		\item Noise scales with \textbf{resistance}: larger $R$ gives larger noise voltage.
@@ -2110,7 +1949,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Shot Noise in Semiconductors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Shot Noise in Semiconductors}
+\begin{frame}
+	\frametitle{Shot Noise in Semiconductors}
 	\begin{itemize}
 		\item Due to discrete nature or random variations in the flow of charge / carriers crossing junctions.
 		\item Dominant when DC current passes through a diode/transistor junction.
@@ -2133,7 +1973,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Flicker Noise (1/f or Pink Noise) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Flicker Noise (1/f or Pink Noise)}
+\begin{frame}
+	\frametitle{Flicker Noise (1/f or Pink Noise)}
 	\begin{itemize}
 		\item Arises from random trapping/recombination in semiconductors.
 		\item Magnitude increases as frequency decreases.
@@ -2151,7 +1992,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Partition Noise %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Partition Noise}
+\begin{frame}
+	\frametitle{Partition Noise}
 	\begin{itemize}
 		\item Occurs in transistors because emitter current divides randomly between base and collector.
 		\item Can be viewed as an additional internal current-noise source.
@@ -2169,26 +2011,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary}
-	\begin{itemize}
-		\item Noise is the unavoidable unwanted part of any measurement.
-		\item \textbf{SNR} quantifies quality; in dB:
-		$\mathrm{SNR}_{\mathrm{dB}}=10\log_{10}(S/N)$.
-		\item External noise can be reduced through shielding, layout, and ground-loop elimination.
-		\item Internal noise types:
-		\begin{itemize}
-			\item Thermal: $E_n=\sqrt{4k_{\mathrm{B}} T B R}$.
-			\item Shot: $i_n=\sqrt{2eIB}$.
-			\item Flicker: $S_{1/f}(f)\propto 1/f$.
-		\end{itemize}
-		\item Design for low noise means: minimize bandwidth, resistance where possible, and avoid non-linear operation.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Fiters in Measurement Systems- Passive Filters and Active Filters}
+\subsection{Filters in Measurement Systems: Passive and Active Filters}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}
 % 		\begin{center}
@@ -2199,7 +2022,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Passive Filters: Purpose and Types %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Passive Filters: Purpose and Types}
+\begin{frame}
+	\frametitle{Passive Filters: Purpose and Types}
 	\begin{itemize}
 		\item A \textbf{filter} is a network that passes AC signals only over a defined frequency range and attenuates others.
 		\item Widely used in:
@@ -2222,57 +2046,40 @@
 		\end{enumerate}
 	\end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First–Order Passive Low–Pass CR Filter (1) %%
+%% First-order passive low-pass CR filter %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First–Order Passive Low–Pass CR Filter (1)}
-	\begin{columns}
-		\column{0.5\textwidth}
-			\begin{itemize}
-				\item Circuit: series resistor $R$ followed by shunt capacitor $C$.
-				\item Input voltage $u_i$ applied across series ($R$–$C$); output $u_o$ taken across $C$.
-			\end{itemize}
-			\begin{block}{Complex transfer relation}
-				Capacitive reactance:
-				\begin{equation}
-					X_C = \frac{1}{2\pi f C} \quad [\si{\ohm}]
-				\end{equation}
-				Using voltage division in complex form:
-				\begin{equation}
-					u_o = -j\,\frac{X_C}{R - jX_C}\,u_i
-				\end{equation}
-			\end{block}
-		\column{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.7\linewidth]{fig/lec03/first_CR_filter.pdf}
-			\caption{First–order passive low–pass CR filter (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
-	\end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First–Order Passive Low–Pass CR Filter (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First–Order Passive Low–Pass CR Filter (2)}
-	\begin{columns}
-		\column{0.5\textwidth}
-			\begin{itemize}
-				\item At low frequency ($f\to 0$): $X_C\to\infty$, so $u_o \approx u_i$ (pass).
-				\item At high frequency ($f\to\infty$): $X_C\to 0$, so $u_o \approx 0$ (blocked).
-			\end{itemize}
-		\column{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.8\linewidth]{fig/lec03/first_CR_filter.pdf}
-			\caption{First–order passive low–pass CR filter (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
+\begin{frame}
+	\frametitle{First--Order Passive Low--Pass CR Filter}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.52\textwidth}
+		\begin{itemize}
+			\item Circuit: series resistor $R$ followed by shunt capacitor $C$; input $u_i$ across ($R$--$C$), output $u_o$ across $C$.
+		\end{itemize}
+		Capacitive reactance and complex voltage division:
+		\begin{align}
+			X_C &= \frac{1}{2\pi f C} \quad [\si{\ohm}]\\
+			u_o &= -j\,\frac{X_C}{R - jX_C}\,u_i
+		\end{align}
+		\begin{itemize}
+			\item Low frequency ($f\to 0$): $X_C\to\infty$, so $u_o \approx u_i$ (pass).
+			\item High frequency ($f\to\infty$): $X_C\to 0$, so $u_o \approx 0$ (blocked).
+		\end{itemize}
+		\column{0.45\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{fig/lec03/first_CR_filter.pdf}
+			\caption{First--order passive low--pass CR filter (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Low–Pass Magnitude Response and Cut–off Frequency (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Low–Pass Magnitude Response and Cut–off Frequency (1)}
+\begin{frame}
+	\frametitle{Low–Pass Magnitude Response and Cut–off Frequency (1)}
 	From the complex relation:
 	\begin{equation}
 		\left|\frac{u_o}{u_i}\right|
@@ -2299,233 +2106,188 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Low–Pass Magnitude Response and Cut–off Frequency (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Low–Pass Magnitude Response and Cut–off Frequency (2)}
+\begin{frame}
+	\frametitle{Low–Pass Magnitude Response and Cut–off Frequency (2)}
 	\begin{figure}
 		\includegraphics[width=0.75\linewidth]{fig/lec03/gain_phase_first_low_pass.pdf}
 		\caption{First–order passive low–pass CR filter (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
 	\end{figure}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Passive Low–Pass CR Filter (Cascade) (1) %%
+%% Second-order passive low-pass CR filter (cascade) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Passive Low–Pass CR Filter (Cascade) (1)}
-	\begin{itemize}
-		\item A steeper roll–off can be obtained by cascading two first–order sections.
-		\item Example: two identical $CR$ low–pass sections.
-	\end{itemize}
-	\begin{block}{Qualitative behaviour}
+\begin{frame}
+	\frametitle{Second--Order Passive Low--Pass CR Filter (Cascade)}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.46\textwidth}
 		\begin{itemize}
-			\item Each section contributes \(-20\si{\decibel}/\text{decade}\) above its cut–off.
-			\item If both have the same $f_c$, the asymptotic high–frequency slope is
-				\(-40\si{\decibel}/\text{decade}\).
-			\item In practice, the gain in the pass–band is reduced and the transition region is
-				more rounded than the ideal second–order approximation.
+			\item A steeper roll--off is obtained by cascading two first--order sections, e.g., two identical $CR$ low--pass sections.
+			\item Each section contributes $-20$\,dB/decade above its cut--off; with equal $f_c$ the asymptotic slope is $-40$\,dB/decade.
+			\item In practice the second section loads the first: the $-3$\,dB frequency drops well below $f_c$ ($\approx 0.37 f_c$ for two identical unbuffered sections) and the knee is more rounded than an ideal second--order response.
+			\item Cascaded RC sections are simple but give limited control over pass--band flatness (e.g., Butterworth vs.\ Chebyshev characteristics).
 		\end{itemize}
-	\end{block}
-	\begin{itemize}
-		\item Cascaded RC sections are simple but give limited control over pass–band flatness
-			(e.g.\ Butterworth vs.\ Chebyshev characteristics).
-	\end{itemize}
+		\column{0.52\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec03/sec_order_CR_filter.pdf}
+			\caption{Cascaded CR low--pass filter and Bode response (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
+	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Passive Low–Pass CR Filter (Cascade) (2) %%
+%% Second-order low-pass LCR filter (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Passive Low–Pass CR Filter (Cascade) (2)}
-	\begin{figure}
-		\includegraphics[width=0.9\linewidth]{fig/lec03/sec_order_CR_filter.pdf}
-		\caption{Cascaded CR low–pass filter and Bode response (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Low–Pass LCR Filter (RLC Network) (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Low–Pass LCR Filter (RLC Network) (1)}
+\begin{frame}
+	\frametitle{Second--Order Low--Pass LCR Filter (RLC Network) (1)}
 	\begin{itemize}
-		\item Use a series inductor $L$ feeding a parallel $C$–$R$ network (Figure 9.4).
-		\item $L$ and $C$ chosen so that their natural resonant frequency is near the desired cut–off.
-	\end{itemize}
-	\begin{block}{Resonant frequency and damping}
+		\item Series inductor $L$ feeding a parallel $C$--$R$ network.
+		\item $L$ and $C$ set the natural (resonant) frequency near the desired cut--off:
 		\begin{equation}
-			f_0 \approx \frac{1}{2\pi\sqrt{LC}} \quad [\si{\hertz}]
+			f_0 = \frac{1}{2\pi\sqrt{LC}} \quad [\si{\hertz}]
 		\end{equation}
+		\item $R$ (in parallel with $C$) sets the damping ratio $\zeta = \frac{1}{2R}\sqrt{L/C}$:
 		\begin{itemize}
-			\item $R$ controls damping:
-			\begin{itemize}
-				\item Low $R$: \textbf{underdamped} – peaking and ringing.
-				\item Critical $R$: \textbf{critically damped} – fast response without overshoot.
-				\item Very high $R$: \textbf{overdamped} – slow, no overshoot.
-			\end{itemize}
+			\item High $R$ ($\zeta < 1$): \textbf{underdamped} -- peaking and ringing.
+			\item $R = \frac{1}{2}\sqrt{L/C}$ ($\zeta = 1$): \textbf{critically damped} -- fast response without overshoot.
+			\item Low $R$ ($\zeta > 1$): \textbf{overdamped} -- slow, no overshoot.
 		\end{itemize}
-	\end{block}
-	\begin{itemize}
-		\item Advantages: steeper roll–off and adjustable ``knee'' region.
+		\item Advantages: steeper roll--off ($-40$\,dB/decade) and adjustable ``knee'' region.
 		\item Drawbacks: needs an inductor (bulky, lossy, sensitive to magnetic coupling).
 	\end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Low–Pass LCR Filter (RLC Network) (2) %%
+%% Second-order low-pass LCR filter (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Low–Pass LCR Filter (RLC Network) (2)}
+\begin{frame}
+	\frametitle{Second--Order Low--Pass LCR Filter (RLC Network) (2)}
 	\begin{figure}
-		\includegraphics[width=0.9\linewidth]{fig/lec03/LCR_Low_pass.pdf}
-		\caption{LCR low–pass filter and resonance curve (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\centering
+		\begin{circuitikz}[scale=0.8, transform shape, baseline=(current bounding box.center)]
+			\draw (0,2) to[short,o-] (0.4,2) to[L,l=$L$] (2.4,2) to[short,-*] (3,2) to[C,l_=$C$] (3,0)
+				(3,2) to[short,-*] (4.4,2) to[R,l=$R$] (4.4,0)
+				(4.4,2) to[short,-o] (5.2,2)
+				(0,0) to[short,o-*] (3,0) to[short,-*] (4.4,0) to[short,-o] (5.2,0);
+			\draw[->] (0,1.75) -- node[left]{$u_i$} (0,0.25);
+			\draw[->] (5.2,1.75) -- node[right]{$u_o$} (5.2,0.25);
+		\end{circuitikz}
+		\hspace{0.6cm}
+		\begin{tikzpicture}[baseline=(current bounding box.center)]
+			\begin{axis}[width=0.52\textwidth, height=4.6cm, xmode=log, xmin=0.1, xmax=10, ymin=-40, ymax=12,
+				xlabel={$f/f_0$}, ylabel={Gain in dB}, grid=major, legend pos=south west,
+				legend style={font=\tiny}, tick label style={font=\scriptsize}, label style={font=\scriptsize}]
+				\addplot[domain=0.1:10, samples=300, red, thick] {-10*log10((1-x^2)^2 + (2*0.2*x)^2)};
+				\addlegendentry{underdamped, high $R$ ($\zeta = 0.2$)}
+				\addplot[domain=0.1:10, samples=300, magenta, thick] {-10*log10((1-x^2)^2 + (2*1*x)^2)};
+				\addlegendentry{critically damped ($\zeta = 1$)}
+				\addplot[domain=0.1:10, samples=300, blue, thick] {-10*log10((1-x^2)^2 + (2*3*x)^2)};
+				\addlegendentry{overdamped, low $R$ ($\zeta = 3$)}
+			\end{axis}
+		\end{tikzpicture}
+		\caption{LCR low--pass filter and its magnitude response for different damping, $\zeta = \frac{1}{2R}\sqrt{L/C}$ (after \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
 	\end{figure}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First–Order Passive High–Pass CR Filter (1) %%
+%% First-order passive high-pass CR filter %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First–Order Passive High–Pass CR Filter (1)}
-	\begin{itemize}
-		\item High–pass filter obtained by simply \textbf{interchanging} $R$ and $C$ of the low–pass filter.
-		\item Circuit: series capacitor $C$ followed by resistor $R$ to ground; output across $R$.
-	\end{itemize}
-	\begin{block}{Magnitude response}
-		With $X_C = 1/(2\pi f C)$,
-		\begin{equation}
-			\left|\frac{u_o}{u_i}\right|
-			= \frac{R}{\sqrt{R^2 + X_C^2}}
-			= \frac{2\pi f R C}{\sqrt{1 + (2\pi f R C)^2}}
-		\end{equation}
-		Cut–off frequency:
-		\begin{equation}
-			f_c = \frac{1}{2\pi R C} \quad [\si{\hertz}]
-		\end{equation}
-	\end{block}
-	\begin{itemize}
-		\item For $f \ll f_c$: $|u_o/u_i|\approx 0$ (low frequencies blocked).
-		\item For $f \gg f_c$: $|u_o/u_i|\approx 1$ (high frequencies passed).
-		\item Slope is \(+20\si{\decibel}/\text{decade}\) below $f_c$.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First–Order Passive High–Pass CR Filter (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First–Order Passive High–Pass CR Filter (2)}
-	\begin{figure}
-		\includegraphics[width=0.9\linewidth]{fig/lec03/CR_High_Pass.pdf}
-		\caption{CR high–pass filter circuit (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Band–Pass LCR Filter (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Band–Pass LCR Filter (1)}
-	\begin{itemize}
-		\item Use a series $C$–$L$–$R$ network.
-		\item At resonance, the series $LC$ combination has minimal impedance, so the output across $R$ peaks.
-	\end{itemize}
-	\begin{block}{Key parameters}
+\begin{frame}
+	\frametitle{First--Order Passive High--Pass CR Filter}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.56\textwidth}
 		\begin{itemize}
-			\item Resonant (centre) frequency:
-			\begin{equation}
-				f_0 = \frac{1}{2\pi\sqrt{LC}} \quad [\si{\hertz}]
-			\end{equation}
-			\item Lower and upper \(-3\si{\decibel}\) cut–off frequencies: $f_{cl}$ and $f_{cu}$.
-			\item Bandwidth:
-			\begin{equation}
-				B = f_{cu} - f_{cl} \quad [\si{\hertz}]
-			\end{equation}
-			\item Quality factor:
-			\begin{equation}
-				Q = \frac{f_0}{B}
-			\end{equation}
+			\item Obtained by simply \textbf{interchanging} $R$ and $C$ of the low--pass filter: series capacitor $C$, resistor $R$ to ground, output across $R$.
 		\end{itemize}
-	\end{block}
-	\begin{itemize}
-		\item Higher $Q$ $\Rightarrow$ narrower pass–band and more selective filter.
-		\item Used for channel selection, tuned amplifiers, and sensor resonance shaping.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Band–Pass LCR Filter (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Band–Pass LCR Filter (2)}
-	\begin{figure}
-		\includegraphics[width=0.8\linewidth]{fig/lec03/LCR_Band_Pass.pdf}
-		\caption{LCR band–pass filter and frequency response (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Band–Stop (Notch) LCR Filter (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Band–Stop (Notch) LCR Filter (1)}
-	\begin{itemize}
-		\item Parallel $L$–$C$ network in series with $R$.
-		\item At resonance, the parallel $LC$ presents a very high impedance, so almost no signal reaches the output.
-	\end{itemize}
-	\vspace{-0.5cm}
-	\begin{block}{Notch behaviour}
+		With $X_C = 1/(2\pi f C)$:
+		\begin{align}
+			\left|\frac{u_o}{u_i}\right| &= \frac{R}{\sqrt{R^2 + X_C^2}} = \frac{2\pi f R C}{\sqrt{1 + (2\pi f R C)^2}}\\
+			f_c &= \frac{1}{2\pi R C} \quad [\si{\hertz}]
+		\end{align}
 		\begin{itemize}
-			\item Resonant (notch) frequency:
-			\begin{equation}
-				f_0 = \frac{1}{2\pi\sqrt{LC}} \quad [\si{\hertz}]
-			\end{equation}
-			\item For $f \approx f_0$: output is strongly attenuated (deep notch).
-			\item For $f \ll f_0$ or $f \gg f_0$: the circuit behaves approximately like a simple low–pass or high–pass path, so the signal is transmitted.
+			\item $f \ll f_c$: $|u_o/u_i| \approx 0$ (low frequencies blocked); slope $+20$\,dB/decade below $f_c$.
+			\item $f \gg f_c$: $|u_o/u_i| \approx 1$ (high frequencies passed).
 		\end{itemize}
-	\end{block}
-	\begin{itemize}
-		\item Typical use: rejection of a single interfering tone (e.g.\ \SI{50}{\hertz} mains hum).
-	\end{itemize}
+		\column{0.42\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec03/CR_High_Pass.pdf}
+			\caption{CR high--pass filter circuit (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
+	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second–Order Band–Stop (Notch) LCR Filter (2) %%
+%% Second-order band-pass LCR filter %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second–Order Band–Stop (Notch) LCR Filter (2)}
-	\begin{figure}
-		\includegraphics[width=0.8\linewidth]{fig/lec03/LCR_Notch.pdf}
-		\caption{LCR band–stop (notch) filter and frequency response (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-	\end{figure}
+\begin{frame}
+	\frametitle{Second--Order Band--Pass LCR Filter}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.54\textwidth}
+		\begin{itemize}
+			\item Series $C$--$L$--$R$ network: at resonance the series $LC$ combination has minimal impedance, so the output across $R$ peaks.
+			\item Resonant (centre) frequency $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$.
+			\item Lower and upper $-3$\,dB cut--off frequencies $f_{cl}$ and $f_{cu}$; bandwidth $B = f_{cu} - f_{cl}$.
+			\item Quality factor $Q = f_0/B$: higher $Q$ $\Rightarrow$ narrower pass--band and more selective filter.
+			\item Used for channel selection, tuned amplifiers, and sensor resonance shaping.
+		\end{itemize}
+		\column{0.44\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec03/LCR_Band_Pass.pdf}
+			\caption{LCR band--pass filter and frequency response (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
+	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: Passive Filters and Their Limitations (1) %%
+%% Second-order band-stop (notch) LCR filter %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary: Passive Filters and Their Limitations (1)}
+\begin{frame}
+	\frametitle{Second--Order Band--Stop (Notch) LCR Filter}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.54\textwidth}
+		\begin{itemize}
+			\item Parallel $L$--$C$ network in series with $R$: at resonance the parallel $LC$ presents a very high impedance, so almost no signal reaches the output.
+			\item Resonant (notch) frequency $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$.
+			\item $f \approx f_0$: output strongly attenuated (deep notch).
+			\item $f \ll f_0$ or $f \gg f_0$: the $L$ or the $C$ branch conducts, so the signal is transmitted.
+			\item Typical use: rejection of a single interfering tone (e.g., \SI{50}{\hertz} mains hum).
+		\end{itemize}
+		\column{0.44\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec03/LCR_Notch.pdf}
+			\caption{LCR band--stop (notch) filter and frequency response (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
+	\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Passive filters: summary and limitations %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Passive Filters: Summary and Limitations}
+	\small
 	\begin{block}{Four basic passive filter types}
 		\begin{itemize}
-			\item Low–pass, high–pass, band–pass, band–stop.
-			\item Built from combinations of \textbf{R}, \textbf{L}, \textbf{C} elements.
-			\item First–order and second–order sections can be cascaded to obtain desired shapes.
+			\item Low--pass, high--pass, band--pass, band--stop -- built from $R$, $L$, $C$; first-- and second--order sections can be cascaded.
+			\item Multi--section networks approximate standard responses (Butterworth, Bessel, Chebyshev, Cauer), trading pass--band flatness, transition sharpness and phase/step response.
 		\end{itemize}
 	\end{block}
-	\begin{block}{Higher–order and named responses}
+	\begin{block}{Practical limitations}
 		\begin{itemize}
-			\item By choosing component values appropriately in multi–section networks, one can approximate
-					standard responses: Butterworth, Bessel, Chebyshev, Cauer, etc.
-			\item These shapes trade off pass–band flatness, transition sharpness, and phase/step response.
+			\item Inductors are bulky, heavy, lossy and radiate magnetic fields (coupling/EMI issues).
+			\item Component tolerances and loading shift the cut--off and detune the filter.
+			\item Passive networks provide no power gain -- they cannot amplify the signal.
 		\end{itemize}
 	\end{block}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: Passive Filters and Their Limitations (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary: Passive Filters and Their Limitations (2)}
-	\begin{block}{Practical limitations of passive filters}
-		\begin{itemize}
-			\item Inductors are bulky, heavy, lossy, and radiate magnetic fields (coupling/EMI issues).
-			\item Component tolerances and loading can shift the cut–off and detune the filter.
-			\item Passive networks cannot provide voltage or current gain; they only attenuate.
-		\end{itemize}
-	\end{block}
-	\textbf{Motivation for next topic:} \alert{Active filters} using operational amplifiers overcome many of these limitations while implementing the same transfer functions.
+	\textbf{Motivation for next topic:} \alert{active filters} with operational amplifiers overcome many of these limitations while implementing the same transfer functions.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Active Filters: Motivation and Basic Idea %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Active Filters: Motivation and Basic Idea}
+\begin{frame}
+	\frametitle{Active Filters: Motivation and Basic Idea}
 	\begin{itemize}
 		\item \textbf{Filter goal:} shape the frequency content of an analogue signal
 				(noise rejection, anti–aliasing, channel selection, etc.).
@@ -2552,251 +2314,96 @@
 	% \fbox{\parbox[c][2.3cm][c]{0.9\linewidth}{\centering
 	% Insert generic \emph{active filter block diagram}: source $\rightarrow$ active network $\rightarrow$ load}}
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Second-Order Active Filter with Emitter Follower %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Second-Order Active Filter with Emitter Follower}
-	% \begin{columns}
-		% \column{0.6\textwidth}
-			% \begin{itemize}
-			%   \item Start from a \textbf{passive} second‐order low–pass $CR$ filter
-			%         (two cascaded first–order sections).
-			%   \item Add an \textbf{emitter follower} to buffer the $CR$ network:
-			%   	\begin{itemize}
-			%       	\item High input impedance at the transistor base.
-			%           \item Low output impedance at the emitter $\rightarrow$ drives load
-			%                 without disturbing filter characteristics.
-			%       \end{itemize}
-			%   \item Top figure: two $CR$ sections followed by emitter follower.
-			%       \begin{itemize}
-			%           \item Cheap implementation but often \textbf{overdamped}
-			%                 (highly smoothed knee, poor selectivity).
-			%       \end{itemize}
-			% \end{itemize}
-		% \column{0.4\textwidth}
-			% \begin{figure}
-			%     \includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
-			%     \caption{Second–order active low–pass filters using
-			%     transistor emitter follower for buffering}
-			% \end{figure}
-	% \end{columns}
-% \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Second-Order Active Filter with Emitter Follower %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Second-Order Active Filter with Emitter Follower}
-	% \begin{columns}
-		% \column{0.6\textwidth}
-			% \begin{itemize}
-				% \item Below figure: introduces \textbf{positive feedback} from emitter to
-				% the junction between $C_1$ and $C_2$ (``bootstrapping'').
-					% \begin{itemize}
-					% 	\item Near cut–off frequency, positive feedback partially cancels
-					%                 damping and sharpens the knee.
-					%	\item At low frequencies, $C_1$ reactance is large 
-					%                 $\Rightarrow$ feedback effect small.
-					%	\item At high frequencies, $C_2$ reactance becomes small
-					%                 $\Rightarrow$ signal leaks to earth and is attenuated.
-					% \end{itemize}
-				% \item Product $R_1 C_1$ and $R_2 C_2$ largely sets $f_c$;
-				%         ratio $C_1/C_2$ controls damping (under/over–damped behaviour).
-			% \end{itemize}
-		% \column{0.4\textwidth}
-			% \begin{figure}
-			% 	\includegraphics[width=0.9\linewidth]{fig/lec03/Sec_order_active.pdf}
-			%   \caption{Second–order active low–pass filters using
-			%     transistor emitter follower for buffering}
-			% \end{figure}
-	% \end{columns}
-% \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First-Order Active Low-Pass Filter (Op-Amp) (1) %%
+%% First-order active low-pass filter %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First-Order Active Low-Pass Filter (Op-Amp) (1)}
-	\begin{columns}
-		\column{0.6\textwidth}
-			\begin{itemize}
-				\item Realised by placing a \textbf{single $CR$ network} in the op‐amp
-					feedback path.
-				\item For the inverting configuration:
-				\begin{itemize}
-					\item Input resistor $R$ from source $u_i$ to inverting node.
-					\item Feedback branch: parallel connection of $R$ and $C$.
-					\item Non‐inverting input at reference (typically 0 V).
-				\end{itemize}
-				\item Closed‐loop transfer function (magnitude response):
-					\begin{equation}
-						\frac{u_o}{u_i(j f)} 
-						= \frac{1}{1 + j \dfrac{f}{f_c}}
-					\end{equation}
-					with
-					\begin{equation}
-						f_c = \frac{1}{2\pi C R} \quad [\text{Hz}].
-					\end{equation}
-			\end{itemize}
-		\column{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.9\linewidth]{fig/lec03/inv_filter.pdf}
-				\caption{First–order active low–pass filter using op‐amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
+\begin{frame}
+	\frametitle{First-Order Active Low-Pass Filter (Op-Amp)}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.54\textwidth}
+		\begin{itemize}
+			\item A single $CR$ network in the feedback path of an inverting amplifier: input resistor $R$ from $u_i$ to the inverting node, feedback $R \parallel C$, non-inverting input at 0\,V.
+		\end{itemize}
+		Closed-loop transfer function:
+		\begin{equation}
+			\frac{u_o}{u_i}(jf) = -\frac{1}{1 + j\,f/f_c}, \qquad f_c = \frac{1}{2\pi C R}
+		\end{equation}
+		\begin{itemize}
+			\item $f \ll f_c$: $|u_o/u_i| \approx 1$ (0\,dB); $f = f_c$: $1/\sqrt{2}$ ($-3$\,dB); $f \gg f_c$: $\propto 1/f$ ($-20$\,dB/decade).
+			\item Phase (in addition to the inversion): $-\tan^{-1}(f/f_c)$, i.e., $0^\circ$ at low $f$, $-45^\circ$ at $f_c$, $-90^\circ$ at high $f$.
+		\end{itemize}
+		\column{0.44\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{fig/lec03/inv_filter.pdf}
+			\caption{First--order active low--pass filter using op-amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
 	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First-Order Active Low-Pass Filter (Op-Amp) (2) %%
+%% First-order active high-pass filter %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First-Order Active Low-Pass Filter (Op-Amp) (2)}
-	\begin{columns}
-		\column{0.6\textwidth}
-			\begin{itemize}
-				\item \textbf{Frequency behaviour:}
-				\begin{itemize}
-					\item $f \ll f_c$: $|u_o/u_i| \approx 1$ (pass–band, $\approx 0$ dB).
-					\item $f = f_c$: $|u_o/u_i| = 1/\sqrt{2} \approx 0.707$ ($-3$ dB point).
-					\item $f \gg f_c$: $|u_o/u_i| \propto 1/f$ (slope $-20$ dB/decade).
-				\end{itemize}
-				\item Phase shift:
-				\begin{equation}
-					\angle \frac{u_o}{u_i} = -\tan^{-1}\!\left(\frac{f}{f_c}\right)
-				\end{equation}
-				$\rightarrow$ $0^\circ$ at low $f$, $-45^\circ$ at $f_c$, $-90^\circ$ at high $f$.
-			\end{itemize}
-		\column{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.9\linewidth]{fig/lec03/inv_filter.pdf}
-				\caption{First–order active low–pass filter using op‐amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
+\begin{frame}
+	\frametitle{First-Order Active High-Pass Filter (Op-Amp)}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.54\textwidth}
+		\begin{itemize}
+			\item Swap $R$ and $C$ in the input branch: capacitor $C$ in series with the input, resistor $R$ to the virtual earth; resistive feedback $R$.
+		\end{itemize}
+		Idealised transfer function:
+		\begin{equation}
+			\frac{u_o}{u_i}(jf) = -\frac{j\,f/f_c}{1 + j\,f/f_c}, \qquad f_c = \frac{1}{2\pi C R}
+		\end{equation}
+		\begin{itemize}
+			\item $f \ll f_c$: $|u_o/u_i| \approx f/f_c$ (stop--band); $f = f_c$: $-3$\,dB; $f \gg f_c$: $\approx 1$ (0\,dB).
+			\item Phase (in addition to the inversion): $+\tan^{-1}(f_c/f)$, i.e., $+90^\circ$ at very low $f$, $+45^\circ$ at $f_c$, $0^\circ$ at high $f$.
+			\item The input capacitor blocks DC and slow drifts -- useful for removing offsets.
+		\end{itemize}
+		\column{0.44\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{fig/lec03/op_amp_high_pass.pdf}
+			\caption{First--order active high--pass filter using op-amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
 	\end{columns}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First-Order Active High-Pass Filter (Op-Amp) (1) %%
+%% Second-order active low- and high-pass filters %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First-Order Active High-Pass Filter (Op-Amp) (1)}
-	\begin{columns}
-		\column{0.6\textwidth}
-			\begin{itemize}
-				\item Swap the positions of $R$ and $C$ in the input branch:
-					\begin{itemize}
-						\item Capacitor $C$ in series with the input signal.
-						\item Resistor $R$ to the virtual earth node.
-						\item Feedback is resistive so that high frequencies pass.
-					\end{itemize}
-				\item Idealised transfer function:
-					\begin{equation}
-						\frac{u_o}{u_i(j f)} 
-							= \frac{j\,f/f_c}{1 + j\,f/f_c},
-						\qquad
-						f_c = \frac{1}{2\pi C R}.
-					\end{equation}
-			\end{itemize}
-		\column{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.9\linewidth]{fig/lec03/op_amp_high_pass.pdf}
-				\caption{First–order active high–pass filter using op‐amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
-	\end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% First-Order Active High-Pass Filter (Op-Amp) (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{First-Order Active High-Pass Filter (Op-Amp) (2)}
-	\begin{columns}
-		\column{0.6\textwidth}
-			\begin{itemize}
-				\item \textbf{Frequency behaviour:}
-					\begin{itemize}
-						\item $f \ll f_c$: $|u_o/u_i| \approx f/f_c$ 
-							(strong attenuation of low frequencies; stop–band).
-						\item $f = f_c$: $|u_o/u_i| = 1/\sqrt{2}$ ($-3$ dB point).
-						\item $f \gg f_c$: $|u_o/u_i| \approx 1$ (flat pass–band, $0$ dB).
-					\end{itemize}
-				\item Phase shift:
-					\begin{equation}
-						\angle \frac{u_o}{u_i} = +\tan^{-1}\!\left(\frac{f_c}{f}\right)
-					\end{equation}
-					$\rightarrow$ $+90^\circ$ at very low $f$, $+45^\circ$ at $f_c$, $0^\circ$ at high $f$.
-				\item Practical note: at very low frequencies the input capacitor
-					blocks DC and slow drifts, useful for removing offset or hum.
-			\end{itemize}
-		\column{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.9\linewidth]{fig/lec03/op_amp_high_pass.pdf}
-				\caption{First–order active high–pass filter using op‐amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
-	\end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second-Order Active Low- and High-Pass Filters (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second-Order Active Low- and High-Pass Filters (1)}
-	\begin{columns}
-		\column{0.6\textwidth}
-			\begin{itemize}
-				\item By \textbf{adding a second $CR$ branch} and using appropriate
-				feedback, we obtain a \textbf{second–order} response:
-				\begin{itemize}
-					\item Low–pass: two frequency–selective elements in the feedback.
-					\item High–pass: dual structure with series $C$ and parallel $R$.
-				\end{itemize}
-				\item Normalised low–pass transfer function (Butterworth choice):
-				\begin{equation}
-					\frac{u_o}{u_i(j f)} =
-					\frac{1}{1 - \left(\frac{f}{f_c}\right)^2 
-					+ \sqrt{2}\,j\left(\frac{f}{f_c}\right)}.
-				\end{equation}
-			\end{itemize}
-		\column{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.9\linewidth]{fig/lec03/sec_order_high_pass.pdf}
-				\caption{Second–order active low–pass filters using op‐amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
-	\end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Second-Order Active Low- and High-Pass Filters (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Second-Order Active Low- and High-Pass Filters (2)}
-	\begin{columns}
-		\column{0.6\textwidth}
-			\begin{itemize}
-				\item Magnitude:
-				\begin{equation}
-					\left|\frac{u_o}{u_i}\right|
-					= \frac{1}{
-						\sqrt{\left[1 - \left(\frac{f}{f_c}\right)^2\right]^2
-								+ 2\left(\frac{f}{f_c}\right)^2}
-						}.
-				\end{equation}
-				\item \textbf{Properties:}
-				\begin{itemize}
-					\item Flat pass–band (Butterworth) with no ripple.
-					\item Slope in stop–band: $-40$ dB/decade (twice first–order).
-					\item ``Knee'' sharpness and damping determined by ratio of
-						capacitor and resistor values.
-				\end{itemize}
-				\item High–pass version has a dual transfer function with
-					$(f/f_c)$ in the numerator; its stop–band and pass–band
-					are interchanged.
-			\end{itemize}
-		\column{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.9\linewidth]{fig/lec03/sec_order_high_pass.pdf}
-				\caption{Second–order active low–pass filters using op‐amp (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-			\end{figure}
+\begin{frame}
+	\frametitle{Second-Order Active Low- and High-Pass Filters}
+	\footnotesize
+	\begin{columns}[T,onlytextwidth]
+		\column{0.54\textwidth}
+		\begin{itemize}
+			\item Adding a second $CR$ branch with appropriate feedback gives a \textbf{second--order} response (low--pass: two frequency--selective elements; high--pass: dual structure).
+		\end{itemize}
+		Normalised low--pass transfer function (Butterworth):
+		\begin{align}
+			\frac{u_o}{u_i}(jf) &= \frac{1}{1 - (f/f_c)^2 + \sqrt{2}\,j\,(f/f_c)}\\
+			\left|\frac{u_o}{u_i}\right| &= \frac{1}{\sqrt{1 + (f/f_c)^4}}
+		\end{align}
+		\begin{itemize}
+			\item Flat pass--band without ripple; stop--band slope $-40$\,dB/decade.
+			\item Knee sharpness and damping are set by the capacitor and resistor ratios.
+			\item The high--pass version has $(jf/f_c)^2$ in the numerator: pass-- and stop--band are interchanged.
+		\end{itemize}
+		\column{0.44\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[height=0.56\textheight]{fig/lec03/sec_order_high_pass.pdf}
+			\caption{Second--order active low-- and high--pass filters using op-amps (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
 	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Normalisation and Scaling of Active Filters %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Normalisation and Scaling of Active Filters}
+\begin{frame}
+	\frametitle{Normalisation and Scaling of Active Filters}
 	\begin{itemize}
 	\item Start from a \textbf{single–pole} active low–pass filter:
 		\begin{equation}
@@ -2832,7 +2439,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Active Filter Design: Summary for Practice %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Active Filter Design: Summary for Practice}
+\begin{frame}
+	\frametitle{Active Filter Design: Summary for Practice}
 	\begin{itemize}
 		\item \textbf{Step 1:} Choose required filter \emph{type} and \emph{order}
 			(low–pass, high–pass, band–pass, band–stop; first or second order, etc.).
@@ -2870,7 +2478,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Analogue and Digital Conversions: Motivation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Analogue and Digital Conversions: Motivation}
+\begin{frame}
+	\frametitle{Analogue and Digital Conversions: Motivation}
 	\begin{columns}
 		\column{0.6\textwidth}
 			\begin{itemize}
@@ -2902,7 +2511,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Typical Analogue--Digital Control Loop %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Typical Analogue--Digital Control Loop}
+\begin{frame}
+	\frametitle{Typical Analogue--Digital Control Loop}
 	\begin{itemize}
 		\item \textbf{Transducer sensor} converts physical quantity (force, \dots) to analogue voltage or current.
 		\item \textbf{ADC} periodically samples the analogue signal and produces a digital word for the microcomputer.
@@ -2927,7 +2537,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sampling of the Analogue Input %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Sampling of the Analogue Input}
+\begin{frame}
+	\frametitle{Sampling of the Analogue Input}
 	\begin{columns}
 		\column{0.6\textwidth}
 			\begin{itemize}
@@ -2952,7 +2563,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Nyquist Sampling Theorem and Practical Rule %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Nyquist Sampling Theorem and Practical Rule}
+\begin{frame}
+	\frametitle{Nyquist Sampling Theorem and Practical Rule}
 	\begin{block}{Nyquist Sampling Theorem}
 		If the highest frequency present in the analogue signal is $f_{\max}$, then:
 		\begin{equation}
@@ -2971,44 +2583,36 @@
 		\item If the sampling rate is too low, \textbf{aliasing} occurs.
 	\end{itemize}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Aliasing: When Sampling is Too Slow (1) %%
+%% Aliasing: when sampling is too slow %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Aliasing: When Sampling is Too Slow (1)}
-	\begin{itemize}
-		\item Aliasing occurs when $f_s < 2 f_{\max}$.
-		\item High-frequency components are \textbf{misinterpreted} as lower frequency signals in the sampled data.
-		\item Figure shows:
+\begin{frame}
+	\frametitle{Aliasing: When Sampling is Too Slow}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.6\textwidth}
 		\begin{itemize}
-			\item (a) triangular wave of $8\,$kHz sampled at only $10\,$kHz:
-					apparent digital waveform has a lower frequency (alias).
-			\item (b) two different analogue sinusoids A and B generating the same digitised sample sequence C.
+			\item Aliasing occurs when $f_s < 2 f_{\max}$: high-frequency components are \textbf{misinterpreted} as lower-frequency signals.
+			\item Figure: (a) an 8\,kHz triangular wave sampled at only 10\,kHz appears as a low-frequency alias; (b) two different sinusoids A and B generate the same digitised sample sequence C.
+			\item Result: the sampled sequence contains \textbf{false frequency content} and cannot uniquely represent the original waveform.
 		\end{itemize}
-		\item Result: the discrete-time representation contains \textbf{false frequency content} and cannot uniquely represent the original waveform.
-	\end{itemize}
-	\begin{block}{Anti-aliasing}
-		\begin{itemize}
-			\item Use an \textbf{analogue low-pass filter} before the ADC input.
-			\item Limit input spectrum to below $f_s/2$ to prevent high-frequency components from folding into the band of interest.
-		\end{itemize}
-	\end{block}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Aliasing: When Sampling is Too Slow (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Aliasing: When Sampling is Too Slow (2)}
-	\begin{figure}
-		\includegraphics[width=0.35\linewidth]{fig/lec03/anti_alia.pdf}
-		\caption{Aliasing of a wave sampled too slowly (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-	\end{figure}
+		\begin{block}{Anti-aliasing}
+			Use an \textbf{analogue low-pass filter} before the ADC input to limit the input spectrum to below $f_s/2$, so that no high-frequency components fold into the band of interest.
+		\end{block}
+		\column{0.38\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[height=0.5\textheight]{fig/lec03/anti_alia.pdf}
+			\caption{Aliasing of a wave sampled too slowly (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sample-and-Hold Circuit: Why It Is Needed (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Sample-and-Hold Circuit: Why It Is Needed (1)}
+\begin{frame}
+	\frametitle{Sample-and-Hold Circuit: Why It Is Needed (1)}
 	\begin{itemize}
 		\item Practical ADCs require a \textbf{constant input voltage} during the conversion time.
 		\item A \textbf{sample-and-hold} (S/H) circuit:
@@ -3031,7 +2635,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sample-and-Hold Circuit: Why It Is Needed (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Sample-and-Hold Circuit: Why It Is Needed (2)}
+\begin{frame}
+	\frametitle{Sample-and-Hold Circuit: Why It Is Needed (2)}
 	\begin{figure}
 		\includegraphics[width=0.5\linewidth]{fig/lec03/sample_hold.pdf}
 		\caption{Sample-and-hold timing diagram (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
@@ -3041,7 +2646,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Quantisation in an $N$-bit ADC %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Quantisation in an $N$-bit ADC}
+\begin{frame}
+	\frametitle{Quantisation in an $N$-bit ADC}
 	\begin{itemize}
 		\item After sampling, each analogue value must be mapped to one of $2^N$ discrete \textbf{quantisation levels}.
 		\item Example:
@@ -3068,7 +2674,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Quantisation in an $N$-bit ADC %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Quantisation Error and Resolution Examples}
+\begin{frame}
+	\frametitle{Quantisation Error and Resolution Examples}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -3096,7 +2703,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Quantisation Noise (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Quantisation Noise (1)}
+\begin{frame}
+	\frametitle{Quantisation Noise (1)}
 	\begin{itemize}
 		\item The analogue signal is continuous; the quantised version has \textbf{discrete steps}.
 		\item Figure illustrates:
@@ -3119,7 +2727,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Quantisation Noise (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Quantisation Noise (2)}
+\begin{frame}
+	\frametitle{Quantisation Noise (2)}
 	\begin{figure}
 		\includegraphics[width=0.25\linewidth]{fig/lec03/quant_noise.pdf}
 		\caption{Quantisation noise due to finite resolution (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
@@ -3129,7 +2738,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Digital-to-Analogue Conversion (DAC): Overview %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Digital-to-Analogue Conversion (DAC): Overview}
+\begin{frame}
+	\frametitle{Digital-to-Analogue Conversion (DAC): Overview}
 	\begin{itemize}
 		\item DAC performs the \textbf{reverse} of ADC: converts digital word to analogue output voltage or current.
 		\item Widely used for:
@@ -3154,89 +2764,51 @@
 		\end{itemize}
 	\end{block}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Types of DAC: Weighted Resistor DAC: Principle (1) %%
+%% Weighted resistor DAC: principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of DAC: Weighted Resistor DAC: Principle (1)}
-	\begin{itemize}
-		\item Consider the 4-bit DAC of figure using an op-amp summing amplifier.
-		\item Each digital input bit controls a switch connecting either:
-	\begin{itemize}
-		\item reference voltage $U_R$ (logic 1), or
-		\item ground (logic 0)
-	\end{itemize}
-		to a resistor branch.
-		\item Resistors are weighted: $R,\,2R,\,4R,\,8R$.
-		\item Currents $I_1$ to $I_4$ from each branch sum at the op-amp input node $U_X$ (virtual earth).
-	\end{itemize}
-	\begin{block}{Current and Output Voltage}
-		For a given digital input pattern:
-		\begin{equation}
-			I_f = I_1 + I_2 + I_3 + I_4
-		\end{equation}
-		\begin{equation}
-			u_o = I_f R_f
-		\end{equation}
-		where $R_f$ is the feedback resistor (often chosen as $8R$ in the example to give convenient scaling).
-	\end{block}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Types of DAC: Weighted Resistor DAC: Principle (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of DAC: Weighted Resistor DAC: Principle (2)}
-	\begin{figure}  
-		\includegraphics[width=0.7\linewidth]{fig/lec03/weight_res_DAC.pdf}
-		\caption{4-bit weighted resistor DAC using op-amp summing amplifier (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Worked Example: 4-bit Weighted Resistor DAC (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Worked Example: 4-bit Weighted Resistor DAC (1)}
-	\textbf{Example:}
-	\begin{itemize}
-		\item Resistor values: $R,\,2R,\,4R,\,8R$.
-		\item Feedback resistor: $R_f = 8R$.
-		\item Reference voltage: $U_R$.
-		\item Digital input word: $1010$ (MSB to LSB).
-	\end{itemize}
-	\begin{block}{Step 1: Determine Branch Currents}
+\begin{frame}
+	\frametitle{Types of DAC: Weighted Resistor DAC: Principle}
+	\small
+	\begin{columns}[T,onlytextwidth]
+		\column{0.52\textwidth}
 		\begin{itemize}
-			\item Bits 1 and 3 are 1; bits 2 and 4 are 0.
-			\item Therefore:
-			\begin{equation}
-				I_1 = \frac{U_R}{R}, \quad
-				I_3 = \frac{U_R}{4R}, \quad
-				I_2 = I_4 = 0
-			\end{equation}
-			\item Total current:
-			\begin{equation}
-				I_f = I_1 + I_2 + I_3 + I_4 = \frac{U_R}{R} + \frac{U_R}{4R}
-					= \frac{5U_R}{4R}
-			\end{equation}
+			\item 4-bit DAC with an op-amp summing amplifier.
+			\item Each bit controls a switch connecting its resistor branch either to the reference voltage $U_R$ (logic 1) or to ground (logic 0).
+			\item Binary-weighted resistors: $R$ (MSB), $2R$, $4R$, $8R$ (LSB).
+			\item The branch currents $I_1 \ldots I_4$ sum at the inverting node $U_X$ (virtual earth):
 		\end{itemize}
-	\end{block}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Worked Example: 4-bit Weighted Resistor DAC (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Worked Example: 4-bit Weighted Resistor DAC (2)}
-	\begin{block}{Step 2: Output Voltage}
 		\begin{equation}
-			u_o = I_f R_f = \frac{5U_R}{4R} \times 8R = 10 U_R
+			I_f = I_1 + I_2 + I_3 + I_4, \qquad u_o = -I_f R_f
 		\end{equation}
-	\end{block}
-	\textbf{Comment:} extending this approach to 8 or 12 bits requires many precise resistor values, which is why practical DACs prefer the R--2R ladder implementation.
+		Feedback resistor $R_f$, often $8R$ for convenient scaling: $|u_o| = D \cdot U_R$ for the input word $D$.
+		\column{0.46\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{fig/lec03/weight_res_DAC.pdf}
+			\caption{4-bit weighted resistor DAC using op-amp summing amplifier (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
+		\end{figure}
+	\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Worked example: 4-bit weighted resistor DAC %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Worked Example: 4-bit Weighted Resistor DAC}
+	\textbf{Given:} resistors $R, 2R, 4R, 8R$; feedback resistor $R_f = 8R$; reference voltage $U_R$; input word $1010$ (MSB to LSB) $\Rightarrow$ bits 1 and 3 are 1, bits 2 and 4 are 0.
+	\begin{align}
+		I_1 &= \frac{U_R}{R}, \quad I_3 = \frac{U_R}{4R}, \quad I_2 = I_4 = 0\\
+		I_f &= I_1 + I_2 + I_3 + I_4 = \frac{U_R}{R} + \frac{U_R}{4R} = \frac{5U_R}{4R}\\
+		u_o &= -I_f R_f = -\frac{5U_R}{4R} \cdot 8R = -10\,U_R \qquad (1010_2 = 10)
+	\end{align}
+	\textbf{Comment:} extending this approach to 8 or 12 bits requires many precise resistor values over a wide range, which is why practical DACs prefer the R--2R ladder implementation.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of DAC: R--2R Ladder DAC %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of DAC: R--2R Ladder DAC}
+\begin{frame}
+	\frametitle{Types of DAC: R--2R Ladder DAC}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -3247,7 +2819,7 @@
 			\end{itemize}
 		\column{0.5\textwidth}
 			\begin{figure}
-				\includegraphics[width=0.75\linewidth]{fig/lec03/4_bit_R_2R.pdf}
+				\includegraphics[width=0.6\linewidth]{fig/lec03/4_bit_R_2R.pdf}
 				\caption{4-bit R--2R ladder DAC using op-amp summing amplifier (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
 			\end{figure}
 	\end{columns}
@@ -3256,7 +2828,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of ADC: Flash (Parallel) ADC %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of ADC: Flash (Parallel) ADC}
+\begin{frame}
+	\frametitle{Types of ADC: Flash (Parallel) ADC}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -3276,7 +2849,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of ADC: Successive Approximation ADC (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of ADC: Successive Approximation ADC (1)}
+\begin{frame}
+	\frametitle{Types of ADC: Successive Approximation ADC (1)}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -3296,7 +2870,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of ADC: Successive Approximation ADC (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of ADC: Successive Approximation ADC (2)}
+\begin{frame}
+	\frametitle{Types of ADC: Successive Approximation ADC (2)}
 	\begin{figure}
 		\includegraphics[width=0.4\linewidth]{fig/lec03/succ_approx_ADC_out.pdf}
 		\caption{Successive Approximation ADC block diagram (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
@@ -3306,7 +2881,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of ADC: Counter-Ramp (Integrating) ADC %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of ADC: Counter-Ramp (Integrating) ADC}
+\begin{frame}
+	\frametitle{Types of ADC: Counter-Ramp (Integrating) ADC}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -3326,7 +2902,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Other Integrating ADC Types %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Other Integrating ADC Types}
+\begin{frame}
+	\frametitle{Other Integrating ADC Types}
 	\begin{itemize}
 		\item \textbf{Single-slope ramp ADC}: uses a linear ramp generated by an integrator. The time taken for the ramp to reach the input voltage is measured with a counter. Simple but sensitive to ramp slope and clock errors.
 		\item \textbf{Dual-slope (dual-ramp) ADC}: first integrates the unknown input for a fixed time, then integrates a reference voltage of opposite polarity until the integrator output returns to zero. The second integration time gives the digital result.
@@ -3338,7 +2915,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of ADC: Delta--Sigma Charge-Balance ADC: Principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of ADC: Delta--Sigma Charge-Balance ADC: Principle}
+\begin{frame}
+	\frametitle{Types of ADC: Delta--Sigma Charge-Balance ADC: Principle}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -3358,7 +2936,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of ADC: Delta--Sigma Charge-Balance ADC: Principle %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Types of ADC: Delta--Sigma Charge-Balance ADC: Operation}
+\begin{frame}
+	\frametitle{Types of ADC: Delta--Sigma Charge-Balance ADC: Operation}
 	\begin{columns}
 		\column{0.5\textwidth}
 			\begin{itemize}
@@ -3373,4 +2952,18 @@
 				\caption{Delta--sigma charge-balance ADC block diagram (adapted from \href{https://doi.org/10.1016/C2009-0-25156-7}{Newby, B.W.G.: Electronic Signal Conditioning, 1st ed., Butterworth-Heinemann, 1994})}
 			\end{figure}
 	\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Section summary %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Section Summary}
+	\begin{itemize}
+		\item A measurement chain converts a physical quantity via sensor, \textbf{signal conditioning}, conversion and processing into information for display or control.
+		\item \textbf{Bridges} turn small resistance/impedance changes into voltages; AC bridges (Maxwell, Hay, Schering, Wien) measure $L$, $C$, losses and frequency.
+		\item \textbf{Operational amplifiers} (ideal: $U_+ = U_-$, no input current) realise scaling, summing, conversion, integration and differentiation; the gain--bandwidth product limits the closed-loop bandwidth.
+		\item \textbf{Noise}: external noise is reduced by shielding, layout and avoiding earth loops; internal noise (thermal, shot, flicker) sets the detection limit.
+		\item \textbf{Filters}: passive RC/LCR filters only attenuate; active filters add gain, buffering and well-defined responses (e.g., Butterworth).
+		\item \textbf{A/D and D/A conversion}: sample at $f_s \geq 2 f_{\max}$ (in practice $f_s \gg 2 f_{\max}$) behind an anti-aliasing filter; $N$-bit quantisation sets resolution and quantisation noise; flash, SAR, integrating and delta--sigma converters trade speed, resolution and cost.
+	\end{itemize}
 \end{frame}
